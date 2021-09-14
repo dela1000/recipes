@@ -1,24 +1,48 @@
-import './App.css';
+import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Header from './components/Header/index';
+import ScrollToTop from './components/ScrollToTop/index';
 import Home from './pages/Home/index';
-
-// import recipesData from './adapters/recipesData';
+import Recipe from './pages/Recipe/index';
+import { Context } from './contexts/context';
+import useWindowDimensions from './contexts/useWindowDimensions';
+import './tailwind.css';
+import './App.css';
 
 export default function App() {
+  const [{ themeName, navbarState }] = useContext(Context);
+  const { width } = useWindowDimensions();
+  const [windowType, setWindowType] = useState('desktop');
+
+  useEffect(() => {
+    if (width < 768) {
+      setWindowType('mobile');
+    } else {
+      setWindowType('desktop');
+    }
+  }, [width]);
+
   return (
-    <Router>
-      `<Header />
-      <main>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="*">
-            <Redirect to="/" />
-          </Route>
-        </Switch>
-      </main>
-    </Router>
+    <div id="top" className={`${themeName} app`}>
+      <Router>
+        <Header />
+        <main style={{ display: navbarState ? 'none' : 'block' }}>
+          <div className="container m-4 md:mx-auto">
+            <Switch>
+              <Route exact path="/">
+                <Home windowType={windowType} />
+              </Route>
+              <Route exact path="/recipe">
+                <Recipe windowType={windowType} />
+              </Route>
+              <Route path="*">
+                <Redirect to="/" />
+              </Route>
+            </Switch>
+            <ScrollToTop />
+          </div>
+        </main>
+      </Router>
+    </div>
   );
 }

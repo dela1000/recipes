@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import RecipesList from '../../components/RecipesList/index';
+import Recipe from '../../components/Recipe/index';
 
 export default function Home() {
   useEffect(() => {
@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <div className="fade-in">
-      <RecipesList />
+      <Recipe />
     </div>
   );
 }
