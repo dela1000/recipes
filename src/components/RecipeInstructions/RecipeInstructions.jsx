@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 
-export default function RecipeIngredients({ recipe }) {
-  const ingredientsHeaders = Object.keys(recipe.ingredients);
+export default function RecipeInstructions({ recipe }) {
+  const instructionsHeaders = Object.keys(recipe.instructions);
 
   return (
     <div className="my-5">
-      {recipe.ingredients && <div className="mt-5 mb-2 text-2xl">Ingredients:</div>}
-      {ingredientsHeaders.map((header) => (
+      {recipe.instructions && <div className="mt-5 mb-2 text-2xl">Instructions:</div>}
+      {instructionsHeaders.map((header) => (
         <div key={header} className="px-4">
-          {recipe.ingredients[header].length > 0 && (
+          {recipe.instructions[header].length > 0 && (
             <div className="text-1xl font-bold capitalize">{header}</div>
           )}
           <div className="mb-3">
-            {recipe.ingredients[header].map((ingredient) => (
+            {recipe.instructions[header].map((ingredient) => (
               <div key={ingredient}>{ingredient}</div>
             ))}
           </div>
@@ -22,9 +22,9 @@ export default function RecipeIngredients({ recipe }) {
   );
 }
 
-RecipeIngredients.propTypes = {
+RecipeInstructions.propTypes = {
   recipe: PropTypes.shape({
-    ingredients: PropTypes.shape({
+    instructions: PropTypes.shape({
       standard: PropTypes.arrayOf(PropTypes.string.isRequired),
     }),
   }).isRequired,

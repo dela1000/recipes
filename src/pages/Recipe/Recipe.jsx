@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import RecipeInfo from '../../components/RecipeInfo/index';
 import RecipeIngredients from '../../components/RecipeIngredients/index';
+import RecipeInstructions from '../../components/RecipeInstructions/index';
 import { Context } from '../../contexts/context';
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
     <div className="fade-in">
       <RecipeInfo recipe={recipe} />
       <RecipeIngredients recipe={recipe} />
+      <RecipeInstructions recipe={recipe} />
     </div>
   );
 }
