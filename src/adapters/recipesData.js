@@ -8,6 +8,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [],
       Tacos: [
@@ -23,7 +24,6 @@ const recipesData = [
         '1/2 tsp Salt(to taste)',
         '1/2 tsp ground Pepper',
       ],
-
       Guacamole: [
         '2 ripe avocados',
         '1/2 red onion, minced (about 1/2 cup)',
@@ -36,7 +36,6 @@ const recipesData = [
         'Garnish with red radishes or jicama. Serve with tortilla chips.',
       ],
     },
-
     instructions: {
       standard: [],
       'Taco meat': [
@@ -64,6 +63,7 @@ const recipesData = [
     yield: 4,
     active: '',
     total: '30',
+    categories: [],
     ingredients: {
       standard: [
         '1 lb ground turkey 93% lean',
@@ -78,7 +78,6 @@ const recipesData = [
         '1 pinch salt and pepper',
       ],
     },
-
     instructions: {
       standard: [
         'Preheat oven to 350° F and lightly grease a baking sheet.',
@@ -95,15 +94,14 @@ const recipesData = [
     id: 2,
     title: 'Wine & Tomato Braised Chicken',
     description: 'Makes: 10 servings',
-
     activeTime: '45 minutes',
-
     totalTime: '3 3/4-6 3/4 hours',
     source: '',
     originalURL: 'http://www.eatingwell.com/recipes/wine_tomato_braised_chicken.html',
     yield: 10,
     active: '45 minutes',
     total: '3 3/4-6 3/4 hours',
+    categories: [],
     ingredients: {
       standard: [
         '4 slices bacon',
@@ -120,7 +118,6 @@ const recipesData = [
         '1/4 cup finely chopped fresh parsley',
       ],
     },
-
     instructions: {
       standard: [
         'Cook bacon in a large skillet over medium heat until crisp, about 4 minutes. Transfer to paper towels to drain. Crumble when cool.',
@@ -142,7 +139,6 @@ const recipesData = [
       },
     },
   },
-
   {
     id: 3,
     title: 'Vegetarian Chana Masala',
@@ -152,6 +148,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/0945f7df3c684bb0a77ade8106415b93.jpg',
     ingredients: {
       standard: [
@@ -171,7 +168,6 @@ const recipesData = [
         '2 Tbsp (30 ml) lemon juice, plus more to taste',
       ],
     },
-
     instructions: {
       standard: [
         'Heat a large pot over medium heat. Once hot, add oil, onion, cumin, and 1/4 tsp salt.',
@@ -195,6 +191,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/dc830485810c4a3494f4bb123f583088.jpg',
     ingredients: {
       standard: [],
@@ -206,14 +203,12 @@ const recipesData = [
         '2 tsp fresh thyme or 1 tsp dried thyme',
         '1 10-ounce bag frozen mixed veggies: peas, carrots, green beans and corn',
       ],
-
       'MASHED POTATOES': [
         '3 pounds yukon gold potatoes, thoroughly washed',
         '3 to 4 Tbsp vegan butter',
         'Salt and pepper to taste',
       ],
     },
-
     instructions: {
       standard: [
         'Slice any large potatoes in half, place in a large pot and fill with water until they’re just covered. Bring to a low boil on medium high heat, then generously salt, cover and cook for 20-30 minutes or until they slide off a knife very easily.',
@@ -239,6 +234,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '5 min preparation',
+    categories: [],
     ingredients: {
       standard: [
         '2 medium tomatoes',
@@ -251,7 +247,6 @@ const recipesData = [
         'Freshly ground black pepper',
       ],
     },
-
     instructions: {
       standard: [
         'Chop tomatoes and mangoes into bite-sized cubes. Place cubes into a large bowl.',
@@ -262,7 +257,6 @@ const recipesData = [
       ],
     },
   },
-
   {
     id: 6,
     title: 'Tomato, Basil Shrimp Stir Fry with Paleo Pasta',
@@ -272,6 +266,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 pound of shrimp (cooked)',
@@ -286,7 +281,6 @@ const recipesData = [
         '1 carrot',
       ],
     },
-
     instructions: {
       standard: [
         'Put oil in pan on medium heat.',
@@ -316,6 +310,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/126ddb6398c54790b944ece357eb366e.jpg',
     ingredients: {
       standard: [
@@ -327,7 +322,6 @@ const recipesData = [
         'Vegan parmesan cheese and fresh basil (optional)',
       ],
     },
-
     instructions: {
       standard: [
         'Cook the noodles according to package instructions, shooting for al dente.',
@@ -349,6 +343,7 @@ const recipesData = [
     yield: '1 cup marinade',
     active: '5 mins',
     total: '5 mins',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/5153170.jpg',
     ingredients: {
       standard: [
@@ -361,7 +356,6 @@ const recipesData = [
         'salt and pepper to taste',
       ],
     },
-
     instructions: {
       standard: [
         'Mix olive oil, balsamic vinegar, Worcestershire sauce, soy sauce, Dijon mustard, and garlic in a small bowl. Season with salt and pepper.',
@@ -377,6 +371,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         'one large sweet potato',
@@ -385,7 +380,6 @@ const recipesData = [
         'olive oil',
       ],
     },
-
     instructions: {
       standard: [
         'Set the oven to 450 degrees Fahrenheit.',
@@ -418,6 +412,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '2 tablespoons minced chives',
@@ -442,6 +437,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [],
       Steak: [
@@ -467,7 +463,6 @@ const recipesData = [
         'Salt and pepper to taste. You can easily omit the salt, but it is a great addition if you don’t mind it.',
       ],
     },
-
     instructions: {
       standard: [],
       Steak: [
@@ -487,7 +482,6 @@ const recipesData = [
         'Transfer to a platter and serve hot.',
         'Cut avocado in half and serve steak and asparagus.',
       ],
-
       Fries: [
         'Preheat your oven to 425 F. In a bowl, coat evenly the sweet potato wedges with the oil and the herbs.',
         'Add the salt and pepper',
@@ -506,6 +500,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '10 oz. spicy sausage',
@@ -524,7 +519,6 @@ const recipesData = [
         'pepper and salt, to taste',
       ],
     },
-
     instructions: {
       standard: [
         'Heat 1 Tbsp olive oil in a large skillet over high heat. Add shrimp to skillet and cook shrimp until just opaque in center, stirring often, about 5 minutes. Transfer shrimp to a plate.',
@@ -548,6 +542,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '3 Cans (15oz) Chili Beans or your favorite kind',
@@ -565,7 +560,6 @@ const recipesData = [
       ],
       OPTIONAL: ['Shredded cheese on top'],
     },
-
     instructions: {
       standard: [
         'Drain beans and wash',
@@ -604,7 +598,6 @@ const recipesData = [
         'steamed rice, to serve',
       ],
     },
-
     instructions: {
       standard: [
         'Put the curry paste, coconut milk, sugar, fish sauce and peanut butter into the slow cooker and stir to combine. Add the beef, potatoes and stock and stir to coat in the mixture.',
@@ -766,6 +759,7 @@ const recipesData = [
     yield: '',
     active: '20 minutes',
     total: '6:20 hours',
+    categories: [],
     ingredients: {
       standard: [
         '2 lb. bone-in chicken thighs',
@@ -915,6 +909,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '4 chicken breasts, diced',
@@ -992,6 +987,7 @@ const recipesData = [
     yield: '',
     active: '20',
     total: '30',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/81b5db3fe4294773b1e18d4a8523d08a.jpg',
     ingredients: {
       standard: [
@@ -1022,6 +1018,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/913827497f8e44b088b9e05fafadfdbc.jpg',
     ingredients: {
       standard: [
@@ -1057,6 +1054,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '2 lbs. boneless beef chuck roast, sliced into thin strips (or pulled apart)*',
@@ -1089,6 +1087,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/2d01c04ea5174eab8ba7912a98acc53e.jpg',
     ingredients: {
       standard: [
@@ -1137,6 +1136,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '12 eggs',
@@ -1250,6 +1250,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 lb. salmon, with skin',
@@ -1283,6 +1284,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 can chickpeas, rinsed and drained',
@@ -1323,6 +1325,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 Beets',
@@ -1393,6 +1396,7 @@ const recipesData = [
     yield: 6 - 8,
     active: '20',
     total: '35',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/223477e8e67f4242b37b24cec470def6.jpg',
     ingredients: {
       standard: [
@@ -1435,6 +1439,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/4ce80312a86144fd8569b1988948f2a5.jpg',
     ingredients: {
       standard: [
@@ -1463,6 +1468,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/fc0f8894c2d84f89865e24e811a22639.jpg',
     ingredients: {
       standard: [],
@@ -1503,6 +1509,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '2.5 lb chuck roast',
@@ -1534,6 +1541,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 lb. boneless, skinless chicken thighs (cut into bite size pieces)',
@@ -1568,6 +1576,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 pound mahi mahi (or whatever is local, wild and fresh!)',
@@ -1606,6 +1615,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [],
       MARINADE: [
@@ -1659,6 +1669,7 @@ const recipesData = [
     yield: 4,
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '3/4 cup Dijon-style mustard',
@@ -1695,6 +1706,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1/2 Onion',
@@ -1729,6 +1741,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 White Onion',
@@ -1778,6 +1791,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1/2 Tablespoon lemon pepper seasoning',
@@ -1863,6 +1877,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '11 spices - Mix with 2 cups white flour:',
@@ -1894,6 +1909,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [],
       'For the Bowl': [
@@ -1971,6 +1987,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '3/4 pound chicken breasts',
@@ -2006,6 +2023,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '2 to 3 lb of wings (approx. 20-30 wings) – or more if your crockpot can hold (this can vary depending on the size of your wings, use enough to fill a 2 quart crock pot, double the recipe if you are using a 4 quart).',
@@ -2035,6 +2053,7 @@ const recipesData = [
     yield: 4,
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '2 tbsp chopped fresh oregano',
@@ -2070,6 +2089,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 tablespoon olive oil',
@@ -2101,6 +2121,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '10 chicken drumsticks (approximately 3 pounds)',
@@ -2132,6 +2153,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [],
       'Curry:': [
@@ -2259,6 +2281,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '2 lbs boneless, skinless chicken breast',
@@ -2299,6 +2322,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '6 boneless, skinless chicken breasts',
@@ -2401,6 +2425,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '4 boneless, skinless chicken thighs (about 1 1/4 to 1 1/2 pounds)',
@@ -2468,6 +2493,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '3 lb chicken breasts',
@@ -2596,6 +2622,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         'a small head of organic cauliflower, chopped coarsely',
@@ -2631,6 +2658,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 LB hamburger',
@@ -2664,6 +2692,7 @@ const recipesData = [
     yield: 4 - 6,
     active: '10',
     total: '22',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/8e9e2a4f0fe543c9bc8418070cd841e2.jpg',
     ingredients: {
       standard: [
@@ -2692,6 +2721,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         'Eggs',
@@ -2715,6 +2745,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 lb top sirloin steak, cut into strips;',
@@ -2750,6 +2781,7 @@ const recipesData = [
     yield: '4 servings',
     active: '10 mins',
     total: '15 mins',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/4995974.jpg',
     ingredients: {
       standard: [
@@ -2886,6 +2918,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [],
       'For the chunk of meat': [
@@ -2926,6 +2959,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/56050f5951034f62ac20bb883ad3fbf6.jpg',
     ingredients: {
       standard: [],
@@ -2968,6 +3002,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: ['2 coconuts', '2 pounds of rice', '2 tbsp sugar', '2 tsp salt', 'raisins'],
     },
@@ -2994,6 +3029,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
+    categories: [],
     ingredients: {
       standard: [
         '1 hardboiled eggs',
