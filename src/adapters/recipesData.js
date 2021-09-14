@@ -1,311 +1,6 @@
 const recipesData = [
   {
-    title: 'Zoodles and Turkey Meatballs',
-    description: '',
-    source: '',
-    originalURL: 'https://foodcount.com/recipe/zoodles-turkey-meatballs',
-    yield: 4,
-    active: '',
-    total: '30',
-    ingredients: {
-      standard: [
-        '1 lb ground turkey 93% lean',
-        '1/3 cup panko bread crumbs',
-        '1 large eggs',
-        '1 clove garlic (minced)',
-        '1/2 tsp italian seasoning',
-        '1 1/2 cup marinara sauce (all natural)',
-        '4 large zucchini',
-        '1/2 tbsp olive oil',
-        '1/4 cup parmesan cheese - grated',
-        '1 pinch salt and pepper',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Preheat oven to 350° F and lightly grease a baking sheet.',
-        'In a large bowl combine turkey, bread crumbs, egg, garlic, and salt and pepper to taste. Use clean hands to gently mix and form into meatballs about 1 and a half inches in diameter. You should end with a dozen meatballs.',
-        'Place meatballs on a baking sheet and bake for 20 minutes.',
-        'While the meatballs are baking, prepare the zoodles. Use a julienne slicer or a spiral slicer to cut the zucchini into long, thin, noodle-like strands.',
-        'Pour marinara sauce into a small saucepan and heat over a medium low heat for 5-10 minutes.',
-        'Heat olive oil in a nonstick skillet and sauté zucchini for 3-5 minutes, stirring frequently. Season with salt & pepper to taste.',
-        'Divide zucchini between 4 bowls and top with 3 meatballs each. Spoon marinara sauce over the meatballs, sprinkle with parmesan cheese, and enjoy.',
-      ],
-    },
-  },
-
-  {
-    title: 'Wine & Tomato Braised Chicken',
-    description: 'Makes: 10 servings',
-
-    activeTime: '45 minutes',
-
-    totalTime: '3 3/4-6 3/4 hours',
-    source: '',
-    originalURL: 'http://www.eatingwell.com/recipes/wine_tomato_braised_chicken.html',
-    yield: 10,
-    active: '45 minutes',
-    total: '3 3/4-6 3/4 hours',
-    ingredients: {
-      standard: [
-        '4 slices bacon',
-        '1 large onion, thinly sliced',
-        '4 cloves garlic, minced',
-        '1 teaspoon dried thyme',
-        '1 teaspoon fennel seeds',
-        '1 teaspoon freshly ground pepper',
-        '1 bay leaf',
-        '1 cup dry white wine (see Tip)',
-        '1 28-ounce can whole tomatoes, with juice, coarsely chopped',
-        '1 teaspoon salt',
-        '10 bone-in chicken thighs (about 3 3/4 pounds), skin removed, trimmed',
-        '1/4 cup finely chopped fresh parsley',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Cook bacon in a large skillet over medium heat until crisp, about 4 minutes. Transfer to paper towels to drain. Crumble when cool.',
-        'Drain off all but 2 tablespoons fat from the pan. Add onion and cook over medium heat, stirring, until softened, 3 to 6 minutes. Add garlic, thyme, fennel seeds, pepper and bay leaf and cook, stirring, for 1 minute. Add wine, bring to a boil and boil for 2 minutes, scraping up any browned bits. Add tomatoes and their juice and salt; stir well.',
-        'Place chicken thighs in a 4-quart (or larger) slow cooker. Sprinkle the bacon over the chicken. Pour the tomato mixture over the chicken. Cover and cook until the chicken is very tender, about 3 hours on High or 6 hours on Low. Remove the bay leaf. Serve sprinkled with parsley.',
-        'Variation: Turn 2 cups each of leftover chicken and sauce into Braised Chicken Gumbo. Heat 1 tablespoon extra-virgin olive oil in a large saucepan over medium heat. Add 1 diced medium red or green bell pepper and 2 tablespoons all-purpose flour and cook, stirring, until the pepper is beginning to soften and the flour is golden brown, about 2 minutes. Add 2 cups shredded chicken, 2 cups sauce, 2 cups reduced-sodium chicken broth, 1 cup sliced okra (fresh or frozen, thawed), 3/4 cup instant brown rice (see Tip) and 1/8-1/4 teaspoon cayenne pepper. Bring to a boil. Reduce the heat and simmer until the flavors meld and the okra is tender, about 10 minutes.',
-      ],
-    },
-    notes: {
-      makeAheadTip:
-        'Prepare Steps 1 & 2, cover and refrigerate bacon and sauce separately for up to 1 day. To finish, bring the sauce to a simmer and continue with Step 3. The cooked chicken and sauce can be refrigerated for up to 3 days. | equipment: 4-quart or larger slow cooker',
-      tips: [
-        'If you want to use rice that is not “instant,” stir in 1 cup of any leftover cooked rice instead. Or, if you have time, add 1/2 cup of quicker-cooking whole-grain rice, such as Bhutanese red rice or Kalijira rice, and an additional 11/4 cups of chicken broth before adding the okra. Cook until the rice is almost tender, about 25 minutes (or according to package instructions) then add the okra and simmer until it is tender.',
-        'If you prefer, substitute 1 cup reduced-sodium chicken broth mixed with 1 tablespoon fresh lemon juice for the wine.',
-      ],
-      nutrition: {
-        perServing:
-          '260 calories; 13 g fat (4 g sat, 5 g mono); 88 mg cholesterol; 6 g carbohydrates; 0 g added sugars; 25 g protein; 1 g fiber; 492 mg sodium; 392 mg potassium.',
-      },
-    },
-  },
-
-  {
-    title: 'Vegetarian Chana Masala',
-    description: '',
-    source: '',
-    originalURL: '',
-    yield: '',
-    active: '',
-    total: '',
-    image: 'https://cdn2.pepperplate.com/recipes/0945f7df3c684bb0a77ade8106415b93.jpg',
-    ingredients: {
-      standard: [
-        '3 Tbsp (45 ml) grape seed oil (or sub coconut oil)',
-        '1 white or yellow onion, finely diced (110 g)',
-        '1 Tbsp (7 g) ground cumin',
-        '3/4 tsp sea salt, divided, plus more to taste',
-        '6 cloves garlic, minced (3 Tbsp or 16 g)',
-        '2 Tbsp (12 g) fresh ginger, minced',
-        '1 Tbsp (7 g) ground coriander',
-        '1 tsp chili powder',
-        '1 tsp ground turmeric',
-        '1 28-oz can pureed or finely diced tomatoes',
-        '2 15-ounce (425 g) cans chickpeas, slightly drained',
-        '1 tsp garam masala',
-        '2 to 3 tsp coconut sugar',
-        '2 Tbsp (30 ml) lemon juice, plus more to taste',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Heat a large pot over medium heat. Once hot, add oil, onion, cumin, and 1/4 tsp salt.',
-        'Add garlic, ginger, cilantro, and green chilies to a mortar and pestle and grind into a rough paste (or use a small food processor to pulse into a paste. Alternatively, just finely mince.) Then, add to the pan with the onions.',
-        'Next add ground coriander, chili powder, and turmeric and stir to coat. Add a little more oil at this point if the pan is looking dry.',
-        'Next add pureed tomatoes and chickpeas and remaining 1/2 tsp salt. If the mixture looks a little too thick, add up to 1 cup (240 ml) water (I added ~1/2 cup (120 ml)). You’re looking for a semi-thick soup consistency at this point, as it will cook down into more of a stew.',
-        'Increase heat to medium high until it reaches a rolling simmer, then reduce heat to low or medium-low and maintain a simmer (uncovered) for 15-20 minutes, or until thick and stew-like. Stir occasionally.',
-        'In the meantime, if you don’t have garam masala seasoning, make your own by adding 2 small dried red chilies, 1 tsp black peppercorns (or 1/2 tsp ground black pepper), 1 tsp cumin seeds (or 1/2 tsp ground cumin), 1 tsp cardamom pods (or 1/2 tsp ground cardamom), 1/2 tsp cloves (or 1/4 tsp ground cloves), and 1/8 tsp nutmeg to a mortar and pestle or spice grinder and grind/mix into a powder. Set aside.',
-        'When the chana masala is thickened and bubbly, taste and adjust seasonings as needed, adding more salt for saltiness, chili powder for heat, or a bit of coconut sugar for sweetness and to offset the heat of the chilies.',
-        'Remove from heat and add lemon juice and garam masala. Stir to mix, then let cool slightly before serving. Fresh cilantro and lemon juice make an excellent garnish. Chana masala can be enjoyed as a stew on its own, or it can be delicious with white or brown rice (see my favorite method here), or cauliflower rice. Lastly, my favorite is over roasted sweet potatoes and broccoli (see notes for instructions).',
-        'Leftovers will keep covered in the refrigerator up to 4 days, or in the freezer up to 1 month.',
-      ],
-    },
-  },
-  {
-    title: " Vegan Shepherd's Pie",
-    description: '',
-    source: '',
-    originalURL: 'http://minimalistbaker.com/1-hour-vegan-shepherds-pie/',
-    yield: '',
-    active: '',
-    total: '',
-    image: 'https://cdn2.pepperplate.com/recipes/dc830485810c4a3494f4bb123f583088.jpg',
-    ingredients: {
-      standard: [],
-      FILLING: [
-        '1 medium onion, diced',
-        '2 cloves garlic, minced',
-        '1 1/2 cups uncooked brown or green lentils, rinsed and drained',
-        '4 cups vegetable stock',
-        '2 tsp fresh thyme or 1 tsp dried thyme',
-        '1 10-ounce bag frozen mixed veggies: peas, carrots, green beans and corn',
-      ],
-
-      'MASHED POTATOES': [
-        '3 pounds yukon gold potatoes, thoroughly washed',
-        '3 to 4 Tbsp vegan butter',
-        'Salt and pepper to taste',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Slice any large potatoes in half, place in a large pot and fill with water until they’re just covered. Bring to a low boil on medium high heat, then generously salt, cover and cook for 20-30 minutes or until they slide off a knife very easily.',
-        'Once cooked, drain, add back to the pot to evaporate any remaining water, then transfer to a mixing bowl. Use a masher, pastry cutter or large fork to mash until smooth. Add add desired amount of vegan butter (2-4 Tbsp), and season with salt and pepper to taste. Loosely cover and set aside.',
-        'While potatoes are cooking, preheat oven to 425 degrees F and lightly grease a 2-quart baking dish (or comparable sized dish, such as 9x13 pan. An 8x8 won’t fit it all but close!).',
-        'In a large saucepan over medium heat, sauté onions and garlic in 1 Tbsp olive oil until lightly browned and caramelized - about 5 minutes.',
-        'Add a pinch each salt and pepper. Then add lentils, stock, thyme and stir. Bring to a low boil, then reduce heat to simmer. Continue cooking until lentils are tender (35-40 minutes).',
-        'In the last 10 minutes of cooking, add the frozen veggies, stir, and cover to meld the flavors together.',
-        'OPTIONAL: To thicken the mixture, add 2-3 Tbsp mashed potatoes and stir. Alternatively, scoop out 1/2 of the mixture and whisk in 2 Tbsp cornstarch or arrowroot powder and whisk. Return to the pan and whisk to thicken.',
-        'Taste and adjust seasonings as needed. Then transfer to your prepared oven-safe baking dish and carefully top with mashed potatoes. Smooth down with a spoon or fork and season with another crack of pepper and a little sea salt.',
-        'Place on a baking sheet to catch overflow and bake at 425 for 10-15 minutes, or until the mashers are lightly browned on top.',
-        'Let cool briefly before serving. The longer it sits, the more it will thicken. Let cool completely before covering, and then store in the fridge for up to a few days. Reheats well in the microwave.',
-      ],
-    },
-  },
-  {
-    title: 'Tomato Mango Bruschetta Salsa',
-    description:
-      'This bruschetta salsa recipe is a great way of adding some Italian flavor to your events and parties. The mangoes and tomatoes compliment each other nicely, providing a sweet flavor that will leave guests enamored.',
-    source: '',
-    originalURL: 'http://www.recipe4living.com/recipes/tomato_mango_bruschetta_salsa.htm',
-    yield: '',
-    active: '',
-    total: '5 min preparation',
-    ingredients: {
-      standard: [
-        '2 medium tomatoes',
-        '1 mango, ripened',
-        '1/2 cup fresh basil leaves',
-        '1 clove garlic',
-        '3 tablespoons balsamic vinegar',
-        '1/4 cup olive oil',
-        'Sea salt',
-        'Freshly ground black pepper',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Chop tomatoes and mangoes into bite-sized cubes. Place cubes into a large bowl.',
-        'Chop basil into thin ribbons and place inside bowl.',
-        'Smash, peel and finely mince garlic and add to bowl.',
-        'Add vinegar and oil to salsa and add salt and pepper to taste.',
-        'Carefully mix ingredients together, cover and refrigerate.',
-      ],
-    },
-  },
-
-  {
-    title: 'Tomato, Basil Shrimp Stir Fry with Paleo Pasta',
-    description: '',
-    source: '',
-    originalURL: '',
-    yield: '',
-    active: '',
-    total: '',
-    ingredients: {
-      standard: [
-        '1 pound of shrimp (cooked)',
-        '1 can diced tomatoes',
-        '1 yellow onion',
-        '2 cloves of garlic',
-        '2 to 3 tsp dried basil',
-        'salt and pepper',
-        'Olive oil',
-        '1 cucumber',
-        '1 zucchini',
-        '1 carrot',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Put oil in pan on medium heat.',
-        'Add onions & garlic.',
-        "Sauté until onions start to soften. Be careful not to overcook them otherwise they'll be mushy.",
-        'Add tomatoes, basil, salt, pepper, hot sauce & shrimp to pan and simmer for about 5 minutes (shrimp cooks quickly).',
-        'Add capers to pan when shrimp are about halfway cooked',
-        'Once shrimp are cooked to desired taste, remove pan from heat.',
-        'Make Paleo pasta:',
-        'a. Boil water in a pot.',
-        'b. Use a “y” peeler to cut length-wise strips from the zucchini, squash & carrot. Try to cut them as thick as the peeler allows.',
-        "c. Peel a few strips from one side then turn the veggie so the flat side is on the cutting board -- it's easier to cut with a flat side.",
-        "d. Boil the strips for no more than a minute. They'll be thin enough that it doesn't take long to cook them. If you over cook them they'll get mushy. A quick boil will keep them firm enough that they twirl like pasta.",
-        'Serve shrimp & tomato stir fry on the paleo pasta.',
-        'Add additional capers (to taste)',
-        'Add fresh ground parmesan.',
-      ],
-    },
-  },
-  {
-    title: 'Three Color Pasta with Sun Dried Tomato Sauce',
-    description:
-      'This simple, 5-ingredient pasta comes together in about 15 minutes and is full of flavor from the sun dried tomato sauce. Add a few sprigs of basil on top to give the dish a fresh note. It can be made vegan by forgoing cheese, and gluten-free by using gluten-free pasta noodles.',
-    source: '',
-    originalURL: '',
-    yield: '',
-    active: '',
-    total: '',
-    image: 'https://cdn2.pepperplate.com/recipes/126ddb6398c54790b944ece357eb366e.jpg',
-    ingredients: {
-      standard: [
-        '1 carrot',
-        '1 small-medium zucchini',
-        '2 ounces whole wheat spaghetti (a small handful)',
-        '1/2 – 1/3 cup tomato sauce',
-        '3 Tablespoons sun dried tomato spread (or pureed sun dried tomatoes)',
-        'Vegan parmesan cheese and fresh basil (optional)',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Cook the noodles according to package instructions, shooting for al dente.',
-        'Rinse and peel any rough skin spots from the carrot and zucchini. Then continue using the peeler to ‘ribbon’ them into noodles.',
-        'Combine and warm your tomato sauce and sun dried tomato spread in a medium saucepan over low-medium heat, stirring to combine and adding a little water if too thick.',
-        'Once noodles are done, scoop them into a strainer (reserving the water) and cover with towel to keep them moist.',
-        'Place zucchini and carrot noodles in the pasta water and boil for 3-4 minutes until tender or ‘al dente.’',
-        'Add pasta noodles and vegetable noodles into the sauce, toss lightly and serve immediately.',
-        'Garnish with vegan parmesan cheese and basil for additional flavor.',
-      ],
-    },
-  },
-  {
-    title: 'The Best Steak Marinade',
-    description: '',
-    source: 'Allrecipes.com',
-    originalURL: 'http://allrecipes.com/recipe/the-best-steak-marinade/',
-    yield: '1 cup marinade',
-    active: '5 mins',
-    total: '5 mins',
-    image: 'https://cdn2.pepperplate.com/recipes/5153170.jpg',
-    ingredients: {
-      standard: [
-        '1/4 cup olive oil',
-        '1/4 cup balsamic vinegar',
-        '1/4 cup Worcestershire sauce',
-        '1/4 cup soy sauce',
-        '2 teaspoons Dijon mustard',
-        '2 teaspoons minced garlic',
-        'salt and pepper to taste',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Mix olive oil, balsamic vinegar, Worcestershire sauce, soy sauce, Dijon mustard, and garlic in a small bowl. Season with salt and pepper.',
-      ],
-    },
-  },
-  {
+    id: 0,
     title: 'Tacos and Guacamole',
     description: '',
     source: '',
@@ -361,6 +56,320 @@ const recipesData = [
     },
   },
   {
+    id: 1,
+    title: 'Zoodles and Turkey Meatballs',
+    description: '',
+    source: '',
+    originalURL: 'https://foodcount.com/recipe/zoodles-turkey-meatballs',
+    yield: 4,
+    active: '',
+    total: '30',
+    ingredients: {
+      standard: [
+        '1 lb ground turkey 93% lean',
+        '1/3 cup panko bread crumbs',
+        '1 large eggs',
+        '1 clove garlic (minced)',
+        '1/2 tsp italian seasoning',
+        '1 1/2 cup marinara sauce (all natural)',
+        '4 large zucchini',
+        '1/2 tbsp olive oil',
+        '1/4 cup parmesan cheese - grated',
+        '1 pinch salt and pepper',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Preheat oven to 350° F and lightly grease a baking sheet.',
+        'In a large bowl combine turkey, bread crumbs, egg, garlic, and salt and pepper to taste. Use clean hands to gently mix and form into meatballs about 1 and a half inches in diameter. You should end with a dozen meatballs.',
+        'Place meatballs on a baking sheet and bake for 20 minutes.',
+        'While the meatballs are baking, prepare the zoodles. Use a julienne slicer or a spiral slicer to cut the zucchini into long, thin, noodle-like strands.',
+        'Pour marinara sauce into a small saucepan and heat over a medium low heat for 5-10 minutes.',
+        'Heat olive oil in a nonstick skillet and sauté zucchini for 3-5 minutes, stirring frequently. Season with salt & pepper to taste.',
+        'Divide zucchini between 4 bowls and top with 3 meatballs each. Spoon marinara sauce over the meatballs, sprinkle with parmesan cheese, and enjoy.',
+      ],
+    },
+  },
+  {
+    id: 2,
+    title: 'Wine & Tomato Braised Chicken',
+    description: 'Makes: 10 servings',
+
+    activeTime: '45 minutes',
+
+    totalTime: '3 3/4-6 3/4 hours',
+    source: '',
+    originalURL: 'http://www.eatingwell.com/recipes/wine_tomato_braised_chicken.html',
+    yield: 10,
+    active: '45 minutes',
+    total: '3 3/4-6 3/4 hours',
+    ingredients: {
+      standard: [
+        '4 slices bacon',
+        '1 large onion, thinly sliced',
+        '4 cloves garlic, minced',
+        '1 teaspoon dried thyme',
+        '1 teaspoon fennel seeds',
+        '1 teaspoon freshly ground pepper',
+        '1 bay leaf',
+        '1 cup dry white wine (see Tip)',
+        '1 28-ounce can whole tomatoes, with juice, coarsely chopped',
+        '1 teaspoon salt',
+        '10 bone-in chicken thighs (about 3 3/4 pounds), skin removed, trimmed',
+        '1/4 cup finely chopped fresh parsley',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Cook bacon in a large skillet over medium heat until crisp, about 4 minutes. Transfer to paper towels to drain. Crumble when cool.',
+        'Drain off all but 2 tablespoons fat from the pan. Add onion and cook over medium heat, stirring, until softened, 3 to 6 minutes. Add garlic, thyme, fennel seeds, pepper and bay leaf and cook, stirring, for 1 minute. Add wine, bring to a boil and boil for 2 minutes, scraping up any browned bits. Add tomatoes and their juice and salt; stir well.',
+        'Place chicken thighs in a 4-quart (or larger) slow cooker. Sprinkle the bacon over the chicken. Pour the tomato mixture over the chicken. Cover and cook until the chicken is very tender, about 3 hours on High or 6 hours on Low. Remove the bay leaf. Serve sprinkled with parsley.',
+        'Variation: Turn 2 cups each of leftover chicken and sauce into Braised Chicken Gumbo. Heat 1 tablespoon extra-virgin olive oil in a large saucepan over medium heat. Add 1 diced medium red or green bell pepper and 2 tablespoons all-purpose flour and cook, stirring, until the pepper is beginning to soften and the flour is golden brown, about 2 minutes. Add 2 cups shredded chicken, 2 cups sauce, 2 cups reduced-sodium chicken broth, 1 cup sliced okra (fresh or frozen, thawed), 3/4 cup instant brown rice (see Tip) and 1/8-1/4 teaspoon cayenne pepper. Bring to a boil. Reduce the heat and simmer until the flavors meld and the okra is tender, about 10 minutes.',
+      ],
+    },
+    notes: {
+      makeAheadTip:
+        'Prepare Steps 1 & 2, cover and refrigerate bacon and sauce separately for up to 1 day. To finish, bring the sauce to a simmer and continue with Step 3. The cooked chicken and sauce can be refrigerated for up to 3 days. | equipment: 4-quart or larger slow cooker',
+      tips: [
+        'If you want to use rice that is not “instant,” stir in 1 cup of any leftover cooked rice instead. Or, if you have time, add 1/2 cup of quicker-cooking whole-grain rice, such as Bhutanese red rice or Kalijira rice, and an additional 11/4 cups of chicken broth before adding the okra. Cook until the rice is almost tender, about 25 minutes (or according to package instructions) then add the okra and simmer until it is tender.',
+        'If you prefer, substitute 1 cup reduced-sodium chicken broth mixed with 1 tablespoon fresh lemon juice for the wine.',
+      ],
+      nutrition: {
+        perServing:
+          '260 calories; 13 g fat (4 g sat, 5 g mono); 88 mg cholesterol; 6 g carbohydrates; 0 g added sugars; 25 g protein; 1 g fiber; 492 mg sodium; 392 mg potassium.',
+      },
+    },
+  },
+
+  {
+    id: 3,
+    title: 'Vegetarian Chana Masala',
+    description: '',
+    source: '',
+    originalURL: '',
+    yield: '',
+    active: '',
+    total: '',
+    image: 'https://cdn2.pepperplate.com/recipes/0945f7df3c684bb0a77ade8106415b93.jpg',
+    ingredients: {
+      standard: [
+        '3 Tbsp (45 ml) grape seed oil (or sub coconut oil)',
+        '1 white or yellow onion, finely diced (110 g)',
+        '1 Tbsp (7 g) ground cumin',
+        '3/4 tsp sea salt, divided, plus more to taste',
+        '6 cloves garlic, minced (3 Tbsp or 16 g)',
+        '2 Tbsp (12 g) fresh ginger, minced',
+        '1 Tbsp (7 g) ground coriander',
+        '1 tsp chili powder',
+        '1 tsp ground turmeric',
+        '1 28-oz can pureed or finely diced tomatoes',
+        '2 15-ounce (425 g) cans chickpeas, slightly drained',
+        '1 tsp garam masala',
+        '2 to 3 tsp coconut sugar',
+        '2 Tbsp (30 ml) lemon juice, plus more to taste',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Heat a large pot over medium heat. Once hot, add oil, onion, cumin, and 1/4 tsp salt.',
+        'Add garlic, ginger, cilantro, and green chilies to a mortar and pestle and grind into a rough paste (or use a small food processor to pulse into a paste. Alternatively, just finely mince.) Then, add to the pan with the onions.',
+        'Next add ground coriander, chili powder, and turmeric and stir to coat. Add a little more oil at this point if the pan is looking dry.',
+        'Next add pureed tomatoes and chickpeas and remaining 1/2 tsp salt. If the mixture looks a little too thick, add up to 1 cup (240 ml) water (I added ~1/2 cup (120 ml)). You’re looking for a semi-thick soup consistency at this point, as it will cook down into more of a stew.',
+        'Increase heat to medium high until it reaches a rolling simmer, then reduce heat to low or medium-low and maintain a simmer (uncovered) for 15-20 minutes, or until thick and stew-like. Stir occasionally.',
+        'In the meantime, if you don’t have garam masala seasoning, make your own by adding 2 small dried red chilies, 1 tsp black peppercorns (or 1/2 tsp ground black pepper), 1 tsp cumin seeds (or 1/2 tsp ground cumin), 1 tsp cardamom pods (or 1/2 tsp ground cardamom), 1/2 tsp cloves (or 1/4 tsp ground cloves), and 1/8 tsp nutmeg to a mortar and pestle or spice grinder and grind/mix into a powder. Set aside.',
+        'When the chana masala is thickened and bubbly, taste and adjust seasonings as needed, adding more salt for saltiness, chili powder for heat, or a bit of coconut sugar for sweetness and to offset the heat of the chilies.',
+        'Remove from heat and add lemon juice and garam masala. Stir to mix, then let cool slightly before serving. Fresh cilantro and lemon juice make an excellent garnish. Chana masala can be enjoyed as a stew on its own, or it can be delicious with white or brown rice (see my favorite method here), or cauliflower rice. Lastly, my favorite is over roasted sweet potatoes and broccoli (see notes for instructions).',
+        'Leftovers will keep covered in the refrigerator up to 4 days, or in the freezer up to 1 month.',
+      ],
+    },
+  },
+  {
+    id: 4,
+    title: " Vegan Shepherd's Pie",
+    description: '',
+    source: '',
+    originalURL: 'http://minimalistbaker.com/1-hour-vegan-shepherds-pie/',
+    yield: '',
+    active: '',
+    total: '',
+    image: 'https://cdn2.pepperplate.com/recipes/dc830485810c4a3494f4bb123f583088.jpg',
+    ingredients: {
+      standard: [],
+      FILLING: [
+        '1 medium onion, diced',
+        '2 cloves garlic, minced',
+        '1 1/2 cups uncooked brown or green lentils, rinsed and drained',
+        '4 cups vegetable stock',
+        '2 tsp fresh thyme or 1 tsp dried thyme',
+        '1 10-ounce bag frozen mixed veggies: peas, carrots, green beans and corn',
+      ],
+
+      'MASHED POTATOES': [
+        '3 pounds yukon gold potatoes, thoroughly washed',
+        '3 to 4 Tbsp vegan butter',
+        'Salt and pepper to taste',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Slice any large potatoes in half, place in a large pot and fill with water until they’re just covered. Bring to a low boil on medium high heat, then generously salt, cover and cook for 20-30 minutes or until they slide off a knife very easily.',
+        'Once cooked, drain, add back to the pot to evaporate any remaining water, then transfer to a mixing bowl. Use a masher, pastry cutter or large fork to mash until smooth. Add add desired amount of vegan butter (2-4 Tbsp), and season with salt and pepper to taste. Loosely cover and set aside.',
+        'While potatoes are cooking, preheat oven to 425 degrees F and lightly grease a 2-quart baking dish (or comparable sized dish, such as 9x13 pan. An 8x8 won’t fit it all but close!).',
+        'In a large saucepan over medium heat, sauté onions and garlic in 1 Tbsp olive oil until lightly browned and caramelized - about 5 minutes.',
+        'Add a pinch each salt and pepper. Then add lentils, stock, thyme and stir. Bring to a low boil, then reduce heat to simmer. Continue cooking until lentils are tender (35-40 minutes).',
+        'In the last 10 minutes of cooking, add the frozen veggies, stir, and cover to meld the flavors together.',
+        'OPTIONAL: To thicken the mixture, add 2-3 Tbsp mashed potatoes and stir. Alternatively, scoop out 1/2 of the mixture and whisk in 2 Tbsp cornstarch or arrowroot powder and whisk. Return to the pan and whisk to thicken.',
+        'Taste and adjust seasonings as needed. Then transfer to your prepared oven-safe baking dish and carefully top with mashed potatoes. Smooth down with a spoon or fork and season with another crack of pepper and a little sea salt.',
+        'Place on a baking sheet to catch overflow and bake at 425 for 10-15 minutes, or until the mashers are lightly browned on top.',
+        'Let cool briefly before serving. The longer it sits, the more it will thicken. Let cool completely before covering, and then store in the fridge for up to a few days. Reheats well in the microwave.',
+      ],
+    },
+  },
+  {
+    id: 5,
+    title: 'Tomato Mango Bruschetta Salsa',
+    description:
+      'This bruschetta salsa recipe is a great way of adding some Italian flavor to your events and parties. The mangoes and tomatoes compliment each other nicely, providing a sweet flavor that will leave guests enamored.',
+    source: '',
+    originalURL: 'http://www.recipe4living.com/recipes/tomato_mango_bruschetta_salsa.htm',
+    yield: '',
+    active: '',
+    total: '5 min preparation',
+    ingredients: {
+      standard: [
+        '2 medium tomatoes',
+        '1 mango, ripened',
+        '1/2 cup fresh basil leaves',
+        '1 clove garlic',
+        '3 tablespoons balsamic vinegar',
+        '1/4 cup olive oil',
+        'Sea salt',
+        'Freshly ground black pepper',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Chop tomatoes and mangoes into bite-sized cubes. Place cubes into a large bowl.',
+        'Chop basil into thin ribbons and place inside bowl.',
+        'Smash, peel and finely mince garlic and add to bowl.',
+        'Add vinegar and oil to salsa and add salt and pepper to taste.',
+        'Carefully mix ingredients together, cover and refrigerate.',
+      ],
+    },
+  },
+
+  {
+    id: 6,
+    title: 'Tomato, Basil Shrimp Stir Fry with Paleo Pasta',
+    description: '',
+    source: '',
+    originalURL: '',
+    yield: '',
+    active: '',
+    total: '',
+    ingredients: {
+      standard: [
+        '1 pound of shrimp (cooked)',
+        '1 can diced tomatoes',
+        '1 yellow onion',
+        '2 cloves of garlic',
+        '2 to 3 tsp dried basil',
+        'salt and pepper',
+        'Olive oil',
+        '1 cucumber',
+        '1 zucchini',
+        '1 carrot',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Put oil in pan on medium heat.',
+        'Add onions & garlic.',
+        "Sauté until onions start to soften. Be careful not to overcook them otherwise they'll be mushy.",
+        'Add tomatoes, basil, salt, pepper, hot sauce & shrimp to pan and simmer for about 5 minutes (shrimp cooks quickly).',
+        'Add capers to pan when shrimp are about halfway cooked',
+        'Once shrimp are cooked to desired taste, remove pan from heat.',
+        'Make Paleo pasta:',
+        'a. Boil water in a pot.',
+        'b. Use a “y” peeler to cut length-wise strips from the zucchini, squash & carrot. Try to cut them as thick as the peeler allows.',
+        "c. Peel a few strips from one side then turn the veggie so the flat side is on the cutting board -- it's easier to cut with a flat side.",
+        "d. Boil the strips for no more than a minute. They'll be thin enough that it doesn't take long to cook them. If you over cook them they'll get mushy. A quick boil will keep them firm enough that they twirl like pasta.",
+        'Serve shrimp & tomato stir fry on the paleo pasta.',
+        'Add additional capers (to taste)',
+        'Add fresh ground parmesan.',
+      ],
+    },
+  },
+  {
+    id: 7,
+    title: 'Three Color Pasta with Sun Dried Tomato Sauce',
+    description:
+      'This simple, 5-ingredient pasta comes together in about 15 minutes and is full of flavor from the sun dried tomato sauce. Add a few sprigs of basil on top to give the dish a fresh note. It can be made vegan by forgoing cheese, and gluten-free by using gluten-free pasta noodles.',
+    source: '',
+    originalURL: '',
+    yield: '',
+    active: '',
+    total: '',
+    image: 'https://cdn2.pepperplate.com/recipes/126ddb6398c54790b944ece357eb366e.jpg',
+    ingredients: {
+      standard: [
+        '1 carrot',
+        '1 small-medium zucchini',
+        '2 ounces whole wheat spaghetti (a small handful)',
+        '1/2 – 1/3 cup tomato sauce',
+        '3 Tablespoons sun dried tomato spread (or pureed sun dried tomatoes)',
+        'Vegan parmesan cheese and fresh basil (optional)',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Cook the noodles according to package instructions, shooting for al dente.',
+        'Rinse and peel any rough skin spots from the carrot and zucchini. Then continue using the peeler to ‘ribbon’ them into noodles.',
+        'Combine and warm your tomato sauce and sun dried tomato spread in a medium saucepan over low-medium heat, stirring to combine and adding a little water if too thick.',
+        'Once noodles are done, scoop them into a strainer (reserving the water) and cover with towel to keep them moist.',
+        'Place zucchini and carrot noodles in the pasta water and boil for 3-4 minutes until tender or ‘al dente.’',
+        'Add pasta noodles and vegetable noodles into the sauce, toss lightly and serve immediately.',
+        'Garnish with vegan parmesan cheese and basil for additional flavor.',
+      ],
+    },
+  },
+  {
+    id: 8,
+    title: 'The Best Steak Marinade',
+    description: '',
+    source: 'Allrecipes.com',
+    originalURL: 'http://allrecipes.com/recipe/the-best-steak-marinade/',
+    yield: '1 cup marinade',
+    active: '5 mins',
+    total: '5 mins',
+    image: 'https://cdn2.pepperplate.com/recipes/5153170.jpg',
+    ingredients: {
+      standard: [
+        '1/4 cup olive oil',
+        '1/4 cup balsamic vinegar',
+        '1/4 cup Worcestershire sauce',
+        '1/4 cup soy sauce',
+        '2 teaspoons Dijon mustard',
+        '2 teaspoons minced garlic',
+        'salt and pepper to taste',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Mix olive oil, balsamic vinegar, Worcestershire sauce, soy sauce, Dijon mustard, and garlic in a small bowl. Season with salt and pepper.',
+      ],
+    },
+  },
+  {
+    id: 9,
     title: 'Sweet Potato Fries',
     description: '',
     source: '',
@@ -401,6 +410,7 @@ const recipesData = [
     },
   },
   {
+    id: 10,
     title: 'Sun dried tomato meatballs',
     description: '2 lbs ground beef',
     source: '',
@@ -424,6 +434,7 @@ const recipesData = [
     },
   },
   {
+    id: 11,
     title: 'Steak, Asparagus and Fries',
     description: '',
     source: '',
@@ -487,6 +498,7 @@ const recipesData = [
     },
   },
   {
+    id: 12,
     title: 'Spicy Sausage and Shrimp Skillet',
     description: '',
     source: '',
@@ -528,6 +540,7 @@ const recipesData = [
     },
   },
   {
+    id: 13,
     title: 'Soyrizo Chili',
     description: '',
     source: '',
@@ -568,6 +581,7 @@ const recipesData = [
     },
   },
   {
+    id: 14,
     title: 'Slow Cooker Thai Beef Curry',
     description: '',
     source: '',
@@ -599,6 +613,7 @@ const recipesData = [
     },
   },
   {
+    id: 15,
     title: 'Slow Cooker Southwestern Beef Stew',
     description: '',
     source: '',
@@ -631,6 +646,7 @@ const recipesData = [
     },
   },
   {
+    id: 16,
     title: 'Slow Cooker Pineapple Chicken',
     description: '',
     source: '',
@@ -666,6 +682,7 @@ const recipesData = [
     },
   },
   {
+    id: 17,
     title: 'Slow Cooker Mushroom Stroganoff',
     description: '',
     source: '',
@@ -699,6 +716,7 @@ const recipesData = [
     },
   },
   {
+    id: 18,
     title: 'Slow Cooker Jumbalaya',
     description: '',
     source: '',
@@ -740,6 +758,7 @@ const recipesData = [
     },
   },
   {
+    id: 19,
     title: 'Slow Cooker Garlic Parm Chicken',
     description: '',
     source: '',
@@ -770,6 +789,7 @@ const recipesData = [
     },
   },
   {
+    id: 20,
     title: 'Slow Cooker Chicken Tikka Masala',
     description: '',
     source: '',
@@ -805,6 +825,7 @@ const recipesData = [
     },
   },
   {
+    id: 21,
     title: 'Slow Cooker Chicken Thighs with Creamy Lemon Sauce',
     description: '',
     source: '',
@@ -852,6 +873,7 @@ const recipesData = [
     },
   },
   {
+    id: 22,
     title: 'Slow Cooker Chicken Tacos',
     description: '',
     source: '',
@@ -885,6 +907,7 @@ const recipesData = [
     },
   },
   {
+    id: 23,
     title: 'Slow Cooker Butter Chicken',
     description: '',
     source: '',
@@ -922,6 +945,7 @@ const recipesData = [
     },
   },
   {
+    id: 24,
     title: 'Slow Cooker Balsamic Chicken & Sausage',
     description:
       'Who doesn’t love a good Crock Pot recipe?  I admit that I was totally apart of that Crockin’ Craze that spread through Facebook like wildfire a year or so ago (pre-Paleo, of course).  I was all over those cans of Cream of Mushroom soup like white on rice… I’m a little embarrassed about it now.  Anyways, I still love my Crock Pot, I’m just a bit more selective about what I toss in it. One of my favorite pre-Paleo recipes is still a go-to slow cooker pick these days.  It’s based on this great recipe from Dishing With Leslie called Balsamic Chicken. It’s very popular on the internet and many people have tried to take credit for it… which sucks. I made it according to her directions and honestly found it a touch bland.  So here’s my version, full of flavor and 100% Paleo friendly.  If you need to feed a crowd or are looking for great leftovers, look no further. Prepare for Paleo Crock Pot deliciousness at its best… and its slowest.',
@@ -960,6 +984,7 @@ const recipesData = [
     },
   },
   {
+    id: 25,
     title: 'Skinny Shrimp Scampi with Zucchini Noodles',
     description: '',
     source: '',
@@ -989,6 +1014,7 @@ const recipesData = [
     },
   },
   {
+    id: 26,
     title: 'Simple Patatas Bravas',
     description: '',
     source: '',
@@ -1023,6 +1049,7 @@ const recipesData = [
     },
   },
   {
+    id: 27,
     title: 'Simple Broccoli Beef',
     description: '',
     source: '',
@@ -1054,6 +1081,7 @@ const recipesData = [
     },
   },
   {
+    id: 28,
     title: 'Shrimp Coconut Curry',
     description: '',
     source: '',
@@ -1101,6 +1129,7 @@ const recipesData = [
     },
   },
   {
+    id: 29,
     title: 'Shirred Eggs with Sausage and Spinach',
     description: '',
     source: '',
@@ -1139,6 +1168,7 @@ const recipesData = [
     },
   },
   {
+    id: 30,
     title: 'SAUTEED ZUCCHINI AND MUSHROOMS',
     description: '',
     source: '',
@@ -1171,6 +1201,7 @@ const recipesData = [
   },
 
   {
+    id: 31,
     title: 'Salmon with Tomato, Onions, and Capers',
     description: '',
     source: '',
@@ -1211,6 +1242,7 @@ const recipesData = [
     },
   },
   {
+    id: 32,
     title: 'Salmon with Lemon, Garlic & Rosemary',
     description: '',
     source: '',
@@ -1243,6 +1275,7 @@ const recipesData = [
     },
   },
   {
+    id: 33,
     title: 'Salmon Over Mixed Legumes',
     description: '',
     source: '',
@@ -1282,6 +1315,7 @@ const recipesData = [
     },
   },
   {
+    id: 34,
     title: 'Roasted Vegetables',
     description: '',
     source: '',
@@ -1317,6 +1351,7 @@ const recipesData = [
     },
   },
   {
+    id: 35,
     title: 'Potato Salad',
     description: '',
     source: '',
@@ -1350,6 +1385,7 @@ const recipesData = [
     },
   },
   {
+    id: 36,
     title: 'Pineapple Fried Rice',
     description: '',
     source: '',
@@ -1391,6 +1427,7 @@ const recipesData = [
     },
   },
   {
+    id: 37,
     title: 'Pesto Zucchini Noodles with Shrimp',
     description: '',
     source: '',
@@ -1418,6 +1455,7 @@ const recipesData = [
     },
   },
   {
+    id: 38,
     title: 'Penne Pasta Salad',
     description: '',
     source: '',
@@ -1457,6 +1495,7 @@ const recipesData = [
     },
   },
   {
+    id: 39,
     title: 'Paleo Pot Roast',
     description: '',
     source: '',
@@ -1487,6 +1526,7 @@ const recipesData = [
     },
   },
   {
+    id: 40,
     title: 'Paleo Orange Chicken',
     description: '',
     source: '',
@@ -1520,6 +1560,7 @@ const recipesData = [
     },
   },
   {
+    id: 41,
     title: 'Paleo Fish Tacos',
     description: '',
     source: '',
@@ -1557,6 +1598,7 @@ const recipesData = [
     },
   },
   {
+    id: 42,
     title: 'Paleo Chicken Tikka Masala',
     description: '',
     source: '',
@@ -1609,6 +1651,7 @@ const recipesData = [
     },
   },
   {
+    id: 43,
     title: 'Orange Dijon Chicken',
     description: '',
     source: '',
@@ -1644,6 +1687,7 @@ const recipesData = [
     },
   },
   {
+    id: 44,
     title: 'One Pot Paella',
     description: '',
     source: '',
@@ -1677,6 +1721,7 @@ const recipesData = [
     },
   },
   {
+    id: 45,
     title: "Mom's Spaghetti Sauce (Paleo Pasta)",
     description: '',
     source: '',
@@ -1725,6 +1770,7 @@ const recipesData = [
     },
   },
   {
+    id: 46,
     title: 'Lemon Pepper Roast Chicken',
     description: '',
     source: '',
@@ -1774,6 +1820,7 @@ const recipesData = [
     },
   },
   {
+    id: 47,
     title: 'Lemon Garlic Crockpot Chicken',
     description: '',
     source: '',
@@ -1808,6 +1855,7 @@ const recipesData = [
     },
   },
   {
+    id: 48,
     title: 'KFC Top-Secret Recipe For Fried Chicken',
     description: '',
     source: '',
@@ -1838,6 +1886,7 @@ const recipesData = [
     },
   },
   {
+    id: 49,
     title: 'Jerk Chicken & Pineapple Bowl',
     description: '',
     source: '',
@@ -1878,6 +1927,7 @@ const recipesData = [
     },
   },
   {
+    id: 50,
     title: 'Italian Wonderpot',
     description: '',
     source: '',
@@ -1913,41 +1963,7 @@ const recipesData = [
     },
   },
   {
-    title: 'Italian Wonderpot',
-    description: '',
-    source: '',
-    originalURL: 'http://www.budgetbytes.com/2013/05/italian-wonderpot/',
-    yield: 6,
-    active: '',
-    total: '',
-    categories: ['vegetarian'],
-    ingredients: {
-      standard: [
-        '4 cups vegetable broth',
-        '2 Tbsp olive oil',
-        '12 oz. fettuccine',
-        '8 oz. frozen chopped spinach',
-        '1 (28 oz.) can diced tomatoes',
-        '1 medium onion',
-        '4 cloves garlic',
-        '1/2 Tbsp dried basil',
-        '1/2 Tbsp dried oregano',
-        '1/4 tsp red pepper flakes',
-        'freshly cracked pepper to taste',
-        '2 oz. feta cheese',
-      ],
-    },
-
-    instructions: {
-      standard: [
-        'Add four cups of vegetable broth to a large pot. Break the fettuccine in half to make stirring easier later, and then add it to the pot. Also add the canned tomatoes (undrained), olive oil, frozen spinach, onion (thinly sliced), garlic (thinly sliced), basil, oregano, red pepper, and some freshly cracked black pepper.',
-        'Make sure the ingredients are submerged under the liquid, place a lid on top of the pot, and then turn the heat on to high. Allow the pot to come up to a full, rolling boil over high heat then remove the lid and turn the heat down to medium.',
-        'Allow the pot to continue to boil over medium heat, without a lid, for 10-15 minutes, or until the pasta is cooked and most of the liquid has been absorbed. Stir the pot every few minutes as it cooks to prevent the pasta from sticking to the bottom, but avoid over stirring which can cause the pasta to become sticky and mushy. The pot must be boiling the entire time.',
-        'After the pasta is cooked, crumble the feta cheese over top and serve.',
-      ],
-    },
-  },
-  {
+    id: 51,
     title: 'Honey Sauced Chicken',
     description: '',
     source: '',
@@ -1981,6 +1997,7 @@ const recipesData = [
     },
   },
   {
+    id: 52,
     title: 'Honey Garlic Chicken Wings in The Crock Pot',
     description:
       'Are you looking for an effortless, simple way to make fall-of-the-bone honey garlic chicken wings? The crockpot will do the trick. You don’t even need a very large crockpot, and they will turn out tender, juicy and delicious every time! This is a very simple recipe with minimal ingredients, but it never fails to please. Sometimes, less is really more!',
@@ -2010,6 +2027,7 @@ const recipesData = [
     },
   },
   {
+    id: 53,
     title: 'Grilled Salmon Kebabs',
     description: '',
     source: '',
@@ -2044,6 +2062,7 @@ const recipesData = [
     // Sodium: 658 mg • Cholest: 94 mg
   },
   {
+    id: 54,
     title: 'Garlic Shrimp in Lemon Butter Sauce',
     description: '',
     source: '',
@@ -2074,6 +2093,7 @@ const recipesData = [
     },
   },
   {
+    id: 55,
     title: 'Garlic Mustard Drumsticks',
     description: '',
     source: '',
@@ -2103,6 +2123,7 @@ const recipesData = [
     },
   },
   {
+    id: 56,
     title: 'Easy Indian Rice Curry',
     description: '',
     source: '',
@@ -2156,6 +2177,7 @@ const recipesData = [
     },
   },
   {
+    id: 57,
     title: 'Curried Potatoes',
     description: '',
     source: '',
@@ -2189,6 +2211,7 @@ const recipesData = [
     },
   },
   {
+    id: 58,
     title: 'Crock Pot Short Ribs',
     description: '',
     source: '',
@@ -2228,6 +2251,7 @@ const recipesData = [
     },
   },
   {
+    id: 59,
     title: 'Crock Pot Sesame Honey Chicken',
     description: '',
     source: '',
@@ -2266,6 +2290,7 @@ const recipesData = [
     },
   },
   {
+    id: 60,
     title: 'Crock Pot Hawaiian Chicken',
     description: '',
     source: '',
@@ -2296,6 +2321,7 @@ const recipesData = [
     },
   },
   {
+    id: 61,
     title: 'Crock Pot Chili',
     description: '',
     source: '',
@@ -2328,6 +2354,7 @@ const recipesData = [
     },
   },
   {
+    id: 62,
     title: 'Creamy Tomato & Spinach Pasta',
     description: '',
     source: '',
@@ -2366,6 +2393,7 @@ const recipesData = [
     },
   },
   {
+    id: 63,
     title: 'Copycat Chipotle Chicken',
     description: '',
     source: '',
@@ -2395,6 +2423,7 @@ const recipesData = [
     },
   },
   {
+    id: 64,
     title: 'Chipotle Bean Burritos',
     description: '',
     source: '',
@@ -2430,6 +2459,7 @@ const recipesData = [
     },
   },
   {
+    id: 65,
     title: 'Chicken Tacos From Scratch',
     description:
       'How to make taco seasoning, salsa and guacamole to make the best tacos in the planet.',
@@ -2507,6 +2537,7 @@ const recipesData = [
     },
   },
   {
+    id: 66,
     title: 'Chicken and Veggies Stir Fry (hodgepodge of delicious)',
     description: '',
     source: '',
@@ -2556,6 +2587,7 @@ const recipesData = [
     // notes: From Reddit
   },
   {
+    id: 67,
     title: 'CAULIFLOWER RICE',
     description: '',
     source: '',
@@ -2591,6 +2623,7 @@ const recipesData = [
     // notes: Cook a slice of bacon before and use the fat instead of butter.
   },
   {
+    id: 68,
     title: 'Calico Beans',
     description: '',
     source: '',
@@ -2623,6 +2656,7 @@ const recipesData = [
     },
   },
   {
+    id: 69,
     title: 'Cacio E Pepe Pasta',
     description: '',
     source: '',
@@ -2650,6 +2684,7 @@ const recipesData = [
     },
   },
   {
+    id: 70,
     title: 'Breakfast Eggs (Standard)',
     description: '',
     source: '',
@@ -2672,6 +2707,7 @@ const recipesData = [
     },
   },
   {
+    id: 71,
     title: 'beef stroganoff',
     description: '',
     source: '',
@@ -2706,6 +2742,7 @@ const recipesData = [
     },
   },
   {
+    id: 72,
     title: 'Beef Bulgogi',
     description: '',
     source: 'Allrecipes.com',
@@ -2736,6 +2773,7 @@ const recipesData = [
     },
   },
   {
+    id: 73,
     title: 'Bacon Wrapped Dates',
     description: '',
     source: '',
@@ -2770,6 +2808,7 @@ const recipesData = [
     },
   },
   {
+    id: 74,
     title: 'Avocado Caprese Pasta Salad',
     description: '',
     source: '',
@@ -2806,6 +2845,7 @@ const recipesData = [
     },
   },
   {
+    id: 75,
     title: 'Asparagus, Peas, and Tomatoes with Herb Butter',
     description: '',
     source: '',
@@ -2838,6 +2878,7 @@ const recipesData = [
     },
   },
   {
+    id: 76,
     title: 'Asian Pork Lettuce Wraps',
     description: '',
     source: '',
@@ -2876,6 +2917,7 @@ const recipesData = [
     },
   },
   {
+    id: 77,
     title: 'Asian Noodle Bowl with Ginger Peanut Dressing',
     description:
       'A 15-minute meal that requires virtually no cooking and only one bowl. Simply prepare rice noodles, chop fresh veggies, whip up a quick ginger peanut dressing and throw it all together with tofu and fresh basil. A vegan and gluten free dish that’s completely satisfying.',
@@ -2917,6 +2959,7 @@ const recipesData = [
     },
   },
   {
+    id: 78,
     title: 'ARROZ CON COCO',
     description:
       'El arroz con coco es un plato típico de la costa Caribe Colombiana .  Tiene dos formas de prepararse, Arroz Blanco de Coco o Arroz de Coco Negrito . Es una preparación agridulce que suele acompañar muy especialmente al pescado frito y se sirve con patacones y ensalada.',
@@ -2943,6 +2986,7 @@ const recipesData = [
     },
   },
   {
+    id: 79,
     title: 'Cobb Salad',
     description: '',
     source: '',
