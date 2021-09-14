@@ -30,22 +30,6 @@ export default function RecipeInfo({ recipe }) {
       {recipe.yield && <div className="mb-2">Yield: {recipe.yield}</div>}
       {recipe.active && <div className="mb-2">Active time: {recipe.active}</div>}
       {recipe.total && <div className="mb-2">Total: {recipe.total}</div>}
-      {/*
-      {recipe.instructions && <div className="mt-5 mb-2 text-2xl">Instructions:</div>}
-      {instructionsHeaders.map((header) => (
-        <div className="px-4">
-          {recipe.instructions[header].length > 0 && (
-            <div key={header} className="text-1xl font-bold">
-              {header}
-            </div>
-          )}
-          <div className="mb-3">
-            {recipe.instructions[header].map((instruction) => (
-              <div key={instruction}>{instruction}</div>
-            ))}
-          </div>
-        </div>
-      ))} */}
     </div>
   );
 }
