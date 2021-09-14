@@ -1,13 +1,11 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 
-import { Context } from '../../contexts/context';
-
-export default function RecipeInfo() {
+export default function RecipeInfo({ recipe }) {
   const history = useHistory();
-  const [{ recipe }] = useContext(Context);
 
   const goBackHome = () => {
     history.push(`/`);
@@ -17,8 +15,8 @@ export default function RecipeInfo() {
     if (isEmpty(recipe)) goBackHome();
   }, []);
 
-  const ingredientsHeaders = Object.keys(recipe.ingredients);
-  const instructionsHeaders = Object.keys(recipe.instructions);
+  // const ingredientsHeaders = Object.keys(recipe.ingredients);
+  // const instructionsHeaders = Object.keys(recipe.instructions);
 
   return (
     <div className="my-5">
@@ -32,22 +30,7 @@ export default function RecipeInfo() {
       {recipe.yield && <div className="mb-2">Yield: {recipe.yield}</div>}
       {recipe.active && <div className="mb-2">Active time: {recipe.active}</div>}
       {recipe.total && <div className="mb-2">Total: {recipe.total}</div>}
-      {recipe.ingredients && <div className="mt-5 mb-2 text-2xl">Ingredients:</div>}
-      {ingredientsHeaders.map((header) => (
-        <div className="px-4">
-          {recipe.ingredients[header].length > 0 && (
-            <div key={header} className="text-1xl font-bold">
-              {header}
-            </div>
-          )}
-          <div className="mb-3">
-            {recipe.ingredients[header].map((ingredient) => (
-              <div key={ingredient}>{ingredient}</div>
-            ))}
-          </div>
-        </div>
-      ))}
-
+      {/*
       {recipe.instructions && <div className="mt-5 mb-2 text-2xl">Instructions:</div>}
       {instructionsHeaders.map((header) => (
         <div className="px-4">
@@ -62,7 +45,19 @@ export default function RecipeInfo() {
             ))}
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
+
+RecipeInfo.propTypes = {
+  recipe: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    source: PropTypes.string,
+    originalURL: PropTypes.string,
+    yield: PropTypes.string,
+    active: PropTypes.string,
+    total: PropTypes.string,
+  }).isRequired,
+};
