@@ -13,6 +13,7 @@ export default function RecipesList() {
 
   return (
     <div>
+      <div className="text-3xl mb-5">RECIPES</div>
       {recipesData.map((recipe) => (
         <div key={recipe.id}>
           <button

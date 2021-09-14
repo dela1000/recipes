@@ -15,9 +15,6 @@ export default function RecipeInfo({ recipe }) {
     if (isEmpty(recipe)) goBackHome();
   }, []);
 
-  // const ingredientsHeaders = Object.keys(recipe.ingredients);
-  // const instructionsHeaders = Object.keys(recipe.instructions);
-
   return (
     <div className="my-5">
       <div className="flex justify-between">
@@ -26,7 +23,14 @@ export default function RecipeInfo({ recipe }) {
       </div>
       {recipe.description && <div className="mb-2">Description: {recipe.description}</div>}
       {recipe.source && <div className="mb-2">Source: {recipe.source}</div>}
-      {recipe.originalURL && <div className="mb-2">Original URL: {recipe.originalURL}</div>}
+      {recipe.originalURL && (
+        <div className="mb-2">
+          Original URL:{' '}
+          <a href={recipe.originalURL} target="_blank" rel="noreferrer">
+            {recipe.originalURL}
+          </a>
+        </div>
+      )}
       {recipe.yield && <div className="mb-2">Yield: {recipe.yield}</div>}
       {recipe.active && <div className="mb-2">Active time: {recipe.active}</div>}
       {recipe.total && <div className="mb-2">Total: {recipe.total}</div>}
@@ -40,7 +44,7 @@ RecipeInfo.propTypes = {
     description: PropTypes.string,
     source: PropTypes.string,
     originalURL: PropTypes.string,
-    yield: PropTypes.string,
+    yield: PropTypes.number,
     active: PropTypes.string,
     total: PropTypes.string,
   }).isRequired,

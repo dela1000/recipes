@@ -8,7 +8,6 @@ export default function Home() {
 
   return (
     <div className="fade-in">
-      <div className="text-3xl mb-5">RECIPES</div>
       <RecipesList />
     </div>
   );

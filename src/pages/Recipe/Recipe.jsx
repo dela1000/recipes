@@ -19,9 +19,13 @@ export default function Home() {
 
   return (
     <div className="fade-in">
-      <RecipeInfo recipe={recipe} />
-      <RecipeIngredients recipe={recipe} />
-      <RecipeInstructions recipe={recipe} />
+      {!isEmpty(recipe) && (
+        <div>
+          <RecipeInfo recipe={recipe} />
+          <RecipeIngredients recipe={recipe} />
+          <RecipeInstructions recipe={recipe} />
+        </div>
+      )}
     </div>
   );
 }
