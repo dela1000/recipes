@@ -2198,9 +2198,6 @@ const recipesData = [
     total: '8 hours',
     categories: ['crock pot'],
     ingredients: {
-      standard: [],
-    },
-    ingredients: {
       standard: [
         '3 Lbs of Beef Short ribs, boneless or bone in',
         '1 Large Red Onion, sliced',
