@@ -1,11 +1,17 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import orderBy from 'lodash/orderBy';
 import { Context } from '../../contexts/context';
 import recipesData from '../../adapters/recipesData';
 
 export default function RecipesList() {
   const history = useHistory();
+  const [recipes, setRecipes] = useState([]);
   const [{ setRecipeId, setRecipe }] = useContext(Context);
+
+  useEffect(() => {
+    setRecipes(orderBy(recipesData, [(data) => data.title.toLowerCase()], 'asc'));
+  }, []);
 
   const navigate = () => {
     history.push(`/recipe`);
@@ -14,7 +20,7 @@ export default function RecipesList() {
   return (
     <div>
       <div className="text-3xl mb-5">RECIPES</div>
-      {recipesData.map((recipe) => (
+      {recipes.map((recipe) => (
         <div key={recipe.id}>
           <button
             className="uppercase"

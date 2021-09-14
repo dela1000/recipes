@@ -188,7 +188,7 @@ const recipesData = [
   },
   {
     id: 4,
-    title: " Vegan Shepherd's Pie",
+    title: "Vegan Shepherd's Pie",
     description: '',
     source: '',
     originalURL: 'http://minimalistbaker.com/1-hour-vegan-shepherds-pie/',
