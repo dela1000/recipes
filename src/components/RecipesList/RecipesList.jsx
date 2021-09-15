@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
 import { Context } from '../../contexts/context';
 import recipesData from '../../adapters/recipesData';
 
@@ -20,9 +21,22 @@ export default function RecipesList() {
     setCategorySelected(event.target.value);
   };
 
-  const sortAllRecipes = (order) => {
-    console.log('+++ 24: src/components/RecipesList/RecipesList.jsx - HERE');
+  const sortAllRecipes = (order: 'asc') => {
     setRecipes(orderBy(recipesData, [(data) => data.title.toLowerCase()], order));
+  };
+
+  const filterList = (event) => {
+    if (event.target.value.length > 0) {
+      let updatedList = recipesData;
+
+      updatedList = updatedList.filter(
+        (recipe) => recipe.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1,
+      );
+
+      setRecipes(updatedList);
+    } else {
+      sortAllRecipes('asc');
+    }
   };
 
   const navigate = () => {
@@ -31,12 +45,9 @@ export default function RecipesList() {
 
   useEffect(() => {
     console.log(
-      '+++ 33: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
+      '+++ 38: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
       categorySelected,
     );
-    if (categorySelected === '') {
-      console.log('+++ 38: src/components/RecipesList/RecipesList.jsx - HERE');
-    }
   }, [categorySelected]);
 
   useEffect(() => {
@@ -55,16 +66,24 @@ export default function RecipesList() {
       <div>
         <div className="flex justify-between">
           <div className="text-3xl mb-5">RECIPES</div>
-          <div>
-            <FormControl className="w-32 min-w-full">
+          <div className="col-2">
+            <Input
+              className="mx-4 pt-4"
+              id="filter"
+              name="filter"
+              placeholder="Filter"
+              type="text"
+              onChange={filterList}
+            />
+            <FormControl className="w-32 min-w-full py-20">
               <InputLabel>Categories</InputLabel>
               <Select
                 onChange={handleCategoryChange}
                 value={categorySelected}
                 className="capitalize"
               >
-                <MenuItem value="''" className="capitalize">
-                  <em>Categories</em>
+                <MenuItem value="''" className="capitalize text-gray-200">
+                  <em>None</em>
                 </MenuItem>
                 {categories.map((category) => (
                   <MenuItem key={category} value={category} className="capitalize">
