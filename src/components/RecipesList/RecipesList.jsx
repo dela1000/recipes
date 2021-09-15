@@ -14,7 +14,7 @@ export default function RecipesList() {
   const history = useHistory();
   const [recipes, setRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [categorySelected, setCategorySelected] = useState('');
+  const [categorySelected, setCategorySelected] = useState('none');
   const [{ setRecipeId, setRecipe }] = useContext(Context);
 
   const handleCategoryChange = (event) => {
@@ -27,12 +27,9 @@ export default function RecipesList() {
 
   const filterList = (event) => {
     if (event.target.value.length > 0) {
-      let updatedList = recipesData;
-
-      updatedList = updatedList.filter(
+      const updatedList = recipesData.filter(
         (recipe) => recipe.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1,
       );
-
       setRecipes(updatedList);
     } else {
       sortAllRecipes('asc');
@@ -44,15 +41,19 @@ export default function RecipesList() {
   };
 
   useEffect(() => {
-    console.log(
-      '+++ 47: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
-      categorySelected,
-    );
-    if (categorySelected === '') {
-      console.log(
-        '+++ 49: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
-        categorySelected,
-      );
+    if (categorySelected === 'none') {
+      sortAllRecipes('asc');
+    } else {
+      const updatedList = [];
+      recipesData.forEach((recipe) => {
+        if (recipe.categories.length > 0) {
+          if (recipe.categories.includes(categorySelected)) {
+            updatedList.push(recipe);
+          }
+        }
+      });
+
+      setRecipes(updatedList);
     }
   }, [categorySelected]);
 
@@ -89,7 +90,7 @@ export default function RecipesList() {
                 value={categorySelected}
                 className="capitalize"
               >
-                <MenuItem value="''" className="capitalize text-gray-200">
+                <MenuItem value="none" className="capitalize text-gray-200">
                   <em>None</em>
                 </MenuItem>
                 {categories.map((category) => (
