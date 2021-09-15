@@ -45,9 +45,15 @@ export default function RecipesList() {
 
   useEffect(() => {
     console.log(
-      '+++ 38: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
+      '+++ 47: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
       categorySelected,
     );
+    if (categorySelected === '') {
+      console.log(
+        '+++ 49: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
+        categorySelected,
+      );
+    }
   }, [categorySelected]);
 
   useEffect(() => {
@@ -73,6 +79,7 @@ export default function RecipesList() {
               name="filter"
               placeholder="Filter"
               type="text"
+              autoComplete="off"
               onChange={filterList}
             />
             <FormControl className="w-32 min-w-full py-20">

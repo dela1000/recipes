@@ -44,7 +44,7 @@ RecipeInfo.propTypes = {
     description: PropTypes.string,
     source: PropTypes.string,
     originalURL: PropTypes.string,
-    yield: PropTypes.number,
+    yield: PropTypes.string,
     active: PropTypes.string,
     total: PropTypes.string,
   }).isRequired,
