@@ -3044,6 +3044,39 @@ const recipesData = [
       standard: [],
     },
   },
+  {
+    id: 80,
+    title: 'Easy Lemon Garlic Pasta',
+    description: `Lemon Garlic Pasta delivers bold, vibrant flavor with minimal effort. It's the kind of pasta dish you turn to on busy weeknights when you want a satisfying dinner on the table in 20 minutes flat.`,
+    source: 'pinchandswirl.com',
+    originalURL: 'https://pinchandswirl.com/lemon-garlic-pasta/',
+    yield: '',
+    active: '',
+    total: '',
+    categories: [],
+    ingredients: {
+      standard: [
+        '12 ounces dried spaghetti',
+        '3 tablespoons olive oil',
+        '2 tablespoons butter',
+        '5 large garlic cloves minced',
+        '¼ teaspoon crushed red pepper flakes or more',
+        '1 large lemon juice and zest',
+        '⅓ cup chopped fresh parsley',
+        'kosher salt and freshly ground black pepper to taste',
+        '2 ounces parmesan cheese freshly grated',
+      ],
+    },
+
+    instructions: {
+      standard: [
+        'Bring a large pot of salted water to boil. Cook spaghetti until firm to the bite (al dente), about 8 minutes. Drain, reserving 1 cup of pasta water.',
+        'Meanwhile, heat olive oil and butter in a large skillet over medium heat until sizzling. Add minced garlic and red pepper flakes; cook and stir until fragrant, about 30 seconds. Remove from heat.',
+        "Once you've drained the pasta, set skillet with the garlic mixture over medium heat. Add drained, cooked pasta and ¼ cup of reserved pasta water; toss to coat. Cook and stir until heated through, adding more pasta water if pasta seems too dry.",
+        'Remove pasta from heat and stir in lemon zest and juice, and parsley. Season to taste with salt and pepper. Transfer to serving bowl or platter; top with grated parmesan cheese and serve.',
+      ],
+    },
+  },
 ];
 
 export default recipesData;

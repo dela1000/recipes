@@ -34,6 +34,9 @@ export default function RecipesList() {
       '+++ 33: src/components/RecipesList/RecipesList.jsx - categorySelected: ',
       categorySelected,
     );
+    if (categorySelected === '') {
+      console.log('+++ 38: src/components/RecipesList/RecipesList.jsx - HERE');
+    }
   }, [categorySelected]);
 
   useEffect(() => {
