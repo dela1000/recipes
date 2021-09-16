@@ -17,12 +17,14 @@ export default function RecipeInfo({ recipe }) {
 
   return (
     <div className="md:flex py-8">
-      <img
-        src={recipe.image}
-        alt="food"
-        className="inline object-cover max-h-72 w-72 bg-gray-200"
-      />
-      <div className="ml-8 w-full">
+      {recipe.image && (
+        <img
+          src={recipe.image}
+          alt="food"
+          className="inline object-cover max-h-72 w-72 bg-gray-200 mr-8"
+        />
+      )}
+      <div className="w-full">
         <div>
           <a
             className="text-xs text-blue-400 uppercase"
