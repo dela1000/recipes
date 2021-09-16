@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import RecipesListHolder from '../../components/RecipesListHolder';
 
+import recipesData from '../../adapters/recipesData';
+
 export default function Home() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -8,7 +10,7 @@ export default function Home() {
 
   return (
     <div className="fade-in">
-      <RecipesListHolder />
+      <RecipesListHolder recipesData={recipesData} />
     </div>
   );
 }

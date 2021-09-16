@@ -2489,7 +2489,7 @@ const recipesData = [
     active: '',
     total: '6 hours',
     categories: ['crock pot'],
-    image: '',
+    image: 'https://www.eatingonadime.com/wp-content/uploads/2019/08/crock-pot-chili-00010.jpg',
     ingredients: {
       standard: [
         '2 pounds of ground beef (Cubed could work as well)',
@@ -2836,7 +2836,7 @@ const recipesData = [
   {
     id: 69,
     title: 'Cacio E Pepe Pasta',
-    favorite: false,
+    favorite: true,
     description: '',
     source: '',
     originalURL: 'http://www.justataste.com/cacio-e-pepe-pasta/',

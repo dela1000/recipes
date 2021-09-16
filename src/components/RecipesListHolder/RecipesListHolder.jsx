@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import orderBy from 'lodash/orderBy';
 import forEach from 'lodash/forEach';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -9,9 +10,7 @@ import Input from '@material-ui/core/Input';
 import StarIcon from '@material-ui/icons/Star';
 import RecipeListItem from '../RecipeListItem';
 
-import recipesData from '../../adapters/recipesData';
-
-export default function RecipesListHolder() {
+export default function RecipesListHolder({ recipesData }) {
   const [recipes, setRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categorySelected, setCategorySelected] = useState('none');
@@ -92,7 +91,7 @@ export default function RecipesListHolder() {
     <div>
       <div>
         <div className="lg:flex mb-5">
-          <div className="text-5xl pt-3 mr-12">RECIPES</div>
+          <div className="text-5xl pt-1 mr-12">RECIPES</div>
           <div className="lg:flex">
             <div>
               <Input
@@ -158,3 +157,17 @@ export default function RecipesListHolder() {
     </div>
   );
 }
+
+RecipesListHolder.propTypes = {
+  recipesData: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      favorite: PropTypes.bool,
+      originalURL: PropTypes.string,
+      source: PropTypes.string,
+      categories: PropTypes.arrayOf(PropTypes.string),
+    }).isRequired,
+  ).isRequired,
+};
