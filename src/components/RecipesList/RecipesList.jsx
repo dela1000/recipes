@@ -8,8 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import StarIcon from '@material-ui/icons/Star';
-import recipesData from '../../adapters/recipesData';
 
+import recipesData from '../../adapters/recipesData';
 import { Context } from '../../contexts/context';
 
 export default function RecipesList() {
@@ -19,6 +19,8 @@ export default function RecipesList() {
   const [categorySelected, setCategorySelected] = useState('none');
   const [sort, setSort] = useState('asc');
   const [filterText, setFilterText] = useState('');
+  const [favoriteSelected, setFavoriteSelected] = useState(false);
+
   const [{ setRecipeId, setRecipe }] = useContext(Context);
 
   const navigate = () => {
@@ -30,7 +32,7 @@ export default function RecipesList() {
   };
 
   const updateList = () => {
-    if (!filterText && categorySelected === 'none') {
+    if (!filterText && categorySelected === 'none' && !favoriteSelected) {
       return sortAllRecipes(recipesData);
     }
     let recipesToFilter = [];
@@ -46,10 +48,15 @@ export default function RecipesList() {
       recipesToFilter = recipesData;
     }
 
-    const updatedList = recipesToFilter.filter(
+    if (favoriteSelected) {
+      recipesToFilter = recipesToFilter.filter((recipe) => recipe.favorite);
+    }
+
+    recipesToFilter = recipesToFilter.filter(
       (recipe) => recipe.title.toLowerCase().search(filterText.toLowerCase()) !== -1,
     );
-    return setRecipes(orderBy(updatedList, [(data) => data.title.toLowerCase()], sort));
+
+    return setRecipes(orderBy(recipesToFilter, [(data) => data.title.toLowerCase()], sort));
   };
 
   const handleCategoryChange = (event) => {
@@ -67,9 +74,13 @@ export default function RecipesList() {
     }
   };
 
+  const handleFavoriteSelected = () => {
+    setFavoriteSelected(!favoriteSelected);
+  };
+
   useEffect(() => {
     updateList();
-  }, [categorySelected, filterText, sort]);
+  }, [categorySelected, filterText, sort, favoriteSelected]);
 
   const groupCategories = () => {
     let allCategories = [];
@@ -90,42 +101,58 @@ export default function RecipesList() {
       <div>
         <div className="lg:flex mb-5">
           <div className="text-4xl pt-3 mr-12">RECIPES</div>
-          <div className="col-3">
-            <Input
-              className="mx-4 pt-4"
-              id="filter"
-              name="filter"
-              placeholder="Filter"
-              type="text"
-              autoComplete="off"
-              onChange={handleFilterListChange}
-            />
-            <FormControl className="w-32 min-w-full py-20">
-              <InputLabel>Categories</InputLabel>
-              <Select
-                onChange={handleCategoryChange}
-                value={categorySelected}
-                className="capitalize"
-              >
-                <MenuItem value="none" className="capitalize text-gray-200">
-                  <em>None</em>
-                </MenuItem>
-                {categories.map((category) => (
-                  <MenuItem key={category} value={category} className="capitalize">
-                    {category}
+          <div className="lg:flex">
+            <div>
+              <Input
+                className="mx-4 pt-4"
+                id="filter"
+                name="filter"
+                placeholder="Filter"
+                type="text"
+                autoComplete="off"
+                onChange={handleFilterListChange}
+              />
+              <FormControl className="w-32 min-w-full py-20">
+                <InputLabel>Categories</InputLabel>
+                <Select
+                  onChange={handleCategoryChange}
+                  value={categorySelected}
+                  className="capitalize"
+                >
+                  <MenuItem value="none" className="capitalize text-gray-200">
+                    <em>None</em>
                   </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <button
-              className="uppercase rounded px-4 py-2 text-xs bg-blue-900 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-4"
-              type="button"
-              onClick={() => {
-                handleSortChange();
-              }}
-            >
-              {sort}
-            </button>
+                  {categories.map((category) => (
+                    <MenuItem key={category} value={category} className="capitalize">
+                      {category}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
+            <div className="mt-3">
+              <button
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-4 h-9"
+                type="button"
+                onClick={() => {
+                  handleSortChange();
+                }}
+              >
+                {sort}
+              </button>
+              <button
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-4 h-9"
+                type="button"
+                onClick={() => {
+                  handleFavoriteSelected();
+                }}
+              >
+                <StarIcon
+                  fontSize="small"
+                  className={`${favoriteSelected ? `text-yellow-400` : 'text-white'} fill-current`}
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>
