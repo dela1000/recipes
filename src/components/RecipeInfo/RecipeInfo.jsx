@@ -17,31 +17,70 @@ export default function RecipeInfo({ recipe }) {
   }, []);
 
   return (
-    <div className="my-5">
-      <div className="flex justify-between">
-        <div className="flex justify-start">
-          <div className="text-3xl mb-5 capitalize">{recipe.title}</div>
-          {recipe.favorite && (
-            <div className="pt-1 pl-2">
-              <StarIcon className="fill-current text-yellow-400" />
+    <div className="md:flex py-8">
+      <img
+        src={recipe.image}
+        alt="food"
+        className="inline object-cover max-h-72 w-72 bg-gray-200"
+      />
+      <div className="ml-8 w-full">
+        <div>
+          <a
+            className="text-xs text-blue-400 uppercase"
+            href={recipe.originalURL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {recipe.source}
+          </a>
+        </div>
+        <div>
+          <div className="flex justify-between">
+            <div className="flex justify-start">
+              <ArrowLeftIcon
+                className="cursor-pointer"
+                fontSize="large"
+                onClick={() => goBackHome()}
+              />
+              <div className="text-3xl mb-5 capitalize italic">{recipe.title}</div>
+              {recipe.favorite && (
+                <div className="pt-1 pl-2">
+                  <StarIcon className="fill-current text-yellow-400" />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="w-4/5">
+          {recipe.description && (
+            <div className="mb-2">
+              <b className="uppercase">Description</b> {recipe.description}
+            </div>
+          )}
+          {recipe.source && (
+            <div className="mb-2">
+              <b className="uppercase">Source</b> {recipe.source}
+            </div>
+          )}
+          {recipe.yield && (
+            <div className="mb-2">
+              <b className="uppercase">Yield </b>
+              {recipe.yield}
+            </div>
+          )}
+          {recipe.active && (
+            <div className="mb-2">
+              <b className="uppercase">Active Time </b>
+              {recipe.active}
+            </div>
+          )}
+          {recipe.total && (
+            <div className="mb-2">
+              <b className="uppercase">Total</b> {recipe.total}
             </div>
           )}
         </div>
-        <ArrowLeftIcon className="cursor-pointer" fontSize="large" onClick={() => goBackHome()} />
       </div>
-      {recipe.description && <div className="mb-2">Description: {recipe.description}</div>}
-      {recipe.source && <div className="mb-2">Source: {recipe.source}</div>}
-      {recipe.originalURL && (
-        <div className="mb-2">
-          Original URL:{' '}
-          <a href={recipe.originalURL} target="_blank" rel="noreferrer">
-            {recipe.originalURL}
-          </a>
-        </div>
-      )}
-      {recipe.yield && <div className="mb-2">Yield: {recipe.yield}</div>}
-      {recipe.active && <div className="mb-2">Active time: {recipe.active}</div>}
-      {recipe.total && <div className="mb-2">Total: {recipe.total}</div>}
     </div>
   );
 }
@@ -55,6 +94,7 @@ RecipeInfo.propTypes = {
     yield: PropTypes.string,
     active: PropTypes.string,
     total: PropTypes.string,
+    image: PropTypes.string,
     favorite: PropTypes.bool,
   }).isRequired,
 };
