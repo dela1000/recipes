@@ -60,12 +60,12 @@ const recipesData = [
     title: 'Zoodles and Turkey Meatballs',
     favorite: false,
     description: '',
-    source: '',
+    source: 'foodcount.com',
     originalURL: 'https://foodcount.com/recipe/zoodles-turkey-meatballs',
     yield: '4',
     active: '',
     total: '30',
-    categories: [],
+    categories: ['paleo'],
     ingredients: {
       standard: [
         '1 lb ground turkey 93% lean',
@@ -152,7 +152,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['vegetarian'],
     image: 'https://cdn2.pepperplate.com/recipes/0945f7df3c684bb0a77ade8106415b93.jpg',
     ingredients: {
       standard: [
@@ -779,7 +779,7 @@ const recipesData = [
     yield: '',
     active: '20 minutes',
     total: '6:20 hours',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '2 lb. bone-in chicken thighs',
@@ -933,7 +933,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '4 chicken breasts, diced',
@@ -1398,7 +1398,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: ['vegetarian'],
+    categories: ['vegetarian', 'salad'],
     ingredients: {
       standard: [
         '3 lb. unpeeled red potatoes',
@@ -1507,7 +1507,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['salad'],
     image: 'https://cdn2.pepperplate.com/recipes/fc0f8894c2d84f89865e24e811a22639.jpg',
     ingredients: {
       standard: [],
@@ -1549,7 +1549,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '2.5 lb chuck roast',
@@ -1787,7 +1787,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '1 White Onion',
@@ -2039,7 +2039,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '3/4 pound chicken breasts',
@@ -2076,7 +2076,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '2 to 3 lb of wings (approx. 20-30 wings) – or more if your crockpot can hold (this can vary depending on the size of your wings, use enough to fill a 2 quart crock pot, double the recipe if you are using a 4 quart).',
@@ -2341,7 +2341,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '2 lbs boneless, skinless chicken breast',
@@ -2383,7 +2383,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '6 boneless, skinless chicken breasts',
@@ -2408,7 +2408,7 @@ const recipesData = [
   {
     id: 61,
     title: 'Crock Pot Chili',
-    favorite: false,
+    favorite: true,
     description: '',
     source: '',
     originalURL: '',
@@ -2551,9 +2551,9 @@ const recipesData = [
   {
     id: 65,
     title: 'Chicken Tacos From Scratch',
-    favorite: false,
+    favorite: true,
     description:
-      'How to make taco seasoning, salsa and guacamole to make the best tacos in the planet.',
+      'The Taco Cleanse: kow to make taco seasoning, salsa and guacamole to make the best tacos in the planet.',
     source: '',
     originalURL: '',
     yield: '',
@@ -2727,7 +2727,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [
         '1 LB hamburger',
@@ -2923,7 +2923,7 @@ const recipesData = [
     yield: '6',
     active: '10 minutes',
     total: '18 minutes',
-    categories: ['vegetarian'],
+    categories: ['vegetarian', 'salad'],
     image: 'https://cdn2.pepperplate.com/recipes/1571801198704120922a13b159351065.jpg',
     ingredients: {
       standard: [
@@ -2995,7 +2995,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['crock pot'],
     ingredients: {
       standard: [],
       'For the chunk of meat': [
@@ -3109,7 +3109,7 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
+    categories: ['salad'],
     ingredients: {
       standard: [
         '1 hardboiled eggs',
