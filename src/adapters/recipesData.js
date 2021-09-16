@@ -2524,7 +2524,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
-    image: '',
+    image:
+      'https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Tomato-Spinach-Pasta-V2-bowl.jpg',
     ingredients: {
       standard: [
         '1 Tbsp olive oil',
@@ -2565,7 +2566,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://dinnerthendessert.com/wp-content/uploads/2019/04/Chipotle-Chicken-Recipe-Copycat-2.jpg',
     ingredients: {
       standard: [
         '4 boneless, skinless chicken thighs (about 1 1/4 to 1 1/2 pounds)',
