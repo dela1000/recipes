@@ -19,7 +19,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
   };
 
   return (
-    <div className="h-24" key={recipe.id}>
+    <div className="h-36" key={recipe.id}>
       <hr />
       <div className="flex pt-2">
         <button type="button" onClick={selectRecipe}>
@@ -27,7 +27,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
             <img
               src={recipe.image}
               alt="food"
-              className="inline object-cover max-h-20 w-20 bg-gray-200"
+              className="inline object-cover max-h-32 w-32 bg-gray-200"
             />
           ) : (
             <div className="h-20 w-20 bg-gray-200" />
