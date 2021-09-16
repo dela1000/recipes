@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import StarIcon from '@material-ui/icons/Star';
-import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 
 export default function RecipeInfo({ recipe }) {
   const history = useHistory();
@@ -37,11 +36,6 @@ export default function RecipeInfo({ recipe }) {
         <div>
           <div className="flex justify-between">
             <div className="flex justify-start">
-              <ArrowLeftIcon
-                className="cursor-pointer"
-                fontSize="large"
-                onClick={() => goBackHome()}
-              />
               <div className="text-3xl mb-5 capitalize italic">{recipe.title}</div>
               {recipe.favorite && (
                 <div className="pt-1 pl-2">
