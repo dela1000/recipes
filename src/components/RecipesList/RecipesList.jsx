@@ -25,7 +25,8 @@ export default function RecipesList() {
     setRecipes(orderBy(recipesData, [(data) => data.title.toLowerCase()], order));
   };
 
-  const filterList = (event) => {
+  const handleFilterListChange = (event) => {
+    setCategorySelected('none');
     if (event.target.value.length > 0) {
       const updatedList = recipesData.filter(
         (recipe) => recipe.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1,
@@ -81,7 +82,7 @@ export default function RecipesList() {
               placeholder="Filter"
               type="text"
               autoComplete="off"
-              onChange={filterList}
+              onChange={handleFilterListChange}
             />
             <FormControl className="w-32 min-w-full py-20">
               <InputLabel>Categories</InputLabel>
