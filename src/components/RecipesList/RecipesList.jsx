@@ -15,58 +15,72 @@ export default function RecipesList() {
   const [recipes, setRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categorySelected, setCategorySelected] = useState('none');
+  const [sort, setSort] = useState('asc');
+  const [filterText, setFilterText] = useState('');
   const [{ setRecipeId, setRecipe }] = useContext(Context);
+
+  const navigate = () => {
+    history.push('/recipe');
+  };
+
+  const sortAllRecipes = (listToSet) => {
+    setRecipes(orderBy(listToSet, [(data) => data.title.toLowerCase()], sort));
+  };
+
+  const updateList = () => {
+    if (!filterText && categorySelected === 'none') {
+      return sortAllRecipes(recipesData);
+    }
+    let recipesToFilter = [];
+    if (categorySelected !== 'none') {
+      recipesData.forEach((recipe) => {
+        if (recipe.categories.length > 0) {
+          if (recipe.categories.includes(categorySelected)) {
+            recipesToFilter.push(recipe);
+          }
+        }
+      });
+    } else {
+      recipesToFilter = recipesData;
+    }
+
+    const updatedList = recipesToFilter.filter(
+      (recipe) => recipe.title.toLowerCase().search(filterText.toLowerCase()) !== -1,
+    );
+    return setRecipes(orderBy(updatedList, [(data) => data.title.toLowerCase()], sort));
+  };
 
   const handleCategoryChange = (event) => {
     setCategorySelected(event.target.value);
   };
 
-  const sortAllRecipes = (order: 'asc') => {
-    setRecipes(orderBy(recipesData, [(data) => data.title.toLowerCase()], order));
-  };
-
   const handleFilterListChange = (event) => {
-    setCategorySelected('none');
-    if (event.target.value.length > 0) {
-      const updatedList = recipesData.filter(
-        (recipe) => recipe.title.toLowerCase().search(event.target.value.toLowerCase()) !== -1,
-      );
-      setRecipes(updatedList);
+    setFilterText(event.target.value);
+  };
+  const handleSortChange = () => {
+    if (sort === 'asc') {
+      setSort('desc');
     } else {
-      sortAllRecipes('asc');
+      setSort('asc');
     }
   };
 
-  const navigate = () => {
-    history.push(`/recipe`);
-  };
-
   useEffect(() => {
-    if (categorySelected === 'none') {
-      sortAllRecipes('asc');
-    } else {
-      const updatedList = [];
-      recipesData.forEach((recipe) => {
-        if (recipe.categories.length > 0) {
-          if (recipe.categories.includes(categorySelected)) {
-            updatedList.push(recipe);
-          }
-        }
-      });
+    updateList();
+  }, [categorySelected, filterText, sort]);
 
-      setRecipes(updatedList);
-    }
-  }, [categorySelected]);
-
-  useEffect(() => {
+  const groupCategories = () => {
     let allCategories = [];
     forEach(recipesData, (recipe) => {
       allCategories = [...allCategories, ...recipe.categories];
     });
     const unsortedCategories = [...new Set(allCategories)];
     setCategories(unsortedCategories.sort());
+  };
 
-    sortAllRecipes('asc');
+  useEffect(() => {
+    groupCategories();
+    sortAllRecipes(recipesData);
   }, []);
 
   return (
@@ -74,7 +88,7 @@ export default function RecipesList() {
       <div>
         <div className="flex justify-between">
           <div className="text-3xl mb-5">RECIPES</div>
-          <div className="col-2">
+          <div className="col-3">
             <Input
               className="mx-4 pt-4"
               id="filter"
@@ -101,6 +115,15 @@ export default function RecipesList() {
                 ))}
               </Select>
             </FormControl>
+            <button
+              className="uppercase rounded px-4 py-2 text-xs bg-blue-900 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-4"
+              type="button"
+              onClick={() => {
+                handleSortChange();
+              }}
+            >
+              {sort}
+            </button>
           </div>
         </div>
       </div>
@@ -117,6 +140,11 @@ export default function RecipesList() {
           >
             {recipe.title}
           </button>
+          <div className="text-xs">
+            {recipe.categories.map((category) => (
+              <div key={category}>{category}</div>
+            ))}
+          </div>
         </div>
       ))}
     </div>
