@@ -35,10 +35,22 @@ export default function RecipeInfo({ recipe }) {
             {recipe.source}
           </a>
         </div>
-        <div>
-          <div className="flex justify-between">
+        <div className="mb-3">
+          <div className="flex">
             <div className="flex justify-start">
-              <div className="text-3xl mb-5 capitalize italic">{recipe.title}</div>
+              <div>
+                <div className="text-3xl mb-2 capitalize italic">{recipe.title}</div>
+                {recipe.categories.length > 0 && (
+                  <div className="text-xs flex">
+                    {recipe.categories.map((category, idx) => (
+                      <div key={category} className="capitalize mr-1">
+                        {category}
+                        {idx + 1 < recipe.categories.length ? ',' : null}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
               {recipe.favorite && (
                 <div className="pt-1 pl-2">
                   <StarIcon className="fill-current text-yellow-400" />
@@ -87,5 +99,6 @@ RecipeInfo.propTypes = {
     total: PropTypes.string,
     image: PropTypes.string,
     favorite: PropTypes.bool,
+    categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };

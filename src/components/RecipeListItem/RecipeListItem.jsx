@@ -47,18 +47,21 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
           <button className="capitalize text-xl italic" type="button" onClick={selectRecipe}>
             {recipe.title}
           </button>
-          <div className="text-xs flex">
-            {recipe.categories.map((category) => (
-              <button
-                type="button"
-                key={category}
-                className="capitalize mr-1"
-                onClick={() => handleCategoryChange({ target: { value: category } })}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          {recipe.categories.length > 0 && (
+            <div className="text-xs flex">
+              {recipe.categories.map((category, idx) => (
+                <button
+                  type="button"
+                  key={category}
+                  className="capitalize mr-1"
+                  onClick={() => handleCategoryChange({ target: { value: category } })}
+                >
+                  {category}
+                  {idx + 1 < recipe.categories.length ? ',' : null}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         <div className="pl-2">
           {recipe.favorite && (
