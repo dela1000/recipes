@@ -16,7 +16,7 @@ export default function RecipeInfo({ recipe }) {
   }, []);
 
   return (
-    <div className="md:flex py-8">
+    <div className="md:flex pt-8">
       {recipe.image && (
         <img
           src={recipe.image}

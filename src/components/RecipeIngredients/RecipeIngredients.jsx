@@ -4,7 +4,7 @@ export default function RecipeIngredients({ recipe }) {
   const ingredientsHeaders = Object.keys(recipe.ingredients);
 
   return (
-    <div className="my-5">
+    <div className="my-5 lg:w-2/5">
       {recipe.ingredients && <div className="mt-5 mb-2 text-2xl">Ingredients:</div>}
       {ingredientsHeaders.map((header) => (
         <div key={header} className="px-4">

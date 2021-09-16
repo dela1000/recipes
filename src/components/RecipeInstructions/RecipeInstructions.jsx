@@ -11,7 +11,7 @@ export default function RecipeInstructions({ recipe }) {
           {recipe.instructions[header].length > 0 && (
             <div className="text-1xl font-bold capitalize">{header}</div>
           )}
-          <div className="mb-3">
+          <div className="mb-3 pr-10">
             {recipe.instructions[header].map((ingredient) => (
               <div key={ingredient}>{ingredient}</div>
             ))}

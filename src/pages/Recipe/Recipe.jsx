@@ -22,8 +22,10 @@ export default function Home() {
       {!isEmpty(recipe) && (
         <div>
           <RecipeInfo recipe={recipe} />
-          <RecipeIngredients recipe={recipe} />
-          <RecipeInstructions recipe={recipe} />
+          <div className="lg:flex flex-row">
+            <RecipeIngredients recipe={recipe} />
+            <RecipeInstructions recipe={recipe} />
+          </div>
         </div>
       )}
     </div>
