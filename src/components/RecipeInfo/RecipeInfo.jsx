@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import StarIcon from '@material-ui/icons/Star';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 
 export default function RecipeInfo({ recipe }) {
@@ -18,7 +19,14 @@ export default function RecipeInfo({ recipe }) {
   return (
     <div className="my-5">
       <div className="flex justify-between">
-        <div className="text-3xl mb-5">{recipe.title}</div>
+        <div className="flex justify-start">
+          <div className="text-3xl mb-5 capitalize">{recipe.title}</div>
+          {recipe.favorite && (
+            <div className="pt-1 pl-2">
+              <StarIcon className="fill-current text-yellow-400" />
+            </div>
+          )}
+        </div>
         <ArrowLeftIcon className="cursor-pointer" fontSize="large" onClick={() => goBackHome()} />
       </div>
       {recipe.description && <div className="mb-2">Description: {recipe.description}</div>}
@@ -47,5 +55,6 @@ RecipeInfo.propTypes = {
     yield: PropTypes.string,
     active: PropTypes.string,
     total: PropTypes.string,
+    favorite: PropTypes.bool,
   }).isRequired,
 };

@@ -2,6 +2,7 @@ const recipesData = [
   {
     id: 0,
     title: 'Tacos and Guacamole',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -57,6 +58,7 @@ const recipesData = [
   {
     id: 1,
     title: 'Zoodles and Turkey Meatballs',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'https://foodcount.com/recipe/zoodles-turkey-meatballs',
@@ -93,6 +95,7 @@ const recipesData = [
   {
     id: 2,
     title: 'Wine & Tomato Braised Chicken',
+    favorite: false,
     description: 'Makes: 10 servings',
     activeTime: '45 minutes',
     totalTime: '3 3/4-6 3/4 hours',
@@ -142,6 +145,7 @@ const recipesData = [
   {
     id: 3,
     title: 'Vegetarian Chana Masala',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -185,6 +189,7 @@ const recipesData = [
   {
     id: 4,
     title: "Vegan Shepherd's Pie",
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://minimalistbaker.com/1-hour-vegan-shepherds-pie/',
@@ -227,6 +232,7 @@ const recipesData = [
   {
     id: 5,
     title: 'Tomato Mango Bruschetta Salsa',
+    favorite: false,
     description:
       'This bruschetta salsa recipe is a great way of adding some Italian flavor to your events and parties. The mangoes and tomatoes compliment each other nicely, providing a sweet flavor that will leave guests enamored.',
     source: '',
@@ -260,6 +266,7 @@ const recipesData = [
   {
     id: 6,
     title: 'Tomato, Basil Shrimp Stir Fry with Paleo Pasta',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -303,6 +310,7 @@ const recipesData = [
   {
     id: 7,
     title: 'Three Color Pasta with Sun Dried Tomato Sauce',
+    favorite: false,
     description:
       'This simple, 5-ingredient pasta comes together in about 15 minutes and is full of flavor from the sun dried tomato sauce. Add a few sprigs of basil on top to give the dish a fresh note. It can be made vegan by forgoing cheese, and gluten-free by using gluten-free pasta noodles.',
     source: '',
@@ -337,6 +345,7 @@ const recipesData = [
   {
     id: 8,
     title: 'The Best Steak Marinade',
+    favorite: false,
     description: '',
     source: 'Allrecipes.com',
     originalURL: 'http://allrecipes.com/recipe/the-best-steak-marinade/',
@@ -365,6 +374,7 @@ const recipesData = [
   {
     id: 9,
     title: 'Sweet Potato Fries',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -406,6 +416,7 @@ const recipesData = [
   {
     id: 10,
     title: 'Sun dried tomato meatballs',
+    favorite: false,
     description: '2 lbs ground beef',
     source: '',
     originalURL: '',
@@ -431,6 +442,7 @@ const recipesData = [
   {
     id: 11,
     title: 'Steak, Asparagus and Fries',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -494,6 +506,7 @@ const recipesData = [
   {
     id: 12,
     title: 'Spicy Sausage and Shrimp Skillet',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.deliciousmeetshealthy.com/spicy-sausage-and-shrimp-skillet-paleo/',
@@ -536,6 +549,7 @@ const recipesData = [
   {
     id: 13,
     title: 'Soyrizo Chili',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -577,6 +591,7 @@ const recipesData = [
   {
     id: 14,
     title: 'Slow Cooker Thai Beef Curry',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'https://www.reddit.com/r/slowcooking/comments/4jn7i0/thai_beef_curry/',
@@ -608,6 +623,7 @@ const recipesData = [
   {
     id: 15,
     title: 'Slow Cooker Southwestern Beef Stew',
+    favorite: true,
     description: '',
     source: '',
     originalURL: '',
@@ -641,6 +657,7 @@ const recipesData = [
   {
     id: 16,
     title: 'Slow Cooker Pineapple Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://damndelicious.net/2016/03/14/slow-cooker-pineapple-chicken/',
@@ -677,6 +694,7 @@ const recipesData = [
   {
     id: 17,
     title: 'Slow Cooker Mushroom Stroganoff',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -711,6 +729,7 @@ const recipesData = [
   {
     id: 18,
     title: 'Slow Cooker Jumbalaya',
+    favorite: true,
     description: '',
     source: '',
     originalURL: '',
@@ -753,6 +772,7 @@ const recipesData = [
   {
     id: 19,
     title: 'Slow Cooker Garlic Parm Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'https://tasty-videos.com/video/slow-cooker-garlic-parm-chicken/',
@@ -785,6 +805,7 @@ const recipesData = [
   {
     id: 20,
     title: 'Slow Cooker Chicken Tikka Masala',
+    favorite: false,
     description: '',
     source: '',
     originalURL:
@@ -821,6 +842,7 @@ const recipesData = [
   {
     id: 21,
     title: 'Slow Cooker Chicken Thighs with Creamy Lemon Sauce',
+    favorite: false,
     description: '',
     source: '',
     originalURL:
@@ -869,6 +891,7 @@ const recipesData = [
   {
     id: 22,
     title: 'Slow Cooker Chicken Tacos',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -903,6 +926,7 @@ const recipesData = [
   {
     id: 23,
     title: 'Slow Cooker Butter Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://twistedfood.co.uk/slow-cooker-butter-chicken/',
@@ -942,6 +966,7 @@ const recipesData = [
   {
     id: 24,
     title: 'Slow Cooker Balsamic Chicken & Sausage',
+    favorite: false,
     description:
       'Who doesn’t love a good Crock Pot recipe?  I admit that I was totally apart of that Crockin’ Craze that spread through Facebook like wildfire a year or so ago (pre-Paleo, of course).  I was all over those cans of Cream of Mushroom soup like white on rice… I’m a little embarrassed about it now.  Anyways, I still love my Crock Pot, I’m just a bit more selective about what I toss in it. One of my favorite pre-Paleo recipes is still a go-to slow cooker pick these days.  It’s based on this great recipe from Dishing With Leslie called Balsamic Chicken. It’s very popular on the internet and many people have tried to take credit for it… which sucks. I made it according to her directions and honestly found it a touch bland.  So here’s my version, full of flavor and 100% Paleo friendly.  If you need to feed a crowd or are looking for great leftovers, look no further. Prepare for Paleo Crock Pot deliciousness at its best… and its slowest.',
     source: '',
@@ -981,6 +1006,7 @@ const recipesData = [
   {
     id: 25,
     title: 'Skinny Shrimp Scampi with Zucchini Noodles',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.justataste.com/skinny-shrimp-scampi-zucchini-noodles-recipe/',
@@ -1012,6 +1038,7 @@ const recipesData = [
   {
     id: 26,
     title: 'Simple Patatas Bravas',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1048,6 +1075,7 @@ const recipesData = [
   {
     id: 27,
     title: 'Simple Broccoli Beef',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1081,6 +1109,7 @@ const recipesData = [
   {
     id: 28,
     title: 'Shrimp Coconut Curry',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1130,6 +1159,7 @@ const recipesData = [
   {
     id: 29,
     title: 'Shirred Eggs with Sausage and Spinach',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://thedomesticman.com/2013/01/15/shirred-eggs-with-sausage-and-spinach/',
@@ -1170,6 +1200,7 @@ const recipesData = [
   {
     id: 30,
     title: 'SAUTEED ZUCCHINI AND MUSHROOMS',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://thehealthyfoodie.com/sauteed-zucchini-mushrooms/',
@@ -1203,6 +1234,7 @@ const recipesData = [
   {
     id: 31,
     title: 'Salmon with Tomato, Onions, and Capers',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.simplyrecipes.com/recipes/salmon_with_tomato_onions_and_capers/',
@@ -1244,6 +1276,7 @@ const recipesData = [
   {
     id: 32,
     title: 'Salmon with Lemon, Garlic & Rosemary',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.preppypaleo.com/2015/02/easy-paleo-salmon-with-lemon-garlic.html?m=1',
@@ -1278,6 +1311,7 @@ const recipesData = [
   {
     id: 33,
     title: 'Salmon Over Mixed Legumes',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1319,6 +1353,7 @@ const recipesData = [
   {
     id: 34,
     title: 'Roasted Vegetables',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1356,6 +1391,7 @@ const recipesData = [
   {
     id: 35,
     title: 'Potato Salad',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1390,6 +1426,7 @@ const recipesData = [
   {
     id: 36,
     title: 'Pineapple Fried Rice',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.justataste.com/easy-pineapple-chicken-fried-rice-recipe/',
@@ -1433,6 +1470,7 @@ const recipesData = [
   {
     id: 37,
     title: 'Pesto Zucchini Noodles with Shrimp',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1462,6 +1500,7 @@ const recipesData = [
   {
     id: 38,
     title: 'Penne Pasta Salad',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://minimalistbaker.com/penne-pasta-salad-30-minutes/',
@@ -1503,6 +1542,7 @@ const recipesData = [
   {
     id: 39,
     title: 'Paleo Pot Roast',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1535,6 +1575,7 @@ const recipesData = [
   {
     id: 40,
     title: 'Paleo Orange Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1570,6 +1611,7 @@ const recipesData = [
   {
     id: 41,
     title: 'Paleo Fish Tacos',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://paleoista.com/recipes/fish-tacos/',
@@ -1609,6 +1651,7 @@ const recipesData = [
   {
     id: 42,
     title: 'Paleo Chicken Tikka Masala',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1663,6 +1706,7 @@ const recipesData = [
   {
     id: 43,
     title: 'Orange Dijon Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://nomnompaleo.com/post/141876852968/orange-dijon-chicken',
@@ -1700,6 +1744,7 @@ const recipesData = [
   {
     id: 44,
     title: 'One Pot Paella',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1735,6 +1780,7 @@ const recipesData = [
   {
     id: 45,
     title: "Mom's Spaghetti Sauce (Paleo Pasta)",
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1785,6 +1831,7 @@ const recipesData = [
   {
     id: 46,
     title: 'Lemon Pepper Roast Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1836,6 +1883,7 @@ const recipesData = [
   {
     id: 47,
     title: 'Lemon Garlic Crockpot Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://civilizedcavemancooking.com/crockpot/lemon-garlic-crockpot-chicken/',
@@ -1871,6 +1919,7 @@ const recipesData = [
   {
     id: 48,
     title: 'KFC Top-Secret Recipe For Fried Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -1903,6 +1952,7 @@ const recipesData = [
   {
     id: 49,
     title: 'Jerk Chicken & Pineapple Bowl',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.health-bent.com/poultry/paleo-jerk-chicken-pineapple-bowl',
@@ -1945,6 +1995,7 @@ const recipesData = [
   {
     id: 50,
     title: 'Italian Wonderpot',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.budgetbytes.com/2013/05/italian-wonderpot/',
@@ -1981,6 +2032,7 @@ const recipesData = [
   {
     id: 51,
     title: 'Honey Sauced Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.chef-in-training.com/2011/11/honey-sauced-chicken/',
@@ -2016,6 +2068,7 @@ const recipesData = [
   {
     id: 52,
     title: 'Honey Garlic Chicken Wings in The Crock Pot',
+    favorite: false,
     description:
       'Are you looking for an effortless, simple way to make fall-of-the-bone honey garlic chicken wings? The crockpot will do the trick. You don’t even need a very large crockpot, and they will turn out tender, juicy and delicious every time! This is a very simple recipe with minimal ingredients, but it never fails to please. Sometimes, less is really more!',
     source: '',
@@ -2047,6 +2100,7 @@ const recipesData = [
   {
     id: 53,
     title: 'Grilled Salmon Kebabs',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.skinnytaste.com/2013/06/these-lovely-grilled-salmon-and-lemon.html',
@@ -2083,6 +2137,7 @@ const recipesData = [
   {
     id: 54,
     title: 'Garlic Shrimp in Lemon Butter Sauce',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2115,6 +2170,7 @@ const recipesData = [
   {
     id: 55,
     title: 'Garlic Mustard Drumsticks',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://carrotsncake.com/2013/02/garlic-mustard-drumsticks.html',
@@ -2146,6 +2202,7 @@ const recipesData = [
   {
     id: 56,
     title: 'Easy Indian Rice Curry',
+    favorite: false,
     description: '',
     source: '',
     originalURL:
@@ -2201,6 +2258,7 @@ const recipesData = [
   {
     id: 57,
     title: 'Curried Potatoes',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.vegetariantimes.com/recipe/curried-potatoes/',
@@ -2235,6 +2293,7 @@ const recipesData = [
   {
     id: 58,
     title: 'Crock Pot Short Ribs',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2275,6 +2334,7 @@ const recipesData = [
   {
     id: 59,
     title: 'Crock Pot Sesame Honey Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2315,6 +2375,7 @@ const recipesData = [
   {
     id: 60,
     title: 'Crock Pot Hawaiian Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL:
@@ -2347,6 +2408,7 @@ const recipesData = [
   {
     id: 61,
     title: 'Crock Pot Chili',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2380,6 +2442,7 @@ const recipesData = [
   {
     id: 62,
     title: 'Creamy Tomato & Spinach Pasta',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.budgetbytes.com/2013/07/creamy-tomato-spinach-pasta/',
@@ -2419,6 +2482,7 @@ const recipesData = [
   {
     id: 63,
     title: 'Copycat Chipotle Chicken',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2450,6 +2514,7 @@ const recipesData = [
   {
     id: 64,
     title: 'Chipotle Bean Burritos',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.myrecipes.com/recipe/chipotle-bean-burritos-0',
@@ -2486,6 +2551,7 @@ const recipesData = [
   {
     id: 65,
     title: 'Chicken Tacos From Scratch',
+    favorite: false,
     description:
       'How to make taco seasoning, salsa and guacamole to make the best tacos in the planet.',
     source: '',
@@ -2565,6 +2631,7 @@ const recipesData = [
   {
     id: 66,
     title: 'Chicken and Veggies Stir Fry (hodgepodge of delicious)',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.reddit.com/r/Paleo/comments/1brnnp/hodgepodge_of_delicious/',
@@ -2614,7 +2681,8 @@ const recipesData = [
   },
   {
     id: 67,
-    title: 'CAULIFLOWER RICE',
+    title: 'cauliflower rice',
+    favorite: false,
     description: '',
     source: '',
     originalURL:
@@ -2652,6 +2720,7 @@ const recipesData = [
   {
     id: 68,
     title: 'Calico Beans',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2686,6 +2755,7 @@ const recipesData = [
   {
     id: 69,
     title: 'Cacio E Pepe Pasta',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.justataste.com/cacio-e-pepe-pasta/',
@@ -2715,6 +2785,7 @@ const recipesData = [
   {
     id: 70,
     title: 'Breakfast Eggs (Standard)',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2739,6 +2810,7 @@ const recipesData = [
   {
     id: 71,
     title: 'beef stroganoff',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2775,6 +2847,7 @@ const recipesData = [
   {
     id: 72,
     title: 'Beef Bulgogi',
+    favorite: false,
     description: '',
     source: 'Allrecipes.com',
     originalURL: 'http://allrecipes.com/recipe/beef-bulgogi/',
@@ -2806,7 +2879,8 @@ const recipesData = [
   },
   {
     id: 73,
-    title: 'Bacon Wrapped Dates',
+    title: 'Bacon-Wrapped Dates',
+    favorite: true,
     description: '',
     source: '',
     originalURL: 'http://keirstenskitchen.com/2013/01/20/bacon-wrapped-dates/',
@@ -2842,6 +2916,7 @@ const recipesData = [
   {
     id: 74,
     title: 'Avocado Caprese Pasta Salad',
+    favorite: false,
     description: '',
     source: '',
     originalURL: 'http://www.emilieeats.com/vegan-avocado-caprese-pasta-salad/',
@@ -2879,6 +2954,7 @@ const recipesData = [
   {
     id: 75,
     title: 'Asparagus, Peas, and Tomatoes with Herb Butter',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2912,6 +2988,7 @@ const recipesData = [
   {
     id: 76,
     title: 'Asian Pork Lettuce Wraps',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -2952,6 +3029,7 @@ const recipesData = [
   {
     id: 77,
     title: 'Asian Noodle Bowl with Ginger Peanut Dressing',
+    favorite: false,
     description:
       'A 15-minute meal that requires virtually no cooking and only one bowl. Simply prepare rice noodles, chop fresh veggies, whip up a quick ginger peanut dressing and throw it all together with tofu and fresh basil. A vegan and gluten free dish that’s completely satisfying.',
     source: '',
@@ -2994,7 +3072,8 @@ const recipesData = [
   },
   {
     id: 78,
-    title: 'ARROZ CON COCO',
+    title: 'arroz con coco',
+    favorite: false,
     description:
       'El arroz con coco es un plato típico de la costa Caribe Colombiana .  Tiene dos formas de prepararse, Arroz Blanco de Coco o Arroz de Coco Negrito . Es una preparación agridulce que suele acompañar muy especialmente al pescado frito y se sirve con patacones y ensalada.',
     source: '',
@@ -3023,6 +3102,7 @@ const recipesData = [
   {
     id: 79,
     title: 'Cobb Salad',
+    favorite: false,
     description: '',
     source: '',
     originalURL: '',
@@ -3047,6 +3127,7 @@ const recipesData = [
   {
     id: 80,
     title: 'Easy Lemon Garlic Pasta',
+    favorite: false,
     description: `Lemon Garlic Pasta delivers bold, vibrant flavor with minimal effort. It's the kind of pasta dish you turn to on busy weeknights when you want a satisfying dinner on the table in 20 minutes flat.`,
     source: 'pinchandswirl.com',
     originalURL: 'https://pinchandswirl.com/lemon-garlic-pasta/',

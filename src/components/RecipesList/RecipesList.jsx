@@ -7,8 +7,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
-import { Context } from '../../contexts/context';
+import StarIcon from '@material-ui/icons/Star';
 import recipesData from '../../adapters/recipesData';
+
+import { Context } from '../../contexts/context';
 
 export default function RecipesList() {
   const history = useHistory();
@@ -86,8 +88,8 @@ export default function RecipesList() {
   return (
     <div>
       <div>
-        <div className="flex justify-between">
-          <div className="text-3xl mb-5">RECIPES</div>
+        <div className="lg:flex mb-5">
+          <div className="text-4xl pt-3 mr-12">RECIPES</div>
           <div className="col-3">
             <Input
               className="mx-4 pt-4"
@@ -128,21 +130,31 @@ export default function RecipesList() {
         </div>
       </div>
       {recipes.map((recipe) => (
-        <div key={recipe.id}>
-          <button
-            className="uppercase"
-            type="button"
-            onClick={() => {
-              setRecipe(recipe);
-              setRecipeId(recipe.id);
-              navigate();
-            }}
-          >
-            {recipe.title}
-          </button>
+        <div className="h-14" key={recipe.id}>
+          <hr />
+          <div className="flex justify-start pt-2">
+            <button
+              className="capitalize text-xl italic"
+              type="button"
+              onClick={() => {
+                setRecipe(recipe);
+                setRecipeId(recipe.id);
+                navigate();
+              }}
+            >
+              {recipe.title}
+            </button>
+            <div className="pl-2">
+              {recipe.favorite && (
+                <StarIcon fontSize="small" className="fill-current text-yellow-400" />
+              )}
+            </div>
+          </div>
           <div className="text-xs">
             {recipe.categories.map((category) => (
-              <div key={category}>{category}</div>
+              <div key={category} className="capitalize">
+                {category}
+              </div>
             ))}
           </div>
         </div>
