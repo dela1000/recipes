@@ -39,7 +39,7 @@ export default function RecipeInfo({ recipe }) {
           <div className="flex">
             <div className="flex justify-start">
               <div>
-                <div className="text-3xl mb-2 capitalize italic">{recipe.title}</div>
+                <div className="text-3xl mt-5 mb-2 capitalize italic">{recipe.title}</div>
                 {recipe.categories.length > 0 && (
                   <div className="text-xs flex">
                     {recipe.categories.map((category, idx) => (

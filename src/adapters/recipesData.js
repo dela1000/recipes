@@ -460,9 +460,9 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: 'https://www.coldpressedoil.co.uk/mint-project/uploads/712982177.jpg',
+    total: '',
     categories: [],
-    image: '',
+    image: 'https://www.coldpressedoil.co.uk/mint-project/uploads/712982177.jpg',
     ingredients: {
       standard: [],
       Steak: [
@@ -613,10 +613,10 @@ const recipesData = [
     originalURL: 'https://www.reddit.com/r/slowcooking/comments/4jn7i0/thai_beef_curry/',
     yield: '',
     active: '',
-    total:
-      'https://www.newworld.co.nz/-/media/Project/Sitecore/Brands/Brand-New-World/Recipes-2020/Slow-Cooker-Thai-Beef-Curry.jpg',
+    total: '',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://www.newworld.co.nz/-/media/Project/Sitecore/Brands/Brand-New-World/Recipes-2020/Slow-Cooker-Thai-Beef-Curry.jpg',
     ingredients: {
       standard: [
         '6 fl oz unsweetened coconut milk',
@@ -921,7 +921,7 @@ const recipesData = [
   {
     id: 22,
     title: 'Slow Cooker Chicken Tacos',
-    favorite: false,
+    favorite: true,
     description: '',
     source: '',
     originalURL: '',
@@ -1601,7 +1601,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://lifemadeketo.com/wp-content/uploads/2019/02/Low-Carb-Pot-Roast-Picture-Photo-Recipe.jpg',
     ingredients: {
       standard: [
         '2.5 lb chuck roast',
@@ -1634,8 +1635,8 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
-    image: '',
+    categories: ['paleo'],
+    image: 'https://thefoodiebunch.com/wp-content/uploads/2021/06/bowl-of-orange-chicken.jpg',
     ingredients: {
       standard: [
         '1 lb. boneless, skinless chicken thighs (cut into bite size pieces)',
@@ -1671,8 +1672,9 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
-    image: '',
+    categories: ['paleo'],
+    image:
+      'https://img.sunset02.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/1494355438/paleo-fish-tacos-pineapple-cilantro-salsa-su.jpg',
     ingredients: {
       standard: [
         '1 pound mahi mahi (or whatever is local, wild and fresh!)',
@@ -1712,8 +1714,9 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: [],
-    image: '',
+    categories: ['paleo'],
+    image:
+      'https://www.theroastedroot.net/wp-content/uploads/2019/02/instant_pot_chicken_tikka_masala_9.jpg',
     ingredients: {
       standard: [],
       MARINADE: [
@@ -1768,8 +1771,8 @@ const recipesData = [
     yield: '4',
     active: '',
     total: '',
-    categories: [],
-    image: '',
+    categories: ['paleo'],
+    image: 'https://nomnompaleo.com/wp-content/uploads/2018/01/800OrangeDijonChickenmusch13.jpg',
     ingredients: {
       standard: [
         '3/4 cup Dijon-style mustard',
@@ -1808,7 +1811,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image: 'https://www.wearesovegan.com/wp-content/uploads/2019/07/veganonepotpaella-h1.jpg',
     ingredients: {
       standard: [
         '1/2 Onion',
@@ -1844,8 +1847,9 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: ['crock pot'],
-    image: '',
+    categories: [],
+    image:
+      'https://embed.widencdn.net/img/beef/a16xphrero/360x360px/spaghetti-squash-with-meat-sauce.tif?keep=c&u=7fueml',
     ingredients: {
       standard: [
         '1 White Onion',
@@ -1868,8 +1872,9 @@ const recipesData = [
         'When these are cooked throw in the ground beef and the ketchup',
         'Mix again',
         'Let simmer for about 30 minutes mixing once in a while',
-        'Squash',
-        "Method: Just get in there and cut it in half (lengthwise) or quarters. You don't want to cut it up too small unless you want short strands. Scrape out the seeds and pulp as you would with any squash or pumpkin.",
+      ],
+      'Spaghetti Squash - Method 1': [
+        "Just get in there and cut it in half (lengthwise) or quarters. You don't want to cut it up too small unless you want short strands. Scrape out the seeds and pulp as you would with any squash or pumpkin.",
         'Bake rind side up about 30 to 40 minutes at 375 F.',
         'Microwave 6 to 8 minutes (let stand for a few minutes afterwards)',
         'Boil 20 minutes or so.',
@@ -1877,6 +1882,8 @@ const recipesData = [
         'Cooking Spaghetti Squash Whole',
         "Advantages: It's easier.",
         'Disadvantages: It takes longer to cook, and you need to watch out for burns when removing the pulp and seeds.',
+      ],
+      'Spaghetti Squash - Method 2': [
         "Method: Pierce the squash several times with a sharp knife. (Do this especially if you're microwaving it, or you may end up with a 'Squash Explosion.')",
         'Bake about an hour in the oven at 375 F.',
         'Microwave 10 to 12 minutes, then let stand for 5 minutes or so afterward to finish steaming.',
@@ -1897,7 +1904,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://thesaltymarshmallow.com/wp-content/uploads/2018/04/lemon-pepper-roasted-chicken-thighs2.jpg',
     ingredients: {
       standard: [
         '1/2 Tablespoon lemon pepper seasoning',
@@ -1949,8 +1957,8 @@ const recipesData = [
     yield: '',
     active: '',
     total: '',
-    categories: ['crock pot'],
-    image: '',
+    categories: ['crock pot', 'paleo'],
+    image: 'https://civilizedcaveman.com/wp-content/uploads/2011/06/IMG_0750-800x600.jpg',
     ingredients: {
       standard: [
         '1 whole chicken',
@@ -1987,7 +1995,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://i2.wp.com/findglutenfreejapan.com/wp-content/uploads/2021/04/chicken-karage.jpg?fit=1920%2C1280&ssl=1',
     ingredients: {
       standard: [
         '11 spices - Mix with 2 cups white flour:',
@@ -2021,7 +2030,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image: 'http://www.health-bent.com/wp-content/uploads/jerkchickenpineapple.jpg',
     ingredients: {
       standard: [],
       'For the Bowl': [
@@ -2065,7 +2074,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
-    image: '',
+    image: 'https://www.budgetbytes.com/wp-content/uploads/2013/05/Italian-Wonderpot-close.jpg',
     ingredients: {
       standard: [
         '4 cups vegetable broth',
@@ -2103,7 +2112,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image: 'https://www.chef-in-training.com/blog/wp-content/uploads/2012/05/P1090983-1.jpg',
     ingredients: {
       standard: [
         '3/4 pound chicken breasts',
@@ -2141,7 +2150,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image: 'https://i.pinimg.com/736x/44/22/c2/4422c2d30bc3a00b68a2d93a3f88c1ed.jpg',
     ingredients: {
       standard: [
         '2 to 3 lb of wings (approx. 20-30 wings) – or more if your crockpot can hold (this can vary depending on the size of your wings, use enough to fill a 2 quart crock pot, double the recipe if you are using a 4 quart).',
@@ -2173,7 +2182,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://www.skinnytaste.com/wp-content/uploads/2013/06/grilled-salmon-kabobs-550x365.jpg',
     ingredients: {
       standard: [
         '2 tbsp chopped fresh oregano',
@@ -2211,7 +2221,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image: 'https://i.pinimg.com/originals/59/af/66/59af66ab93792de5089f8fffd7d3221c.jpg',
     ingredients: {
       standard: [
         '1 tablespoon olive oil',
@@ -2245,7 +2255,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://carrotsncake.com/wp-content/uploads/2013/02/GARLIC-MUSTARD-CHICKEN-DRUMSTICKS.png',
     ingredients: {
       standard: [
         '10 chicken drumsticks (approximately 3 pounds)',
@@ -2279,7 +2290,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image: 'https://i.pinimg.com/originals/ca/c0/44/cac04414cf7aa5029201ec4f50401332.jpg',
     ingredients: {
       standard: [],
       'Curry:': [
@@ -2335,7 +2346,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
-    image: '',
+    image:
+      'https://149366112.v2.pressablecdn.com/wp-content/uploads/2016/08/crispy-turmeric-curried-roasted-potatoes-2-1200x750.jpg',
     ingredients: {
       standard: [
         '1 1/2 Tbs. vegetable oil',
@@ -2371,7 +2383,8 @@ const recipesData = [
     active: '',
     total: '8 hours',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://thestayathomechef.com/wp-content/uploads/2018/12/Slow-Cooker-Short-Ribs-3-500x500.jpg',
     ingredients: {
       standard: [
         '3 Lbs of Beef Short ribs, boneless or bone in',
@@ -2413,7 +2426,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://www.thegunnysack.com/wp-content/uploads/2014/07/Honey_Sesame_Chicken_Crock_Pot_Recipe.jpg',
     ingredients: {
       standard: [
         '2 lbs boneless, skinless chicken breast',
@@ -2456,7 +2470,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image: 'https://www.chef-in-training.com/blog/wp-content/uploads/2012/05/IMG_5756-2.jpg',
     ingredients: {
       standard: [
         '6 boneless, skinless chicken breasts',

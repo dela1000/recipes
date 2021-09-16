@@ -44,7 +44,11 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
               {recipe.source}
             </a>
           </div>
-          <button className="capitalize text-xl italic" type="button" onClick={selectRecipe}>
+          <button
+            className="capitalize text-xl italic text-left"
+            type="button"
+            onClick={selectRecipe}
+          >
             {recipe.title}
           </button>
           {recipe.categories.length > 0 && (
