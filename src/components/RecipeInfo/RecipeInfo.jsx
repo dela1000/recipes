@@ -53,11 +53,6 @@ export default function RecipeInfo({ recipe }) {
               <b className="uppercase">Description</b> {recipe.description}
             </div>
           )}
-          {recipe.source && (
-            <div className="mb-2">
-              <b className="uppercase">Source</b> {recipe.source}
-            </div>
-          )}
           {recipe.yield && (
             <div className="mb-2">
               <b className="uppercase">Yield </b>

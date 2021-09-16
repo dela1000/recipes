@@ -149,7 +149,7 @@ export default function RecipesListHolder() {
         </div>
       </div>
       {recipes.map((recipe) => (
-        <RecipeListItem recipe={recipe} />
+        <RecipeListItem recipe={recipe} handleCategoryChange={handleCategoryChange} />
       ))}
     </div>
   );

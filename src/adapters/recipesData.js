@@ -10,6 +10,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image:
+      'https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/389/presentation_88e69d2d-564e-49ea-8db1-0c5fb2e09d6f.jpg',
     ingredients: {
       standard: [],
       Tacos: [
@@ -66,6 +68,7 @@ const recipesData = [
     active: '',
     total: '30',
     categories: ['paleo'],
+    image: 'http://foodcount.com/images/recipes/zoodles-and-meatballs.jpg',
     ingredients: {
       standard: [
         '1 lb ground turkey 93% lean',
@@ -105,6 +108,8 @@ const recipesData = [
     active: '45 minutes',
     total: '3 3/4-6 3/4 hours',
     categories: [],
+    image:
+      'https://static01.nyt.com/images/2020/02/10/dining/ch-tomato-and-coconut-braised-chicken/merlin_166828545_50e59496-f715-4d3a-a58e-4d03df861168-articleLarge.jpg',
     ingredients: {
       standard: [
         '4 slices bacon',
@@ -241,6 +246,7 @@ const recipesData = [
     active: '',
     total: '5 min preparation',
     categories: [],
+    image: 'https://img-global.cpcdn.com/recipes/da25801017129cbf/400x400cq70/photo.jpg',
     ingredients: {
       standard: [
         '2 medium tomatoes',
@@ -274,6 +280,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image:
+      'https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2019/05/14092148/garlic_shrimp-wide.jpg',
     ingredients: {
       standard: [
         '1 pound of shrimp (cooked)',
@@ -382,6 +390,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image:
+      'https://static01.nyt.com/images/2019/05/21/dining/21COOKING-SWEET-POTATO-FRIES1/28COOKING-SWEET-POTATO-FRIES1-articleLarge.jpg',
     ingredients: {
       standard: [
         'one large sweet potato',
@@ -424,6 +434,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image:
+      'https://maroscooking.files.wordpress.com/2019/03/727647a3-c8a5-4c50-9a82-f1f5e24e38f7.jpg',
     ingredients: {
       standard: [
         '2 tablespoons minced chives',
@@ -448,8 +460,9 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    total: 'https://www.coldpressedoil.co.uk/mint-project/uploads/712982177.jpg',
     categories: [],
+    image: '',
     ingredients: {
       standard: [],
       Steak: [
@@ -514,6 +527,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image:
+      'https://www.deliciousmeetshealthy.com/wp-content/uploads/2015/03/sausage-and-shrimp-skillet-11.jpg.webp',
     ingredients: {
       standard: [
         '10 oz. spicy sausage',
@@ -557,6 +572,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: 'https://thepigandquill.com/wp-content/uploads/2013/04/veganchili_042613_web4_thumb.jpg',
     ingredients: {
       standard: [
         '3 Cans (15oz) Chili Beans or your favorite kind',
@@ -597,8 +613,10 @@ const recipesData = [
     originalURL: 'https://www.reddit.com/r/slowcooking/comments/4jn7i0/thai_beef_curry/',
     yield: '',
     active: '',
-    total: '',
+    total:
+      'https://www.newworld.co.nz/-/media/Project/Sitecore/Brands/Brand-New-World/Recipes-2020/Slow-Cooker-Thai-Beef-Curry.jpg',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '6 fl oz unsweetened coconut milk',
@@ -631,6 +649,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: 'https://www.savorynothings.com/wp-content/uploads/2019/08/beef-stew-image-1.jpg',
     ingredients: {
       standard: [
         '2 pounds beef stew meat, cut into 1-inch cubes',
@@ -665,6 +684,8 @@ const recipesData = [
     active: '10 minutes',
     total: '6 ours 45 minutes',
     categories: ['crock pot'],
+    image:
+      'http://s23209.pcdn.co/wp-content/uploads/2016/03/Slow-Cooker-Pineapple-Chicken-copy.jpg',
     ingredients: {
       standard: [
         '1 cup pineapple juice',
@@ -702,6 +723,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
+    image:
+      'https://www.wellplated.com/wp-content/uploads/2018/02/Slow-Cooker-Beef-Stroganoff-healthy-600x736.jpg',
     ingredients: {
       standard: [
         '500 g mushrooms, sliced',
@@ -737,6 +760,8 @@ const recipesData = [
     active: '1',
     total: '10',
     categories: ['crock pot'],
+    image:
+      'https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Slow-Cooker-Jambalaya-Risotto_EXPS_THEDSCODR19_196785_C03_01_2b_rms.jpg',
     ingredients: {
       standard: [
         '1 can diced tomatoes, undrained',
@@ -780,6 +805,7 @@ const recipesData = [
     active: '20 minutes',
     total: '6:20 hours',
     categories: ['crock pot'],
+    image: 'https://i.pinimg.com/originals/eb/ab/1d/ebab1dab9cfe5bb354a8027554e59f14.jpg',
     ingredients: {
       standard: [
         '2 lb. bone-in chicken thighs',
@@ -814,6 +840,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image:
+      'https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_1460,h_2044/at%2Farchive%2F1be8c8b24190f7f0a9e20426500babfbca2d75e6',
     ingredients: {
       standard: [
         '1 to 1 1/2 pounds boneless, skinless chicken thighs',
@@ -851,6 +879,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '2 pounds boneless skinless chicken thighs',
@@ -899,6 +928,7 @@ const recipesData = [
     active: '5',
     total: '8',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '16 oz salsa',
@@ -934,6 +964,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '4 chicken breasts, diced',
@@ -975,6 +1006,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '4 boneless, skinless chicken breasts (don’t hate me for that)',
@@ -1083,6 +1115,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '2 lbs. boneless beef chuck roast, sliced into thin strips (or pulled apart)*',
@@ -1167,6 +1200,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '12 eggs',
@@ -1208,6 +1242,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
+    image: '',
     ingredients: {
       standard: [
         '3 to 4 tablespoons ghee',
@@ -1242,6 +1277,7 @@ const recipesData = [
     active: '10 minutes',
     total: '25 minutes',
     categories: ['vegetarian'],
+    image: '',
     ingredients: {
       standard: [
         '3 Tbsp olive oil',
@@ -1284,6 +1320,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1 lb. salmon, with skin',
@@ -1319,6 +1356,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1 can chickpeas, rinsed and drained',
@@ -1361,6 +1399,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1 Beets',
@@ -1399,6 +1438,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian', 'salad'],
+    image: '',
     ingredients: {
       standard: [
         '3 lb. unpeeled red potatoes',
@@ -1550,6 +1590,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '2.5 lb chuck roast',
@@ -1583,6 +1624,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1 lb. boneless, skinless chicken thighs (cut into bite size pieces)',
@@ -1619,6 +1661,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1 pound mahi mahi (or whatever is local, wild and fresh!)',
@@ -1659,6 +1702,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [],
       MARINADE: [
@@ -1714,6 +1758,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '3/4 cup Dijon-style mustard',
@@ -1752,6 +1797,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1/2 Onion',
@@ -1788,6 +1834,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '1 White Onion',
@@ -1839,6 +1886,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1/2 Tablespoon lemon pepper seasoning',
@@ -1891,6 +1939,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '1 whole chicken',
@@ -1927,6 +1976,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '11 spices - Mix with 2 cups white flour:',
@@ -1960,6 +2010,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [],
       'For the Bowl': [
@@ -2003,6 +2054,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
+    image: '',
     ingredients: {
       standard: [
         '4 cups vegetable broth',
@@ -2040,6 +2092,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '3/4 pound chicken breasts',
@@ -2077,6 +2130,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '2 to 3 lb of wings (approx. 20-30 wings) – or more if your crockpot can hold (this can vary depending on the size of your wings, use enough to fill a 2 quart crock pot, double the recipe if you are using a 4 quart).',
@@ -2108,6 +2162,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '2 tbsp chopped fresh oregano',
@@ -2145,6 +2200,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '1 tablespoon olive oil',
@@ -2178,6 +2234,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '10 chicken drumsticks (approximately 3 pounds)',
@@ -2211,6 +2268,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [],
       'Curry:': [
@@ -2266,6 +2324,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
+    image: '',
     ingredients: {
       standard: [
         '1 1/2 Tbs. vegetable oil',
@@ -2301,6 +2360,7 @@ const recipesData = [
     active: '',
     total: '8 hours',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '3 Lbs of Beef Short ribs, boneless or bone in',
@@ -2342,6 +2402,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '2 lbs boneless, skinless chicken breast',
@@ -2384,6 +2445,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '6 boneless, skinless chicken breasts',
@@ -2416,6 +2478,7 @@ const recipesData = [
     active: '',
     total: '6 hours',
     categories: ['crock pot'],
+    image: '',
     ingredients: {
       standard: [
         '2 pounds of ground beef (Cubed could work as well)',
@@ -2450,6 +2513,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
+    image: '',
     ingredients: {
       standard: [
         '1 Tbsp olive oil',
@@ -2490,6 +2554,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: '',
     ingredients: {
       standard: [
         '4 boneless, skinless chicken thighs (about 1 1/4 to 1 1/2 pounds)',
@@ -2522,6 +2587,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
+    image: 'https://sanluisburritos.com/wp-content/uploads/2019/02/burrito-bean_cheese-v2.jpg',
     ingredients: {
       standard: [
         '1 tablespoon canola oil',
@@ -2560,6 +2626,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: 'https://fitfoodiefinds.com/wp-content/uploads/2018/12/salsa-chicken-12.jpg',
     ingredients: {
       standard: [
         '3 lb chicken breasts',
@@ -2691,6 +2758,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: 'https://nomnompaleo.com/wp-content/uploads/2018/02/800CauliRiceaaaacauliDSC_8061.jpg',
     ingredients: {
       standard: [
         'a small head of organic cauliflower, chopped coarsely',
@@ -2728,6 +2796,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image:
+      'https://www.tasteofhome.com/wp-content/uploads/2018/01/Cowboy-Calico-Beans_EXPS_SCBZ18_49199_B07_11_5b-20.jpg',
     ingredients: {
       standard: [
         '1 LB hamburger',
@@ -2793,6 +2863,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: 'https://pipandebby.com/wp-content/uploads/2020/01/1016EggsVeggies006POST-500x500.jpg',
     ingredients: {
       standard: [
         'Eggs',
@@ -2818,6 +2889,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: 'https://natashaskitchen.com/wp-content/uploads/2019/04/Beef-Stroganoff-6.jpg',
     ingredients: {
       standard: [
         '1 lb top sirloin steak, cut into strips;',
@@ -2888,6 +2960,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['appetizer'],
+    image: 'https://40aprons.com/wp-content/uploads/2019/07/bacon-wrapped-dates-500x500.jpg',
     ingredients: {
       standard: [
         '8 slices of bacon, cut in half',
@@ -2962,6 +3035,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
+    image:
+      'https://thedoctorskitchen.com/wp-content/uploads/2019/05/Sun-dried-Tomato-Asparagus-Pea-.jpg',
     ingredients: {
       standard: [
         '4 tbsp. unsalted butter',
@@ -2996,6 +3071,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
+    image:
+      'https://hips.hearstapps.com/del.h-cdn.co/assets/16/10/1457371429-delish-lettuce-wraps.jpg',
     ingredients: {
       standard: [],
       'For the chunk of meat': [
@@ -3082,6 +3159,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: 'https://t2.rg.ltmcdn.com/es/images/1/1/2/img_arroz_con_coco_caribeno_53211_orig.jpg',
     ingredients: {
       standard: ['2 coconuts', '2 pounds of rice', '2 tbsp sugar', '2 tsp salt', 'raisins'],
     },
@@ -3110,6 +3188,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['salad'],
+    image: '',
     ingredients: {
       standard: [
         '1 hardboiled eggs',
@@ -3135,6 +3214,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
+    image: 'https://pinchandswirl.com/wp-content/uploads/2020/04/Lemon-Garlic-Pasta.webp',
     ingredients: {
       standard: [
         '12 ounces dried spaghetti',

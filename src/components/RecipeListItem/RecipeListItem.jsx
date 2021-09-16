@@ -5,18 +5,24 @@ import StarIcon from '@material-ui/icons/Star';
 
 import { Context } from '../../contexts/context';
 
-export default function RecipeListItem({ recipe }) {
+export default function RecipeListItem({ recipe, handleCategoryChange }) {
   const [{ setRecipeId, setRecipe }] = useContext(Context);
   const history = useHistory();
   const navigate = () => {
     history.push('/recipe');
   };
 
+  const selectRecipe = () => {
+    setRecipe(recipe);
+    setRecipeId(recipe.id);
+    navigate();
+  };
+
   return (
     <div className="h-24" key={recipe.id}>
       <hr />
       <div className="flex pt-2">
-        <div>
+        <button type="button" onClick={selectRecipe}>
           {recipe.image ? (
             <img
               src={recipe.image}
@@ -26,7 +32,7 @@ export default function RecipeListItem({ recipe }) {
           ) : (
             <div className="h-20 w-20 bg-gray-200" />
           )}
-        </div>
+        </button>
         <div className="ml-2">
           <div>
             <a
@@ -38,22 +44,19 @@ export default function RecipeListItem({ recipe }) {
               {recipe.source}
             </a>
           </div>
-          <button
-            className="capitalize text-xl italic"
-            type="button"
-            onClick={() => {
-              setRecipe(recipe);
-              setRecipeId(recipe.id);
-              navigate();
-            }}
-          >
+          <button className="capitalize text-xl italic" type="button" onClick={selectRecipe}>
             {recipe.title}
           </button>
-          <div className="text-xs">
+          <div className="text-xs flex">
             {recipe.categories.map((category) => (
-              <div key={category} className="capitalize">
+              <button
+                type="button"
+                key={category}
+                className="capitalize mr-1"
+                onClick={() => handleCategoryChange({ target: { value: category } })}
+              >
                 {category}
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -77,4 +80,5 @@ RecipeListItem.propTypes = {
     source: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
+  handleCategoryChange: PropTypes.func.isRequired,
 };

@@ -13,7 +13,9 @@ export default function RecipeIngredients({ recipe }) {
           )}
           <div className="mb-3">
             {recipe.ingredients[header].map((ingredient) => (
-              <div key={ingredient}>{ingredient}</div>
+              <div className="mb-2" key={ingredient}>
+                {ingredient}
+              </div>
             ))}
           </div>
         </div>
