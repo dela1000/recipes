@@ -22,9 +22,14 @@ export default function Home() {
       {!isEmpty(recipe) && (
         <div>
           <RecipeInfo recipe={recipe} />
+          <hr className="mt-6" />
           <div className="lg:flex flex-row">
-            <RecipeIngredients recipe={recipe} />
-            <RecipeInstructions recipe={recipe} />
+            <div className="lg:w-2/6 pr-20">
+              <RecipeIngredients recipe={recipe} />
+            </div>
+            <div className="lg:w-4/6">
+              <RecipeInstructions recipe={recipe} />
+            </div>
           </div>
         </div>
       )}

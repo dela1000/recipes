@@ -5,15 +5,21 @@ export default function RecipeInstructions({ recipe }) {
 
   return (
     <div className="my-5">
-      {recipe.instructions && <div className="mt-5 mb-2 text-2xl">Instructions:</div>}
+      {recipe.instructions && <div className="mt-5 mb-2 text-2xl">INSTRUCTIONS</div>}
       {instructionsHeaders.map((header) => (
         <div key={header} className="px-4">
           {recipe.instructions[header].length > 0 && (
             <div className="text-1xl font-bold capitalize">{header}</div>
           )}
           <div className="mb-3 pr-10">
-            {recipe.instructions[header].map((ingredient) => (
-              <div key={ingredient}>{ingredient}</div>
+            {recipe.instructions[header].map((instructions, idx) => (
+              <div key={instructions} className="mb-4">
+                <div className="flex">
+                  <div className="font-bold mr-3">{idx + 1}</div>
+                  <div>{instructions}</div>
+                </div>
+                <hr className="mt-4" />
+              </div>
             ))}
           </div>
         </div>
