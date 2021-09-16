@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import orderBy from 'lodash/orderBy';
 import forEach from 'lodash/forEach';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -8,24 +7,17 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import StarIcon from '@material-ui/icons/Star';
+import RecipeListItem from '../RecipeListItem';
 
 import recipesData from '../../adapters/recipesData';
-import { Context } from '../../contexts/context';
 
-export default function RecipesList() {
-  const history = useHistory();
+export default function RecipesListHolder() {
   const [recipes, setRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categorySelected, setCategorySelected] = useState('none');
   const [sort, setSort] = useState('asc');
   const [filterText, setFilterText] = useState('');
   const [favoriteSelected, setFavoriteSelected] = useState(false);
-
-  const [{ setRecipeId, setRecipe }] = useContext(Context);
-
-  const navigate = () => {
-    history.push('/recipe');
-  };
 
   const sortAllRecipes = (listToSet) => {
     setRecipes(orderBy(listToSet, [(data) => data.title.toLowerCase()], sort));
@@ -100,7 +92,7 @@ export default function RecipesList() {
     <div>
       <div>
         <div className="lg:flex mb-5">
-          <div className="text-4xl pt-3 mr-12">RECIPES</div>
+          <div className="text-5xl pt-3 mr-12">RECIPES</div>
           <div className="lg:flex">
             <div>
               <Input
@@ -157,34 +149,7 @@ export default function RecipesList() {
         </div>
       </div>
       {recipes.map((recipe) => (
-        <div className="h-14" key={recipe.id}>
-          <hr />
-          <div className="flex justify-start pt-2">
-            <button
-              className="capitalize text-xl italic"
-              type="button"
-              onClick={() => {
-                setRecipe(recipe);
-                setRecipeId(recipe.id);
-                navigate();
-              }}
-            >
-              {recipe.title}
-            </button>
-            <div className="pl-2">
-              {recipe.favorite && (
-                <StarIcon fontSize="small" className="fill-current text-yellow-400" />
-              )}
-            </div>
-          </div>
-          <div className="text-xs">
-            {recipe.categories.map((category) => (
-              <div key={category} className="capitalize">
-                {category}
-              </div>
-            ))}
-          </div>
-        </div>
+        <RecipeListItem recipe={recipe} />
       ))}
     </div>
   );

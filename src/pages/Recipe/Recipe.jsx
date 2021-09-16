@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
-import RecipeInfo from '../../components/RecipeInfo/index';
-import RecipeIngredients from '../../components/RecipeIngredients/index';
-import RecipeInstructions from '../../components/RecipeInstructions/index';
+import RecipeInfo from '../../components/RecipeInfo';
+import RecipeIngredients from '../../components/RecipeIngredients';
+import RecipeInstructions from '../../components/RecipeInstructions';
 import { Context } from '../../contexts/context';
 
 export default function Home() {
