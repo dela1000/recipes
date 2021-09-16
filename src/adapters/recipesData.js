@@ -879,7 +879,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://www.simplyhappyfoodie.com/wp-content/uploads/2018/09/crock-pot-creamy-lemon-chicken-breasts-5-500x500.jpg',
     ingredients: {
       standard: [
         '2 pounds boneless skinless chicken thighs',
@@ -928,7 +929,8 @@ const recipesData = [
     active: '5',
     total: '8',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://www.simplyrecipes.com/thmb/vp1-HU9h4WJc8dXZi7wN51MuVa8=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2015__09__slow-cooker-chicken-taco-meat-horiz-a-1500-1-607e484209ec4f32a3acc7ec8ca1e071.jpg',
     ingredients: {
       standard: [
         '16 oz salsa',
@@ -964,7 +966,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://www.simplyhappyfoodie.com/wp-content/uploads/2019/07/slow-cooker-indian-butter-chicken-1-500x500.jpg',
     ingredients: {
       standard: [
         '4 chicken breasts, diced',
@@ -1006,7 +1009,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['crock pot'],
-    image: '',
+    image:
+      'https://hips.hearstapps.com/del.h-cdn.co/assets/17/06/1486767184-delish-slow-cooker-balsamic-chicken-1.jpg',
     ingredients: {
       standard: [
         '4 boneless, skinless chicken breasts (don’t hate me for that)',
@@ -1115,7 +1119,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://www.justataste.com/wp-content/uploads/2018/01/easy-beef-and-broccoli-recipe.jpg',
     ingredients: {
       standard: [
         '2 lbs. boneless beef chuck roast, sliced into thin strips (or pulled apart)*',
@@ -1200,7 +1205,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image: 'https://thedomesticatedman.files.wordpress.com/2015/10/img_3561.jpg?w=720&zoom=2',
     ingredients: {
       standard: [
         '12 eggs',
@@ -1242,7 +1247,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian'],
-    image: '',
+    image:
+      'https://thehealthyfoodie.com/wp-content/uploads/2014/05/Sauteed-Zucchinis-and-Mushrooms-9.jpg',
     ingredients: {
       standard: [
         '3 to 4 tablespoons ghee',
@@ -1265,7 +1271,6 @@ const recipesData = [
       ],
     },
   },
-
   {
     id: 31,
     title: 'Salmon with Tomato, Onions, and Capers',
@@ -1277,7 +1282,8 @@ const recipesData = [
     active: '10 minutes',
     total: '25 minutes',
     categories: ['vegetarian'],
-    image: '',
+    image:
+      'https://www.simplyrecipes.com/thmb/fKeVynO2yfWl2NvSgbk2I3-i4e8=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2005__09__salmon-tomato-onion-capers-vertical-a-1600-3f245d0cda7d44579125a0be69333d59.jpg',
     ingredients: {
       standard: [
         '3 Tbsp olive oil',
@@ -1320,7 +1326,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://res.cloudinary.com/paleoleap/image/upload/f_auto,q_70/v1532109103/video-recipes/lemon-garlic-salmon-main.jpg',
     ingredients: {
       standard: [
         '1 lb. salmon, with skin',
@@ -1356,7 +1363,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F44%2F2020%2F05%2F09%2F8110444.jpg&q=85',
     ingredients: {
       standard: [
         '1 can chickpeas, rinsed and drained',
@@ -1399,7 +1407,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: '',
+    image:
+      'https://hips.hearstapps.com/hmg-prod/images/delish-190808-vegetable-medley-0043-landscape-pf-1567108247.jpg',
     ingredients: {
       standard: [
         '1 Beets',
@@ -1438,7 +1447,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['vegetarian', 'salad'],
-    image: '',
+    image:
+      'https://www.gritsandpinecones.com/wp-content/uploads/2020/04/southern-potato-salad-feature-image-1200x1200-copy.jpg',
     ingredients: {
       standard: [
         '3 lb. unpeeled red potatoes',
@@ -1474,7 +1484,8 @@ const recipesData = [
     active: '20',
     total: '35',
     categories: [],
-    image: 'https://cdn2.pepperplate.com/recipes/223477e8e67f4242b37b24cec470def6.jpg',
+    image:
+      'https://www.justataste.com/wp-content/uploads/2013/07/Pineapple-Chicken-Fried-Rice-Recipe.jpg',
     ingredients: {
       standard: [
         '1 teaspoon sesame oil',
@@ -3188,7 +3199,7 @@ const recipesData = [
     active: '',
     total: '',
     categories: ['salad'],
-    image: '',
+    image: 'https://hips.hearstapps.com/delish/assets/18/11/1520887294-cobb-salad-delish.jpg',
     ingredients: {
       standard: [
         '1 hardboiled eggs',
