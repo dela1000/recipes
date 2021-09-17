@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (isEmpty(recipe)) {
-      history.push(`/`);
+      history.push('/');
     }
   }, []);
 

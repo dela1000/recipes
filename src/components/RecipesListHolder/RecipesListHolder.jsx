@@ -103,7 +103,7 @@ export default function RecipesListHolder({ recipesData }) {
   return (
     <div>
       <div>
-        <div className="lg:flex mb-5">
+        <div className="lg:flex justify-between mx-3 mb-5">
           <div className="text-5xl pt-1 mr-12">RECIPES</div>
           <div className="lg:flex">
             <div>
@@ -134,9 +134,9 @@ export default function RecipesListHolder({ recipesData }) {
                 </Select>
               </FormControl>
             </div>
-            <div className="mt-3">
+            <div className="mt-3 ml-3">
               <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-2 h-9"
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
                 type="button"
                 onClick={() => {
                   handleSortChange();
@@ -145,7 +145,7 @@ export default function RecipesListHolder({ recipesData }) {
                 {sort}
               </button>
               <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-2 h-9"
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
                 type="button"
                 onClick={() => {
                   handleFavoriteSelected();
@@ -157,13 +157,13 @@ export default function RecipesListHolder({ recipesData }) {
                 />
               </button>
               <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-40 mx-2 h-9"
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-26 mx-1 h-9"
                 type="button"
                 onClick={() => {
                   handleRandomSelected();
                 }}
               >
-                Random Selection
+                Random
               </button>
             </div>
           </div>

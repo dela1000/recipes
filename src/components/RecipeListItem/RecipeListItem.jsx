@@ -19,58 +19,70 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
   };
 
   return (
-    <div className="h-36" key={recipe.id}>
+    <div className="h-40" key={recipe.id}>
       <hr />
-      <div className="flex pt-2">
-        <button type="button" onClick={selectRecipe}>
-          {recipe.image ? (
-            <img
-              src={recipe.image}
-              alt="food"
-              className="inline object-cover max-h-32 w-32 bg-gray-200"
-            />
-          ) : (
-            <div className="h-20 w-20 bg-gray-200" />
-          )}
-        </button>
-        <div className="ml-2">
-          <div>
-            <a
-              className="text-xs text-blue-400"
-              href={recipe.originalURL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {recipe.source}
-            </a>
-          </div>
-          <button
-            className="capitalize text-xl italic text-left"
-            type="button"
-            onClick={selectRecipe}
-          >
-            {recipe.title}
+      <div className="flex">
+        <div className="flex-initial mt-3 ml-3 mr-3">
+          <button type="button" onClick={selectRecipe}>
+            {recipe.image ? (
+              <img
+                src={recipe.image}
+                alt="food"
+                className="inline object-cover max-h-32 w-32 bg-gray-200"
+              />
+            ) : (
+              <div className="h-20 w-20 bg-gray-200" />
+            )}
           </button>
-          {recipe.categories.length > 0 && (
-            <div className="text-xs flex">
-              {recipe.categories.map((category, idx) => (
-                <button
-                  type="button"
-                  key={category}
-                  className="capitalize mr-1"
-                  onClick={() => handleCategoryChange({ target: { value: category } })}
-                >
-                  {category}
-                  {idx + 1 < recipe.categories.length ? ',' : null}
-                </button>
-              ))}
-            </div>
-          )}
         </div>
-        <div className="pl-2">
-          {recipe.favorite && (
-            <StarIcon fontSize="small" className="fill-current text-yellow-400" />
-          )}
+        <div className="flex-initial mt-6">
+          <div>
+            <div>
+              <a
+                className="text-xs text-blue-400"
+                href={recipe.originalURL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {recipe.source}
+              </a>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="flex-initial">
+              <button
+                className="capitalize text-xl italic text-left"
+                type="button"
+                onClick={selectRecipe}
+              >
+                {recipe.title}
+              </button>
+            </div>
+            <div className="flex-initial pl-1">
+              {recipe.favorite && (
+                <StarIcon fontSize="small" className="fill-current text-yellow-400" />
+              )}
+            </div>
+          </div>
+          <div>
+            <div className="pt-1">
+              {recipe.categories.length > 0 && (
+                <div className="text-xs flex">
+                  {recipe.categories.map((category, idx) => (
+                    <button
+                      type="button"
+                      key={category}
+                      className="capitalize mr-1"
+                      onClick={() => handleCategoryChange({ target: { value: category } })}
+                    >
+                      {category}
+                      {idx + 1 < recipe.categories.length ? ',' : null}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

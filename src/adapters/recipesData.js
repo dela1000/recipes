@@ -3175,7 +3175,7 @@ const recipesData = [
   {
     id: 80,
     title: 'Easy Lemon Garlic Pasta',
-    favorite: false,
+    favorite: true,
     description: `Lemon Garlic Pasta delivers bold, vibrant flavor with minimal effort. It's the kind of pasta dish you turn to on busy weeknights when you want a satisfying dinner on the table in 20 minutes flat.`,
     source: 'pinchandswirl.com',
     originalURL: 'https://pinchandswirl.com/lemon-garlic-pasta/',
