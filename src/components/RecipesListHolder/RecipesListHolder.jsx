@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import orderBy from 'lodash/orderBy';
 import forEach from 'lodash/forEach';
@@ -8,9 +9,14 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import StarIcon from '@material-ui/icons/Star';
+import random from 'lodash/random';
 import RecipeListItem from '../RecipeListItem';
 
+import { Context } from '../../contexts/context';
+
 export default function RecipesListHolder({ recipesData }) {
+  const [{ setRecipeId, setRecipe }] = useContext(Context);
+  const history = useHistory();
   const [recipes, setRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categorySelected, setCategorySelected] = useState('none');
@@ -69,6 +75,13 @@ export default function RecipesListHolder({ recipesData }) {
     setFavoriteSelected(!favoriteSelected);
   };
 
+  const handleRandomSelected = () => {
+    const randomRecipeSelected = recipesData[random(0, recipesData.length - 1)];
+    setRecipe(randomRecipeSelected);
+    setRecipeId(randomRecipeSelected.id);
+    history.push('/recipe');
+  };
+
   useEffect(() => {
     updateList();
   }, [categorySelected, filterText, sort, favoriteSelected]);
@@ -123,7 +136,7 @@ export default function RecipesListHolder({ recipesData }) {
             </div>
             <div className="mt-3">
               <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-4 h-9"
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-2 h-9"
                 type="button"
                 onClick={() => {
                   handleSortChange();
@@ -132,7 +145,7 @@ export default function RecipesListHolder({ recipesData }) {
                 {sort}
               </button>
               <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-4 h-9"
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-2 h-9"
                 type="button"
                 onClick={() => {
                   handleFavoriteSelected();
@@ -142,6 +155,15 @@ export default function RecipesListHolder({ recipesData }) {
                   fontSize="small"
                   className={`${favoriteSelected ? `text-yellow-400` : 'text-white'} fill-current`}
                 />
+              </button>
+              <button
+                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-40 mx-2 h-9"
+                type="button"
+                onClick={() => {
+                  handleRandomSelected();
+                }}
+              >
+                Random Selection
               </button>
             </div>
           </div>

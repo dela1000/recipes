@@ -27,7 +27,7 @@ export default function App() {
       <Router>
         <Header />
         <main style={{ display: navbarState ? 'none' : 'block' }}>
-          <div className="container m-4 my-10 md:mx-40 ">
+          <div className="container m-4 my-10 md:mx-40">
             <Switch>
               <Route exact path="/">
                 <Home windowType={windowType} />
