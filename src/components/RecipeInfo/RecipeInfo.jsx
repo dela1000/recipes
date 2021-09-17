@@ -21,7 +21,7 @@ export default function RecipeInfo({ recipe }) {
         <img
           src={recipe.image}
           alt="food"
-          className="inline object-cover max-h-72 w-72 bg-gray-200 mr-8"
+          className="object-cover min-h-full min-w-fill h-72 w-72 bg-gray-200 mr-8"
         />
       )}
       <div className="w-full">

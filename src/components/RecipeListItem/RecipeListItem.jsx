@@ -19,7 +19,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
   };
 
   return (
-    <div className="h-40" key={recipe.id}>
+    <div key={recipe.id}>
       <hr />
       <div className="flex">
         <div className="flex-initial mt-3 ml-3 mr-3">
@@ -28,7 +28,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
               <img
                 src={recipe.image}
                 alt="food"
-                className="inline object-cover max-h-32 w-32 bg-gray-200"
+                className="object-cover min-h-full min-w-full w-32 h-32 bg-gray-200"
               />
             ) : (
               <div className="h-20 w-20 bg-gray-200" />
