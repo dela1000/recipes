@@ -17,14 +17,18 @@ export default function RecipeInfo({ recipe }) {
 
   return (
     <div className="md:flex pt-8">
-      {recipe.image && (
-        <img
-          src={recipe.image}
-          alt="food"
-          className="object-cover min-h-full min-w-fill h-72 w-72 bg-gray-200 mr-8"
-        />
-      )}
-      <div className="w-full">
+      <div className="flex">
+        <div className="m-auto">
+          {recipe.image && (
+            <img
+              src={recipe.image}
+              alt="food"
+              className="object-cover min-h-full min-w-fill h-72 w-72 bg-gray-200"
+            />
+          )}
+        </div>
+      </div>
+      <div className="w-full ml-4">
         <div>
           <a
             className="text-xs text-blue-400 uppercase"
@@ -35,7 +39,7 @@ export default function RecipeInfo({ recipe }) {
             {recipe.source}
           </a>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 pl-3 lg:pl-0">
           <div className="flex">
             <div className="flex justify-start mt-5">
               <div>
@@ -59,7 +63,7 @@ export default function RecipeInfo({ recipe }) {
             </div>
           </div>
         </div>
-        <div className="w-4/5">
+        <div className="w-4/5 pl-3 lg:pl-0">
           {recipe.description && (
             <div className="mb-2">
               <b className="uppercase">Description</b> {recipe.description}

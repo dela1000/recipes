@@ -23,11 +23,11 @@ export default function Home() {
         <div>
           <RecipeInfo recipe={recipe} />
           <hr className="mt-6" />
-          <div className="lg:flex flex-row">
-            <div className="lg:w-2/6 pr-20">
+          <div className="lg:flex flex-row mx-4">
+            <div className="lg:w-3/12 pr-20">
               <RecipeIngredients recipe={recipe} />
             </div>
-            <div className="lg:w-4/6">
+            <div className="lg:w-9/12">
               <RecipeInstructions recipe={recipe} />
             </div>
           </div>
