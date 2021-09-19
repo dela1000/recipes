@@ -18,7 +18,7 @@ export default function RecipeInfo({ recipe }) {
   return (
     <div className="md:flex pt-8">
       <div className="flex">
-        <div className="m-auto">
+        <div className="h-72 w-72 m-auto">
           {recipe.image && (
             <img
               src={recipe.image}
