@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Context = createContext();
 
 const Provider = ({ children }) => {
-  const [themeName, setThemeName] = useState('dark');
+  const [themeName, setThemeName] = useState('light');
   const [navbarState, setNavbarState] = useState(false);
   const [recipeId, setRecipeId] = useState(null);
   const [recipe, setRecipe] = useState({});
