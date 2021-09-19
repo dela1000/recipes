@@ -23,7 +23,7 @@ export default function App() {
   }, [width]);
 
   return (
-    <div id="top" className={`${themeName} app`}>
+    <div id="top" className={`${themeName} app overflow-x-hidden`}>
       <Router>
         <Header />
         <main style={{ display: navbarState ? 'none' : 'block' }}>
