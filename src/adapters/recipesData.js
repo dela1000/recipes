@@ -10,7 +10,8 @@ const recipesData = [
     active: '',
     total: '30',
     categories: ['paleo'],
-    image: 'http://foodcount.com/images/recipes/zoodles-and-meatballs.jpg',
+    image:
+      'https://cleanfoodcrush.com/wp-content/uploads/2017/09/Clean-Food-Turkey-Meatballs-Slurpy-Zucchini-Noodles.jpg',
     ingredients: {
       standard: [
         '1 lb ground turkey 93% lean',
@@ -1972,7 +1973,8 @@ const recipesData = [
     active: '',
     total: '',
     categories: [],
-    image: 'http://www.health-bent.com/wp-content/uploads/jerkchickenpineapple.jpg',
+    image:
+      'https://reciperunner.com/wp-content/uploads/2019/05/Jerk-Chicken-Bowls-Pineapple-Black-Bean-Salsa-Photo-720x720.jpg',
     ingredients: {
       standard: [],
       'For the Bowl': [
