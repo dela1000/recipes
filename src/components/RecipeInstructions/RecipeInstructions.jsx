@@ -5,7 +5,8 @@ export default function RecipeInstructions({ recipe }) {
 
   return (
     <div className="my-5 mb-20 pl-3 lg:pl-0">
-      {recipe.instructions && <div className="mt-5 mb-2 text-2xl">INSTRUCTIONS</div>}
+      {recipe.instructions.standard.length > 0 ||
+        (instructionsHeaders.length > 1 && <div className="mt-5 mb-2 text-2xl">INSTRUCTIONS</div>)}
       {instructionsHeaders.map((header) => (
         <div key={header} className="px-4">
           {recipe.instructions[header].length > 0 && (

@@ -16,7 +16,7 @@ export default function RecipeInfo({ recipe }) {
   }, []);
 
   return (
-    <div className="md:flex pt-8">
+    <div className="md:flex">
       <div className="flex">
         <div className="h-72 w-72 m-auto">
           {recipe.image && (
@@ -41,7 +41,7 @@ export default function RecipeInfo({ recipe }) {
         </div>
         <div className="mb-3 pl-3 lg:pl-0">
           <div className="flex">
-            <div className="flex justify-start mt-5">
+            <div className="flex justify-start mt-5 mr-5 lg:mr-0">
               <div>
                 <div className="text-3xl mb-2 capitalize italic">{recipe.title}</div>
                 {recipe.categories.length > 0 && (
