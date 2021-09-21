@@ -116,6 +116,8 @@ export default function RecipesListHolder({ recipesData }) {
                 autoComplete="off"
                 onChange={handleFilterListChange}
               />
+            </div>
+            <div className="ml-4 mt-3 mb-4 lg:ml-0 lg:mt-0 lg:mb-0">
               <FormControl className="w-32 min-w-full py-20">
                 <InputLabel>Categories</InputLabel>
                 <Select
@@ -134,6 +136,7 @@ export default function RecipesListHolder({ recipesData }) {
                 </Select>
               </FormControl>
             </div>
+
             <div className="mt-3 ml-3">
               <button
                 className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"

@@ -43,7 +43,7 @@ export default function Navbar() {
         {navList.map((navOption) => (
           <div key={navOption} className="nav-list-item monserrat link link-nav">
             <button
-              className="uppercase"
+              className="uppercase fade-in"
               type="button"
               onClick={() => {
                 closeNavList();

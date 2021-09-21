@@ -26,8 +26,8 @@ export default function App() {
     <div id="top" className={`${themeName} app overflow-x-hidden`}>
       <Router>
         <Header />
-        <main style={{ display: navbarState ? 'none' : 'block' }}>
-          <div className="container mt-10 md:mx-40">
+        <main style={{ display: navbarState ? 'none' : 'block container' }}>
+          <div className="mt-10 md:mx-40">
             <Switch>
               <Route exact path="/">
                 <Home windowType={windowType} />
