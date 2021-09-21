@@ -105,69 +105,76 @@ export default function RecipesListHolder({ recipesData }) {
       <div>
         <div className="lg:flex justify-between mx-3 mb-5">
           <div className="text-5xl pt-1 mr-12">RECIPES</div>
-          <div className="lg:flex">
-            <div>
-              <Input
-                className="mx-4 pt-4"
-                id="filter"
-                name="filter"
-                placeholder="Filter"
-                type="text"
-                autoComplete="off"
-                onChange={handleFilterListChange}
-              />
-            </div>
-            <div className="ml-4 mt-3 mb-4 lg:ml-0 lg:mt-0 lg:mb-0">
-              <FormControl className="w-32 min-w-full py-20">
-                <InputLabel>Categories</InputLabel>
-                <Select
-                  onChange={handleCategoryChange}
-                  value={categorySelected}
-                  className="capitalize"
-                >
-                  <MenuItem value="none" className="capitalize text-gray-200">
-                    <em>None</em>
-                  </MenuItem>
-                  {categories.map((category) => (
-                    <MenuItem key={category} value={category} className="capitalize">
-                      {category}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </div>
-
-            <div className="mt-3 ml-3">
-              <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
-                type="button"
-                onClick={() => {
-                  handleSortChange();
-                }}
-              >
-                {sort}
-              </button>
-              <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
-                type="button"
-                onClick={() => {
-                  handleFavoriteSelected();
-                }}
-              >
-                <StarIcon
-                  fontSize="small"
-                  className={`${favoriteSelected ? `text-yellow-400` : 'text-white'} fill-current`}
+          <div>
+            <div className="lg:flex">
+              <div>
+                <Input
+                  className="mx-4 pt-4"
+                  id="filter"
+                  name="filter"
+                  placeholder="Search"
+                  type="text"
+                  autoComplete="off"
+                  onChange={handleFilterListChange}
                 />
-              </button>
-              <button
-                className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-26 mx-1 h-9"
-                type="button"
-                onClick={() => {
-                  handleRandomSelected();
-                }}
-              >
-                Random
-              </button>
+              </div>
+              <div className="ml-4 mt-3 mb-4 lg:ml-0 lg:mt-0 lg:mb-0">
+                <FormControl className="w-32 min-w-full py-20">
+                  <InputLabel>Categories</InputLabel>
+                  <Select
+                    onChange={handleCategoryChange}
+                    value={categorySelected}
+                    className="capitalize"
+                  >
+                    <MenuItem value="none" className="capitalize text-gray-200">
+                      <em>None</em>
+                    </MenuItem>
+                    {categories.map((category) => (
+                      <MenuItem key={category} value={category} className="capitalize">
+                        {category}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </div>
+            </div>
+            <div className="lg:float-right">
+              <div className="lg:flex justify-between">
+                <div className="mt-3 ml-3">
+                  <button
+                    className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
+                    type="button"
+                    onClick={() => {
+                      handleSortChange();
+                    }}
+                  >
+                    {sort}
+                  </button>
+                  <button
+                    className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
+                    type="button"
+                    onClick={() => {
+                      handleFavoriteSelected();
+                    }}
+                  >
+                    <StarIcon
+                      fontSize="small"
+                      className={`${
+                        favoriteSelected ? `text-yellow-400` : 'text-white'
+                      } fill-current`}
+                    />
+                  </button>
+                  <button
+                    className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-26 mx-1 h-9"
+                    type="button"
+                    onClick={() => {
+                      handleRandomSelected();
+                    }}
+                  >
+                    Random
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
