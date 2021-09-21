@@ -23,12 +23,15 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
       <hr />
       <div className="flex">
         <div className="flex-initial mt-3 ml-3 mr-3">
+          <div className="absolute">
+            {recipe.favorite && <StarIcon fontSize="large" className="text-yellow-400" />}
+          </div>
           <button type="button" onClick={selectRecipe} className="w-32 h-32">
             {recipe.image ? (
               <img
                 src={recipe.image}
                 alt="food"
-                className="object-cover min-h-full min-w-full w-32 h-32 bg-gray-200"
+                className="object-cover min-h-full min-w-full w-32 h-32"
               />
             ) : (
               <div className="h-20 w-20 bg-gray-200" />
@@ -57,11 +60,6 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
               >
                 {recipe.title}
               </button>
-            </div>
-            <div className="flex-initial px-1">
-              {recipe.favorite && (
-                <StarIcon fontSize="small" className="fill-current text-yellow-400 align-middle" />
-              )}
             </div>
           </div>
           <div>
