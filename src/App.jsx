@@ -1,15 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Header from './components/Header/index';
-import ScrollToTop from './components/ScrollToTop/index';
-import Home from './pages/Home/index';
-import Recipe from './pages/Recipe/index';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+import Header from './components/Header';
+import ScrollToTop from './components/ScrollToTop';
+import SignIn from './pages/SignIn';
+import Home from './pages/Home';
+import Recipe from './pages/Recipe';
 import { Context } from './contexts/context';
+import secrets from './secrets/secrets';
 import useWindowDimensions from './contexts/useWindowDimensions';
 import './tailwind.css';
 import './App.css';
 
+const firebaseApp = initializeApp(secrets.firebaseConfig);
+
 export default function App() {
+  const auth = getAuth(firebaseApp);
+  const [user] = useAuthState(auth);
+
   const [{ themeName, navbarState }] = useContext(Context);
   const { width } = useWindowDimensions();
   const [windowType, setWindowType] = useState('desktop');
@@ -24,25 +35,29 @@ export default function App() {
 
   return (
     <div id="top" className={`${themeName} app overflow-x-hidden`}>
-      <Router>
-        <Header />
-        <main style={{ display: navbarState ? 'none' : 'block container' }}>
-          <div className="mt-10 md:mx-40">
-            <Switch>
-              <Route exact path="/">
-                <Home windowType={windowType} />
-              </Route>
-              <Route exact path="/recipe">
-                <Recipe windowType={windowType} />
-              </Route>
-              <Route path="*">
-                <Redirect to="/" />
-              </Route>
-            </Switch>
-            <ScrollToTop />
-          </div>
-        </main>
-      </Router>
+      {user ? (
+        <Router>
+          <Header />
+          <main style={{ display: navbarState ? 'none' : 'block container' }}>
+            <div className="mt-10 md:mx-40">
+              <Switch>
+                <Route exact path="/">
+                  <Home windowType={windowType} />
+                </Route>
+                <Route exact path="/recipe">
+                  <Recipe windowType={windowType} />
+                </Route>
+                <Route path="*">
+                  <Redirect to="/" />
+                </Route>
+              </Switch>
+              <ScrollToTop />
+            </div>
+          </main>
+        </Router>
+      ) : (
+        <SignIn auth={auth} />
+      )}
     </div>
   );
 }
