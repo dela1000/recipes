@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import BrightnessLowIcon from '@material-ui/icons/BrightnessLow';
@@ -10,7 +11,7 @@ import './Navbar.css';
 
 const navList = ['recipes'];
 
-export default function Navbar() {
+export default function Navbar({ auth }) {
   const { width } = useWindowDimensions();
   const [currentWidth, setCurrentWidth] = useState(0);
   const history = useHistory();
@@ -28,6 +29,10 @@ export default function Navbar() {
 
   const navigate = (navigateTo) => {
     history.push(`/${navigateTo}`);
+  };
+
+  const signOut = () => {
+    auth.signOut();
   };
 
   return (
@@ -54,6 +59,17 @@ export default function Navbar() {
             </button>
           </div>
         ))}
+        <div className="nav-list-item monserrat link link-nav">
+          <button
+            className="uppercase fade-in"
+            type="button"
+            onClick={() => {
+              signOut();
+            }}
+          >
+            SignOut
+          </button>
+        </div>
       </div>
 
       <button
@@ -76,3 +92,9 @@ export default function Navbar() {
     </nav>
   );
 }
+
+Navbar.propTypes = {
+  auth: PropTypes.shape({
+    signOut: PropTypes.func.isRequired,
+  }).isRequired,
+};

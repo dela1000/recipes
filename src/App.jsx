@@ -37,7 +37,7 @@ export default function App() {
     <div id="top" className={`${themeName} app overflow-x-hidden`}>
       {user ? (
         <Router>
-          <Header />
+          <Header auth={auth} />
           <main style={{ display: navbarState ? 'none' : 'block container' }}>
             <div className="mt-10 md:mx-40">
               <Switch>
