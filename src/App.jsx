@@ -1,21 +1,22 @@
+// React
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { initializeApp } from 'firebase/app';
+// Firebase
 import { getAuth } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
+import firebaseApp from './firebase';
+// Internal
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import SignIn from './pages/SignIn';
 import Home from './pages/Home';
 import Recipe from './pages/Recipe';
+// Contexts
 import { Context } from './contexts/context';
-import secrets from './secrets/secrets';
 import useWindowDimensions from './contexts/useWindowDimensions';
+// styles
 import './tailwind.css';
 import './App.css';
-
-const firebaseApp = initializeApp(secrets.firebaseConfig);
 
 export default function App() {
   const auth = getAuth(firebaseApp);
@@ -37,7 +38,7 @@ export default function App() {
     <div id="top" className={`${themeName} app overflow-x-hidden`}>
       {user ? (
         <Router>
-          <Header auth={auth} />
+          <Header />
           <main style={{ display: navbarState ? 'none' : 'block container' }}>
             <div className="mt-10 md:mx-40">
               <Switch>
@@ -56,7 +57,7 @@ export default function App() {
           </main>
         </Router>
       ) : (
-        <SignIn auth={auth} />
+        <SignIn />
       )}
     </div>
   );

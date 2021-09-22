@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import Navbar from '../Navbar/Navbar';
@@ -7,7 +6,7 @@ import './Header.css';
 
 import { Context } from '../../contexts/context';
 
-export default function Header({ auth }) {
+export default function Header() {
   const history = useHistory();
   const [{ themeName, recipeId, setRecipeId }] = useContext(Context);
 
@@ -31,11 +30,7 @@ export default function Header({ auth }) {
           </button>
         )}
       </div>
-      <Navbar auth={auth} />
+      <Navbar />
     </header>
   );
 }
-
-Header.propTypes = {
-  auth: PropTypes.shape({}).isRequired,
-};

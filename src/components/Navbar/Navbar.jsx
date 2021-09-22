@@ -1,17 +1,17 @@
 import { useContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import BrightnessLowIcon from '@material-ui/icons/BrightnessLow';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { Context } from '../../contexts/context';
+import { auth } from '../../firebase';
 import useWindowDimensions from '../../contexts/useWindowDimensions';
 import './Navbar.css';
 
 const navList = ['recipes'];
 
-export default function Navbar({ auth }) {
+export default function Navbar() {
   const { width } = useWindowDimensions();
   const [currentWidth, setCurrentWidth] = useState(0);
   const history = useHistory();
@@ -92,9 +92,3 @@ export default function Navbar({ auth }) {
     </nav>
   );
 }
-
-Navbar.propTypes = {
-  auth: PropTypes.shape({
-    signOut: PropTypes.func.isRequired,
-  }).isRequired,
-};
