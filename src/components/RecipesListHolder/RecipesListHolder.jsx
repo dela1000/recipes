@@ -6,6 +6,7 @@ import forEach from 'lodash/forEach';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import StarIcon from '@material-ui/icons/Star';
@@ -114,36 +115,40 @@ export default function RecipesListHolder({ recipesData }) {
           <div className="text-5xl pt-1 mr-12">RECIPES</div>
           <div>
             <div className="lg:flex">
-              <div>
-                <Input
-                  className="mx-4 pt-4"
-                  id="filter"
-                  name="filter"
-                  placeholder="Search"
-                  type="text"
-                  autoComplete="off"
-                  value={filterText}
-                  onChange={handleFilterListChange}
-                />
+              <div className="mr-3">
+                <Paper className="p-0.5 background-color" style={{ boxShadow: 'none' }}>
+                  <Input
+                    className="mx-0.5 pt-4"
+                    id="filter"
+                    name="filter"
+                    placeholder="Search"
+                    type="text"
+                    autoComplete="off"
+                    value={filterText}
+                    onChange={handleFilterListChange}
+                  />
+                </Paper>
               </div>
               <div className="ml-4 mt-3 mb-4 lg:ml-0 lg:mt-0 lg:mb-0">
-                <FormControl className="w-32 min-w-full py-20">
-                  <InputLabel>Categories</InputLabel>
-                  <Select
-                    onChange={handleCategoryChange}
-                    value={categorySelected}
-                    className="capitalize"
-                  >
-                    <MenuItem value="none" className="capitalize text-gray-200">
-                      <em>None</em>
-                    </MenuItem>
-                    {categories.map((category) => (
-                      <MenuItem key={category} value={category} className="capitalize">
-                        {category}
+                <Paper className="p-0.5 background-color" style={{ boxShadow: 'none' }}>
+                  <FormControl className="w-32 min-w-full py-20">
+                    <InputLabel>Categories</InputLabel>
+                    <Select
+                      onChange={handleCategoryChange}
+                      value={categorySelected}
+                      className="capitalize"
+                    >
+                      <MenuItem value="none" className="capitalize text-gray-200">
+                        <em>None</em>
                       </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
+                      {categories.map((category) => (
+                        <MenuItem key={category} value={category} className="capitalize">
+                          {category}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Paper>
               </div>
             </div>
             <div className="lg:float-right">

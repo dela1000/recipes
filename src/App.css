@@ -203,6 +203,10 @@ main {
   }
 }
 
+background-color {
+  background-color: #fcfcfc;
+}
+
 .fade-in {
   -webkit-animation: fadein 1s;
   -moz-animation: fadein 1s;
