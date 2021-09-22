@@ -115,7 +115,7 @@ export default function RecipesListHolder({ recipesData }) {
           <div className="text-5xl pt-1 mr-12">RECIPES</div>
           <div>
             <div className="lg:flex">
-              <div className="mr-3">
+              <div className="mx-3">
                 <Paper className="p-0.5 background-color" style={{ boxShadow: 'none' }}>
                   <Input
                     className="mx-0.5 pt-4"
