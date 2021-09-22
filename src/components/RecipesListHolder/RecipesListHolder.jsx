@@ -82,10 +82,6 @@ export default function RecipesListHolder({ recipesData }) {
     history.push('/recipe');
   };
 
-  useEffect(() => {
-    updateList();
-  }, [categorySelected, filterText, sort, favoriteSelected]);
-
   const groupCategories = () => {
     let allCategories = [];
     forEach(recipesData, (recipe) => {
@@ -94,6 +90,17 @@ export default function RecipesListHolder({ recipesData }) {
     const unsortedCategories = [...new Set(allCategories)];
     setCategories(unsortedCategories.sort());
   };
+
+  const reset = () => {
+    setCategorySelected('none');
+    setFilterText('');
+    setFavoriteSelected(false);
+    setSort('asc');
+  };
+
+  useEffect(() => {
+    updateList();
+  }, [categorySelected, filterText, sort, favoriteSelected]);
 
   useEffect(() => {
     groupCategories();
@@ -115,6 +122,7 @@ export default function RecipesListHolder({ recipesData }) {
                   placeholder="Search"
                   type="text"
                   autoComplete="off"
+                  value={filterText}
                   onChange={handleFilterListChange}
                 />
               </div>
@@ -172,6 +180,15 @@ export default function RecipesListHolder({ recipesData }) {
                     }}
                   >
                     Random
+                  </button>
+                  <button
+                    className="uppercase rounded px-4 text-xs bg-red-600 text-blue-100 hover:bg-red-500 duration-300 mx-1 h-9"
+                    type="button"
+                    onClick={() => {
+                      reset();
+                    }}
+                  >
+                    Reset
                   </button>
                 </div>
               </div>
