@@ -59,10 +59,21 @@ export default function Navbar() {
             className="uppercase fade-in"
             type="button"
             onClick={() => {
+              navigate('addrecipe');
+            }}
+          >
+            Add Recipe
+          </button>
+        </div>
+        <div className="nav-list-item monserrat link link-nav">
+          <button
+            className="uppercase fade-in"
+            type="button"
+            onClick={() => {
               signOut();
             }}
           >
-            SignOut
+            Sign Out
           </button>
         </div>
       </div>

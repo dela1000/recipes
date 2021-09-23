@@ -5,7 +5,11 @@ export default function AddRecipeButton({ text }) {
   const history = useHistory();
 
   return (
-    <button type="button" className="uppercase" onClick={() => history.push(`/addrecipe`)}>
+    <button
+      type="button"
+      className="uppercase monserrat"
+      onClick={() => history.push(`/addrecipe`)}
+    >
       {text}
     </button>
   );
