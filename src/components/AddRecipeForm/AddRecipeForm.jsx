@@ -105,6 +105,8 @@ export default function AddRecipeForm() {
                 fullWidth
                 id="description"
                 label="Description"
+                multiline
+                rows={5}
                 {...register('description')}
               />
             </Grid>
@@ -122,6 +124,7 @@ export default function AddRecipeForm() {
               />
             </Grid>
           </Grid>
+
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -134,6 +137,55 @@ export default function AddRecipeForm() {
               />
             </Grid>
           </Grid>
+
+          <Grid container spacing={1}>
+            <Grid item xs={6} sm={6}>
+              <TextField fullWidth id="yield" label="Yield" {...register('yield')} />
+            </Grid>
+            <Grid item xs={6} sm={6}>
+              <TextField fullWidth id="source" label="Source" {...register('source')} />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1}>
+            <Grid item xs={6} sm={6}>
+              <TextField
+                fullWidth
+                id="active-time"
+                label="Active Time"
+                {...register('active-time')}
+              />
+            </Grid>
+            <Grid item xs={6} sm={6}>
+              <TextField fullWidth id="total-time" label="Total Time" {...register('total-time')} />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={12}>
+              <TextField fullWidth id="url" label="Url" {...register('url')} />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={12}>
+              <TextField fullWidth id="categories" label="Categories" {...register('categories')} />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                fullWidth
+                id="notes"
+                label="Notes"
+                multiline
+                rows={10}
+                {...register('notes')}
+              />
+            </Grid>
+          </Grid>
+
           <Box mt={3} justify="end">
             <Button variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
               Add Recipe
