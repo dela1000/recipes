@@ -7,7 +7,7 @@ import { auth, db } from '../firebase';
 const Context = createContext();
 
 const Provider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [currentUser, setCurrentUser] = useState();
   const [token, setToken] = useState();
   const [themeName, setThemeName] = useState('light');
   const [navbarState, setNavbarState] = useState(false);
@@ -41,7 +41,7 @@ const Provider = ({ children }) => {
           await setDoc(doc(db, 'users', result.user.uid), {
             recipes: [],
           });
-          setUser(result.user);
+          setCurrentUser(result.user);
         }
       })
       .catch((error) => {
@@ -68,7 +68,8 @@ const Provider = ({ children }) => {
           recipe,
           setRecipe,
           signInWithGoogle,
-          user,
+          currentUser,
+          setCurrentUser,
           token,
           db,
         },

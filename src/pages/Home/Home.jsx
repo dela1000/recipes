@@ -11,8 +11,12 @@ export default function Home() {
 
   useEffect(async () => {
     if (currentUser) {
-      const querySnapshot = await getDocs(collection(db, 'users', currentUser.uid));
+      const path = `users/${currentUser.uid}/recipes`;
+
+      const querySnapshot = await getDocs(collection(db, path));
+      console.log('+++ 17: src/pages/Home/Home.jsx - querySnapshot: ', querySnapshot);
       querySnapshot.forEach((doc) => {
+        console.log('+++ 19: src/pages/Home/Home.jsx - doc: ', doc);
         console.log(`${doc.id} => ${doc.data()}`);
       });
     }

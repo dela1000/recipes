@@ -19,10 +19,14 @@ import './tailwind.css';
 import './App.css';
 
 export default function App() {
+  const [{ themeName, navbarState, setCurrentUser }] = useContext(Context);
+
   const auth = getAuth(firebaseApp);
   const [user] = useAuthState(auth);
+  if (user) {
+    setCurrentUser(user);
+  }
 
-  const [{ themeName, navbarState }] = useContext(Context);
   const { width } = useWindowDimensions();
   const [windowType, setWindowType] = useState('desktop');
 
