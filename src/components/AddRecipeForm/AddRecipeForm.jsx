@@ -83,9 +83,14 @@ export default function AddRecipeForm() {
     const categoriesHolder = categories.trim().split(',');
 
     categoriesHolder.forEach((category) => {
-      categoriesFinal.push(category.trim().toLowerCase());
+      let item = category.trim().toLowerCase();
+      if (item.charAt(item.length - 1) === ',') {
+        item = item.slice(0, -1);
+      }
+      console.log('+++ 90: src/components/AddRecipeForm/AddRecipeForm.jsx - item: ', item);
+      categoriesFinal.push(item);
     });
-    return categoriesFinal;
+    return categoriesFinal.filter(String);
   };
 
   const onSubmit = (recipeFormData) => {
@@ -100,7 +105,7 @@ export default function AddRecipeForm() {
       dataToSubmit.instructions = { standard: definedInstructions };
     }
     if (recipeFormData.categories.length > 0) {
-      dataToSubmit.categories = defineCategores(recipeFormData.categories);
+      dataToSubmit.categories = defineCategores(recipeFormData.categories.trim());
     }
 
     submitData(dataToSubmit);

@@ -7,6 +7,11 @@ import StarIcon from '@material-ui/icons/Star';
 export default function RecipeInfo({ recipe }) {
   const history = useHistory();
 
+  console.log(
+    '+++ 10: src/components/RecipeInfo/RecipeInfo.jsx - recipe: ',
+    JSON.stringify(recipe, null, 4),
+  );
+
   const goBackHome = () => {
     history.push(`/`);
   };

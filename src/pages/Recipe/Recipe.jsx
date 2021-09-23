@@ -28,7 +28,7 @@ export default function Home() {
               <RecipeIngredients recipe={recipe} />
             </div>
             <div className="lg:w-9/12">
-              <RecipeInstructions recipe={recipe} />
+              {recipe.instructions && <RecipeInstructions recipe={recipe} />}
             </div>
           </div>
         </div>
