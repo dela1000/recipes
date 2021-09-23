@@ -81,9 +81,9 @@ export default function RecipeInfo({ recipe }) {
               {recipe.active}
             </div>
           )}
-          {recipe.total && (
+          {recipe.totalTime && (
             <div className="mb-2">
-              <b className="uppercase">Total</b> {recipe.total}
+              <b className="uppercase">Total Time </b> {recipe.totalTime}
             </div>
           )}
         </div>
@@ -100,7 +100,7 @@ RecipeInfo.propTypes = {
     originalURL: PropTypes.string,
     yield: PropTypes.string,
     active: PropTypes.string,
-    total: PropTypes.string,
+    totalTime: PropTypes.string,
     image: PropTypes.string,
     favorite: PropTypes.bool,
     categories: PropTypes.arrayOf(PropTypes.string),

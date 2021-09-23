@@ -8,7 +8,7 @@ const recipesData = [
     originalURL: 'https://foodcount.com/recipe/zoodles-turkey-meatballs',
     yield: '4',
     active: '',
-    total: '30',
+    totalTime: '30',
     categories: ['paleo'],
     image:
       'https://cleanfoodcrush.com/wp-content/uploads/2017/09/Clean-Food-Turkey-Meatballs-Slurpy-Zucchini-Noodles.jpg',
@@ -43,13 +43,11 @@ const recipesData = [
     title: 'Wine & Tomato Braised Chicken',
     favorite: false,
     description: 'Makes: 10 servings',
-    activeTime: '45 minutes',
-    totalTime: '3 3/4-6 3/4 hours',
     source: '',
     originalURL: 'http://www.eatingwell.com/recipes/wine_tomato_braised_chicken.html',
     yield: '10',
     active: '45 minutes',
-    total: '3 3/4-6 3/4 hours',
+    totalTime: '3 3/4-6 3/4 hours',
     categories: [],
     image:
       'https://static01.nyt.com/images/2020/02/10/dining/ch-tomato-and-coconut-braised-chicken/merlin_166828545_50e59496-f715-4d3a-a58e-4d03df861168-articleLarge.jpg',
@@ -99,7 +97,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image: 'https://cdn2.pepperplate.com/recipes/0945f7df3c684bb0a77ade8106415b93.jpg',
     ingredients: {
@@ -143,7 +141,7 @@ const recipesData = [
     originalURL: 'http://minimalistbaker.com/1-hour-vegan-shepherds-pie/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/dc830485810c4a3494f4bb123f583088.jpg',
     ingredients: {
@@ -187,7 +185,7 @@ const recipesData = [
     originalURL: 'http://www.recipe4living.com/recipes/tomato_mango_bruschetta_salsa.htm',
     yield: '',
     active: '',
-    total: '5 min preparation',
+    totalTime: '5 min preparation',
     categories: [],
     image: 'https://img-global.cpcdn.com/recipes/da25801017129cbf/400x400cq70/photo.jpg',
     ingredients: {
@@ -221,7 +219,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2019/05/14092148/garlic_shrimp-wide.jpg',
@@ -268,7 +266,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/126ddb6398c54790b944ece357eb366e.jpg',
     ingredients: {
@@ -302,7 +300,7 @@ const recipesData = [
     originalURL: 'http://allrecipes.com/recipe/the-best-steak-marinade/',
     yield: '1 cup marinade',
     active: '5 mins',
-    total: '5 mins',
+    totalTime: '5 mins',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/5153170.jpg',
     ingredients: {
@@ -331,7 +329,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://static01.nyt.com/images/2019/05/21/dining/21COOKING-SWEET-POTATO-FRIES1/28COOKING-SWEET-POTATO-FRIES1-articleLarge.jpg',
@@ -375,7 +373,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://maroscooking.files.wordpress.com/2019/03/727647a3-c8a5-4c50-9a82-f1f5e24e38f7.jpg',
@@ -403,7 +401,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://www.coldpressedoil.co.uk/mint-project/uploads/712982177.jpg',
     ingredients: {
@@ -468,7 +466,7 @@ const recipesData = [
     originalURL: 'http://www.deliciousmeetshealthy.com/spicy-sausage-and-shrimp-skillet-paleo/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://www.deliciousmeetshealthy.com/wp-content/uploads/2015/03/sausage-and-shrimp-skillet-11.jpg.webp',
@@ -513,7 +511,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://thepigandquill.com/wp-content/uploads/2013/04/veganchili_042613_web4_thumb.jpg',
     ingredients: {
@@ -556,7 +554,7 @@ const recipesData = [
     originalURL: 'https://www.reddit.com/r/slowcooking/comments/4jn7i0/thai_beef_curry/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://www.newworld.co.nz/-/media/Project/Sitecore/Brands/Brand-New-World/Recipes-2020/Slow-Cooker-Thai-Beef-Curry.jpg',
@@ -590,7 +588,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image: 'https://www.savorynothings.com/wp-content/uploads/2019/08/beef-stew-image-1.jpg',
     ingredients: {
@@ -625,7 +623,7 @@ const recipesData = [
     originalURL: 'http://damndelicious.net/2016/03/14/slow-cooker-pineapple-chicken/',
     yield: '6',
     active: '10 minutes',
-    total: '6 ours 45 minutes',
+    totalTime: '6 ours 45 minutes',
     categories: ['crock pot'],
     image:
       'http://s23209.pcdn.co/wp-content/uploads/2016/03/Slow-Cooker-Pineapple-Chicken-copy.jpg',
@@ -664,7 +662,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image:
       'https://www.wellplated.com/wp-content/uploads/2018/02/Slow-Cooker-Beef-Stroganoff-healthy-600x736.jpg',
@@ -701,7 +699,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '1',
-    total: '10',
+    totalTime: '10',
     categories: ['crock pot'],
     image:
       'https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Slow-Cooker-Jambalaya-Risotto_EXPS_THEDSCODR19_196785_C03_01_2b_rms.jpg',
@@ -746,7 +744,7 @@ const recipesData = [
     originalURL: 'https://tasty-videos.com/video/slow-cooker-garlic-parm-chicken/',
     yield: '',
     active: '20 minutes',
-    total: '6:20 hours',
+    totalTime: '6:20 hours',
     categories: ['crock pot'],
     image: 'https://i.pinimg.com/originals/eb/ab/1d/ebab1dab9cfe5bb354a8027554e59f14.jpg',
     ingredients: {
@@ -781,7 +779,7 @@ const recipesData = [
       'http://www.thekitchn.com/recipe-slow-cooker-chicken-tikka-masala-recipes-from-the-kitchn-211284',
     yield: '4 TO 6',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_1460,h_2044/at%2Farchive%2F1be8c8b24190f7f0a9e20426500babfbca2d75e6',
@@ -820,7 +818,7 @@ const recipesData = [
       'http://slowcookergourmet.net/slow-cooker-chicken-thighs-with-creamy-lemon-sauce/#more-2130',
     yield: '4',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://www.simplyhappyfoodie.com/wp-content/uploads/2018/09/crock-pot-creamy-lemon-chicken-breasts-5-500x500.jpg',
@@ -870,7 +868,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '5',
-    total: '8',
+    totalTime: '8',
     categories: ['crock pot'],
     image:
       'https://www.simplyrecipes.com/thmb/vp1-HU9h4WJc8dXZi7wN51MuVa8=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2015__09__slow-cooker-chicken-taco-meat-horiz-a-1500-1-607e484209ec4f32a3acc7ec8ca1e071.jpg',
@@ -907,7 +905,7 @@ const recipesData = [
     originalURL: 'http://twistedfood.co.uk/slow-cooker-butter-chicken/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://www.simplyhappyfoodie.com/wp-content/uploads/2019/07/slow-cooker-indian-butter-chicken-1-500x500.jpg',
@@ -950,7 +948,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://hips.hearstapps.com/del.h-cdn.co/assets/17/06/1486767184-delish-slow-cooker-balsamic-chicken-1.jpg',
@@ -991,7 +989,7 @@ const recipesData = [
     originalURL: 'http://www.justataste.com/skinny-shrimp-scampi-zucchini-noodles-recipe/',
     yield: '',
     active: '20',
-    total: '30',
+    totalTime: '30',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/81b5db3fe4294773b1e18d4a8523d08a.jpg',
     ingredients: {
@@ -1023,7 +1021,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/913827497f8e44b088b9e05fafadfdbc.jpg',
     ingredients: {
@@ -1060,7 +1058,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://www.justataste.com/wp-content/uploads/2018/01/easy-beef-and-broccoli-recipe.jpg',
@@ -1096,7 +1094,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/2d01c04ea5174eab8ba7912a98acc53e.jpg',
     ingredients: {
@@ -1146,7 +1144,7 @@ const recipesData = [
     originalURL: 'http://thedomesticman.com/2013/01/15/shirred-eggs-with-sausage-and-spinach/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://thedomesticatedman.files.wordpress.com/2015/10/img_3561.jpg?w=720&zoom=2',
     ingredients: {
@@ -1188,7 +1186,7 @@ const recipesData = [
     originalURL: 'http://thehealthyfoodie.com/sauteed-zucchini-mushrooms/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image:
       'https://thehealthyfoodie.com/wp-content/uploads/2014/05/Sauteed-Zucchinis-and-Mushrooms-9.jpg',
@@ -1223,7 +1221,7 @@ const recipesData = [
     originalURL: 'http://www.simplyrecipes.com/recipes/salmon_with_tomato_onions_and_capers/',
     yield: '4',
     active: '10 minutes',
-    total: '25 minutes',
+    totalTime: '25 minutes',
     categories: ['vegetarian'],
     image:
       'https://www.simplyrecipes.com/thmb/fKeVynO2yfWl2NvSgbk2I3-i4e8=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2005__09__salmon-tomato-onion-capers-vertical-a-1600-3f245d0cda7d44579125a0be69333d59.jpg',
@@ -1267,7 +1265,7 @@ const recipesData = [
     originalURL: 'http://www.preppypaleo.com/2015/02/easy-paleo-salmon-with-lemon-garlic.html?m=1',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://res.cloudinary.com/paleoleap/image/upload/f_auto,q_70/v1532109103/video-recipes/lemon-garlic-salmon-main.jpg',
@@ -1304,7 +1302,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F44%2F2020%2F05%2F09%2F8110444.jpg&q=85',
@@ -1348,7 +1346,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://hips.hearstapps.com/hmg-prod/images/delish-190808-vegetable-medley-0043-landscape-pf-1567108247.jpg',
@@ -1388,7 +1386,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian', 'salad'],
     image:
       'https://www.gritsandpinecones.com/wp-content/uploads/2020/04/southern-potato-salad-feature-image-1200x1200-copy.jpg',
@@ -1425,7 +1423,7 @@ const recipesData = [
     originalURL: 'http://www.justataste.com/easy-pineapple-chicken-fried-rice-recipe/',
     yield: '6 - 8',
     active: '20',
-    total: '35',
+    totalTime: '35',
     categories: [],
     image:
       'https://www.justataste.com/wp-content/uploads/2013/07/Pineapple-Chicken-Fried-Rice-Recipe.jpg',
@@ -1470,7 +1468,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/4ce80312a86144fd8569b1988948f2a5.jpg',
     ingredients: {
@@ -1500,7 +1498,7 @@ const recipesData = [
     originalURL: 'http://minimalistbaker.com/penne-pasta-salad-30-minutes/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['salad'],
     image: 'https://cdn2.pepperplate.com/recipes/fc0f8894c2d84f89865e24e811a22639.jpg',
     ingredients: {
@@ -1542,7 +1540,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://lifemadeketo.com/wp-content/uploads/2019/02/Low-Carb-Pot-Roast-Picture-Photo-Recipe.jpg',
@@ -1577,7 +1575,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['paleo'],
     image: 'https://thefoodiebunch.com/wp-content/uploads/2021/06/bowl-of-orange-chicken.jpg',
     ingredients: {
@@ -1614,7 +1612,7 @@ const recipesData = [
     originalURL: 'http://paleoista.com/recipes/fish-tacos/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['paleo'],
     image:
       'https://img.sunset02.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/1494355438/paleo-fish-tacos-pineapple-cilantro-salsa-su.jpg',
@@ -1656,7 +1654,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['paleo'],
     image:
       'https://www.theroastedroot.net/wp-content/uploads/2019/02/instant_pot_chicken_tikka_masala_9.jpg',
@@ -1713,7 +1711,7 @@ const recipesData = [
     originalURL: 'http://nomnompaleo.com/post/141876852968/orange-dijon-chicken',
     yield: '4',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['paleo'],
     image: 'https://nomnompaleo.com/wp-content/uploads/2018/01/800OrangeDijonChickenmusch13.jpg',
     ingredients: {
@@ -1752,7 +1750,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://www.wearesovegan.com/wp-content/uploads/2019/07/veganonepotpaella-h1.jpg',
     ingredients: {
@@ -1789,7 +1787,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://embed.widencdn.net/img/beef/a16xphrero/360x360px/spaghetti-squash-with-meat-sauce.tif?keep=c&u=7fueml',
@@ -1845,7 +1843,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://thesaltymarshmallow.com/wp-content/uploads/2018/04/lemon-pepper-roasted-chicken-thighs2.jpg',
@@ -1899,7 +1897,7 @@ const recipesData = [
     originalURL: 'http://civilizedcavemancooking.com/crockpot/lemon-garlic-crockpot-chicken/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot', 'paleo'],
     image: 'https://civilizedcaveman.com/wp-content/uploads/2011/06/IMG_0750-800x600.jpg',
     ingredients: {
@@ -1936,7 +1934,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://i2.wp.com/findglutenfreejapan.com/wp-content/uploads/2021/04/chicken-karage.jpg?fit=1920%2C1280&ssl=1',
@@ -1971,7 +1969,7 @@ const recipesData = [
     originalURL: 'http://www.health-bent.com/poultry/paleo-jerk-chicken-pineapple-bowl',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://reciperunner.com/wp-content/uploads/2019/05/Jerk-Chicken-Bowls-Pineapple-Black-Bean-Salsa-Photo-720x720.jpg',
@@ -2016,7 +2014,7 @@ const recipesData = [
     originalURL: 'http://www.budgetbytes.com/2013/05/italian-wonderpot/',
     yield: '6',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image: 'https://www.budgetbytes.com/wp-content/uploads/2013/05/Italian-Wonderpot-close.jpg',
     ingredients: {
@@ -2054,7 +2052,7 @@ const recipesData = [
     originalURL: 'http://www.chef-in-training.com/2011/11/honey-sauced-chicken/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image: 'https://www.chef-in-training.com/blog/wp-content/uploads/2012/05/P1090983-1.jpg',
     ingredients: {
@@ -2092,7 +2090,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image: 'https://i.pinimg.com/736x/44/22/c2/4422c2d30bc3a00b68a2d93a3f88c1ed.jpg',
     ingredients: {
@@ -2124,7 +2122,7 @@ const recipesData = [
     originalURL: 'http://www.skinnytaste.com/2013/06/these-lovely-grilled-salmon-and-lemon.html',
     yield: '4',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://www.skinnytaste.com/wp-content/uploads/2013/06/grilled-salmon-kabobs-550x365.jpg',
@@ -2163,7 +2161,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://i.pinimg.com/originals/59/af/66/59af66ab93792de5089f8fffd7d3221c.jpg',
     ingredients: {
@@ -2197,7 +2195,7 @@ const recipesData = [
     originalURL: 'http://carrotsncake.com/2013/02/garlic-mustard-drumsticks.html',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://carrotsncake.com/wp-content/uploads/2013/02/GARLIC-MUSTARD-CHICKEN-DRUMSTICKS.png',
@@ -2232,7 +2230,7 @@ const recipesData = [
       'https://www.reddit.com/r/1200isplenty/comments/8985o2/i_always_saw_indian_food_as_a_high_calorie/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://i.pinimg.com/originals/ca/c0/44/cac04414cf7aa5029201ec4f50401332.jpg',
     ingredients: {
@@ -2288,7 +2286,7 @@ const recipesData = [
     originalURL: 'http://www.vegetariantimes.com/recipe/curried-potatoes/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image:
       'https://149366112.v2.pressablecdn.com/wp-content/uploads/2016/08/crispy-turmeric-curried-roasted-potatoes-2-1200x750.jpg',
@@ -2325,7 +2323,7 @@ const recipesData = [
     originalURL: '',
     yield: '3 servings',
     active: '',
-    total: '8 hours',
+    totalTime: '8 hours',
     categories: ['crock pot'],
     image:
       'https://thestayathomechef.com/wp-content/uploads/2018/12/Slow-Cooker-Short-Ribs-3-500x500.jpg',
@@ -2368,7 +2366,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://www.thegunnysack.com/wp-content/uploads/2014/07/Honey_Sesame_Chicken_Crock_Pot_Recipe.jpg',
@@ -2412,7 +2410,7 @@ const recipesData = [
       'http://www.chef-in-training.com/2012/04/crock-pot-hawaiian-chicken-freezer-meal-2/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image: 'https://www.chef-in-training.com/blog/wp-content/uploads/2012/05/IMG_5756-2.jpg',
     ingredients: {
@@ -2445,7 +2443,7 @@ const recipesData = [
     originalURL: '',
     yield: '6',
     active: '',
-    total: '6 hours',
+    totalTime: '6 hours',
     categories: ['crock pot'],
     image: 'https://www.eatingonadime.com/wp-content/uploads/2019/08/crock-pot-chili-00010.jpg',
     ingredients: {
@@ -2480,7 +2478,7 @@ const recipesData = [
     originalURL: 'http://www.budgetbytes.com/2013/07/creamy-tomato-spinach-pasta/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image:
       'https://www.budgetbytes.com/wp-content/uploads/2013/07/Creamy-Tomato-Spinach-Pasta-V2-bowl.jpg',
@@ -2522,7 +2520,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://dinnerthendessert.com/wp-content/uploads/2019/04/Chipotle-Chicken-Recipe-Copycat-2.jpg',
@@ -2556,7 +2554,7 @@ const recipesData = [
     originalURL: 'http://www.myrecipes.com/recipe/chipotle-bean-burritos-0',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image: 'https://sanluisburritos.com/wp-content/uploads/2019/02/burrito-bean_cheese-v2.jpg',
     ingredients: {
@@ -2595,7 +2593,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://fitfoodiefinds.com/wp-content/uploads/2018/12/salsa-chicken-12.jpg',
     ingredients: {
@@ -2675,7 +2673,7 @@ const recipesData = [
     originalURL: 'http://www.reddit.com/r/Paleo/comments/1brnnp/hodgepodge_of_delicious/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['lunch'],
     image: 'https://cdn2.pepperplate.com/recipes/4b575bbf58ea4a8c82cd9b36b8f2b0f6.jpg',
     ingredients: {
@@ -2727,7 +2725,7 @@ const recipesData = [
       'http://nomnompaleo.com/post/1626071845/another-simpler-version-of-cauliflower-rice',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://nomnompaleo.com/wp-content/uploads/2018/02/800CauliRiceaaaacauliDSC_8061.jpg',
     ingredients: {
@@ -2765,7 +2763,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://www.tasteofhome.com/wp-content/uploads/2018/01/Cowboy-Calico-Beans_EXPS_SCBZ18_49199_B07_11_5b-20.jpg',
@@ -2802,7 +2800,7 @@ const recipesData = [
     originalURL: 'http://www.justataste.com/cacio-e-pepe-pasta/',
     yield: '4 - 6',
     active: '10',
-    total: '22',
+    totalTime: '22',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/8e9e2a4f0fe543c9bc8418070cd841e2.jpg',
     ingredients: {
@@ -2832,7 +2830,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://pipandebby.com/wp-content/uploads/2020/01/1016EggsVeggies006POST-500x500.jpg',
     ingredients: {
@@ -2858,7 +2856,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://natashaskitchen.com/wp-content/uploads/2019/04/Beef-Stroganoff-6.jpg',
     ingredients: {
@@ -2896,7 +2894,7 @@ const recipesData = [
     originalURL: 'http://allrecipes.com/recipe/beef-bulgogi/',
     yield: '4 servings',
     active: '10 mins',
-    total: '15 mins',
+    totalTime: '15 mins',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/4995974.jpg',
     ingredients: {
@@ -2929,7 +2927,7 @@ const recipesData = [
     originalURL: 'http://keirstenskitchen.com/2013/01/20/bacon-wrapped-dates/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['appetizer'],
     image: 'https://40aprons.com/wp-content/uploads/2019/07/bacon-wrapped-dates-500x500.jpg',
     ingredients: {
@@ -2966,7 +2964,7 @@ const recipesData = [
     originalURL: 'http://www.emilieeats.com/vegan-avocado-caprese-pasta-salad/',
     yield: '6',
     active: '10 minutes',
-    total: '18 minutes',
+    totalTime: '18 minutes',
     categories: ['vegetarian', 'salad'],
     image: 'https://cdn2.pepperplate.com/recipes/1571801198704120922a13b159351065.jpg',
     ingredients: {
@@ -3004,7 +3002,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['vegetarian'],
     image:
       'https://thedoctorskitchen.com/wp-content/uploads/2019/05/Sun-dried-Tomato-Asparagus-Pea-.jpg',
@@ -3040,7 +3038,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['crock pot'],
     image:
       'https://hips.hearstapps.com/del.h-cdn.co/assets/16/10/1457371429-delish-lettuce-wraps.jpg',
@@ -3084,7 +3082,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://cdn2.pepperplate.com/recipes/56050f5951034f62ac20bb883ad3fbf6.jpg',
     ingredients: {
@@ -3128,7 +3126,7 @@ const recipesData = [
     originalURL: 'http://www.guiatodo.com.co/Comida/Cartagena/arroz_con_coco',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://t2.rg.ltmcdn.com/es/images/1/1/2/img_arroz_con_coco_caribeno_53211_orig.jpg',
     ingredients: {
@@ -3157,7 +3155,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: ['salad'],
     image: 'https://hips.hearstapps.com/delish/assets/18/11/1520887294-cobb-salad-delish.jpg',
     ingredients: {
@@ -3183,7 +3181,7 @@ const recipesData = [
     originalURL: 'https://pinchandswirl.com/lemon-garlic-pasta/',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image: 'https://pinchandswirl.com/wp-content/uploads/2020/04/Lemon-Garlic-Pasta.webp',
     ingredients: {
@@ -3218,7 +3216,7 @@ const recipesData = [
     originalURL: '',
     yield: '',
     active: '',
-    total: '',
+    totalTime: '',
     categories: [],
     image:
       'https://cdn-uploads.mealime.com/uploads/recipe/thumbnail/389/presentation_88e69d2d-564e-49ea-8db1-0c5fb2e09d6f.jpg',

@@ -17,9 +17,15 @@ export default function AddRecipeForm() {
     return string;
   };
 
+  const splitLineIntoArray = (lineData) => {
+    const lines = lineData.split('\n');
+    return lines;
+  };
+
   const defineIngredients = (lineData) => {
     const ingredientsArray = [];
-    const lines = lineData.split('\n');
+
+    const lines = splitLineIntoArray(lineData);
 
     lines.forEach((line) => ingredientsArray.push(line));
     const formattedIngredients = [];
@@ -55,27 +61,39 @@ export default function AddRecipeForm() {
     return formattedIngredients;
   };
 
-  const defineInstructions = (lineData) => {
-    const lines = lineData.split('\n');
-    return lines;
+  const defineCategores = (categories) => {
+    const categoriesFinal = [];
+    const categoriesHolder = categories.trim().split(',');
+
+    categoriesHolder.forEach((category) => {
+      categoriesFinal.push(category.trim().toLowerCase());
+    });
+    return categoriesFinal;
   };
 
   const onSubmit = (recipeFormData) => {
-    // console.log('+++ 12: src/components/AddRecipeForm/AddRecipeForm.jsx - data: ', data);
+    const dataToSubmit = JSON.parse(JSON.stringify(recipeFormData));
+    dataToSubmit.favorite = false;
     if (recipeFormData.ingredients.length > 0) {
-      const definedIngredients = defineIngredients(recipeFormData.ingredients);
-      console.log(
-        '+++ 33: src/components/AddRecipeForm/AddRecipeForm.jsx - definedIngredients: ',
-        definedIngredients,
-      );
+      const definedIngredients = defineIngredients(recipeFormData.ingredients.trim());
+      dataToSubmit.ingredients = definedIngredients;
     }
     if (recipeFormData.instructions.length > 0) {
-      const definedInstructions = defineInstructions(recipeFormData.instructions);
+      const definedInstructions = splitLineIntoArray(recipeFormData.instructions.trim());
+      dataToSubmit.instructions = definedInstructions;
+    }
+    if (recipeFormData.categories.length > 0) {
+      dataToSubmit.categories = defineCategores(recipeFormData.categories);
       console.log(
-        '+++ 75: src/components/AddRecipeForm/AddRecipeForm.jsx - definedInstructions: ',
-        definedInstructions,
+        '+++ 77: src/components/AddRecipeForm/AddRecipeForm.jsx - dataToSubmit.categories: ',
+        JSON.stringify(dataToSubmit.categories, null, 4),
       );
     }
+
+    console.log(
+      '+++ 82: src/components/AddRecipeForm/AddRecipeForm.jsx - dataToSubmit: ',
+      dataToSubmit,
+    );
   };
 
   // console.log(watch('title')); // watch input value by passing the name of it
@@ -90,6 +108,7 @@ export default function AddRecipeForm() {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
+                autoComplete="off"
                 fullWidth
                 id="title"
                 label="Title"
@@ -102,11 +121,12 @@ export default function AddRecipeForm() {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
+                autoComplete="off"
                 fullWidth
                 id="description"
                 label="Description"
                 multiline
-                rows={5}
+                rows={3}
                 {...register('description')}
               />
             </Grid>
@@ -115,11 +135,12 @@ export default function AddRecipeForm() {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
+                autoComplete="off"
                 fullWidth
                 id="ingredients"
                 label="Ingredients"
                 multiline
-                rows={20}
+                rows={16}
                 {...register('ingredients')}
               />
             </Grid>
@@ -128,11 +149,12 @@ export default function AddRecipeForm() {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
+                autoComplete="off"
                 fullWidth
                 id="instructions"
                 label="Instructions"
                 multiline
-                rows={20}
+                rows={16}
                 {...register('instructions')}
               />
             </Grid>
@@ -140,36 +162,80 @@ export default function AddRecipeForm() {
 
           <Grid container spacing={1}>
             <Grid item xs={6} sm={6}>
-              <TextField fullWidth id="yield" label="Yield" {...register('yield')} />
+              <TextField
+                autoComplete="off"
+                fullWidth
+                id="yield"
+                label="Yield"
+                {...register('yield')}
+              />
             </Grid>
             <Grid item xs={6} sm={6}>
-              <TextField fullWidth id="source" label="Source" {...register('source')} />
+              <TextField
+                autoComplete="off"
+                fullWidth
+                id="source"
+                label="Source"
+                {...register('source')}
+              />
             </Grid>
           </Grid>
 
           <Grid container spacing={1}>
             <Grid item xs={6} sm={6}>
               <TextField
+                autoComplete="off"
                 fullWidth
-                id="active-time"
+                id="active"
                 label="Active Time"
-                {...register('active-time')}
+                {...register('active')}
               />
             </Grid>
             <Grid item xs={6} sm={6}>
-              <TextField fullWidth id="total-time" label="Total Time" {...register('total-time')} />
+              <TextField
+                autoComplete="off"
+                fullWidth
+                id="totalTime"
+                label="Total Time"
+                {...register('totalTime')}
+              />
             </Grid>
           </Grid>
 
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
-              <TextField fullWidth id="url" label="Url" {...register('url')} />
+              <TextField
+                autoComplete="off"
+                fullWidth
+                id="originalURL"
+                label="Url"
+                {...register('originalURL')}
+              />
             </Grid>
           </Grid>
 
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
-              <TextField fullWidth id="categories" label="Categories" {...register('categories')} />
+              <TextField
+                autoComplete="off"
+                fullWidth
+                id="categories"
+                label="Categories"
+                {...register('categories')}
+              />
+              <span className="text-xs">Please use commas to separate</span>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                autoComplete="off"
+                fullWidth
+                id="image"
+                label="Image URL"
+                {...register('image')}
+              />
             </Grid>
           </Grid>
 
