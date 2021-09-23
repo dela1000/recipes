@@ -38,9 +38,7 @@ const Provider = ({ children }) => {
         setToken(credential.accessToken);
         // The signed-in user info.
         if (result.user) {
-          await setDoc(doc(db, 'users', result.user.uid), {
-            recipes: [],
-          });
+          await setDoc(doc(db, 'users', result.user.uid), {});
           setCurrentUser(result.user);
         }
       })

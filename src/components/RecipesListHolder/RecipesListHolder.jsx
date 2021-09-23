@@ -16,6 +16,10 @@ import RecipeListItem from '../RecipeListItem';
 import { Context } from '../../contexts/context';
 
 export default function RecipesListHolder({ recipesData }) {
+  console.log(
+    '+++ 19: src/components/RecipesListHolder/RecipesListHolder.jsx - recipesData: ',
+    recipesData,
+  );
   const [{ setRecipeId, setRecipe }] = useContext(Context);
   const history = useHistory();
   const [recipes, setRecipes] = useState([]);
@@ -216,7 +220,7 @@ RecipesListHolder.propTypes = {
   recipesData: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       favorite: PropTypes.bool,
       originalURL: PropTypes.string,
