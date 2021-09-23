@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 
 const Context = createContext();
 
@@ -31,12 +32,17 @@ const Provider = ({ children }) => {
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         setToken(credential.accessToken);
         // The signed-in user info.
-        setUser(result.user);
+        if (result.user) {
+          await setDoc(doc(db, 'users', result.user.uid), {
+            recipes: [],
+          });
+          setUser(result.user);
+        }
       })
       .catch((error) => {
         // Handle Errors here.
@@ -64,6 +70,7 @@ const Provider = ({ children }) => {
           signInWithGoogle,
           user,
           token,
+          db,
         },
       ]}
     >
