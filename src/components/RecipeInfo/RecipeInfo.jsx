@@ -7,11 +7,6 @@ import StarIcon from '@material-ui/icons/Star';
 export default function RecipeInfo({ recipe }) {
   const history = useHistory();
 
-  console.log(
-    '+++ 10: src/components/RecipeInfo/RecipeInfo.jsx - recipe: ',
-    JSON.stringify(recipe, null, 4),
-  );
-
   const goBackHome = () => {
     history.push(`/`);
   };
@@ -91,6 +86,12 @@ export default function RecipeInfo({ recipe }) {
               <b className="uppercase">Total Time </b> {recipe.totalTime}
             </div>
           )}
+          {recipe.notes && (
+            <div className="mb-2">
+              <b className="uppercase">Notes </b>
+              <div>{recipe.notes}</div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -107,6 +108,7 @@ RecipeInfo.propTypes = {
     active: PropTypes.string,
     totalTime: PropTypes.string,
     image: PropTypes.string,
+    notes: PropTypes.string,
     favorite: PropTypes.bool,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,

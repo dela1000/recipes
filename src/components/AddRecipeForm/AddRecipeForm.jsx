@@ -83,11 +83,7 @@ export default function AddRecipeForm() {
     const categoriesHolder = categories.trim().split(',');
 
     categoriesHolder.forEach((category) => {
-      let item = category.trim().toLowerCase();
-      if (item.charAt(item.length - 1) === ',') {
-        item = item.slice(0, -1);
-      }
-      console.log('+++ 90: src/components/AddRecipeForm/AddRecipeForm.jsx - item: ', item);
+      const item = category.trim().toLowerCase();
       categoriesFinal.push(item);
     });
     return categoriesFinal.filter(String);
