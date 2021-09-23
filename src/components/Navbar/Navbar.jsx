@@ -5,7 +5,6 @@ import BrightnessLowIcon from '@material-ui/icons/BrightnessLow';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { Context } from '../../contexts/context';
-import { auth } from '../../firebase';
 import useWindowDimensions from '../../contexts/useWindowDimensions';
 import './Navbar.css';
 
@@ -15,7 +14,7 @@ export default function Navbar() {
   const { width } = useWindowDimensions();
   const [currentWidth, setCurrentWidth] = useState(0);
   const history = useHistory();
-  const [{ themeName, toggleTheme, navbarState, toggleNavbar }] = useContext(Context);
+  const [{ themeName, toggleTheme, navbarState, toggleNavbar, signOut }] = useContext(Context);
 
   useEffect(() => {
     if (currentWidth !== width) {
@@ -29,10 +28,6 @@ export default function Navbar() {
 
   const navigate = (navigateTo) => {
     history.push(`/${navigateTo}`);
-  };
-
-  const signOut = () => {
-    auth.signOut();
   };
 
   return (
