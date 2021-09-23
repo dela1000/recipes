@@ -13,8 +13,11 @@ export default function RecipeIngredients({ recipe }) {
           )}
           <div className="mb-3">
             {recipe.ingredients[header].map((ingredient) => (
-              <div className="mb-2" key={ingredient}>
-                {ingredient}
+              <div className="mb-2" key={ingredient.string}>
+                {ingredient.quantity && (
+                  <span className="mr-2 font-bold">{ingredient.quantity}</span>
+                )}
+                <span>{ingredient.string}</span>
               </div>
             ))}
           </div>
@@ -27,7 +30,9 @@ export default function RecipeIngredients({ recipe }) {
 RecipeIngredients.propTypes = {
   recipe: PropTypes.shape({
     ingredients: PropTypes.shape({
-      standard: PropTypes.arrayOf(PropTypes.string.isRequired),
+      standard: PropTypes.arrayOf(
+        PropTypes.shape({ quantity: PropTypes.string, string: PropTypes.string }),
+      ),
     }),
   }).isRequired,
 };

@@ -93,11 +93,11 @@ export default function AddRecipeForm() {
     dataToSubmit.favorite = false;
     if (recipeFormData.ingredients.length > 0) {
       const definedIngredients = defineIngredients(recipeFormData.ingredients.trim());
-      dataToSubmit.ingredients = definedIngredients;
+      dataToSubmit.ingredients = { standard: definedIngredients };
     }
     if (recipeFormData.instructions.length > 0) {
       const definedInstructions = splitLineIntoArray(recipeFormData.instructions.trim());
-      dataToSubmit.instructions = definedInstructions;
+      dataToSubmit.instructions = { standard: definedInstructions };
     }
     if (recipeFormData.categories.length > 0) {
       dataToSubmit.categories = defineCategores(recipeFormData.categories);
