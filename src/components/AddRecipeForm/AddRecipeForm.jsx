@@ -55,13 +55,25 @@ export default function AddRecipeForm() {
     return formattedIngredients;
   };
 
-  const onSubmit = (recimeFormData) => {
+  const defineInstructions = (lineData) => {
+    const lines = lineData.split('\n');
+    return lines;
+  };
+
+  const onSubmit = (recipeFormData) => {
     // console.log('+++ 12: src/components/AddRecipeForm/AddRecipeForm.jsx - data: ', data);
-    if (recimeFormData.ingredients.length > 0) {
-      const definedIngredients = defineIngredients(recimeFormData.ingredients);
+    if (recipeFormData.ingredients.length > 0) {
+      const definedIngredients = defineIngredients(recipeFormData.ingredients);
       console.log(
         '+++ 33: src/components/AddRecipeForm/AddRecipeForm.jsx - definedIngredients: ',
         definedIngredients,
+      );
+    }
+    if (recipeFormData.instructions.length > 0) {
+      const definedInstructions = defineInstructions(recipeFormData.instructions);
+      console.log(
+        '+++ 75: src/components/AddRecipeForm/AddRecipeForm.jsx - definedInstructions: ',
+        definedInstructions,
       );
     }
   };
@@ -110,11 +122,18 @@ export default function AddRecipeForm() {
               />
             </Grid>
           </Grid>
-          {/* <Grid container spacing={1}>
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
-              <TextField fullWidth id="instructions" label="Instructions" multiline rows={20} />
+              <TextField
+                fullWidth
+                id="instructions"
+                label="Instructions"
+                multiline
+                rows={20}
+                {...register('instructions')}
+              />
             </Grid>
-          </Grid> */}
+          </Grid>
           <Box mt={3} justify="end">
             <Button variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
               Add Recipe
