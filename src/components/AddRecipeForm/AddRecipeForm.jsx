@@ -39,43 +39,60 @@ export default function AddRecipeForm() {
     return lines;
   };
 
+  const onlyString = (string) => string.substring(1).slice(0, -1);
+
   const defineIngredients = (lineData) => {
-    const ingredientsArray = [];
+    const finalIngredientsObject = {
+      standard: [],
+    };
+    // separate each line from te TextField into an array of strings
+    const ingredientsArray = splitLineIntoArray(lineData);
+    // select each item defined as header (by using [])
+    ingredientsArray.forEach((item) => {
+      const trimmedItem = item.trim();
+      if (trimmedItem.charAt(0) === '[' && trimmedItem.charAt(trimmedItem.length - 1) === ']') {
+        const cleanedUpString = onlyString(trimmedItem);
+        finalIngredientsObject[cleanedUpString] = [];
+      }
+    });
 
-    const lines = splitLineIntoArray(lineData);
-
-    lines.forEach((line) => ingredientsArray.push(line));
-    const formattedIngredients = [];
+    let ingredientGroup = 'standard';
     ingredientsArray.forEach((ingredient) => {
       const splitString = ingredient.split('');
+      let foundIngredientGroup = false;
+      if (splitString[0] === '[' && splitString[splitString.length - 1] === ']') {
+        foundIngredientGroup = true;
+        const combinedIngredientGroup = combine(splitString);
+        ingredientGroup = onlyString(combinedIngredientGroup);
+      }
       const numbers = [];
       const letters = [];
       const separated = {};
 
       let isLetter = false;
+      if (!foundIngredientGroup) {
+        splitString.forEach((item) => {
+          if (item.match(/[a-z]/i) && !isLetter) isLetter = true;
+          if (isLetter) {
+            letters.push(item);
+          } else {
+            numbers.push(item);
+          }
+        });
+        const numberPart = combine(numbers);
+        const stringPart = combine(letters);
 
-      splitString.forEach((item) => {
-        if (item.match(/[a-z]/i) && !isLetter) isLetter = true;
-        if (isLetter) {
-          letters.push(item);
-        } else {
-          numbers.push(item);
+        if (numberPart) {
+          separated.quantity = numberPart.trim();
         }
-      });
-      const numberPart = combine(numbers);
-      const stringPart = combine(letters);
 
-      if (numberPart) {
-        separated.quantity = numberPart.trim();
+        if (stringPart) {
+          separated.string = stringPart.trim();
+        }
+        finalIngredientsObject[ingredientGroup].push(separated);
       }
-
-      if (stringPart) {
-        separated.string = stringPart.trim();
-      }
-
-      formattedIngredients.push(separated);
     });
-    return formattedIngredients;
+    return finalIngredientsObject;
   };
 
   const defineCategores = (categories) => {
@@ -94,7 +111,7 @@ export default function AddRecipeForm() {
     dataToSubmit.favorite = false;
     if (recipeFormData.ingredients.length > 0) {
       const definedIngredients = defineIngredients(recipeFormData.ingredients.trim());
-      dataToSubmit.ingredients = { standard: definedIngredients };
+      dataToSubmit.ingredients = definedIngredients;
     }
     if (recipeFormData.instructions.length > 0) {
       const definedInstructions = splitLineIntoArray(recipeFormData.instructions.trim());
@@ -102,6 +119,8 @@ export default function AddRecipeForm() {
     }
     if (recipeFormData.categories.length > 0) {
       dataToSubmit.categories = defineCategores(recipeFormData.categories.trim());
+    } else {
+      dataToSubmit.categories = [];
     }
 
     submitData(dataToSubmit);
