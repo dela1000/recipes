@@ -44,7 +44,7 @@ export default function App() {
         <Router>
           <Header />
           <main style={{ display: navbarState ? 'none' : 'block container' }}>
-            <div className="mt-10 md:mx-40">
+            <div className="mt-10 md:mx-40 h-screen">
               <Switch>
                 <Route exact path="/">
                   <Home windowType={windowType} />
