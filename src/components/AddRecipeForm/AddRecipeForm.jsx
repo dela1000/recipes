@@ -41,20 +41,25 @@ export default function AddRecipeForm() {
 
   const onlyString = (string) => string.substring(1).slice(0, -1);
 
-  const defineIngredients = (lineData) => {
-    const finalIngredientsObject = {
+  const defineFinalObject = (array) => {
+    const finalObject = {
       standard: [],
     };
-    // separate each line from te TextField into an array of strings
-    const ingredientsArray = splitLineIntoArray(lineData);
-    // select each item defined as header (by using [])
-    ingredientsArray.forEach((item) => {
+    array.forEach((item) => {
       const trimmedItem = item.trim();
       if (trimmedItem.charAt(0) === '[' && trimmedItem.charAt(trimmedItem.length - 1) === ']') {
         const cleanedUpString = onlyString(trimmedItem);
-        finalIngredientsObject[cleanedUpString] = [];
+        finalObject[cleanedUpString] = [];
       }
     });
+    return finalObject;
+  };
+
+  const defineIngredients = (lineData) => {
+    // separate each line from te TextField into an array of strings
+    const ingredientsArray = splitLineIntoArray(lineData);
+    // select each item defined as header (by using [])
+    const finalIngredientsObject = defineFinalObject(ingredientsArray);
 
     let ingredientGroup = 'standard';
     ingredientsArray.forEach((ingredient) => {
@@ -95,6 +100,28 @@ export default function AddRecipeForm() {
     return finalIngredientsObject;
   };
 
+  const defineInstructions = (lineData) => {
+    const instructionsArray = splitLineIntoArray(lineData);
+    const finalInnstructionsObject = defineFinalObject(instructionsArray);
+
+    let instructionGroup = 'standard';
+    instructionsArray.forEach((instruction) => {
+      let foundInstructionGroup = false;
+      const trimmedInstruction = instruction.trim();
+      if (
+        trimmedInstruction.charAt(0) === '[' &&
+        trimmedInstruction.charAt(trimmedInstruction.length - 1) === ']'
+      ) {
+        foundInstructionGroup = true;
+        instructionGroup = onlyString(trimmedInstruction);
+      }
+      if (!foundInstructionGroup) {
+        finalInnstructionsObject[instructionGroup].push(trimmedInstruction);
+      }
+    });
+    return finalInnstructionsObject;
+  };
+
   const defineCategores = (categories) => {
     const categoriesFinal = [];
     const categoriesHolder = categories.trim().split(',');
@@ -110,12 +137,10 @@ export default function AddRecipeForm() {
     const dataToSubmit = JSON.parse(JSON.stringify(recipeFormData));
     dataToSubmit.favorite = false;
     if (recipeFormData.ingredients.length > 0) {
-      const definedIngredients = defineIngredients(recipeFormData.ingredients.trim());
-      dataToSubmit.ingredients = definedIngredients;
+      dataToSubmit.ingredients = defineIngredients(recipeFormData.ingredients.trim());
     }
     if (recipeFormData.instructions.length > 0) {
-      const definedInstructions = splitLineIntoArray(recipeFormData.instructions.trim());
-      dataToSubmit.instructions = { standard: definedInstructions };
+      dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());
     }
     if (recipeFormData.categories.length > 0) {
       dataToSubmit.categories = defineCategores(recipeFormData.categories.trim());

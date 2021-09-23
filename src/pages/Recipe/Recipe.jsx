@@ -16,7 +16,7 @@ export default function Home() {
       history.push('/');
     }
   }, []);
-  console.log('+++ 19: src/pages/Recipe/Recipe.jsx - recipe: ', JSON.stringify(recipe, null, 4));
+
   return (
     <div className="fade-in">
       {!isEmpty(recipe) && (
