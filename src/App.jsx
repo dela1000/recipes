@@ -11,6 +11,7 @@ import ScrollToTop from './components/ScrollToTop';
 import SignIn from './pages/SignIn';
 import Home from './pages/Home';
 import Recipe from './pages/Recipe';
+import AddRecipe from './pages/AddRecipe';
 // Contexts
 import { Context } from './contexts/context';
 import useWindowDimensions from './contexts/useWindowDimensions';
@@ -51,6 +52,9 @@ export default function App() {
                 </Route>
                 <Route exact path="/recipe">
                   <Recipe windowType={windowType} />
+                </Route>
+                <Route exact path="/addrecipe">
+                  <AddRecipe windowType={windowType} />
                 </Route>
                 <Route path="*">
                   <Redirect to="/" />
