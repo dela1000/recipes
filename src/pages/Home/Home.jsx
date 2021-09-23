@@ -8,17 +8,21 @@ export default function Home() {
   const [{ db, currentUser }] = useContext(Context);
   const [recipesData, setRecipesData] = useState([]);
 
-  useEffect(async () => {
+  const getRecipes = async () => {
     const allRecipes = [];
-    if (currentUser) {
-      const querySnapshot = await getDocs(collection(db, `users/${currentUser.uid}/recipes`));
-      querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        item.id = doc.id;
-        allRecipes.push(item);
-      });
-    }
+    const querySnapshot = await getDocs(collection(db, `users/${currentUser.uid}/recipes`));
+    querySnapshot.forEach((doc) => {
+      const item = doc.data();
+      item.id = doc.id;
+      allRecipes.push(item);
+    });
     setRecipesData([...allRecipes]);
+  };
+
+  useEffect(() => {
+    if (currentUser) {
+      getRecipes();
+    }
   }, [currentUser]);
 
   useEffect(() => {
@@ -78,6 +82,7 @@ export default function Home() {
       },
     });
     console.log('Document written with ID: ', docRef.id);
+    getRecipes();
   };
 
   return (
@@ -85,7 +90,11 @@ export default function Home() {
       <button type="button" onClick={addThing}>
         button
       </button>
-      {recipesData.length > 0 && <RecipesListHolder recipesData={recipesData} />}
+      {recipesData.length > 0 ? (
+        <RecipesListHolder recipesData={recipesData} />
+      ) : (
+        <div>ADD YOUR FIRST RECIPE</div>
+      )}
     </div>
   );
 }

@@ -90,7 +90,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
 RecipeListItem.propTypes = {
   recipe: PropTypes.shape({
     image: PropTypes.string,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     favorite: PropTypes.bool,
     originalURL: PropTypes.string,

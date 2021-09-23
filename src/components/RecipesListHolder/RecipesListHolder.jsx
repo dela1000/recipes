@@ -16,10 +16,6 @@ import RecipeListItem from '../RecipeListItem';
 import { Context } from '../../contexts/context';
 
 export default function RecipesListHolder({ recipesData }) {
-  console.log(
-    '+++ 19: src/components/RecipesListHolder/RecipesListHolder.jsx - recipesData: ',
-    recipesData,
-  );
   const [{ setRecipeId, setRecipe }] = useContext(Context);
   const history = useHistory();
   const [recipes, setRecipes] = useState([]);
