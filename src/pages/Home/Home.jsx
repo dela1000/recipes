@@ -4,8 +4,6 @@ import { Context } from '../../contexts/context';
 
 import RecipesListHolder from '../../components/RecipesListHolder';
 
-// import recipesData from '../../adapters/recipesData';
-
 export default function Home() {
   const [{ db, currentUser }] = useContext(Context);
   const [recipesData, setRecipesData] = useState([]);
@@ -19,8 +17,8 @@ export default function Home() {
         item.id = doc.id;
         allRecipes.push(item);
       });
-      if (allRecipes.length >= 0) setRecipesData([...allRecipes]);
     }
+    setRecipesData([...allRecipes]);
   }, [currentUser]);
 
   useEffect(() => {
@@ -87,7 +85,7 @@ export default function Home() {
       <button type="button" onClick={addThing}>
         button
       </button>
-      <RecipesListHolder recipesData={recipesData} />
+      {recipesData.length > 0 && <RecipesListHolder recipesData={recipesData} />}
     </div>
   );
 }
