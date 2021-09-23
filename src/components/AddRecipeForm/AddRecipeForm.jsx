@@ -1,13 +1,30 @@
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { collection, addDoc } from 'firebase/firestore';
 import { Typography, Paper, Box, Grid, TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 
+import { Context } from '../../contexts/context';
+
 export default function AddRecipeForm() {
+  const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
+  const history = useHistory();
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
+
+  const navigate = (docRef, recipeData, navigateTo) => {
+    setRecipe(recipeData);
+    setRecipeId(docRef.id);
+    history.push(navigateTo);
+  };
+
+  const submitData = async (dataToSubmit) => {
+    const docRef = await addDoc(collection(db, `users/${currentUser.uid}/recipes`), dataToSubmit);
+    navigate(docRef, dataToSubmit, '/recipe');
+  };
 
   const combine = (array) => {
     let string = '';
@@ -84,19 +101,10 @@ export default function AddRecipeForm() {
     }
     if (recipeFormData.categories.length > 0) {
       dataToSubmit.categories = defineCategores(recipeFormData.categories);
-      console.log(
-        '+++ 77: src/components/AddRecipeForm/AddRecipeForm.jsx - dataToSubmit.categories: ',
-        JSON.stringify(dataToSubmit.categories, null, 4),
-      );
     }
 
-    console.log(
-      '+++ 82: src/components/AddRecipeForm/AddRecipeForm.jsx - dataToSubmit: ',
-      dataToSubmit,
-    );
+    submitData(dataToSubmit);
   };
-
-  // console.log(watch('title')); // watch input value by passing the name of it
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
