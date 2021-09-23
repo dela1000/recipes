@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { Context } from '../../contexts/context';
+import AddRecipeButton from '../../components/AddRecipeButton';
 
 import RecipesListHolder from '../../components/RecipesListHolder';
 
 export default function Home() {
   const [{ db, currentUser }] = useContext(Context);
-  const history = useHistory();
   const [recipesData, setRecipesData] = useState([]);
 
   const getRecipes = async () => {
@@ -95,9 +94,7 @@ export default function Home() {
       {recipesData.length > 0 ? (
         <RecipesListHolder recipesData={recipesData} />
       ) : (
-        <button type="button" onClick={() => history.push(`/addrecipe`)}>
-          ADD YOUR FIRST RECIPE
-        </button>
+        <AddRecipeButton text="add your first recipe" />
       )}
     </div>
   );
