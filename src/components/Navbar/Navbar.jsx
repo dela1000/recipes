@@ -8,7 +8,10 @@ import { Context } from '../../contexts/context';
 import useWindowDimensions from '../../contexts/useWindowDimensions';
 import './Navbar.css';
 
-const navList = ['recipes'];
+const navList = [
+  { name: 'recipes', navigate: '' },
+  { name: 'add recipe', navigate: 'addrecipe' },
+];
 
 export default function Navbar() {
   const { width } = useWindowDimensions();
@@ -41,30 +44,19 @@ export default function Navbar() {
         }
       >
         {navList.map((navOption) => (
-          <div key={navOption} className="nav-list-item monserrat link link-nav">
+          <div key={navOption.name} className="nav-list-item monserrat link link-nav">
             <button
               className="uppercase fade-in"
               type="button"
               onClick={() => {
                 closeNavList();
-                navigate(navOption);
+                navigate(navOption.navigate);
               }}
             >
-              {navOption}
+              {navOption.name}
             </button>
           </div>
         ))}
-        <div className="nav-list-item monserrat link link-nav">
-          <button
-            className="uppercase fade-in"
-            type="button"
-            onClick={() => {
-              navigate('addrecipe');
-            }}
-          >
-            Add Recipe
-          </button>
-        </div>
         <div className="nav-list-item monserrat link link-nav">
           <button
             className="uppercase fade-in"
