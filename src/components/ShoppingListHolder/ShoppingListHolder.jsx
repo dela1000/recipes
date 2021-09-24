@@ -86,7 +86,11 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
         <div className="lg:w-9/12 mt-8 lg:mt-0 px-3 lg:px-0">
           <div className="bg-gray-300 h-px lg:w-0 w-full mb-8 lg:mb-2" />
           {recipesOnShoppingList.map((recipe) => (
-            <ShoppingListByRecipe key={recipe.id} recipeData={recipe} />
+            <ShoppingListByRecipe
+              key={recipe.id}
+              recipeData={recipe}
+              getShoppingListRecipes={getShoppingListRecipes}
+            />
           ))}
         </div>
       </div>

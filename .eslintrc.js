@@ -22,6 +22,7 @@ module.exports = {
     'no-console': 'off',
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
+    'no-param-reassign': 0,
   },
   settings: {
     'import/resolver': {

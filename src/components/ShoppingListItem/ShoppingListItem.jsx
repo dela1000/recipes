@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { Checkbox } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-export default function ShoppingListItem({ ingredient }) {
+export default function ShoppingListItem({ ingredient, updateShoppingListRecipe }) {
   const [checked, setChecked] = useState(false);
   const [ingredientString, setIngredientString] = useState(false);
 
   const handleCheckBoxClick = () => {
     setChecked(!checked);
+    ingredient.purchased = !checked;
+    updateShoppingListRecipe();
   };
 
   const concatString = () => {
@@ -19,6 +21,7 @@ export default function ShoppingListItem({ ingredient }) {
 
   useEffect(() => {
     concatString();
+    setChecked(ingredient.purchased);
   }, []);
 
   return (
@@ -42,5 +45,10 @@ export default function ShoppingListItem({ ingredient }) {
 }
 
 ShoppingListItem.propTypes = {
-  ingredient: PropTypes.shape({ quantity: PropTypes.string, string: PropTypes.string }).isRequired,
+  ingredient: PropTypes.shape({
+    quantity: PropTypes.string,
+    string: PropTypes.string,
+    purchased: PropTypes.bool,
+  }).isRequired,
+  updateShoppingListRecipe: PropTypes.func.isRequired,
 };

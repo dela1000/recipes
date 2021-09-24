@@ -103,7 +103,9 @@ export default function RecipeForm({ type }) {
       }
       const numbers = [];
       const letters = [];
-      const separated = {};
+      const separated = {
+        purchased: false,
+      };
 
       let isLetter = false;
       if (!foundIngredientGroup) {
