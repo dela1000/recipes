@@ -1,9 +1,9 @@
 import RecipeForm from '../../components/RecipeForm';
 
-export default function AddRecipe() {
+export default function EditRecipe() {
   return (
     <div className="fade-in">
-      <RecipeForm type="new" />
+      <RecipeForm type="edit" />
     </div>
   );
 }

@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop/index';
 import Home from './pages/Home/index';
 import Recipe from './pages/Recipe/index';
 import AddRecipe from './pages/AddRecipe/index';
+import EditRecipe from './pages/EditRecipe/index';
 // Contexts
 import { Context } from './contexts/context';
 import useWindowDimensions from './contexts/useWindowDimensions';
@@ -56,6 +57,9 @@ export default function App() {
                   </Route>
                   <Route exact path="/addrecipe">
                     <AddRecipe windowType={windowType} />
+                  </Route>
+                  <Route exact path="/editrecipe">
+                    <EditRecipe windowType={windowType} />
                   </Route>
                   <Route path="*">
                     <Redirect to="/" />

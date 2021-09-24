@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Typography, Paper, Box, Grid, TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
@@ -7,7 +8,7 @@ import { addRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 
-export default function RecipeForm() {
+export default function RecipeForm({ type }) {
   const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
   const history = useHistory();
   const {
@@ -161,7 +162,7 @@ export default function RecipeForm() {
       <Paper>
         <Box px={3} py={2}>
           <Typography variant="h6" align="center" margin="dense">
-            Add a New Recipe
+            {type === 'new' ? 'Add a New Recipe' : 'Edit Recipe'}
           </Typography>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
@@ -321,3 +322,7 @@ export default function RecipeForm() {
     </form>
   );
 }
+
+RecipeForm.propTypes = {
+  type: PropTypes.string.isRequired,
+};
