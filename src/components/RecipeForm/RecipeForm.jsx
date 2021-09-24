@@ -250,7 +250,7 @@ export default function RecipeForm() {
                 label="Categories"
                 {...register('categories')}
               />
-              <span className="text-xs">Please use commas to separate</span>
+              <span className="text-xs">Separate with commas</span>
             </Grid>
           </Grid>
 
