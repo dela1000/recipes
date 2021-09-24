@@ -30,6 +30,7 @@ export default function Navbar() {
   const closeNavList = () => toggleNavbar(false);
 
   const navigate = (navigateTo) => {
+    closeNavList();
     history.push(`/${navigateTo}`);
   };
 
@@ -49,7 +50,6 @@ export default function Navbar() {
               className="uppercase fade-in"
               type="button"
               onClick={() => {
-                closeNavList();
                 navigate(navOption.navigate);
               }}
             >

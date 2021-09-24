@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import Navbar from '../Navbar/Navbar';
 import './Header.css';
@@ -8,7 +8,8 @@ import { Context } from '../../contexts/context';
 
 export default function Header() {
   const history = useHistory();
-  const [{ themeName, recipeId, setRecipeId }] = useContext(Context);
+  const [{ themeName, setRecipeId }] = useContext(Context);
+  const location = useLocation();
 
   const goBackHome = () => {
     setRecipeId(null);
@@ -16,14 +17,12 @@ export default function Header() {
   };
 
   return (
-    <header id="header" className={`${themeName}-header py-7 px-5 flex justify-around`}>
-      <div>
-        {recipeId && (
+    <header id="header" className={`${themeName}-header py-6 lg:py-7 lg:px-5 flex justify-around`}>
+      <div className="w-32">
+        {location.pathname !== '/' && (
           <button type="button" className="flex" onClick={() => goBackHome()}>
-            <div>
-              <KeyboardArrowLeftIcon className="cursor-pointer" fontSize="large" />
-            </div>
-            <div className="mt-1.5">GO BACK</div>
+            <KeyboardArrowLeftIcon className="cursor-pointer" fontSize="large" />
+            <div className="mt-1.5">GO HOME</div>
           </button>
         )}
       </div>
