@@ -1,22 +1,33 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Typography, Paper, Box, Grid, TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 
-import { addRecipe } from '../../adapters/recipeAdapters';
+import recipeToEdit from './utilities/recipeToEdit';
+
+import { addRecipe, updateRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 
-export default function RecipeForm() {
-  const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
+export default function RecipeForm({ type }) {
+  const [{ db, currentUser, setRecipeId, setRecipe, recipe }] = useContext(Context);
   const history = useHistory();
+  let dataToEdit = {};
+  if (type === 'edit') {
+    if (!recipe.id) {
+      history.push(`/`);
+    } else {
+      dataToEdit = recipeToEdit(recipe);
+    }
+  }
   const {
     register,
     handleSubmit,
     setValue,
     getValues,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: dataToEdit });
 
   const navigate = (recipeData, navigateTo) => {
     setRecipe(recipeData);
@@ -25,11 +36,24 @@ export default function RecipeForm() {
   };
 
   const submitData = async (dataToSubmit) => {
-    const docRef = await addRecipe({
-      db,
-      currentUserId: currentUser.uid,
-      payload: dataToSubmit,
-    });
+    let docRef;
+    if (type === 'new') {
+      docRef = await addRecipe({
+        db,
+        currentUserId: currentUser.uid,
+        payload: dataToSubmit,
+      });
+    }
+
+    if (type === 'edit') {
+      docRef = await updateRecipe({
+        db,
+        currentUserId: currentUser.uid,
+        recipeId: recipe.id,
+        payload: dataToSubmit,
+      });
+    }
+
     navigate(docRef, 'recipe');
   };
 
@@ -171,7 +195,7 @@ export default function RecipeForm() {
       <Paper>
         <Box px={3} py={2}>
           <Typography variant="h6" align="center" margin="dense">
-            Add a New Recipe
+            {type === 'new' ? 'Add a New Recipe' : 'Edit Recipe'}
           </Typography>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
@@ -370,7 +394,7 @@ export default function RecipeForm() {
 
           <Box mt={3} justify="end">
             <Button variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
-              Add Recipe
+              {type === 'new' ? 'Add' : 'Edit'} Recipe
             </Button>
           </Box>
         </Box>
@@ -378,3 +402,7 @@ export default function RecipeForm() {
     </form>
   );
 }
+
+RecipeForm.propTypes = {
+  type: PropTypes.string.isRequired,
+};

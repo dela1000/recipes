@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
@@ -7,6 +8,7 @@ import { updateRecipe } from '../../adapters/recipeAdapters';
 import { Context } from '../../contexts/context';
 
 export default function RecipeOptions({ recipe }) {
+  const history = useHistory();
   const [{ db, currentUser, setRecipe, setRecipeId }] = useContext(Context);
 
   const handleFavoriteSelected = async () => {
@@ -22,6 +24,13 @@ export default function RecipeOptions({ recipe }) {
     setRecipe(updatedRecipe);
     setRecipeId(updatedRecipe.id);
   };
+
+  const editRecipe = (recipeToUpdate) => {
+    setRecipe(recipeToUpdate);
+    setRecipeId(recipeToUpdate.id);
+    history.push(`/editrecipe`);
+  };
+
   return (
     <div className="pt-3">
       <button
@@ -35,6 +44,15 @@ export default function RecipeOptions({ recipe }) {
           fontSize="small"
           className={`${recipe.favorite ? `text-yellow-400` : 'text-white'} fill-current`}
         />
+      </button>
+      <button
+        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 mx-1 h-9"
+        type="button"
+        onClick={() => {
+          editRecipe(recipe);
+        }}
+      >
+        Edit Recipe
       </button>
     </div>
   );
