@@ -31,6 +31,20 @@ export default function RecipeOptions({ recipe }) {
     history.push(`/editrecipe`);
   };
 
+  const addToShoppingList = async () => {
+    const updatedRecipe = await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: recipe.id,
+      payload: {
+        onShoppingList: !recipe.onShoppingList,
+      },
+    });
+
+    setRecipe(updatedRecipe);
+    setRecipeId(updatedRecipe.id);
+  };
+
   return (
     <div className="pt-3">
       <button
@@ -54,6 +68,17 @@ export default function RecipeOptions({ recipe }) {
       >
         Edit Recipe
       </button>
+      <button
+        className={`uppercase px-4 py-2 text-xs bg-gray-600 hover:bg-gray-600 duration-300 mx-1 h-9 ${
+          recipe.onShoppingList ? `text-yellow-300` : 'text-white'
+        } fill-current`}
+        type="button"
+        onClick={() => {
+          addToShoppingList(recipe);
+        }}
+      >
+        {recipe.onShoppingList ? 'On Shopping List' : 'Add to Shopping List'}
+      </button>
     </div>
   );
 }
@@ -66,6 +91,7 @@ RecipeOptions.propTypes = {
     favorite: PropTypes.bool,
     originalURL: PropTypes.string,
     source: PropTypes.string,
+    onShoppingList: PropTypes.bool,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
