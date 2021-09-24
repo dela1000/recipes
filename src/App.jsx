@@ -42,24 +42,28 @@ export default function App() {
     <div id="top" className={`${themeName} app overflow-x-hidden`}>
       {user ? (
         <Router>
-          <Header />
-          <div style={{ display: navbarState ? 'none' : 'block container' }} />
-          <div className="mt-10 md:mx-40 h-screen">
-            <Switch>
-              <Route exact path="/">
-                <Home windowType={windowType} />
-              </Route>
-              <Route exact path="/recipe">
-                <Recipe windowType={windowType} />
-              </Route>
-              <Route exact path="/addrecipe">
-                <AddRecipe windowType={windowType} />
-              </Route>
-              <Route path="*">
-                <Redirect to="/" />
-              </Route>
-            </Switch>
-            <ScrollToTop />
+          <div className="flex flex-col h-screen">
+            <Header />
+            <div className="flex-1 overflow-y-auto p-5">
+              <div style={{ display: navbarState ? 'none' : 'block container' }} />
+              <div className="relative mb-10 md:mx-40">
+                <Switch>
+                  <Route exact path="/">
+                    <Home windowType={windowType} />
+                  </Route>
+                  <Route exact path="/recipe">
+                    <Recipe windowType={windowType} />
+                  </Route>
+                  <Route exact path="/addrecipe">
+                    <AddRecipe windowType={windowType} />
+                  </Route>
+                  <Route path="*">
+                    <Redirect to="/" />
+                  </Route>
+                </Switch>
+                <ScrollToTop />
+              </div>
+            </div>
           </div>
         </Router>
       ) : (

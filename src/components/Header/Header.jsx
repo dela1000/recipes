@@ -16,10 +16,7 @@ export default function Header() {
   };
 
   return (
-    <header
-      id="header"
-      className={`${themeName}-header py-7 px-5 flex justify-around sticky top-0 z-50`}
-    >
+    <header id="header" className={`${themeName}-header py-7 px-5 flex justify-around`}>
       <div>
         {recipeId && (
           <button type="button" className="flex" onClick={() => goBackHome()}>
