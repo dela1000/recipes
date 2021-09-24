@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import StarIcon from '@material-ui/icons/Star';
 
-import { updateRecipe } from '../../adapters/mutateRecipe';
+import { updateRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 

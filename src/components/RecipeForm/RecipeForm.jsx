@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Typography, Paper, Box, Grid, TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 
-import { addRecipe } from '../../adapters/mutateRecipe';
+import { addRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 

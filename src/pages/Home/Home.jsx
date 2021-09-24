@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../contexts/context';
 
-import { getAllRecipes } from '../../adapters/mutateRecipe';
+import { getAllRecipes } from '../../adapters/recipeAdapters';
 
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
