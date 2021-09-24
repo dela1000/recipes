@@ -8,6 +8,10 @@ import { updateRecipe, getRecipeById } from '../../adapters/recipeAdapters';
 import { Context } from '../../contexts/context';
 
 export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingListRecipes }) {
+  console.log(
+    '+++ 11: src/components/ShoppingListHolder/ShoppingListHolder.jsx - recipesOnShoppingList: ',
+    recipesOnShoppingList,
+  );
   const history = useHistory();
   const [recipesNames, setRecipesNames] = useState([]);
   const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
@@ -21,11 +25,20 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
   };
 
   const removeFromShoppingList = async (data) => {
+    const recipeFound = recipesOnShoppingList.find((element) => element.id === data.id);
+
+    Object.keys(recipeFound.ingredients).forEach((key) => {
+      recipeFound.ingredients[key].forEach((ingredient) => {
+        ingredient.purchased = false;
+      });
+    });
+
     await updateRecipe({
       db,
       currentUserId: currentUser.uid,
       recipeId: data.id,
       payload: {
+        ingredients: recipeFound.ingredients,
         onShoppingList: false,
       },
     });
