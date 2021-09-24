@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import { Context } from '../../contexts/context';
 
-export default function AddRecipeForm() {
+export default function RecipeForm() {
   const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
   const history = useHistory();
   const {
@@ -165,10 +165,11 @@ export default function AddRecipeForm() {
                 fullWidth
                 id="title"
                 label="Title"
-                // {...register('exampleRequired', { required: true })}
-                {...register('title')}
+                {...register('title', { required: true })}
               />
-              {errors.exampleRequired && <span>This field is required</span>}
+              {errors.exampleRequired && (
+                <span className="text-red-500">This field is required</span>
+              )}
             </Grid>
           </Grid>
           <Grid container spacing={1}>
@@ -227,10 +228,11 @@ export default function AddRecipeForm() {
               <TextField
                 autoComplete="off"
                 fullWidth
-                id="source"
-                label="Source"
-                {...register('source')}
+                id="categories"
+                label="Categories"
+                {...register('categories')}
               />
+              <span className="text-xs">Please use commas to separate</span>
             </Grid>
           </Grid>
 
@@ -260,9 +262,9 @@ export default function AddRecipeForm() {
               <TextField
                 autoComplete="off"
                 fullWidth
-                id="originalURL"
-                label="Url"
-                {...register('originalURL')}
+                id="source"
+                label="Source"
+                {...register('source')}
               />
             </Grid>
           </Grid>
@@ -272,11 +274,10 @@ export default function AddRecipeForm() {
               <TextField
                 autoComplete="off"
                 fullWidth
-                id="categories"
-                label="Categories"
-                {...register('categories')}
+                id="originalURL"
+                label="Original URL"
+                {...register('originalURL')}
               />
-              <span className="text-xs">Please use commas to separate</span>
             </Grid>
           </Grid>
 
@@ -299,7 +300,7 @@ export default function AddRecipeForm() {
                 id="notes"
                 label="Notes"
                 multiline
-                rows={10}
+                rows={4}
                 {...register('notes')}
               />
             </Grid>

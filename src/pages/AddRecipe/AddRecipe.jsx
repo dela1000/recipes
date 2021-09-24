@@ -1,9 +1,9 @@
-import AddRecipeForm from '../../components/AddRecipeForm';
+import RecipeForm from '../../components/RecipeForm';
 
 export default function AddRecipe() {
   return (
     <div>
-      <AddRecipeForm />
+      <RecipeForm />
     </div>
   );
 }
