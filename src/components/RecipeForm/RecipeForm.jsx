@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { collection, addDoc } from 'firebase/firestore';
 import { Typography, Paper, Box, Grid, TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
+
+import { addRecipe } from '../../adapters/mutateRecipe';
 
 import { Context } from '../../contexts/context';
 
@@ -15,15 +16,19 @@ export default function RecipeForm() {
     formState: { errors },
   } = useForm();
 
-  const navigate = (docRef, recipeData, navigateTo) => {
+  const navigate = (recipeData, navigateTo) => {
     setRecipe(recipeData);
-    setRecipeId(docRef.id);
-    history.push(navigateTo);
+    setRecipeId(recipeData.id);
+    history.push(`/${navigateTo}`);
   };
 
   const submitData = async (dataToSubmit) => {
-    const docRef = await addDoc(collection(db, `users/${currentUser.uid}/recipes`), dataToSubmit);
-    navigate(docRef, dataToSubmit, '/recipe');
+    const docRef = await addRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      payload: dataToSubmit,
+    });
+    navigate(docRef, 'recipe');
   };
 
   const combine = (array) => {
