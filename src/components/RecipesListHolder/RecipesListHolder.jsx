@@ -112,7 +112,7 @@ export default function RecipesListHolder({ recipesData }) {
     <div>
       <div>
         <div className="lg:flex justify-between mx-3 mb-5">
-          <div className="text-5xl pt-1 mr-12">RECIPES</div>
+          <div className="text-5xl pt-1 mr-12 uppercase pt-9">my recipes</div>
           <div>
             <div className="lg:flex">
               <div className="mx-3">

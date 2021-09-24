@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop/index';
 import Home from './pages/Home/index';
 import Recipe from './pages/Recipe/index';
 import AddRecipe from './pages/AddRecipe/index';
+import ShoppingList from './pages/ShoppingList/index';
 import EditRecipe from './pages/EditRecipe/index';
 // Contexts
 import { Context } from './contexts/context';
@@ -60,6 +61,9 @@ export default function App() {
                   </Route>
                   <Route exact path="/editrecipe">
                     <EditRecipe windowType={windowType} />
+                  </Route>
+                  <Route exact path="/shoppinglist">
+                    <ShoppingList windowType={windowType} />
                   </Route>
                   <Route path="*">
                     <Redirect to="/" />
