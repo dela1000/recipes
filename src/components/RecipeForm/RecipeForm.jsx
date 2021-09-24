@@ -13,6 +13,8 @@ export default function RecipeForm() {
   const {
     register,
     handleSubmit,
+    setValue,
+    getValues,
     formState: { errors },
   } = useForm();
 
@@ -156,6 +158,14 @@ export default function RecipeForm() {
     submitData(dataToSubmit);
   };
 
+  const helperMeasurements = ['1/4', '1/3', '1/2', '3/4', '°', '[', ']'];
+
+  const addValue = (value) => {
+    let singleValue = getValues('ingredients');
+    singleValue += `${value} `;
+    setValue('ingredients', singleValue);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Paper>
@@ -206,9 +216,23 @@ export default function RecipeForm() {
           </Grid>
 
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={12} className="text-xs">
+            <Grid item xs={12} sm={6} className="text-xs">
               Optional: Use brackets for Ingredient Groups. Example: <b>[Crust]</b> and{'  '}
               <b>[Filling]</b>
+            </Grid>
+            <Grid item xs={12} sm={6} className="text-xs">
+              <div className="flex justify-between">
+                {helperMeasurements.map((me) => (
+                  <button
+                    key={me}
+                    type="button"
+                    className="text-blue-600"
+                    onClick={() => addValue(me)}
+                  >
+                    {me}
+                  </button>
+                ))}
+              </div>
             </Grid>
           </Grid>
 
@@ -226,14 +250,28 @@ export default function RecipeForm() {
             </Grid>
           </Grid>
           <Grid container spacing={1}>
-            <Grid item xs={12} sm={12} className="text-xs">
+            <Grid item xs={12} sm={6} className="text-xs">
               Optional: Use brackets for Instruction Groups. Example: <b>[Crust]</b> and{'  '}
               <b>[Filling]</b>
+            </Grid>
+            <Grid item xs={12} sm={6} className="text-xs">
+              <div className="flex justify-between">
+                {helperMeasurements.map((me) => (
+                  <button
+                    key={me}
+                    type="button"
+                    className="text-blue-600"
+                    onClick={() => addValue(me)}
+                  >
+                    {me}
+                  </button>
+                ))}
+              </div>
             </Grid>
           </Grid>
 
           <Grid container spacing={1}>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="off"
                 fullWidth
@@ -242,7 +280,7 @@ export default function RecipeForm() {
                 {...register('yield')}
               />
             </Grid>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="off"
                 fullWidth
@@ -255,7 +293,7 @@ export default function RecipeForm() {
           </Grid>
 
           <Grid container spacing={1}>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="off"
                 fullWidth
@@ -264,7 +302,7 @@ export default function RecipeForm() {
                 {...register('active')}
               />
             </Grid>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="off"
                 fullWidth
