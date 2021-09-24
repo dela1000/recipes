@@ -155,7 +155,7 @@ export default function RecipesListHolder({ recipesData }) {
               <div className="lg:flex justify-between">
                 <div className="mt-3 ml-3">
                   <button
-                    className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
+                    className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-16 mx-1 h-9"
                     type="button"
                     onClick={() => {
                       handleSortChange();
@@ -164,7 +164,7 @@ export default function RecipesListHolder({ recipesData }) {
                     {sort}
                   </button>
                   <button
-                    className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-16 mx-1 h-9"
+                    className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-16 mx-1 h-9"
                     type="button"
                     onClick={() => {
                       handleFavoriteSelected();
@@ -178,7 +178,7 @@ export default function RecipesListHolder({ recipesData }) {
                     />
                   </button>
                   <button
-                    className="uppercase rounded px-4 py-2 text-xs bg-blue-600 text-blue-100 hover:bg-blue-600 duration-300 w-26 mx-1 h-9"
+                    className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-26 mx-1 h-9"
                     type="button"
                     onClick={() => {
                       handleRandomSelected();
@@ -187,13 +187,13 @@ export default function RecipesListHolder({ recipesData }) {
                     Random
                   </button>
                   <button
-                    className="uppercase rounded px-4 text-xs bg-red-600 text-blue-100 hover:bg-red-500 duration-300 mx-1 h-9"
+                    className="uppercase px-4 text-xs bg-red-500 text-blue-100 hover:bg-red-400 duration-300 mx-1 h-9"
                     type="button"
                     onClick={() => {
                       reset();
                     }}
                   >
-                    Reset
+                    clear
                   </button>
                 </div>
               </div>

@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
 import { Context } from '../../contexts/context';
-import AddRecipeButton from '../../components/AddRecipeButton';
 
+import { getAllRecipes } from '../../adapters/mutateRecipe';
+
+import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
 
 export default function Home() {
@@ -11,8 +12,9 @@ export default function Home() {
 
   const getRecipes = async () => {
     const allRecipes = [];
-    const querySnapshot = await getDocs(collection(db, `users/${currentUser.uid}/recipes`));
-    querySnapshot.forEach((doc) => {
+    const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
+
+    recipesFromDb.forEach((doc) => {
       const item = doc.data();
       item.id = doc.id;
       allRecipes.push(item);

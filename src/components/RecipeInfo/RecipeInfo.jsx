@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import StarIcon from '@material-ui/icons/Star';
 
 export default function RecipeInfo({ recipe }) {
   const history = useHistory();
@@ -58,11 +57,6 @@ export default function RecipeInfo({ recipe }) {
                     </div>
                   )}
                 </div>
-                {recipe.favorite && (
-                  <div className="pt-1 pl-2">
-                    <StarIcon className="fill-current text-yellow-400" />
-                  </div>
-                )}
               </div>
             </div>
           </div>
