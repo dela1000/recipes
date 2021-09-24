@@ -23,7 +23,7 @@ export default function RecipeOptions({ recipe }) {
     setRecipeId(updatedRecipe.id);
   };
   return (
-    <div>
+    <div className="pt-3">
       <button
         className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-16 mx-1 h-9"
         type="button"
