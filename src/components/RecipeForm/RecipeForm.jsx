@@ -206,6 +206,13 @@ export default function RecipeForm() {
           </Grid>
 
           <Grid container spacing={1}>
+            <Grid item xs={6} sm={6} className="text-xs">
+              Optional: Use brackets for Ingredient Groups. Example: <b>[Crust]</b> and{'  '}
+              <b>[Filling]</b>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
                 autoComplete="off"
@@ -216,6 +223,12 @@ export default function RecipeForm() {
                 rows={16}
                 {...register('instructions')}
               />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={12} className="text-xs">
+              Optional: Use brackets for Instruction Groups. Example: <b>[Crust]</b> and{'  '}
+              <b>[Filling]</b>
             </Grid>
           </Grid>
 
