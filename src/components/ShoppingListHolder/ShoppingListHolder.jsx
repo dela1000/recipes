@@ -1,13 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import CloseIcon from '@material-ui/icons/Close';
 import ShoppingListByRecipe from '../ShoppingListByRecipe';
-import { updateRecipe } from '../../adapters/recipeAdapters';
+import { updateRecipe, getRecipeById } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 
 export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingListRecipes }) {
+  const history = useHistory();
   const [recipesNames, setRecipesNames] = useState([]);
-  const [{ db, currentUser }] = useContext(Context);
+  const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
 
   const defineRecipeNames = () => {
     const recipesNamesTemp = [];
@@ -29,6 +32,18 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
     getShoppingListRecipes();
   };
 
+  const goToRecipe = async (data) => {
+    const recipeById = await getRecipeById({
+      db,
+      currentUserId: currentUser.uid,
+      payload: { id: data.id },
+    });
+
+    setRecipe(recipeById);
+    setRecipeId(recipeById.id);
+    history.push(`/recipe`);
+  };
+
   useEffect(() => {
     defineRecipeNames();
   }, [recipesOnShoppingList]);
@@ -38,7 +53,7 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
       <div className="mx-3 mb-5">
         <div className="text-5xl pt-1 mr-12 uppercase pt-9">Shopping List</div>
       </div>
-      <div className="lg:flex flex-row mx-4">
+      <div className="lg:flex flex-row">
         <div className="lg:w-3/12 pr-10">
           {recipesNames.length > 0 && (
             <div className="flex-grow">
@@ -47,14 +62,22 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
                   key={rec.id}
                   className="flex justify-between center-align hover:bg-gray-200 w-full m-h-10 p-2"
                 >
-                  <div className="w-10/12">{rec.recipeTitle}</div>
                   <button
                     type="button"
-                    className="w-1/12"
-                    onClick={() => removeFromShoppingList({ id: rec.id, idx })}
+                    className="w-10/12 my-1 ml-1 text-left"
+                    onClick={() => goToRecipe({ id: rec.id })}
                   >
-                    X
+                    {rec.recipeTitle}
                   </button>
+                  <div className="relative">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <CloseIcon
+                        type="button"
+                        className="w-1/12 cursor-pointer mr-5"
+                        onClick={() => removeFromShoppingList({ id: rec.id, idx })}
+                      />
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

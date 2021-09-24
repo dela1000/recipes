@@ -211,6 +211,7 @@ export default function RecipeForm({ type }) {
               )}
             </Grid>
           </Grid>
+
           <Grid container spacing={1}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -392,7 +393,7 @@ export default function RecipeForm({ type }) {
             </Grid>
           </Grid>
 
-          <Box mt={3} justify="end">
+          <Box mt={3} justify="flex-end" textAlign="right">
             <Button variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
               {type === 'new' ? 'Add' : 'Edit'} Recipe
             </Button>

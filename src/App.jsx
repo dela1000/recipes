@@ -7,13 +7,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import firebaseApp from './firebase';
 // Internal
 import SignIn from './pages/SignIn';
-import Header from './components/Header/index';
-import ScrollToTop from './components/ScrollToTop/index';
-import Home from './pages/Home/index';
-import Recipe from './pages/Recipe/index';
-import AddRecipe from './pages/AddRecipe/index';
-import ShoppingList from './pages/ShoppingList/index';
-import EditRecipe from './pages/EditRecipe/index';
+import Header from './components/Header';
+import ScrollToTop from './components/ScrollToTop';
+import Home from './pages/Home';
+import Recipe from './pages/Recipe';
+import AddRecipe from './pages/AddRecipe';
+import ShoppingList from './pages/ShoppingList';
+import EditRecipe from './pages/EditRecipe';
 // Contexts
 import { Context } from './contexts/context';
 import useWindowDimensions from './contexts/useWindowDimensions';

@@ -9,7 +9,7 @@ import {
   where,
 } from 'firebase/firestore';
 
-export async function getRecipeById(data) {
+export async function getRecipeByIdInternal(data) {
   const docSnap = await getDoc(data.docRef);
 
   const recipe = docSnap.data();
@@ -23,7 +23,7 @@ export async function updateRecipe(data) {
 
   await updateDoc(docRef, data.payload);
 
-  return getRecipeById({ docRef, recipeId: data.recipeId });
+  return getRecipeByIdInternal({ docRef, recipeId: data.recipeId });
 }
 
 export async function getAllRecipes(data) {
@@ -39,7 +39,7 @@ export async function addRecipe(data) {
 
   const docRef = doc(data.db, `users/${data.currentUserId}/recipes/${newRecipe.id}`);
 
-  return getRecipeById({ docRef, recipeId: newRecipe.id });
+  return getRecipeByIdInternal({ docRef, recipeId: newRecipe.id });
 }
 
 export async function getRecipesByQuery(data) {
@@ -56,4 +56,14 @@ export async function getRecipesByQuery(data) {
     recipesOnShoppingList.push(recipe);
   });
   return recipesOnShoppingList;
+}
+
+export async function getRecipeById(data) {
+  const docRef = doc(data.db, `users/${data.currentUserId}/recipes/${data.payload.id}`);
+  const docSnap = await getDoc(docRef);
+
+  const recipe = docSnap.data();
+  recipe.id = data.payload.id;
+
+  return docSnap.exists() ? recipe : false;
 }
