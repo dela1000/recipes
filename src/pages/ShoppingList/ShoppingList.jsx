@@ -19,7 +19,6 @@ export default function ShoppingList() {
         value: true,
       },
     });
-    console.log('+++ 22: src/pages/ShoppingList/ShoppingList.jsx - recipesFromDb: ', recipesFromDb);
     setRecipesOnShoppingList(recipesFromDb);
   };
 
@@ -31,7 +30,10 @@ export default function ShoppingList() {
   return (
     <div className="fade-in">
       {recipesOnShoppingList.length > 0 ? (
-        <ShoppingListHolder recipesOnShoppingList={recipesOnShoppingList} />
+        <ShoppingListHolder
+          recipesOnShoppingList={recipesOnShoppingList}
+          getShoppingListRecipes={getShoppingListRecipes}
+        />
       ) : (
         <div className="mx-3 mb-5">
           <div className="text-3xl pt-1 mr-12 uppercase pt-9">

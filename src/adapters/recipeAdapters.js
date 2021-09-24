@@ -51,7 +51,9 @@ export async function getRecipesByQuery(data) {
     ),
   );
   querySnapshot.forEach((d) => {
-    recipesOnShoppingList.push(d.data());
+    const recipe = d.data();
+    recipe.id = d.id;
+    recipesOnShoppingList.push(recipe);
   });
   return recipesOnShoppingList;
 }
