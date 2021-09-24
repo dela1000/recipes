@@ -13,5 +13,5 @@ const measurements = {
   drop: 'drop',
   cup: 'cup',
   tablespoon: 'tablespoon',
-  reaspoon: 'reaspoon',
+  teaspoon: 'teaspoon',
 };

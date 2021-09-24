@@ -1,6 +1,5 @@
 const recipesData = [
   {
-    id: 1,
     title: 'Zoodles and Turkey Meatballs',
     favorite: false,
     description: '',
@@ -39,7 +38,6 @@ const recipesData = [
     },
   },
   {
-    id: 2,
     title: 'Wine & Tomato Braised Chicken',
     favorite: false,
     description: 'Makes: 10 servings',
@@ -89,7 +87,6 @@ const recipesData = [
     },
   },
   {
-    id: 3,
     title: 'Vegetarian Chana Masala',
     favorite: false,
     description: '',
@@ -133,7 +130,6 @@ const recipesData = [
     },
   },
   {
-    id: 4,
     title: "Vegan Shepherd's Pie",
     favorite: false,
     description: '',
@@ -176,7 +172,6 @@ const recipesData = [
     },
   },
   {
-    id: 5,
     title: 'Tomato Mango Bruschetta Salsa',
     favorite: false,
     description:
@@ -211,7 +206,6 @@ const recipesData = [
     },
   },
   {
-    id: 6,
     title: 'Tomato, Basil Shrimp Stir Fry with Paleo Pasta',
     favorite: false,
     description: '',
@@ -257,7 +251,6 @@ const recipesData = [
     },
   },
   {
-    id: 7,
     title: 'Three Color Pasta with Sun Dried Tomato Sauce',
     favorite: false,
     description:
@@ -292,7 +285,6 @@ const recipesData = [
     },
   },
   {
-    id: 8,
     title: 'The Best Steak Marinade',
     favorite: false,
     description: '',
@@ -321,7 +313,6 @@ const recipesData = [
     },
   },
   {
-    id: 9,
     title: 'Sweet Potato Fries',
     favorite: false,
     description: '',
@@ -365,7 +356,6 @@ const recipesData = [
     },
   },
   {
-    id: 10,
     title: 'Sun dried tomato meatballs',
     favorite: false,
     description: '2 lbs ground beef',
@@ -393,7 +383,6 @@ const recipesData = [
     },
   },
   {
-    id: 11,
     title: 'Steak, Asparagus and Fries',
     favorite: false,
     description: '',
@@ -458,7 +447,6 @@ const recipesData = [
     },
   },
   {
-    id: 12,
     title: 'Spicy Sausage and Shrimp Skillet',
     favorite: false,
     description: '',
@@ -503,7 +491,6 @@ const recipesData = [
     },
   },
   {
-    id: 13,
     title: 'Soyrizo Chili',
     favorite: false,
     description: '',
@@ -546,7 +533,6 @@ const recipesData = [
     },
   },
   {
-    id: 14,
     title: 'Slow Cooker Thai Beef Curry',
     favorite: false,
     description: '',
@@ -580,7 +566,6 @@ const recipesData = [
     },
   },
   {
-    id: 15,
     title: 'Slow Cooker Southwestern Beef Stew',
     favorite: true,
     description: '',
@@ -615,7 +600,6 @@ const recipesData = [
     },
   },
   {
-    id: 16,
     title: 'Slow Cooker Pineapple Chicken',
     favorite: false,
     description: '',
@@ -654,7 +638,6 @@ const recipesData = [
     },
   },
   {
-    id: 17,
     title: 'Slow Cooker Mushroom Stroganoff',
     favorite: false,
     description: '',
@@ -691,7 +674,6 @@ const recipesData = [
     },
   },
   {
-    id: 18,
     title: 'Slow Cooker Jumbalaya',
     favorite: true,
     description: '',
@@ -736,7 +718,6 @@ const recipesData = [
     },
   },
   {
-    id: 19,
     title: 'Slow Cooker Garlic Parm Chicken',
     favorite: false,
     description: '',
@@ -770,7 +751,6 @@ const recipesData = [
     },
   },
   {
-    id: 20,
     title: 'Slow Cooker Chicken Tikka Masala',
     favorite: false,
     description: '',
@@ -799,7 +779,6 @@ const recipesData = [
         '2 cups cooked rice, to serve',
       ],
     },
-
     instructions: {
       standard: [
         'Cut the chicken thighs into bite-sized pieces and transfer them to a 3-quart or larger slow cooker. Stir in the onion, garlic, ginger, tomato paste, 1 tablespoon of garam masala, paprika, and kosher salt until the chicken is evenly covered with spices. Stir in the diced tomatoes with their juices.',
@@ -809,7 +788,6 @@ const recipesData = [
     },
   },
   {
-    id: 21,
     title: 'Slow Cooker Chicken Thighs with Creamy Lemon Sauce',
     favorite: false,
     description: '',
@@ -860,7 +838,6 @@ const recipesData = [
     },
   },
   {
-    id: 22,
     title: 'Slow Cooker Chicken Tacos',
     favorite: true,
     description: '',
@@ -897,7 +874,6 @@ const recipesData = [
     },
   },
   {
-    id: 23,
     title: 'Slow Cooker Butter Chicken',
     favorite: false,
     description: '',
@@ -939,7 +915,6 @@ const recipesData = [
     },
   },
   {
-    id: 24,
     title: 'Slow Cooker Balsamic Chicken & Sausage',
     favorite: false,
     description:
@@ -981,7 +956,6 @@ const recipesData = [
     },
   },
   {
-    id: 25,
     title: 'Skinny Shrimp Scampi with Zucchini Noodles',
     favorite: false,
     description: '',
@@ -1013,7 +987,6 @@ const recipesData = [
     },
   },
   {
-    id: 26,
     title: 'Simple Patatas Bravas',
     favorite: false,
     description: '',
@@ -1050,7 +1023,6 @@ const recipesData = [
     },
   },
   {
-    id: 27,
     title: 'Simple Broccoli Beef',
     favorite: false,
     description: '',
@@ -1086,7 +1058,6 @@ const recipesData = [
     },
   },
   {
-    id: 28,
     title: 'Shrimp Coconut Curry',
     favorite: false,
     description: '',
@@ -1136,7 +1107,6 @@ const recipesData = [
     },
   },
   {
-    id: 29,
     title: 'Shirred Eggs with Sausage and Spinach',
     favorite: false,
     description: '',
@@ -1178,7 +1148,6 @@ const recipesData = [
     },
   },
   {
-    id: 30,
     title: 'SAUTEED ZUCCHINI AND MUSHROOMS',
     favorite: false,
     description: '',
@@ -1213,7 +1182,6 @@ const recipesData = [
     },
   },
   {
-    id: 31,
     title: 'Salmon with Tomato, Onions, and Capers',
     favorite: false,
     description: '',
@@ -1257,7 +1225,6 @@ const recipesData = [
     },
   },
   {
-    id: 32,
     title: 'Salmon with Lemon, Garlic & Rosemary',
     favorite: false,
     description: '',
@@ -1294,7 +1261,6 @@ const recipesData = [
     },
   },
   {
-    id: 33,
     title: 'Salmon Over Mixed Legumes',
     favorite: false,
     description: '',
@@ -1338,7 +1304,6 @@ const recipesData = [
     },
   },
   {
-    id: 34,
     title: 'Roasted Vegetables',
     favorite: false,
     description: '',
@@ -1378,7 +1343,6 @@ const recipesData = [
     },
   },
   {
-    id: 35,
     title: 'Potato Salad',
     favorite: false,
     description: '',
@@ -1415,7 +1379,6 @@ const recipesData = [
     },
   },
   {
-    id: 36,
     title: 'Pineapple Fried Rice',
     favorite: false,
     description: '',
@@ -1460,7 +1423,6 @@ const recipesData = [
     },
   },
   {
-    id: 37,
     title: 'Pesto Zucchini Noodles with Shrimp',
     favorite: false,
     description: '',
@@ -1490,7 +1452,6 @@ const recipesData = [
     },
   },
   {
-    id: 38,
     title: 'Penne Pasta Salad',
     favorite: false,
     description: '',
@@ -1532,7 +1493,6 @@ const recipesData = [
     },
   },
   {
-    id: 39,
     title: 'Paleo Pot Roast',
     favorite: false,
     description: '',
@@ -1567,7 +1527,6 @@ const recipesData = [
     },
   },
   {
-    id: 40,
     title: 'Paleo Orange Chicken',
     favorite: false,
     description: '',
@@ -1604,7 +1563,6 @@ const recipesData = [
     },
   },
   {
-    id: 41,
     title: 'Paleo Fish Tacos',
     favorite: false,
     description: '',
@@ -1646,7 +1604,6 @@ const recipesData = [
     },
   },
   {
-    id: 42,
     title: 'Paleo Chicken Tikka Masala',
     favorite: false,
     description: '',
@@ -1703,7 +1660,6 @@ const recipesData = [
     },
   },
   {
-    id: 43,
     title: 'Orange Dijon Chicken',
     favorite: false,
     description: '',
@@ -1742,7 +1698,6 @@ const recipesData = [
     },
   },
   {
-    id: 44,
     title: 'One Pot Paella',
     favorite: false,
     description: '',
@@ -1779,7 +1734,6 @@ const recipesData = [
     },
   },
   {
-    id: 45,
     title: "Mom's Spaghetti Sauce (Paleo Pasta)",
     favorite: false,
     description: '',
@@ -1835,7 +1789,6 @@ const recipesData = [
     },
   },
   {
-    id: 46,
     title: 'Lemon Pepper Roast Chicken',
     favorite: false,
     description: '',
@@ -1889,7 +1842,6 @@ const recipesData = [
     },
   },
   {
-    id: 47,
     title: 'Lemon Garlic Crockpot Chicken',
     favorite: false,
     description: '',
@@ -1926,7 +1878,6 @@ const recipesData = [
     },
   },
   {
-    id: 48,
     title: 'KFC Top-Secret Recipe For Fried Chicken',
     favorite: false,
     description: '',
@@ -1961,7 +1912,6 @@ const recipesData = [
     },
   },
   {
-    id: 49,
     title: 'Jerk Chicken & Pineapple Bowl',
     favorite: false,
     description: '',
@@ -2006,7 +1956,6 @@ const recipesData = [
     },
   },
   {
-    id: 50,
     title: 'Italian Wonderpot',
     favorite: false,
     description: '',
@@ -2044,7 +1993,6 @@ const recipesData = [
     },
   },
   {
-    id: 51,
     title: 'Honey Sauced Chicken',
     favorite: false,
     description: '',
@@ -2081,7 +2029,6 @@ const recipesData = [
     },
   },
   {
-    id: 52,
     title: 'Honey Garlic Chicken Wings in The Crock Pot',
     favorite: false,
     description:
@@ -2114,7 +2061,6 @@ const recipesData = [
     },
   },
   {
-    id: 53,
     title: 'Grilled Salmon Kebabs',
     favorite: false,
     description: '',
@@ -2153,7 +2099,6 @@ const recipesData = [
     // Sodium: 658 mg • Cholest: 94 mg
   },
   {
-    id: 54,
     title: 'Garlic Shrimp in Lemon Butter Sauce',
     favorite: false,
     description: '',
@@ -2187,7 +2132,6 @@ const recipesData = [
     },
   },
   {
-    id: 55,
     title: 'Garlic Mustard Drumsticks',
     favorite: false,
     description: '',
@@ -2221,7 +2165,6 @@ const recipesData = [
     },
   },
   {
-    id: 56,
     title: 'Easy Indian Rice Curry',
     favorite: false,
     description: '',
@@ -2278,7 +2221,6 @@ const recipesData = [
     },
   },
   {
-    id: 57,
     title: 'Curried Potatoes',
     favorite: false,
     description: '',
@@ -2315,7 +2257,6 @@ const recipesData = [
     },
   },
   {
-    id: 58,
     title: 'Crock Pot Short Ribs',
     favorite: false,
     description: '',
@@ -2358,7 +2299,6 @@ const recipesData = [
     },
   },
   {
-    id: 59,
     title: 'Crock Pot Sesame Honey Chicken',
     favorite: false,
     description: '',
@@ -2401,7 +2341,6 @@ const recipesData = [
     },
   },
   {
-    id: 60,
     title: 'Crock Pot Hawaiian Chicken',
     favorite: false,
     description: '',
@@ -2435,7 +2374,6 @@ const recipesData = [
     },
   },
   {
-    id: 61,
     title: 'Crock Pot Chili',
     favorite: true,
     description: '',
@@ -2470,7 +2408,6 @@ const recipesData = [
     },
   },
   {
-    id: 62,
     title: 'Creamy Tomato & Spinach Pasta',
     favorite: false,
     description: '',
@@ -2512,7 +2449,6 @@ const recipesData = [
     },
   },
   {
-    id: 63,
     title: 'Copycat Chipotle Chicken',
     favorite: false,
     description: '',
@@ -2546,7 +2482,6 @@ const recipesData = [
     },
   },
   {
-    id: 64,
     title: 'Chipotle Bean Burritos',
     favorite: false,
     description: '',
@@ -2584,7 +2519,6 @@ const recipesData = [
     },
   },
   {
-    id: 65,
     title: 'Chicken Tacos From Scratch',
     favorite: true,
     description:
@@ -2665,7 +2599,6 @@ const recipesData = [
     },
   },
   {
-    id: 66,
     title: 'Chicken and Veggies Stir Fry (hodgepodge of delicious)',
     favorite: false,
     description: '',
@@ -2716,7 +2649,6 @@ const recipesData = [
     // notes: From Reddit
   },
   {
-    id: 67,
     title: 'cauliflower rice',
     favorite: false,
     description: '',
@@ -2755,7 +2687,6 @@ const recipesData = [
     // notes: Cook a slice of bacon before and use the fat instead of butter.
   },
   {
-    id: 68,
     title: 'Calico Beans',
     favorite: false,
     description: '',
@@ -2792,7 +2723,6 @@ const recipesData = [
     },
   },
   {
-    id: 69,
     title: 'Cacio E Pepe Pasta',
     favorite: true,
     description: '',
@@ -2822,7 +2752,6 @@ const recipesData = [
     },
   },
   {
-    id: 70,
     title: 'Breakfast Eggs (Standard)',
     favorite: false,
     description: '',
@@ -2848,7 +2777,6 @@ const recipesData = [
     },
   },
   {
-    id: 71,
     title: 'beef stroganoff',
     favorite: false,
     description: '',
@@ -2886,7 +2814,6 @@ const recipesData = [
     },
   },
   {
-    id: 72,
     title: 'Beef Bulgogi',
     favorite: false,
     description: '',
@@ -2919,7 +2846,6 @@ const recipesData = [
     },
   },
   {
-    id: 73,
     title: 'Bacon-Wrapped Dates',
     favorite: true,
     description: '',
@@ -2956,7 +2882,6 @@ const recipesData = [
     },
   },
   {
-    id: 74,
     title: 'Avocado Caprese Pasta Salad',
     favorite: false,
     description: '',
@@ -2994,7 +2919,6 @@ const recipesData = [
     },
   },
   {
-    id: 75,
     title: 'Asparagus, Peas, and Tomatoes with Herb Butter',
     favorite: false,
     description: '',
@@ -3030,7 +2954,6 @@ const recipesData = [
     },
   },
   {
-    id: 76,
     title: 'Asian Pork Lettuce Wraps',
     favorite: false,
     description: '',
@@ -3073,7 +2996,6 @@ const recipesData = [
     },
   },
   {
-    id: 77,
     title: 'Asian Noodle Bowl with Ginger Peanut Dressing',
     favorite: false,
     description:
@@ -3117,7 +3039,6 @@ const recipesData = [
     },
   },
   {
-    id: 78,
     title: 'arroz con coco',
     favorite: false,
     description:
@@ -3147,7 +3068,6 @@ const recipesData = [
     },
   },
   {
-    id: 79,
     title: 'Cobb Salad',
     favorite: false,
     description: '',
@@ -3173,7 +3093,6 @@ const recipesData = [
     },
   },
   {
-    id: 80,
     title: 'Easy Lemon Garlic Pasta',
     favorite: true,
     description: `Lemon Garlic Pasta delivers bold, vibrant flavor with minimal effort. It's the kind of pasta dish you turn to on busy weeknights when you want a satisfying dinner on the table in 20 minutes flat.`,
@@ -3208,7 +3127,6 @@ const recipesData = [
     },
   },
   {
-    id: 81,
     title: 'Tacos and Guacamole',
     favorite: false,
     description: '',

@@ -1,4 +1,13 @@
-import { collection, doc, addDoc, getDocs, getDoc, updateDoc } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  addDoc,
+  getDocs,
+  getDoc,
+  updateDoc,
+  query,
+  where,
+} from 'firebase/firestore';
 
 export async function getRecipeById(data) {
   const docSnap = await getDoc(data.docRef);
@@ -31,4 +40,18 @@ export async function addRecipe(data) {
   const docRef = doc(data.db, `users/${data.currentUserId}/recipes/${newRecipe.id}`);
 
   return getRecipeById({ docRef, recipeId: newRecipe.id });
+}
+
+export async function getRecipesByQuery(data) {
+  const recipesOnShoppingList = [];
+  const querySnapshot = await getDocs(
+    query(
+      collection(data.db, `users/${data.currentUserId}/recipes/`),
+      where(data.payload.key, data.payload.where, data.payload.value),
+    ),
+  );
+  querySnapshot.forEach((d) => {
+    recipesOnShoppingList.push(d.data());
+  });
+  return recipesOnShoppingList;
 }
