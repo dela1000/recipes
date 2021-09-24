@@ -35,7 +35,11 @@ export default function Home() {
       {recipesData.length > 0 ? (
         <RecipesListHolder recipesData={recipesData} />
       ) : (
-        <AddRecipeButton text="add your first recipe" />
+        <div className="flex h-screen">
+          <div className="m-auto">
+            <AddRecipeButton text="add your first recipe" />
+          </div>
+        </div>
       )}
     </div>
   );
