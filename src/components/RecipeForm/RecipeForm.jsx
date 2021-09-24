@@ -210,6 +210,9 @@ export default function RecipeForm() {
                 label="Ingredients"
                 multiline
                 rows={16}
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 {...register('ingredients')}
               />
             </Grid>
@@ -245,6 +248,9 @@ export default function RecipeForm() {
                 label="Instructions"
                 multiline
                 rows={16}
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 {...register('instructions')}
               />
             </Grid>
