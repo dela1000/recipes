@@ -206,7 +206,7 @@ export default function RecipeForm() {
           </Grid>
 
           <Grid container spacing={1}>
-            <Grid item xs={6} sm={6} className="text-xs">
+            <Grid item xs={12} sm={12} className="text-xs">
               Optional: Use brackets for Ingredient Groups. Example: <b>[Crust]</b> and{'  '}
               <b>[Filling]</b>
             </Grid>
