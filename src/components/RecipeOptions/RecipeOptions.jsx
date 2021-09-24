@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
@@ -48,7 +49,7 @@ export default function RecipeOptions({ recipe }) {
   return (
     <div className="pt-3">
       <button
-        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-16 mx-1 h-9"
+        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-14 mx-1 h-9"
         type="button"
         onClick={() => {
           handleFavoriteSelected();
@@ -60,6 +61,18 @@ export default function RecipeOptions({ recipe }) {
         />
       </button>
       <button
+        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-14 mx-1 h-9"
+        type="button"
+        onClick={() => {
+          addToShoppingList(recipe);
+        }}
+      >
+        <ShoppingCartIcon
+          fontSize="small"
+          className={`${recipe.onShoppingList ? `text-yellow-400` : 'text-white'} fill-current`}
+        />
+      </button>
+      <button
         className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 mx-1 h-9"
         type="button"
         onClick={() => {
@@ -67,17 +80,6 @@ export default function RecipeOptions({ recipe }) {
         }}
       >
         Edit Recipe
-      </button>
-      <button
-        className={`uppercase px-4 py-2 text-xs bg-gray-600 hover:bg-gray-600 duration-300 mx-1 h-9 ${
-          recipe.onShoppingList ? `text-yellow-300` : 'text-white'
-        } fill-current`}
-        type="button"
-        onClick={() => {
-          addToShoppingList(recipe);
-        }}
-      >
-        {recipe.onShoppingList ? 'On Shopping List' : 'Add to Shopping List'}
       </button>
     </div>
   );
