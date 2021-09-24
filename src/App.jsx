@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop/index';
 import Home from './pages/Home/index';
 import Recipe from './pages/Recipe/index';
 import AddRecipe from './pages/AddRecipe/index';
+import ShoppingList from './pages/ShoppingList/index';
 import EditRecipe from './pages/EditRecipe/index';
 // Contexts
 import { Context } from './contexts/context';
@@ -45,7 +46,7 @@ export default function App() {
         <Router>
           <div className="flex flex-col h-screen">
             <Header />
-            <div className="flex-1 overflow-y-auto p-5">
+            <div className="flex-1 overflow-y-auto py-5 px-3 lg:px-5">
               <div style={{ display: navbarState ? 'none' : 'block container' }} />
               <div className="relative mb-10 md:mx-40">
                 <Switch>
@@ -60,6 +61,9 @@ export default function App() {
                   </Route>
                   <Route exact path="/editrecipe">
                     <EditRecipe windowType={windowType} />
+                  </Route>
+                  <Route exact path="/shoppinglist">
+                    <ShoppingList windowType={windowType} />
                   </Route>
                   <Route path="*">
                     <Redirect to="/" />

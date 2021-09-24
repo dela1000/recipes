@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
@@ -31,10 +32,24 @@ export default function RecipeOptions({ recipe }) {
     history.push(`/editrecipe`);
   };
 
+  const addToShoppingList = async () => {
+    const updatedRecipe = await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: recipe.id,
+      payload: {
+        onShoppingList: !recipe.onShoppingList,
+      },
+    });
+
+    setRecipe(updatedRecipe);
+    setRecipeId(updatedRecipe.id);
+  };
+
   return (
     <div className="pt-3">
       <button
-        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-16 mx-1 h-9"
+        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-14 mx-1 h-9"
         type="button"
         onClick={() => {
           handleFavoriteSelected();
@@ -43,6 +58,18 @@ export default function RecipeOptions({ recipe }) {
         <StarIcon
           fontSize="small"
           className={`${recipe.favorite ? `text-yellow-400` : 'text-white'} fill-current`}
+        />
+      </button>
+      <button
+        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-14 mx-1 h-9"
+        type="button"
+        onClick={() => {
+          addToShoppingList(recipe);
+        }}
+      >
+        <ShoppingCartIcon
+          fontSize="small"
+          className={`${recipe.onShoppingList ? `text-yellow-400` : 'text-white'} fill-current`}
         />
       </button>
       <button
@@ -66,6 +93,7 @@ RecipeOptions.propTypes = {
     favorite: PropTypes.bool,
     originalURL: PropTypes.string,
     source: PropTypes.string,
+    onShoppingList: PropTypes.bool,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };

@@ -11,6 +11,7 @@ import './Navbar.css';
 const navList = [
   { name: 'recipes', navigate: '' },
   { name: 'add recipe', navigate: 'addrecipe' },
+  { name: 'shopping list', navigate: 'shoppinglist' },
 ];
 
 export default function Navbar() {
