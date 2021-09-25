@@ -22,9 +22,6 @@ export default function ShoppingListByRecipe({ recipeData, getShoppingListRecipe
 
   return (
     <div>
-      <button type="button" onClick={() => test()}>
-        Test
-      </button>
       <div className="text-xl mb-2 capitalize italic">{recipeData.title}</div>
       <div className="mb-5 pl-3 lg:pl-0">
         {ingredientsHeaders.map((header) => (
