@@ -186,21 +186,22 @@ export default function RecipeForm({ type }) {
   };
 
   const testSubmit = () => {
-    // const promisesGoHere = [];
+    const promisesGoHere = [];
     recipesData.forEach((recipeToAdd) => {
       const dataToSubmit = JSON.parse(JSON.stringify(recipeToAdd));
 
-      const ingredientsHolder = {};
-
+      const ingredientsHolder = [];
+      let index = 0;
       Object.keys(dataToSubmit.ingredients).forEach((key) => {
-        ingredientsHolder[key] = [];
-        dataToSubmit.ingredients[key].forEach((ingredient) => {
+        const holder = { groupName: key, ingredients: [], index };
+        dataToSubmit.ingredients[key].forEach((ingredient, ingIndex) => {
           const trimIngredient = ingredient.trim();
           const splitString = trimIngredient.split('');
 
           const numbers = [];
           const letters = [];
           const separated = {
+            index: ingIndex,
             purchased: false,
           };
           let isLetter = false;
@@ -222,29 +223,39 @@ export default function RecipeForm({ type }) {
           if (stringPart) {
             separated.string = stringPart.trim();
           }
-
-          ingredientsHolder[key].push(separated);
+          holder.ingredients.push(separated);
         });
+        index += 1;
+
+        ingredientsHolder.push(holder);
       });
 
       dataToSubmit.ingredients = ingredientsHolder;
 
-      console.log(
-        '+++ 236: src/components/RecipeForm/RecipeForm.jsx - dataToSubmit: ',
-        dataToSubmit,
-      );
+      const instructionsHolder = [];
+      index = 0;
+      Object.keys(dataToSubmit.instructions).forEach((key) => {
+        const holder = { groupName: key, instructions: [], index };
+        dataToSubmit.instructions[key].forEach((instruction) => {
+          holder.instructions.push(instruction);
+        });
+        instructionsHolder.push(holder);
+        index += 1;
+      });
 
-      // const docRef = addRecipe({
-      //   db,
-      //   currentUserId: currentUser.uid,
-      //   payload: dataToSubmit,
-      // });
-      // promisesGoHere.push(docRef);
+      dataToSubmit.instructions = instructionsHolder;
+
+      const docRef = addRecipe({
+        db,
+        currentUserId: currentUser.uid,
+        payload: dataToSubmit,
+      });
+      promisesGoHere.push(docRef);
     });
 
-    // Promise.all(promisesGoHere).then((values) => {
-    //   console.log(values);
-    // });
+    Promise.all(promisesGoHere).then((values) => {
+      console.log(values);
+    });
   };
 
   const helperMeasurements = ['1/4', '1/3', '1/2', '3/4', '°', '[', ']'];

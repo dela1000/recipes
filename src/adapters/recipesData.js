@@ -148,7 +148,7 @@ const recipesData = [
         '1 1/2 cups uncooked brown or green lentils, rinsed and drained',
         '4 cups vegetable stock',
         '2 tsp fresh thyme or 1 tsp dried thyme',
-        '1 10-ounce bag frozen mixed veggies: peas, carrots, green beans and corn',
+        '10 ounce bag frozen mixed veggies: peas, carrots, green beans and corn',
       ],
       'MASHED POTATOES': [
         '3 pounds yukon gold potatoes, thoroughly washed',
