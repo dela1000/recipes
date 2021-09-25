@@ -157,7 +157,7 @@ export default function RecipeForm({ type }) {
     return finalInnstructionsObject;
   };
 
-  const defineCategores = (categories) => {
+  const defineCategories = (categories) => {
     const categoriesFinal = [];
     const categoriesHolder = categories.trim().split(',');
 
@@ -178,7 +178,7 @@ export default function RecipeForm({ type }) {
       dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());
     }
     if (recipeFormData.categories.length > 0) {
-      dataToSubmit.categories = defineCategores(recipeFormData.categories.trim());
+      dataToSubmit.categories = defineCategories(recipeFormData.categories.trim());
     } else {
       dataToSubmit.categories = [];
     }
