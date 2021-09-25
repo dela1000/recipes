@@ -97,6 +97,7 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
           {recipesOnShoppingList.map((recipe) => (
             <ShoppingListByRecipe
               key={recipe.id}
+              recipeId={recipe.id}
               recipeData={recipe}
               getShoppingListRecipes={getShoppingListRecipes}
             />
