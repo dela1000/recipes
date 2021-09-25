@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 export default function RecipeIngredients({ recipe }) {
+  console.log('+++ 5: src/components/RecipeIngredients/RecipeIngredients.jsx - recipe: ', recipe);
   return (
     <div className="my-5 pl-3 lg:pl-0">
       <div className="mt-5 mb-2 text-2xl">INGREDIENTS</div>

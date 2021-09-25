@@ -74,15 +74,15 @@ export default function RecipeForm({ type }) {
 
   const onlyString = (string) => string.substring(1).slice(0, -1);
 
-  const defineFinalObject = (array) => {
+  const defineFinalObject = (array, arrayType) => {
     let index = 0;
-    const finalObject = [{ groupName: 'standard', ingredients: [], index }];
+    const finalObject = [{ groupName: 'standard', [arrayType]: [], index }];
     array.forEach((item) => {
       const trimmedItem = item.trim();
       if (trimmedItem.charAt(0) === '[' && trimmedItem.charAt(trimmedItem.length - 1) === ']') {
         index += 1;
         const cleanedUpString = onlyString(trimmedItem);
-        finalObject.push({ groupName: cleanedUpString, ingredients: [], index });
+        finalObject.push({ groupName: cleanedUpString, [arrayType]: [], index });
       }
     });
     return finalObject;
@@ -92,9 +92,9 @@ export default function RecipeForm({ type }) {
     // separate each line from te TextField into an array of strings
     const ingredientsArray = splitLineIntoArray(lineData);
     // select each item defined as header (by using [])
-    const finalIngredientsObject = defineFinalObject(ingredientsArray);
+    const finalIngredientsObject = defineFinalObject(ingredientsArray, 'ingredients');
 
-    let ingredientGroupIndex = 0;
+    let groupIndex = 0;
     ingredientsArray.forEach((ingredient, index) => {
       const trimIngredient = ingredient.trim();
       const splitString = trimIngredient.split('');
@@ -102,7 +102,7 @@ export default function RecipeForm({ type }) {
       let foundIngredientGroup = false;
       if (splitString[0] === '[') {
         foundIngredientGroup = true;
-        ingredientGroupIndex += 1;
+        groupIndex += 1;
       }
 
       const numbers = [];
@@ -133,7 +133,7 @@ export default function RecipeForm({ type }) {
           separated.string = stringPart.trim();
         }
 
-        finalIngredientsObject[ingredientGroupIndex].ingredients.push(separated);
+        finalIngredientsObject[groupIndex].ingredients.push(separated);
       }
     });
     return finalIngredientsObject;
@@ -141,26 +141,21 @@ export default function RecipeForm({ type }) {
 
   const defineInstructions = (lineData) => {
     const instructionsArray = splitLineIntoArray(lineData);
-    const finalInnstructionsObject = defineFinalObject(instructionsArray);
+    const finalInstructionsObject = defineFinalObject(instructionsArray, 'instructions');
 
-    let instructionGroup = 'standard';
-    let ingredientGroupIndex = 0;
+    let groupIndex = 0;
     instructionsArray.forEach((instruction) => {
       let foundInstructionGroup = false;
       const trimmedInstruction = instruction.trim();
-      if (
-        trimmedInstruction.charAt(0) === '[' &&
-        trimmedInstruction.charAt(trimmedInstruction.length - 1) === ']'
-      ) {
+      if (trimmedInstruction.charAt(0) === '[') {
         foundInstructionGroup = true;
-        instructionGroup = onlyString(trimmedInstruction);
+        groupIndex += 1;
       }
       if (!foundInstructionGroup) {
-        finalInnstructionsObject[ingredientGroupIndex][instructionGroup].push(trimmedInstruction);
-        ingredientGroupIndex += 1;
+        finalInstructionsObject[groupIndex].instructions.push(trimmedInstruction);
       }
     });
-    return finalInnstructionsObject;
+    return finalInstructionsObject;
   };
 
   const defineCategores = (categories) => {
@@ -177,12 +172,10 @@ export default function RecipeForm({ type }) {
   const onSubmit = (recipeFormData) => {
     const dataToSubmit = JSON.parse(JSON.stringify(recipeFormData));
     dataToSubmit.favorite = false;
-    if (recipeFormData.ingredients.length > 0) {
-      dataToSubmit.ingredients = defineIngredients(recipeFormData.ingredients.trim());
-    }
-    if (recipeFormData.instructions.length > 0) {
-      dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());
-    }
+
+    dataToSubmit.ingredients = defineIngredients(recipeFormData.ingredients.trim());
+    dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());
+
     if (recipeFormData.categories.length > 0) {
       dataToSubmit.categories = defineCategores(recipeFormData.categories.trim());
     } else {
