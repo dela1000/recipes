@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FavoriteButton from '../FavoriteButton';
@@ -7,7 +7,17 @@ import { updateRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 
-export default function RecipeListItem({ recipe, handleCategoryChange, getRecipes }) {
+export default function RecipeListItem({ recipe, handleCategoryChange, updateSingleRecipe }) {
+  const [listRecipe, setListRecipe] = useState({
+    id: null,
+    favorite: null,
+    image: null,
+    originalURL: null,
+    source: null,
+    title: null,
+    onShoppingList: null,
+    categories: [],
+  });
   const [updatingFavorite, setUpdatingFavorite] = useState(false);
   const [updatingShopping, setUpdatingShopping] = useState(false);
   const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
@@ -18,66 +28,72 @@ export default function RecipeListItem({ recipe, handleCategoryChange, getRecipe
 
   const selectRecipe = () => {
     setRecipe(recipe);
-    setRecipeId(recipe.id);
+    setRecipeId(listRecipe.id);
     navigate();
   };
 
   const handleFavoriteSelected = async () => {
     setUpdatingFavorite(true);
-    await updateRecipe({
+    const updatedRecipe = await updateRecipe({
       db,
       currentUserId: currentUser.uid,
-      recipeId: recipe.id,
+      recipeId: listRecipe.id,
       payload: {
-        favorite: !recipe.favorite,
+        favorite: !listRecipe.favorite,
       },
     });
     setUpdatingFavorite(false);
-    getRecipes(false);
+    setListRecipe(updatedRecipe);
+    updateSingleRecipe(listRecipe.id);
   };
 
   const handleAddToShoppingList = async () => {
     setUpdatingShopping(true);
     const dataToUpdate = {
-      onShoppingList: !recipe.onShoppingList,
+      onShoppingList: !listRecipe.onShoppingList,
     };
 
-    if (recipe.onShoppingList) {
-      recipe.ingredients.forEach((ingredientsGroup) => {
+    if (listRecipe.onShoppingList) {
+      listRecipe.ingredients.forEach((ingredientsGroup) => {
         ingredientsGroup.ingredients.forEach((ingredient) => {
           ingredient.purchased = false;
         });
       });
     }
 
-    dataToUpdate.ingredients = recipe.ingredients;
+    dataToUpdate.ingredients = listRecipe.ingredients;
 
-    await updateRecipe({
+    const updatedRecipe = await updateRecipe({
       db,
       currentUserId: currentUser.uid,
-      recipeId: recipe.id,
+      recipeId: listRecipe.id,
       payload: dataToUpdate,
     });
     setUpdatingShopping(false);
-    getRecipes(false);
+    setListRecipe(updatedRecipe);
+    updateSingleRecipe(listRecipe.id);
   };
 
+  useEffect(() => {
+    setListRecipe(recipe);
+  }, []);
+
   return (
-    <div key={recipe.id}>
+    <div key={listRecipe.id}>
       <hr />
       <div className="flex">
         <div className="mt-3 mx-1">
           <div className="lg:flex flex-col">
             <div className="mb-1">
               <FavoriteButton
-                favorite={recipe.favorite}
+                favorite={listRecipe.favorite}
                 updating={updatingFavorite}
                 handleFavoriteSelected={handleFavoriteSelected}
               />
             </div>
             <div>
               <AddToShoppingListButton
-                onShoppingList={recipe.onShoppingList}
+                onShoppingList={listRecipe.onShoppingList}
                 updating={updatingShopping}
                 handleAddToShoppingList={handleAddToShoppingList}
               />
@@ -86,9 +102,9 @@ export default function RecipeListItem({ recipe, handleCategoryChange, getRecipe
         </div>
         <div className="flex-initial mt-3 mr-3">
           <button type="button" onClick={selectRecipe} className="w-32 h-32">
-            {recipe.image ? (
+            {listRecipe.image ? (
               <img
-                src={recipe.image}
+                src={listRecipe.image}
                 alt="food"
                 className="object-cover min-h-full min-w-full w-32 h-32"
               />
@@ -102,11 +118,11 @@ export default function RecipeListItem({ recipe, handleCategoryChange, getRecipe
             <div>
               <a
                 className="text-xs text-blue-400"
-                href={recipe.originalURL}
+                href={listRecipe.originalURL}
                 target="_blank"
                 rel="noreferrer"
               >
-                {recipe.source}
+                {listRecipe.source}
               </a>
             </div>
           </div>
@@ -117,15 +133,15 @@ export default function RecipeListItem({ recipe, handleCategoryChange, getRecipe
                 type="button"
                 onClick={selectRecipe}
               >
-                {recipe.title}
+                {listRecipe.title}
               </button>
             </div>
           </div>
           <div>
             <div className="pt-1">
-              {recipe.categories.length > 0 && (
+              {listRecipe.categories.length > 0 && (
                 <div className="text-xs flex">
-                  {recipe.categories.map((category, idx) => (
+                  {listRecipe.categories.map((category, idx) => (
                     <button
                       type="button"
                       key={category}
@@ -133,7 +149,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, getRecipe
                       onClick={() => handleCategoryChange({ target: { value: category } })}
                     >
                       {category}
-                      {idx + 1 < recipe.categories.length ? ',' : null}
+                      {idx + 1 < listRecipe.categories.length ? ',' : null}
                     </button>
                   ))}
                 </div>
@@ -159,5 +175,5 @@ RecipeListItem.propTypes = {
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   handleCategoryChange: PropTypes.func.isRequired,
-  getRecipes: PropTypes.func.isRequired,
+  updateSingleRecipe: PropTypes.func.isRequired,
 };

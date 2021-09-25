@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../contexts/context';
 
-import { getAllRecipes } from '../../adapters/recipeAdapters';
+import { getAllRecipes, getRecipeById } from '../../adapters/recipeAdapters';
 
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
@@ -25,6 +25,18 @@ export default function Home() {
     setLoading(false);
   };
 
+  const updateSingleRecipe = async (recipeId) => {
+    const recipeById = await getRecipeById({
+      db,
+      currentUserId: currentUser.uid,
+      payload: { id: recipeId },
+    });
+    const clonedRecipesData = [...recipesData];
+    const objIndex = clonedRecipesData.findIndex((obj) => obj.id === recipeId);
+    clonedRecipesData[objIndex] = recipeById;
+    setRecipesData([...clonedRecipesData]);
+  };
+
   useEffect(() => {
     if (currentUser) {
       getRecipes();
@@ -38,7 +50,7 @@ export default function Home() {
   return (
     <div className="fade-in">
       {recipesData.length > 0 ? (
-        <RecipesListHolder recipesData={recipesData} getRecipes={getRecipes} />
+        <RecipesListHolder recipesData={recipesData} updateSingleRecipe={updateSingleRecipe} />
       ) : (
         <div className="flex h-screen">
           <div className="m-auto">
