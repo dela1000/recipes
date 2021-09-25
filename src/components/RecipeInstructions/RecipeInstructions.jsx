@@ -7,7 +7,9 @@ export default function RecipeInstructions({ recipe }) {
         <div className="mt-5 mb-2 text-2xl">INSTRUCTIONS</div>
         {recipe.instructions.map((item) => (
           <div key={item.index}>
-            <div className="text-1xl font-bold capitalize">{item.groupName}</div>
+            {item.instructions.length > 0 && (
+              <div className="text-1xl font-bold capitalize">{item.groupName}</div>
+            )}
             {item.instructions.map((instruction) => (
               <div className="mb-2" key={instruction}>
                 <span>{instruction}</span>
