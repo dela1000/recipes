@@ -10,8 +10,8 @@ export default function Home() {
   const [{ db, currentUser, setLoading }] = useContext(Context);
   const [recipesData, setRecipesData] = useState([]);
 
-  const getRecipes = async () => {
-    setLoading(true);
+  const getRecipes = async (showLoading) => {
+    if (showLoading) setLoading(true);
     const allRecipes = [];
     const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
 

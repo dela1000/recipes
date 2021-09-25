@@ -33,7 +33,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, getRecipe
       },
     });
     setUpdatingFavorite(false);
-    getRecipes();
+    getRecipes(false);
   };
 
   const handleAddToShoppingList = async () => {
@@ -59,7 +59,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, getRecipe
       payload: dataToUpdate,
     });
     setUpdatingShopping(false);
-    getRecipes();
+    getRecipes(false);
   };
 
   return (
