@@ -6,10 +6,13 @@ import { getRecipesByQuery } from '../../adapters/recipeAdapters';
 import { Context } from '../../contexts/context';
 
 export default function ShoppingList() {
-  const [{ db, currentUser }] = useContext(Context);
+  const [{ db, currentUser, setLoading }] = useContext(Context);
   const [recipesOnShoppingList, setRecipesOnShoppingList] = useState([]);
 
-  const getShoppingListRecipes = async () => {
+  const getShoppingListRecipes = async (showLoader = false) => {
+    if (showLoader) {
+      setLoading(true);
+    }
     const recipesFromDb = await getRecipesByQuery({
       db,
       currentUserId: currentUser.uid,
@@ -19,12 +22,13 @@ export default function ShoppingList() {
         value: true,
       },
     });
+    setLoading(false);
     setRecipesOnShoppingList(recipesFromDb);
   };
 
   useEffect(() => {
     if (currentUser) {
-      getShoppingListRecipes();
+      getShoppingListRecipes(true);
     }
   }, [currentUser]);
   return (

@@ -11,7 +11,7 @@ import { addRecipe, updateRecipe } from '../../adapters/recipeAdapters';
 import { Context } from '../../contexts/context';
 
 export default function RecipeForm({ type }) {
-  const [{ db, currentUser, setRecipeId, setRecipe, recipe }] = useContext(Context);
+  const [{ db, currentUser, setRecipeId, setRecipe, recipe, setLoading }] = useContext(Context);
   const history = useHistory();
   let dataToEdit = {};
   if (type === 'edit') {
@@ -36,6 +36,7 @@ export default function RecipeForm({ type }) {
   };
 
   const submitData = async (dataToSubmit) => {
+    setLoading(true);
     let docRef;
     if (type === 'new') {
       docRef = await addRecipe({
@@ -53,7 +54,7 @@ export default function RecipeForm({ type }) {
         payload: dataToSubmit,
       });
     }
-
+    setLoading(false);
     navigate(docRef, 'recipe');
   };
 

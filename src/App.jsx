@@ -9,6 +9,7 @@ import firebaseApp from './firebase';
 import SignIn from './pages/SignIn';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
+import LoadingOverlay from './components/LoadingOverlay';
 import Home from './pages/Home';
 import Recipe from './pages/Recipe';
 import AddRecipe from './pages/AddRecipe';
@@ -44,6 +45,7 @@ export default function App() {
     <div id="top" className={`${themeName} app overflow-x-hidden`}>
       {user ? (
         <Router>
+          <LoadingOverlay />
           <div className="flex flex-col h-screen">
             <Header />
             <div className="flex-1 overflow-y-auto py-5 px-3 lg:px-5">

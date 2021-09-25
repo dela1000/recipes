@@ -11,6 +11,7 @@ const Provider = ({ children }) => {
   const [token, setToken] = useState();
   const [themeName, setThemeName] = useState('light');
   const [navbarState, setNavbarState] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [recipeId, setRecipeId] = useState(null);
   const [recipe, setRecipe] = useState({});
 
@@ -65,6 +66,8 @@ const Provider = ({ children }) => {
           toggleTheme,
           navbarState,
           toggleNavbar,
+          loading,
+          setLoading,
           recipeId,
           setRecipeId,
           recipe,

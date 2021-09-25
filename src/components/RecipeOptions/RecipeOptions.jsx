@@ -1,18 +1,22 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AutorenewIcon from '@material-ui/icons/Autorenew';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 
 export default function RecipeOptions({ recipe }) {
+  const [updatingFavorite, setUpdatingFavorite] = useState(false);
+  const [updatingShopping, setUpdatingShopping] = useState(false);
   const history = useHistory();
   const [{ db, currentUser, setRecipe, setRecipeId }] = useContext(Context);
 
   const handleFavoriteSelected = async () => {
+    setUpdatingFavorite(true);
     const updatedRecipe = await updateRecipe({
       db,
       currentUserId: currentUser.uid,
@@ -21,7 +25,7 @@ export default function RecipeOptions({ recipe }) {
         favorite: !recipe.favorite,
       },
     });
-
+    setUpdatingFavorite(false);
     setRecipe(updatedRecipe);
     setRecipeId(updatedRecipe.id);
   };
@@ -33,6 +37,7 @@ export default function RecipeOptions({ recipe }) {
   };
 
   const addToShoppingList = async () => {
+    setUpdatingShopping(true);
     const dataToUpdate = {
       onShoppingList: !recipe.onShoppingList,
     };
@@ -53,7 +58,7 @@ export default function RecipeOptions({ recipe }) {
       recipeId: recipe.id,
       payload: dataToUpdate,
     });
-
+    setUpdatingShopping(false);
     setRecipe(updatedRecipe);
     setRecipeId(updatedRecipe.id);
   };
@@ -67,10 +72,14 @@ export default function RecipeOptions({ recipe }) {
           handleFavoriteSelected();
         }}
       >
-        <StarIcon
-          fontSize="small"
-          className={`${recipe.favorite ? `text-yellow-400` : 'text-white'} fill-current`}
-        />
+        {updatingFavorite ? (
+          <AutorenewIcon fontSize="small" className="animate-spin" />
+        ) : (
+          <StarIcon
+            fontSize="small"
+            className={`${recipe.favorite ? `text-yellow-400` : 'text-white'} fill-current`}
+          />
+        )}
       </button>
       <button
         className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-14 mx-1 h-9"
@@ -79,10 +88,14 @@ export default function RecipeOptions({ recipe }) {
           addToShoppingList(recipe);
         }}
       >
-        <ShoppingCartIcon
-          fontSize="small"
-          className={`${recipe.onShoppingList ? `text-yellow-400` : 'text-white'} fill-current`}
-        />
+        {updatingShopping ? (
+          <AutorenewIcon fontSize="small" className="animate-spin" />
+        ) : (
+          <ShoppingCartIcon
+            fontSize="small"
+            className={`${recipe.onShoppingList ? `text-yellow-400` : 'text-white'} fill-current`}
+          />
+        )}
       </button>
       <button
         className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 mx-1 h-9"

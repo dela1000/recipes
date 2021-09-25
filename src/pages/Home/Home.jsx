@@ -7,10 +7,11 @@ import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
 
 export default function Home() {
-  const [{ db, currentUser }] = useContext(Context);
+  const [{ db, currentUser, setLoading }] = useContext(Context);
   const [recipesData, setRecipesData] = useState([]);
 
   const getRecipes = async () => {
+    setLoading(true);
     const allRecipes = [];
     const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
 
@@ -20,6 +21,7 @@ export default function Home() {
       allRecipes.push(item);
     });
     setRecipesData([...allRecipes]);
+    setLoading(false);
   };
 
   useEffect(() => {
