@@ -20,6 +20,7 @@ export default function Home() {
       item.id = doc.id;
       allRecipes.push(item);
     });
+    setRecipesData([]);
     setRecipesData([...allRecipes]);
     setLoading(false);
   };
@@ -37,7 +38,7 @@ export default function Home() {
   return (
     <div className="fade-in">
       {recipesData.length > 0 ? (
-        <RecipesListHolder recipesData={recipesData} />
+        <RecipesListHolder recipesData={recipesData} getRecipes={getRecipes} />
       ) : (
         <div className="flex h-screen">
           <div className="m-auto">

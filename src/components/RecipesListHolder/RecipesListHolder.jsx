@@ -15,7 +15,7 @@ import RecipeListItem from '../RecipeListItem';
 
 import { Context } from '../../contexts/context';
 
-export default function RecipesListHolder({ recipesData }) {
+export default function RecipesListHolder({ recipesData, getRecipes }) {
   const [{ setRecipeId, setRecipe }] = useContext(Context);
   const history = useHistory();
   const [recipes, setRecipes] = useState([]);
@@ -206,6 +206,7 @@ export default function RecipesListHolder({ recipesData }) {
           key={recipe.id}
           recipe={recipe}
           handleCategoryChange={handleCategoryChange}
+          getRecipes={getRecipes}
         />
       ))}
     </div>
@@ -224,4 +225,5 @@ RecipesListHolder.propTypes = {
       categories: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
   ).isRequired,
+  getRecipes: PropTypes.func.isRequired,
 };
