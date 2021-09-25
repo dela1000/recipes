@@ -24,8 +24,8 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
     setLoading(true);
     const recipeFound = recipesOnShoppingList.find((element) => element.id === data.id);
 
-    Object.keys(recipeFound.ingredients).forEach((key) => {
-      recipeFound.ingredients[key].forEach((ingredient) => {
+    recipeFound.ingredients.forEach((ingredientsGroup) => {
+      ingredientsGroup.ingredients.forEach((ingredient) => {
         ingredient.purchased = false;
       });
     });
@@ -100,6 +100,7 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
           {recipesOnShoppingList.map((recipe) => (
             <ShoppingListByRecipe
               key={recipe.id}
+              recipeId={recipe.id}
               recipeData={recipe}
               getShoppingListRecipes={getShoppingListRecipes}
             />

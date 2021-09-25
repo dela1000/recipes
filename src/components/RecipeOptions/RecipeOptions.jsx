@@ -43,8 +43,8 @@ export default function RecipeOptions({ recipe }) {
     };
 
     if (recipe.onShoppingList) {
-      Object.keys(recipe.ingredients).forEach((key) => {
-        recipe.ingredients[key].forEach((ingredient) => {
+      recipe.ingredients.forEach((ingredientsGroup) => {
+        ingredientsGroup.ingredients.forEach((ingredient) => {
           ingredient.purchased = false;
         });
       });
@@ -119,7 +119,7 @@ RecipeOptions.propTypes = {
     originalURL: PropTypes.string,
     source: PropTypes.string,
     onShoppingList: PropTypes.bool,
-    ingredients: PropTypes.shape({}).isRequired,
+    ingredients: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };

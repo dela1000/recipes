@@ -73,15 +73,15 @@ export default function RecipeForm({ type }) {
 
   const onlyString = (string) => string.substring(1).slice(0, -1);
 
-  const defineFinalObject = (array) => {
-    const finalObject = {
-      standard: [],
-    };
+  const defineFinalObject = (array, arrayType) => {
+    let index = 0;
+    const finalObject = [{ groupName: 'standard', [arrayType]: [], index }];
     array.forEach((item) => {
       const trimmedItem = item.trim();
       if (trimmedItem.charAt(0) === '[' && trimmedItem.charAt(trimmedItem.length - 1) === ']') {
+        index += 1;
         const cleanedUpString = onlyString(trimmedItem);
-        finalObject[cleanedUpString] = [];
+        finalObject.push({ groupName: cleanedUpString, [arrayType]: [], index });
       }
     });
     return finalObject;
@@ -91,22 +91,23 @@ export default function RecipeForm({ type }) {
     // separate each line from te TextField into an array of strings
     const ingredientsArray = splitLineIntoArray(lineData);
     // select each item defined as header (by using [])
-    const finalIngredientsObject = defineFinalObject(ingredientsArray);
+    const finalIngredientsObject = defineFinalObject(ingredientsArray, 'ingredients');
 
-    let ingredientGroup = 'standard';
-    ingredientsArray.forEach((ingredient) => {
+    let groupIndex = 0;
+    ingredientsArray.forEach((ingredient, index) => {
       const trimIngredient = ingredient.trim();
       const splitString = trimIngredient.split('');
-      let foundIngredientGroup = false;
 
+      let foundIngredientGroup = false;
       if (splitString[0] === '[') {
         foundIngredientGroup = true;
-        const combinedIngredientGroup = combine(splitString);
-        ingredientGroup = onlyString(combinedIngredientGroup);
+        groupIndex += 1;
       }
+
       const numbers = [];
       const letters = [];
       const separated = {
+        index,
         purchased: false,
       };
 
@@ -130,7 +131,8 @@ export default function RecipeForm({ type }) {
         if (stringPart) {
           separated.string = stringPart.trim();
         }
-        finalIngredientsObject[ingredientGroup].push(separated);
+
+        finalIngredientsObject[groupIndex].ingredients.push(separated);
       }
     });
     return finalIngredientsObject;
@@ -138,27 +140,24 @@ export default function RecipeForm({ type }) {
 
   const defineInstructions = (lineData) => {
     const instructionsArray = splitLineIntoArray(lineData);
-    const finalInnstructionsObject = defineFinalObject(instructionsArray);
+    const finalInstructionsObject = defineFinalObject(instructionsArray, 'instructions');
 
-    let instructionGroup = 'standard';
+    let groupIndex = 0;
     instructionsArray.forEach((instruction) => {
       let foundInstructionGroup = false;
       const trimmedInstruction = instruction.trim();
-      if (
-        trimmedInstruction.charAt(0) === '[' &&
-        trimmedInstruction.charAt(trimmedInstruction.length - 1) === ']'
-      ) {
+      if (trimmedInstruction.charAt(0) === '[') {
         foundInstructionGroup = true;
-        instructionGroup = onlyString(trimmedInstruction);
+        groupIndex += 1;
       }
       if (!foundInstructionGroup) {
-        finalInnstructionsObject[instructionGroup].push(trimmedInstruction);
+        finalInstructionsObject[groupIndex].instructions.push(trimmedInstruction);
       }
     });
-    return finalInnstructionsObject;
+    return finalInstructionsObject;
   };
 
-  const defineCategories = (categories) => {
+  const defineCategores = (categories) => {
     const categoriesFinal = [];
     const categoriesHolder = categories.trim().split(',');
 
@@ -172,14 +171,12 @@ export default function RecipeForm({ type }) {
   const onSubmit = (recipeFormData) => {
     const dataToSubmit = JSON.parse(JSON.stringify(recipeFormData));
     dataToSubmit.favorite = false;
-    if (recipeFormData.ingredients.length > 0) {
-      dataToSubmit.ingredients = defineIngredients(recipeFormData.ingredients.trim());
-    }
-    if (recipeFormData.instructions.length > 0) {
-      dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());
-    }
+
+    dataToSubmit.ingredients = defineIngredients(recipeFormData.ingredients.trim());
+    dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());
+
     if (recipeFormData.categories.length > 0) {
-      dataToSubmit.categories = defineCategories(recipeFormData.categories.trim());
+      dataToSubmit.categories = defineCategores(recipeFormData.categories.trim());
     } else {
       dataToSubmit.categories = [];
     }
@@ -196,216 +193,218 @@ export default function RecipeForm({ type }) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Paper>
-        <Box px={3} py={2}>
-          <Typography variant="h6" align="center" margin="dense">
-            {type === 'new' ? 'Add a New Recipe' : 'Edit Recipe'}
-          </Typography>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="title"
-                label="Title"
-                {...register('title', { required: true })}
-              />
-              {errors.exampleRequired && (
-                <span className="text-red-500">This field is required</span>
-              )}
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Paper>
+          <Box px={3} py={2}>
+            <Typography variant="h6" align="center" margin="dense">
+              {type === 'new' ? 'Add a New Recipe' : 'Edit Recipe'}
+            </Typography>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="title"
+                  label="Title"
+                  {...register('title', { required: true })}
+                />
+                {errors.exampleRequired && (
+                  <span className="text-red-500">This field is required</span>
+                )}
+              </Grid>
             </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="description"
-                label="Description"
-                multiline
-                rows={3}
-                {...register('description')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="description"
+                  label="Description"
+                  multiline
+                  rows={3}
+                  {...register('description')}
+                />
+              </Grid>
             </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="ingredients"
-                label="Ingredients"
-                multiline
-                rows={16}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                {...register('ingredients')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="ingredients"
+                  label="Ingredients"
+                  multiline
+                  rows={16}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  {...register('ingredients')}
+                />
+              </Grid>
             </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} className="text-xs">
-              Optional: Use brackets for Ingredient Groups. Example: <b>[Crust]</b> and{'  '}
-              <b>[Filling]</b>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6} className="text-xs">
+                Optional: Use brackets for Ingredient Groups. Example: <b>[Crust]</b> and{'  '}
+                <b>[Filling]</b>
+              </Grid>
+              <Grid item xs={12} sm={6} className="text-xs">
+                <div className="flex justify-between">
+                  {helperMeasurements.map((me) => (
+                    <button
+                      key={me}
+                      type="button"
+                      className="text-blue-600"
+                      onClick={() => addValue(me)}
+                    >
+                      {me}
+                    </button>
+                  ))}
+                </div>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} className="text-xs">
-              <div className="flex justify-between">
-                {helperMeasurements.map((me) => (
-                  <button
-                    key={me}
-                    type="button"
-                    className="text-blue-600"
-                    onClick={() => addValue(me)}
-                  >
-                    {me}
-                  </button>
-                ))}
-              </div>
-            </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="instructions"
-                label="Instructions"
-                multiline
-                rows={16}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                {...register('instructions')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="instructions"
+                  label="Instructions"
+                  multiline
+                  rows={16}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  {...register('instructions')}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6} className="text-xs">
-              Optional: Use brackets for Instruction Groups. Example: <b>[Crust]</b> and{'  '}
-              <b>[Filling]</b>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6} className="text-xs">
+                Optional: Use brackets for Instruction Groups. Example: <b>[Crust]</b> and{'  '}
+                <b>[Filling]</b>
+              </Grid>
+              <Grid item xs={12} sm={6} className="text-xs">
+                <div className="flex justify-between">
+                  {helperMeasurements.map((me) => (
+                    <button
+                      key={me}
+                      type="button"
+                      className="text-blue-600"
+                      onClick={() => addValue(me)}
+                    >
+                      {me}
+                    </button>
+                  ))}
+                </div>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} className="text-xs">
-              <div className="flex justify-between">
-                {helperMeasurements.map((me) => (
-                  <button
-                    key={me}
-                    type="button"
-                    className="text-blue-600"
-                    onClick={() => addValue(me)}
-                  >
-                    {me}
-                  </button>
-                ))}
-              </div>
-            </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="yield"
-                label="Yield"
-                {...register('yield')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="yield"
+                  label="Yield"
+                  {...register('yield')}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="categories"
+                  label="Categories"
+                  {...register('categories')}
+                />
+                <span className="text-xs">Separate with commas</span>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="categories"
-                label="Categories"
-                {...register('categories')}
-              />
-              <span className="text-xs">Separate with commas</span>
-            </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="active"
-                label="Active Time"
-                {...register('active')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="active"
+                  label="Active Time"
+                  {...register('active')}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="totalTime"
+                  label="Total Time"
+                  {...register('totalTime')}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="totalTime"
-                label="Total Time"
-                {...register('totalTime')}
-              />
-            </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="source"
-                label="Source"
-                {...register('source')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="source"
+                  label="Source"
+                  {...register('source')}
+                />
+              </Grid>
             </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="originalURL"
-                label="Original URL"
-                {...register('originalURL')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="originalURL"
+                  label="Original URL"
+                  {...register('originalURL')}
+                />
+              </Grid>
             </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="image"
-                label="Image URL"
-                {...register('image')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="image"
+                  label="Image URL"
+                  {...register('image')}
+                />
+              </Grid>
             </Grid>
-          </Grid>
 
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                id="notes"
-                label="Notes"
-                multiline
-                rows={4}
-                {...register('notes')}
-              />
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  fullWidth
+                  id="notes"
+                  label="Notes"
+                  multiline
+                  rows={4}
+                  {...register('notes')}
+                />
+              </Grid>
             </Grid>
-          </Grid>
 
-          <Box mt={3} justify="flex-end" textAlign="right">
-            <Button variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
-              {type === 'new' ? 'Add' : 'Edit'} Recipe
-            </Button>
+            <Box mt={3} justify="flex-end" textAlign="right">
+              <Button variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
+                {type === 'new' ? 'Add' : 'Edit'} Recipe
+              </Button>
+            </Box>
           </Box>
-        </Box>
-      </Paper>
-    </form>
+        </Paper>
+      </form>
+    </div>
   );
 }
 
