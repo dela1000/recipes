@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { Typography, Paper, Box, Grid, TextField, Button } from '@material-ui/core';
+import { Typography, Paper, Box, Grid, TextField } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 
 import recipeToEdit from './utilities/recipeToEdit';
@@ -397,9 +397,13 @@ export default function RecipeForm({ type }) {
             </Grid>
 
             <Box mt={3} justify="flex-end" textAlign="right">
-              <Button variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
+              <button
+                type="button"
+                onClick={handleSubmit(onSubmit)}
+                className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-32 mx-1 h-14"
+              >
                 {type === 'new' ? 'Add' : 'Edit'} Recipe
-              </Button>
+              </button>
             </Box>
           </Box>
         </Paper>

@@ -25,11 +25,14 @@ export default function RecipeIngredients({ recipe }) {
       if (ingredientGroup.ingredients.length > 0) {
         ingredientGroup.ingredients.forEach((ingredient) => {
           if (ingredient.quantity) {
-            let newQuantity = scaleValue * ev(ingredient.quantity);
-            if (newQuantity % 1 !== 0) {
-              newQuantity = Number.parseFloat(newQuantity).toFixed(2);
+            const asNumber = ev(ingredient.quantity);
+            if (!Number.isNaN(asNumber)) {
+              let newQuantity = scaleValue * asNumber;
+              if (newQuantity % 1 !== 0) {
+                newQuantity = Number.parseFloat(newQuantity).toFixed(2);
+              }
+              ingredient.quantity = newQuantity;
             }
-            ingredient.quantity = newQuantity;
           }
         });
       }
