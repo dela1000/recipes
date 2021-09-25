@@ -8,8 +8,6 @@ import recipeToEdit from './utilities/recipeToEdit';
 
 import { addRecipe, updateRecipe } from '../../adapters/recipeAdapters';
 
-import recipesData from '../../adapters/recipesData';
-
 import { Context } from '../../contexts/context';
 
 export default function RecipeForm({ type }) {
@@ -185,79 +183,6 @@ export default function RecipeForm({ type }) {
     submitData(dataToSubmit);
   };
 
-  const testSubmit = () => {
-    const promisesGoHere = [];
-    recipesData.forEach((recipeToAdd) => {
-      const dataToSubmit = JSON.parse(JSON.stringify(recipeToAdd));
-
-      const ingredientsHolder = [];
-      let index = 0;
-      Object.keys(dataToSubmit.ingredients).forEach((key) => {
-        const holder = { groupName: key, ingredients: [], index };
-        dataToSubmit.ingredients[key].forEach((ingredient, ingIndex) => {
-          const trimIngredient = ingredient.trim();
-          const splitString = trimIngredient.split('');
-
-          const numbers = [];
-          const letters = [];
-          const separated = {
-            index: ingIndex,
-            purchased: false,
-          };
-          let isLetter = false;
-          splitString.forEach((item) => {
-            if (item.match(/[a-z]/i) && !isLetter) isLetter = true;
-            if (isLetter) {
-              letters.push(item);
-            } else {
-              numbers.push(item);
-            }
-          });
-          const numberPart = combine(numbers);
-          const stringPart = combine(letters);
-
-          if (numberPart) {
-            separated.quantity = numberPart.trim();
-          }
-
-          if (stringPart) {
-            separated.string = stringPart.trim();
-          }
-          holder.ingredients.push(separated);
-        });
-        index += 1;
-
-        ingredientsHolder.push(holder);
-      });
-
-      dataToSubmit.ingredients = ingredientsHolder;
-
-      const instructionsHolder = [];
-      index = 0;
-      Object.keys(dataToSubmit.instructions).forEach((key) => {
-        const holder = { groupName: key, instructions: [], index };
-        dataToSubmit.instructions[key].forEach((instruction) => {
-          holder.instructions.push(instruction);
-        });
-        instructionsHolder.push(holder);
-        index += 1;
-      });
-
-      dataToSubmit.instructions = instructionsHolder;
-
-      const docRef = addRecipe({
-        db,
-        currentUserId: currentUser.uid,
-        payload: dataToSubmit,
-      });
-      promisesGoHere.push(docRef);
-    });
-
-    Promise.all(promisesGoHere).then((values) => {
-      console.log(values);
-    });
-  };
-
   const helperMeasurements = ['1/4', '1/3', '1/2', '3/4', '°', '[', ']'];
 
   const addValue = (value) => {
@@ -268,10 +193,6 @@ export default function RecipeForm({ type }) {
 
   return (
     <div>
-      <button type="button" onClick={() => testSubmit()}>
-        TEST SUBMIT
-      </button>
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <Paper>
           <Box px={3} py={2}>
