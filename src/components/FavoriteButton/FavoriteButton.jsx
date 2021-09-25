@@ -22,7 +22,11 @@ export default function FavoriteButton({ favorite, updating, handleFavoriteSelec
 }
 
 FavoriteButton.propTypes = {
-  favorite: PropTypes.bool.isRequired,
+  favorite: PropTypes.bool,
   updating: PropTypes.bool.isRequired,
   handleFavoriteSelected: PropTypes.func.isRequired,
+};
+
+FavoriteButton.defaultProps = {
+  favorite: false,
 };

@@ -26,7 +26,11 @@ export default function AddToShoppingListButton({
 }
 
 AddToShoppingListButton.propTypes = {
-  onShoppingList: PropTypes.bool.isRequired,
+  onShoppingList: PropTypes.bool,
   updating: PropTypes.bool.isRequired,
   handleAddToShoppingList: PropTypes.func.isRequired,
+};
+
+AddToShoppingListButton.defaultProps = {
+  onShoppingList: false,
 };

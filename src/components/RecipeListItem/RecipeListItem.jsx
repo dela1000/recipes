@@ -1,35 +1,108 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import StarIcon from '@material-ui/icons/Star';
+import FavoriteButton from '../FavoriteButton';
+import AddToShoppingListButton from '../AddToShoppingListButton';
+import { updateRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
 
 export default function RecipeListItem({ recipe, handleCategoryChange }) {
-  const [{ setRecipeId, setRecipe }] = useContext(Context);
+  const [listRecipe, setListRecipe] = useState({
+    id: null,
+    favorite: null,
+    image: null,
+    originalURL: null,
+    source: null,
+    title: null,
+    onShoppingList: null,
+    categories: [],
+  });
+  const [updatingFavorite, setUpdatingFavorite] = useState(false);
+  const [updatingShopping, setUpdatingShopping] = useState(false);
+  const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
   const history = useHistory();
   const navigate = () => {
     history.push('/recipe');
   };
 
   const selectRecipe = () => {
-    setRecipe(recipe);
-    setRecipeId(recipe.id);
+    setRecipe(listRecipe);
+    setRecipeId(listRecipe.id);
     navigate();
   };
 
+  const handleFavoriteSelected = async () => {
+    setUpdatingFavorite(true);
+    const updatedRecipe = await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: listRecipe.id,
+      payload: {
+        favorite: !listRecipe.favorite,
+      },
+    });
+    setUpdatingFavorite(false);
+    setListRecipe(updatedRecipe);
+  };
+
+  const handleAddToShoppingList = async () => {
+    setUpdatingShopping(true);
+    const dataToUpdate = {
+      onShoppingList: !listRecipe.onShoppingList,
+    };
+
+    if (listRecipe.onShoppingList) {
+      listRecipe.ingredients.forEach((ingredientsGroup) => {
+        ingredientsGroup.ingredients.forEach((ingredient) => {
+          ingredient.purchased = false;
+        });
+      });
+    }
+
+    dataToUpdate.ingredients = listRecipe.ingredients;
+
+    const updatedRecipe = await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: listRecipe.id,
+      payload: dataToUpdate,
+    });
+    setUpdatingShopping(false);
+    setListRecipe(updatedRecipe);
+  };
+
+  useEffect(() => {
+    setListRecipe(recipe);
+  }, []);
+
   return (
-    <div key={recipe.id}>
+    <div key={listRecipe.id}>
       <hr />
       <div className="flex">
-        <div className="flex-initial mt-3 ml-3 mr-3">
-          <div className="absolute">
-            {recipe.favorite && <StarIcon fontSize="large" className="text-yellow-400" />}
+        <div className="mt-3 mx-1">
+          <div className="lg:flex flex-col">
+            <div className="mb-1">
+              <FavoriteButton
+                favorite={listRecipe.favorite}
+                updating={updatingFavorite}
+                handleFavoriteSelected={handleFavoriteSelected}
+              />
+            </div>
+            <div>
+              <AddToShoppingListButton
+                onShoppingList={listRecipe.onShoppingList}
+                updating={updatingShopping}
+                handleAddToShoppingList={handleAddToShoppingList}
+              />
+            </div>
           </div>
+        </div>
+        <div className="flex-initial mt-3 mr-3">
           <button type="button" onClick={selectRecipe} className="w-32 h-32">
-            {recipe.image ? (
+            {listRecipe.image ? (
               <img
-                src={recipe.image}
+                src={listRecipe.image}
                 alt="food"
                 className="object-cover min-h-full min-w-full w-32 h-32"
               />
@@ -43,11 +116,11 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
             <div>
               <a
                 className="text-xs text-blue-400"
-                href={recipe.originalURL}
+                href={listRecipe.originalURL}
                 target="_blank"
                 rel="noreferrer"
               >
-                {recipe.source}
+                {listRecipe.source}
               </a>
             </div>
           </div>
@@ -58,15 +131,15 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
                 type="button"
                 onClick={selectRecipe}
               >
-                {recipe.title}
+                {listRecipe.title}
               </button>
             </div>
           </div>
           <div>
             <div className="pt-1">
-              {recipe.categories.length > 0 && (
+              {listRecipe.categories.length > 0 && (
                 <div className="text-xs flex">
-                  {recipe.categories.map((category, idx) => (
+                  {listRecipe.categories.map((category, idx) => (
                     <button
                       type="button"
                       key={category}
@@ -74,7 +147,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
                       onClick={() => handleCategoryChange({ target: { value: category } })}
                     >
                       {category}
-                      {idx + 1 < recipe.categories.length ? ',' : null}
+                      {idx + 1 < listRecipe.categories.length ? ',' : null}
                     </button>
                   ))}
                 </div>
@@ -95,6 +168,7 @@ RecipeListItem.propTypes = {
     favorite: PropTypes.bool,
     originalURL: PropTypes.string,
     source: PropTypes.string,
+    onShoppingList: PropTypes.bool,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   handleCategoryChange: PropTypes.func.isRequired,

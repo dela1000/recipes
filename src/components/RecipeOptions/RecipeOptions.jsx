@@ -14,6 +14,12 @@ export default function RecipeOptions({ recipe }) {
   const history = useHistory();
   const [{ db, currentUser, setRecipe, setRecipeId }] = useContext(Context);
 
+  const editRecipe = (recipeToUpdate) => {
+    setRecipe(recipeToUpdate);
+    setRecipeId(recipeToUpdate.id);
+    history.push(`/editrecipe`);
+  };
+
   const handleFavoriteSelected = async () => {
     setUpdatingFavorite(true);
     const updatedRecipe = await updateRecipe({
@@ -27,12 +33,6 @@ export default function RecipeOptions({ recipe }) {
     setUpdatingFavorite(false);
     setRecipe(updatedRecipe);
     setRecipeId(updatedRecipe.id);
-  };
-
-  const editRecipe = (recipeToUpdate) => {
-    setRecipe(recipeToUpdate);
-    setRecipeId(recipeToUpdate.id);
-    history.push(`/editrecipe`);
   };
 
   const handleAddToShoppingList = async () => {
