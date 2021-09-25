@@ -109,7 +109,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
                 className="object-cover min-h-full min-w-full w-32 h-32"
               />
             ) : (
-              <div className="h-20 w-20 bg-gray-200" />
+              <div className="w-32 h-32 bg-gray-200" />
             )}
           </button>
         </div>
