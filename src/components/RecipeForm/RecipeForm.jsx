@@ -75,14 +75,14 @@ export default function RecipeForm({ type }) {
   const onlyString = (string) => string.substring(1).slice(0, -1);
 
   const defineFinalObject = (array) => {
-    const finalObject = {
-      standard: [],
-    };
+    let index = 0;
+    const finalObject = [{ groupName: 'standard', ingredients: [], index }];
     array.forEach((item) => {
       const trimmedItem = item.trim();
       if (trimmedItem.charAt(0) === '[' && trimmedItem.charAt(trimmedItem.length - 1) === ']') {
+        index += 1;
         const cleanedUpString = onlyString(trimmedItem);
-        finalObject[cleanedUpString] = [];
+        finalObject.push({ groupName: cleanedUpString, ingredients: [], index });
       }
     });
     return finalObject;
@@ -94,21 +94,21 @@ export default function RecipeForm({ type }) {
     // select each item defined as header (by using [])
     const finalIngredientsObject = defineFinalObject(ingredientsArray);
 
-    let ingredientGroup = 'standard';
-    ingredientsArray.forEach((ingredient) => {
+    let ingredientGroupIndex = 0;
+    ingredientsArray.forEach((ingredient, index) => {
       const trimIngredient = ingredient.trim();
       const splitString = trimIngredient.split('');
-      let foundIngredientGroup = false;
 
+      let foundIngredientGroup = false;
       if (splitString[0] === '[') {
         foundIngredientGroup = true;
-        const combinedIngredientGroup = combine(splitString);
-        ingredientGroup = onlyString(combinedIngredientGroup);
+        ingredientGroupIndex += 1;
       }
 
       const numbers = [];
       const letters = [];
       const separated = {
+        index,
         purchased: false,
       };
 
@@ -132,7 +132,8 @@ export default function RecipeForm({ type }) {
         if (stringPart) {
           separated.string = stringPart.trim();
         }
-        finalIngredientsObject[ingredientGroup].push(separated);
+
+        finalIngredientsObject[ingredientGroupIndex].ingredients.push(separated);
       }
     });
     return finalIngredientsObject;
@@ -143,6 +144,7 @@ export default function RecipeForm({ type }) {
     const finalInnstructionsObject = defineFinalObject(instructionsArray);
 
     let instructionGroup = 'standard';
+    let ingredientGroupIndex = 0;
     instructionsArray.forEach((instruction) => {
       let foundInstructionGroup = false;
       const trimmedInstruction = instruction.trim();
@@ -154,7 +156,8 @@ export default function RecipeForm({ type }) {
         instructionGroup = onlyString(trimmedInstruction);
       }
       if (!foundInstructionGroup) {
-        finalInnstructionsObject[instructionGroup].push(trimmedInstruction);
+        finalInnstructionsObject[ingredientGroupIndex][instructionGroup].push(trimmedInstruction);
+        ingredientGroupIndex += 1;
       }
     });
     return finalInnstructionsObject;
@@ -190,7 +193,7 @@ export default function RecipeForm({ type }) {
   };
 
   const testSubmit = () => {
-    const promisesGoHere = [];
+    // const promisesGoHere = [];
     recipesData.forEach((recipeToAdd) => {
       const dataToSubmit = JSON.parse(JSON.stringify(recipeToAdd));
 
@@ -233,17 +236,22 @@ export default function RecipeForm({ type }) {
 
       dataToSubmit.ingredients = ingredientsHolder;
 
-      const docRef = addRecipe({
-        db,
-        currentUserId: currentUser.uid,
-        payload: dataToSubmit,
-      });
-      promisesGoHere.push(docRef);
+      console.log(
+        '+++ 236: src/components/RecipeForm/RecipeForm.jsx - dataToSubmit: ',
+        dataToSubmit,
+      );
+
+      // const docRef = addRecipe({
+      //   db,
+      //   currentUserId: currentUser.uid,
+      //   payload: dataToSubmit,
+      // });
+      // promisesGoHere.push(docRef);
     });
 
-    Promise.all(promisesGoHere).then((values) => {
-      console.log(values);
-    });
+    // Promise.all(promisesGoHere).then((values) => {
+    //   console.log(values);
+    // });
   };
 
   const helperMeasurements = ['1/4', '1/3', '1/2', '3/4', '°', '[', ']'];

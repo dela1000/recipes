@@ -106,7 +106,7 @@ RecipeOptions.propTypes = {
     originalURL: PropTypes.string,
     source: PropTypes.string,
     onShoppingList: PropTypes.bool,
-    ingredients: PropTypes.shape({}).isRequired,
+    ingredients: PropTypes.arrayOf().isRequired,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
