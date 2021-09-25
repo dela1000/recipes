@@ -23,8 +23,8 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
   const removeFromShoppingList = async (data) => {
     const recipeFound = recipesOnShoppingList.find((element) => element.id === data.id);
 
-    Object.keys(recipeFound.ingredients).forEach((key) => {
-      recipeFound.ingredients[key].forEach((ingredient) => {
+    recipeFound.ingredients.forEach((ingredientsGroup) => {
+      ingredientsGroup.ingredients.forEach((ingredient) => {
         ingredient.purchased = false;
       });
     });
