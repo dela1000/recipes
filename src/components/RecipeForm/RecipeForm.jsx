@@ -94,9 +94,11 @@ export default function RecipeForm({ type }) {
 
     let ingredientGroup = 'standard';
     ingredientsArray.forEach((ingredient) => {
-      const splitString = ingredient.split('');
+      const trimIngredient = ingredient.trim();
+      const splitString = trimIngredient.split('');
       let foundIngredientGroup = false;
-      if (splitString[0] === '[' && splitString[splitString.length - 1] === ']') {
+
+      if (splitString[0] === '[') {
         foundIngredientGroup = true;
         const combinedIngredientGroup = combine(splitString);
         ingredientGroup = onlyString(combinedIngredientGroup);
