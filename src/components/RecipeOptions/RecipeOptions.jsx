@@ -33,13 +33,25 @@ export default function RecipeOptions({ recipe }) {
   };
 
   const addToShoppingList = async () => {
+    const dataToUpdate = {
+      onShoppingList: !recipe.onShoppingList,
+    };
+
+    if (recipe.onShoppingList) {
+      Object.keys(recipe.ingredients).forEach((key) => {
+        recipe.ingredients[key].forEach((ingredient) => {
+          ingredient.purchased = false;
+        });
+      });
+    }
+
+    dataToUpdate.ingredients = recipe.ingredients;
+
     const updatedRecipe = await updateRecipe({
       db,
       currentUserId: currentUser.uid,
       recipeId: recipe.id,
-      payload: {
-        onShoppingList: !recipe.onShoppingList,
-      },
+      payload: dataToUpdate,
     });
 
     setRecipe(updatedRecipe);
@@ -94,6 +106,7 @@ RecipeOptions.propTypes = {
     originalURL: PropTypes.string,
     source: PropTypes.string,
     onShoppingList: PropTypes.bool,
+    ingredients: PropTypes.shape({}).isRequired,
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };

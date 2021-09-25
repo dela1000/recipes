@@ -8,10 +8,6 @@ import { updateRecipe, getRecipeById } from '../../adapters/recipeAdapters';
 import { Context } from '../../contexts/context';
 
 export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingListRecipes }) {
-  console.log(
-    '+++ 11: src/components/ShoppingListHolder/ShoppingListHolder.jsx - recipesOnShoppingList: ',
-    recipesOnShoppingList,
-  );
   const history = useHistory();
   const [recipesNames, setRecipesNames] = useState([]);
   const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
