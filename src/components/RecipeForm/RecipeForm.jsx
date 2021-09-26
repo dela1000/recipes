@@ -184,12 +184,12 @@ export default function RecipeForm({ type }) {
     submitData(dataToSubmit);
   };
 
-  const helperMeasurements = ['1/4', '1/3', '1/2', '3/4', '°', '[', ']'];
+  const helperInputs = ['1/4', '1/3', '1/2', '3/4', '°', '[', ']'];
 
-  const addValue = (value) => {
-    let singleValue = getValues('ingredients');
+  const addHelperInput = (value, string) => {
+    let singleValue = getValues(string);
     singleValue += `${value} `;
-    setValue('ingredients', singleValue);
+    setValue(string, singleValue);
   };
 
   return (
@@ -253,12 +253,12 @@ export default function RecipeForm({ type }) {
               </Grid>
               <Grid item xs={12} sm={6} className="text-xs">
                 <div className="flex justify-between">
-                  {helperMeasurements.map((me) => (
+                  {helperInputs.map((me) => (
                     <button
                       key={me}
                       type="button"
                       className="text-blue-600"
-                      onClick={() => addValue(me)}
+                      onClick={() => addHelperInput(me, 'ingredients')}
                     >
                       {me}
                     </button>
@@ -290,12 +290,12 @@ export default function RecipeForm({ type }) {
               </Grid>
               <Grid item xs={12} sm={6} className="text-xs">
                 <div className="flex justify-between">
-                  {helperMeasurements.map((me) => (
+                  {helperInputs.map((me) => (
                     <button
                       key={me}
                       type="button"
                       className="text-blue-600"
-                      onClick={() => addValue(me)}
+                      onClick={() => addHelperInput(me, 'instructions')}
                     >
                       {me}
                     </button>
