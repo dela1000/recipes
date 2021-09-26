@@ -1,8 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import FavoriteButton from '../FavoriteButton';
-import AddToShoppingListButton from '../AddToShoppingListButton';
+import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
 import { Context } from '../../contexts/context';
@@ -85,17 +84,19 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
         <div className="mt-3 mx-1">
           <div className="lg:flex flex-col">
             <div className="mb-1">
-              <FavoriteButton
-                favorite={listRecipe.favorite}
+              <MiscUpdateRecipeButton
+                type="favorite"
+                itemToUpdate={listRecipe.favorite}
                 updating={updatingFavorite}
-                handleFavoriteSelected={handleFavoriteSelected}
+                handleFunction={handleFavoriteSelected}
               />
             </div>
             <div>
-              <AddToShoppingListButton
-                onShoppingList={listRecipe.onShoppingList}
+              <MiscUpdateRecipeButton
+                type="onShoppingList"
+                itemToUpdate={listRecipe.onShoppingList}
                 updating={updatingShopping}
-                handleAddToShoppingList={handleAddToShoppingList}
+                handleFunction={handleAddToShoppingList}
               />
             </div>
           </div>

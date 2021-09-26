@@ -1,8 +1,7 @@
 import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import AddToShoppingListButton from '../AddToShoppingListButton';
-import FavoriteButton from '../FavoriteButton';
+import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
@@ -64,15 +63,17 @@ export default function RecipeOptions({ recipe }) {
 
   return (
     <div className="pt-3">
-      <FavoriteButton
-        favorite={recipe.favorite}
+      <MiscUpdateRecipeButton
+        type="favorite"
+        itemToUpdate={recipe.favorite}
         updating={updatingFavorite}
-        handleFavoriteSelected={handleFavoriteSelected}
+        handleFunction={handleFavoriteSelected}
       />
-      <AddToShoppingListButton
-        onShoppingList={recipe.onShoppingList}
+      <MiscUpdateRecipeButton
+        type="onShoppingList"
+        itemToUpdate={recipe.onShoppingList}
         updating={updatingShopping}
-        handleAddToShoppingList={handleAddToShoppingList}
+        handleFunction={handleAddToShoppingList}
       />
       <button
         className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 mx-1 h-9"
