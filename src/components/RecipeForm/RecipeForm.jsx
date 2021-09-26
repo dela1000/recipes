@@ -402,7 +402,7 @@ export default function RecipeForm({ type }) {
                 onClick={handleSubmit(onSubmit)}
                 className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-32 mx-1 h-14"
               >
-                {type === 'new' ? 'Add' : 'Edit'} Recipe
+                {type === 'new' ? 'Add Recipe' : 'Save Changes'}
               </button>
             </Box>
           </Box>
