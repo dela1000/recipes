@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import RecipeInfo from '../../components/RecipeInfo';
@@ -7,15 +7,28 @@ import RecipeIngredients from '../../components/RecipeIngredients';
 import RecipeInstructions from '../../components/RecipeInstructions';
 import { Context } from '../../contexts/context';
 
+import { getRecipeById } from '../../adapters/recipeAdapters';
+
 export default function Home() {
-  const [{ recipe }] = useContext(Context);
+  const [{ db, currentUser, recipeId }] = useContext(Context);
+  const [recipe, setRecipe] = useState();
   const history = useHistory();
+
+  const getRecipe = async () => {
+    const recipeById = await getRecipeById({
+      db,
+      currentUserId: currentUser.uid,
+      payload: { id: recipeId },
+    });
+    setRecipe(recipeById);
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (isEmpty(recipe)) {
+    if (isEmpty(recipeId)) {
       history.push('/');
     }
+    getRecipe();
   }, []);
 
   return (
