@@ -26,7 +26,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
   };
 
   const selectRecipe = () => {
-    setRecipe(recipe);
+    setRecipe(listRecipe);
     setRecipeId(listRecipe.id);
     navigate();
   };
