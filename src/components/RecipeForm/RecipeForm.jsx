@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Typography, Paper, Box, Grid, TextField } from '@material-ui/core';
@@ -12,6 +12,7 @@ import { Context } from '../../contexts/context';
 
 export default function RecipeForm({ type }) {
   const [{ db, currentUser, setRecipeId, setRecipe, recipe, setLoading }] = useContext(Context);
+
   const history = useHistory();
   let dataToEdit = {};
   if (type === 'edit') {
@@ -21,6 +22,7 @@ export default function RecipeForm({ type }) {
       dataToEdit = recipeToEdit(recipe);
     }
   }
+
   const {
     register,
     handleSubmit,
@@ -188,9 +190,19 @@ export default function RecipeForm({ type }) {
 
   const addHelperInput = (value, string) => {
     let singleValue = getValues(string);
-    singleValue += `${value} `;
+    singleValue += `${value}`;
+    if (value !== '[') {
+      singleValue += ' ';
+    }
     setValue(string, singleValue);
+    document.getElementById(string).focus();
   };
+
+  useEffect(() => {
+    if (type === 'new') {
+      setLoading(false);
+    }
+  }, [type]);
 
   return (
     <div>
@@ -203,6 +215,7 @@ export default function RecipeForm({ type }) {
             <Grid container spacing={1}>
               <Grid item xs={12} sm={12}>
                 <TextField
+                  autoFocus
                   autoComplete="off"
                   fullWidth
                   id="title"
