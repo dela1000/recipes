@@ -42,22 +42,3 @@ ShoppingListByRecipe.propTypes = {
   }).isRequired,
   getShoppingListRecipes: PropTypes.func.isRequired,
 };
-
-/* <div>
-  <div className="text-xl mb-2 capitalize italic">{recipeData.title}</div>
-  <div className="mb-5 pl-3 lg:pl-0">
-    {ingredientsHeaders.map((header) => (
-      <div key={header}>
-        <div className="mb-3">
-          {recipeData.ingredients[header].map((ingredient) => (
-            <ShoppingListItem
-              key={ingredient.string}
-              updateShoppingListRecipe={updateShoppingListRecipe}
-              ingredient={ingredient}
-            />
-          ))}
-        </div>
-      </div>
-    ))}
-  </div>
-</div>; */
