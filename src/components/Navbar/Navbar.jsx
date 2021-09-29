@@ -17,8 +17,11 @@ const navList = [
 export default function Navbar() {
   const { width } = useWindowDimensions();
   const [currentWidth, setCurrentWidth] = useState(0);
+  const [shoppingListNumber, setShoppingListNumber] = useState(0);
   const history = useHistory();
-  const [{ themeName, toggleTheme, navbarState, toggleNavbar, signOut }] = useContext(Context);
+  const [
+    { themeName, toggleTheme, navbarState, toggleNavbar, signOut, numberOfItemsOnShoppingList },
+  ] = useContext(Context);
 
   useEffect(() => {
     if (currentWidth !== width) {
@@ -34,6 +37,10 @@ export default function Navbar() {
     closeNavList();
     history.push(`/${navigateTo}`);
   };
+
+  useEffect(() => {
+    setShoppingListNumber(numberOfItemsOnShoppingList);
+  }, [numberOfItemsOnShoppingList]);
 
   return (
     <nav className="center">
@@ -56,6 +63,9 @@ export default function Navbar() {
             >
               {navOption.name}
             </button>
+            {shoppingListNumber > 0 && navOption.navigate === 'shoppinglist' && (
+              <span className="ml-1">({shoppingListNumber})</span>
+            )}
           </div>
         ))}
         <div className="nav-list-item monserrat link link-nav">

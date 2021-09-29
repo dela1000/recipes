@@ -14,6 +14,7 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [recipeId, setRecipeId] = useState(null);
   const [recipe, setRecipe] = useState({});
+  const [numberOfItemsOnShoppingList, setNumberOfItemsOnShoppingList] = useState({});
 
   useEffect(() => {
     const isDark = localStorage.getItem('themeName') === 'light';
@@ -76,6 +77,8 @@ const Provider = ({ children }) => {
           signOut,
           currentUser,
           setCurrentUser,
+          numberOfItemsOnShoppingList,
+          setNumberOfItemsOnShoppingList,
           token,
           db,
         },

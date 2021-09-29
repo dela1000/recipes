@@ -16,7 +16,7 @@ import RecipeListItem from '../RecipeListItem';
 import { Context } from '../../contexts/context';
 
 export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
-  const [{ setRecipeId, setRecipe }] = useContext(Context);
+  const [{ setRecipeId, setRecipe, setNumberOfItemsOnShoppingList }] = useContext(Context);
   const history = useHistory();
   const [recipes, setRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -33,6 +33,7 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
     if (!filterText && categorySelected === 'none' && !favoriteSelected) {
       return sortAllRecipes(recipesData);
     }
+
     let recipesToFilter = [];
     if (categorySelected !== 'none') {
       recipesData.forEach((recipe) => {
@@ -99,6 +100,18 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
     setSort('asc');
   };
 
+  const determineOnShoppingList = (recipesToSee) => {
+    let itemsOnShoppingList = 0;
+    recipesToSee.forEach((recipe) => {
+      if (recipe.onShoppingList) {
+        recipe.ingredients.forEach((ingredientGroup) => {
+          itemsOnShoppingList += ingredientGroup.ingredients.length;
+        });
+      }
+    });
+    setNumberOfItemsOnShoppingList(itemsOnShoppingList);
+  };
+
   useEffect(() => {
     updateList();
   }, [categorySelected, filterText, sort, favoriteSelected]);
@@ -106,6 +119,7 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
   useEffect(() => {
     groupCategories();
     sortAllRecipes(recipesData);
+    determineOnShoppingList(recipesData);
   }, []);
 
   return (

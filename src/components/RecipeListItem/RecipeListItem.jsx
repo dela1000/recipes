@@ -19,7 +19,16 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
   });
   const [updatingFavorite, setUpdatingFavorite] = useState(false);
   const [updatingShopping, setUpdatingShopping] = useState(false);
-  const [{ db, currentUser, setRecipeId, setRecipe }] = useContext(Context);
+  const [
+    {
+      db,
+      currentUser,
+      setRecipeId,
+      setRecipe,
+      numberOfItemsOnShoppingList,
+      setNumberOfItemsOnShoppingList,
+    },
+  ] = useContext(Context);
   const history = useHistory();
   const navigate = () => {
     history.push('/recipe');
@@ -48,17 +57,18 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
 
   const handleAddToShoppingList = async () => {
     setUpdatingShopping(true);
+
     const dataToUpdate = {
       onShoppingList: !listRecipe.onShoppingList,
     };
 
-    if (listRecipe.onShoppingList) {
-      listRecipe.ingredients.forEach((ingredientsGroup) => {
-        ingredientsGroup.ingredients.forEach((ingredient) => {
-          ingredient.purchased = false;
-        });
+    let itemsToRemove = 0;
+    listRecipe.ingredients.forEach((ingredientsGroup) => {
+      itemsToRemove += ingredientsGroup.ingredients.length;
+      ingredientsGroup.ingredients.forEach((ingredient) => {
+        ingredient.purchased = false;
       });
-    }
+    });
 
     dataToUpdate.ingredients = listRecipe.ingredients;
 
@@ -68,6 +78,12 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
       recipeId: listRecipe.id,
       payload: dataToUpdate,
     });
+
+    if (dataToUpdate.onShoppingList) {
+      setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList + itemsToRemove);
+    } else {
+      setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList - itemsToRemove);
+    }
     setUpdatingShopping(false);
     setListRecipe(updatedRecipe);
     updateSingleRecipe(listRecipe.id);
