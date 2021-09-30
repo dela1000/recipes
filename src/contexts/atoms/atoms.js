@@ -25,3 +25,13 @@ export const loadingOverlayState = atom({
   key: 'loadingOverlayState',
   default: false,
 });
+
+export const themeNameState = atom({
+  key: 'themeNameState',
+  default: 'light',
+});
+
+export const recipeIdState = atom({
+  key: 'recipeIdState',
+  default: null,
+});
