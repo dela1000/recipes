@@ -1,84 +1,51 @@
-// React
-import React, { useState, useEffect, useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-// Firebase
-import { getAuth } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import firebaseApp from './firebase';
-// Internal
-import SignIn from './pages/SignIn';
-import Header from './components/Header';
-import ScrollToTop from './components/ScrollToTop';
-import LoadingOverlay from './components/LoadingOverlay';
-import Home from './pages/Home';
-import Recipe from './pages/Recipe';
-import AddRecipe from './pages/AddRecipe';
-import ShoppingList from './pages/ShoppingList';
-import EditRecipe from './pages/EditRecipe';
-// Contexts
-import { Context } from './contexts/context';
-import useWindowDimensions from './contexts/useWindowDimensions';
-// Styles
-import './tailwind.css';
-import './App.css';
+import { useSetRecoilState } from 'recoil';
+
+import RouterHolder from './RouterHolder';
+
+import { currentUserState } from './contexts/atoms/atoms';
+import { IsLoggedIn, signInWithGoogle } from './contexts/auth/authFunctions';
 
 export default function App() {
-  const [{ themeName, navbarState, setCurrentUser }] = useContext(Context);
-  const { width } = useWindowDimensions();
-  const [windowType, setWindowType] = useState('desktop');
+  const setCurrentUser = useSetRecoilState(currentUserState);
 
-  const auth = getAuth(firebaseApp);
-  const [user] = useAuthState(auth);
-  if (user) {
-    setCurrentUser(user);
-  }
-
-  useEffect(() => {
-    if (width < 768) {
-      setWindowType('mobile');
-    } else {
-      setWindowType('desktop');
+  const [user, loading, error] = IsLoggedIn();
+  const storeCurrentUser = (userData) => {
+    if (userData) {
+      return setCurrentUser(JSON.parse(JSON.stringify(userData)));
     }
-  }, [width]);
+    return setCurrentUser([]);
+  };
 
+  const handleSignInWithGoogle = async () => {
+    const userFound = await signInWithGoogle();
+    if (userFound) {
+      storeCurrentUser(userFound);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div>
+        <p>Initialising User...</p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error}</p>
+      </div>
+    );
+  }
+  if (user) {
+    storeCurrentUser(user);
+    return <RouterHolder />;
+  }
+  // If signOut is called, or user is not found
+  storeCurrentUser();
   return (
-    <div id="top" className={`${themeName} app overflow-x-hidden`}>
-      {user ? (
-        <Router>
-          <LoadingOverlay />
-          <div className="flex flex-col h-screen">
-            <Header />
-            <div className="flex-1 overflow-y-auto py-5 px-3 lg:px-5">
-              <div style={{ display: navbarState ? 'none' : 'block container' }} />
-              <div className="relative mb-10 md:mx-40">
-                <Switch>
-                  <Route exact path="/">
-                    <Home windowType={windowType} />
-                  </Route>
-                  <Route exact path="/recipe">
-                    <Recipe windowType={windowType} />
-                  </Route>
-                  <Route exact path="/addrecipe">
-                    <AddRecipe windowType={windowType} />
-                  </Route>
-                  <Route exact path="/editrecipe">
-                    <EditRecipe windowType={windowType} />
-                  </Route>
-                  <Route exact path="/shoppinglist">
-                    <ShoppingList windowType={windowType} />
-                  </Route>
-                  <Route path="*">
-                    <Redirect to="/" />
-                  </Route>
-                </Switch>
-                <ScrollToTop />
-              </div>
-            </div>
-          </div>
-        </Router>
-      ) : (
-        <SignIn />
-      )}
-    </div>
+    <button type="button" onClick={handleSignInWithGoogle}>
+      Log in
+    </button>
   );
 }

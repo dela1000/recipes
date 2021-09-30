@@ -1,11 +1,10 @@
-import { useContext } from 'react';
+import { useRecoilValue } from 'recoil';
+import { loadingOverlayState } from '../../contexts/atoms/atoms';
 import loadingGif from '../../assets/images/loading.gif';
 import './LoadingOverlay.css';
 
-import { Context } from '../../contexts/context';
-
 export default function LoadingOverlay() {
-  const [{ loading }] = useContext(Context);
+  const loading = useRecoilValue(loadingOverlayState);
   return (
     <div>
       {loading && (

@@ -1,10 +1,13 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { RecoilRoot } from 'recoil';
 import App from './App';
-import { Provider } from './contexts/context';
 
 ReactDOM.render(
-  <Provider>
-    <App />
-  </Provider>,
+  <React.StrictMode>
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  </React.StrictMode>,
   document.getElementById('root'),
 );

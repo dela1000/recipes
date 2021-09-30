@@ -10,7 +10,6 @@ const Provider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [token, setToken] = useState();
   const [themeName, setThemeName] = useState('light');
-  const [navbarState, setNavbarState] = useState(false);
   const [loading, setLoading] = useState(true);
   const [recipeId, setRecipeId] = useState(null);
   const [recipe, setRecipe] = useState({});
@@ -25,10 +24,6 @@ const Provider = ({ children }) => {
     const name = themeName === 'dark' ? 'light' : 'dark';
     localStorage.setItem('themeName', name);
     setThemeName(name);
-  };
-
-  const toggleNavbar = (newState) => {
-    setNavbarState(newState);
   };
 
   const signInWithGoogle = () => {
@@ -65,8 +60,6 @@ const Provider = ({ children }) => {
         {
           themeName,
           toggleTheme,
-          navbarState,
-          toggleNavbar,
           loading,
           setLoading,
           recipeId,
