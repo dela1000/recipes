@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
-import { Context } from '../../contexts/context';
+import { useEffect, useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { dbState, currentUserState, loadingOverlayState } from '../../contexts/atoms/atoms';
 
 import { getAllRecipes, getRecipeById } from '../../adapters/recipeAdapters';
 
@@ -7,7 +8,10 @@ import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
 
 export default function Home() {
-  const [{ db, currentUser, setLoading }] = useContext(Context);
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
+  const setLoading = useSetRecoilState(loadingOverlayState);
+
   const [recipesData, setRecipesData] = useState([]);
 
   const getRecipes = async (showLoading) => {

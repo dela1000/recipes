@@ -35,3 +35,8 @@ export const recipeIdState = atom({
   key: 'recipeIdState',
   default: null,
 });
+
+export const numberOfItemsOnShoppingListState = atom({
+  key: 'numberOfItemsOnShoppingListState',
+  default: 0,
+});

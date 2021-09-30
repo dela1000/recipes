@@ -1,10 +1,16 @@
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useHistory } from 'react-router-dom';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import BrightnessLowIcon from '@material-ui/icons/BrightnessLow';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-import { Context } from '../../contexts/context';
+import {
+  themeNameState,
+  navbarState,
+  numberOfItemsOnShoppingListState,
+} from '../../contexts/atoms/atoms';
+import { signOut } from '../../contexts/auth/authFunctions';
 import useWindowDimensions from '../../contexts/useWindowDimensions';
 import './Navbar.css';
 
@@ -19,19 +25,26 @@ export default function Navbar() {
   const [currentWidth, setCurrentWidth] = useState(0);
   const [shoppingListNumber, setShoppingListNumber] = useState(0);
   const history = useHistory();
-  const [
-    { themeName, toggleTheme, navbarState, toggleNavbar, signOut, numberOfItemsOnShoppingList },
-  ] = useContext(Context);
+
+  const [themeName, setThemeName] = useRecoilState(themeNameState);
+  const [navbar, setNavbar] = useRecoilState(navbarState);
+  const numberOfItemsOnShoppingList = useRecoilValue(numberOfItemsOnShoppingListState);
+
+  const toggleTheme = () => {
+    const name = themeName === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('themeName', name);
+    setThemeName(name);
+  };
 
   useEffect(() => {
     if (currentWidth !== width) {
-      toggleNavbar(false);
+      setNavbar(false);
       setCurrentWidth(width);
     }
   }, [width]);
 
-  const toggleNavList = () => toggleNavbar(!navbarState);
-  const closeNavList = () => toggleNavbar(false);
+  const toggleNavList = () => setNavbar(!navbarState);
+  const closeNavList = () => setNavbar(false);
 
   const navigate = (navigateTo) => {
     closeNavList();
@@ -45,9 +58,9 @@ export default function Navbar() {
   return (
     <nav className="center">
       <div
-        style={{ display: navbarState ? 'flex' : null }}
+        style={{ display: navbar ? 'flex' : null }}
         className={
-          navbarState
+          navbar
             ? `${themeName}_nav__list__background_color nav__list h-screen`
             : `${themeName}_nav__list__background_color nav__list`
         }
@@ -96,7 +109,7 @@ export default function Navbar() {
         className="btn btn-icon nav__hamburger"
         aria-label="toggle navigation"
       >
-        {navbarState ? <CloseIcon /> : <MenuIcon />}
+        {navbar ? <CloseIcon /> : <MenuIcon />}
       </button>
     </nav>
   );
