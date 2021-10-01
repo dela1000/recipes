@@ -6,19 +6,14 @@ export const currentUserState = atom({
   default: [],
 });
 
-export const navbarState = atom({
-  key: 'navbar',
-  default: false,
-});
-
 export const dbState = atom({
   key: 'db',
   default: db,
 });
 
-export const allRecipesState = atom({
-  key: 'allRecipes',
-  default: [],
+export const navbarState = atom({
+  key: 'navbar',
+  default: false,
 });
 
 export const loadingOverlayState = atom({
@@ -31,12 +26,27 @@ export const themeNameState = atom({
   default: 'light',
 });
 
+export const allRecipesState = atom({
+  key: 'allRecipes',
+  default: [],
+});
+
 export const recipeIdState = atom({
   key: 'recipeIdState',
   default: null,
 });
 
+export const recipeState = atom({
+  key: 'recipeState',
+  default: {},
+});
+
 export const numberOfItemsOnShoppingListState = atom({
   key: 'numberOfItemsOnShoppingListState',
   default: 0,
+});
+
+export const allCategoriesState = atom({
+  key: 'allCategoriesState',
+  default: [],
 });

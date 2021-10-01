@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useSetRecoilState, useRecoilState } from 'recoil';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import orderBy from 'lodash/orderBy';
 import forEach from 'lodash/forEach';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -11,32 +12,49 @@ import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import StarIcon from '@material-ui/icons/Star';
 import random from 'lodash/random';
+import {
+  recipeIdState,
+  recipeState,
+  numberOfItemsOnShoppingListState,
+  allRecipesState,
+  allCategoriesState,
+} from '../../contexts/atoms/atoms';
 import RecipeListItem from '../RecipeListItem';
 
-import { Context } from '../../contexts/context';
+export default function RecipesListHolder() {
+  // {
+  // recipesData,
+  // updateSingleRecipe
+  // },
+  const setRecipeId = useSetRecoilState(recipeIdState);
+  const setRecipe = useSetRecoilState(recipeState);
+  const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
+  const [allCategories, setAllCategories] = useRecoilState(allCategoriesState);
+  const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
 
-export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
-  const [{ setRecipeId, setRecipe, setNumberOfItemsOnShoppingList }] = useContext(Context);
   const history = useHistory();
-  const [recipes, setRecipes] = useState([]);
-  const [categories, setCategories] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
+  // console.log(
+  //   '+++ 35: src/components/RecipesListHolder/RecipesListHolder.jsx - recipes: ',
+  //   recipes,
+  // );
   const [categorySelected, setCategorySelected] = useState('none');
   const [sort, setSort] = useState('asc');
   const [filterText, setFilterText] = useState('');
   const [favoriteSelected, setFavoriteSelected] = useState(false);
 
   const sortAllRecipes = (listToSet) => {
-    setRecipes(orderBy(listToSet, [(data) => data.title.toLowerCase()], sort));
+    setAllRecipes(orderBy(listToSet, [(data) => data.title.toLowerCase()], sort));
   };
 
   const updateList = () => {
     if (!filterText && categorySelected === 'none' && !favoriteSelected) {
-      return sortAllRecipes(recipesData);
+      return sortAllRecipes(allRecipes);
     }
 
     let recipesToFilter = [];
     if (categorySelected !== 'none') {
-      recipesData.forEach((recipe) => {
+      allRecipes.forEach((recipe) => {
         if (recipe.categories.length > 0) {
           if (recipe.categories.includes(categorySelected)) {
             recipesToFilter.push(recipe);
@@ -44,7 +62,7 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
         }
       });
     } else {
-      recipesToFilter = recipesData;
+      recipesToFilter = allRecipes;
     }
 
     if (favoriteSelected) {
@@ -55,7 +73,7 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
       (recipe) => recipe.title.toLowerCase().search(filterText.toLowerCase()) !== -1,
     );
 
-    return setRecipes(orderBy(recipesToFilter, [(data) => data.title.toLowerCase()], sort));
+    return setAllRecipes(orderBy(recipesToFilter, [(data) => data.title.toLowerCase()], sort));
   };
 
   const handleCategoryChange = (event) => {
@@ -78,19 +96,23 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
   };
 
   const handleRandomSelected = () => {
-    const randomRecipeSelected = recipesData[random(0, recipesData.length - 1)];
+    const randomRecipeSelected = allRecipes[random(0, allRecipes.length - 1)];
     setRecipe(randomRecipeSelected);
     setRecipeId(randomRecipeSelected.id);
     history.push('/recipe');
   };
 
   const groupCategories = () => {
-    let allCategories = [];
-    forEach(recipesData, (recipe) => {
-      allCategories = [...allCategories, ...recipe.categories];
+    console.log(
+      '+++ 106: src/components/RecipesListHolder/RecipesListHolder.jsx - allRecipes: ',
+      allRecipes,
+    );
+    let allCategoriesTemp = [];
+    forEach(allRecipes, (recipe) => {
+      allCategoriesTemp = [...allCategoriesTemp, ...recipe.categories];
     });
-    const unsortedCategories = [...new Set(allCategories)];
-    setCategories(unsortedCategories.sort());
+    const unsortedCategories = [...new Set(allCategoriesTemp)];
+    setAllCategories(unsortedCategories.sort());
   };
 
   const reset = () => {
@@ -118,8 +140,8 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
 
   useEffect(() => {
     groupCategories();
-    sortAllRecipes(recipesData);
-    determineOnShoppingList(recipesData);
+    // sortAllRecipes(allRecipes);
+    determineOnShoppingList(allRecipes);
   }, []);
 
   return (
@@ -155,7 +177,7 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
                       <MenuItem value="none" className="capitalize text-gray-200">
                         <em>None</em>
                       </MenuItem>
-                      {categories.map((category) => (
+                      {allCategories.map((category) => (
                         <MenuItem key={category} value={category} className="capitalize">
                           {category}
                         </MenuItem>
@@ -215,29 +237,29 @@ export default function RecipesListHolder({ recipesData, updateSingleRecipe }) {
           </div>
         </div>
       </div>
-      {recipes.map((recipe) => (
+      {allRecipes.map((recipe) => (
         <RecipeListItem
           key={recipe.id}
           recipe={recipe}
-          handleCategoryChange={handleCategoryChange}
-          updateSingleRecipe={updateSingleRecipe}
+          // handleCategoryChange={handleCategoryChange}
+          // updateSingleRecipe={updateSingleRecipe}
         />
       ))}
     </div>
   );
 }
 
-RecipesListHolder.propTypes = {
-  recipesData: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.string,
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      favorite: PropTypes.bool,
-      originalURL: PropTypes.string,
-      source: PropTypes.string,
-      categories: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
-  ).isRequired,
-  updateSingleRecipe: PropTypes.func.isRequired,
-};
+// RecipesListHolder.propTypes = {
+//   allRecipes: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       image: PropTypes.string,
+//       id: PropTypes.string.isRequired,
+//       title: PropTypes.string.isRequired,
+//       favorite: PropTypes.bool,
+//       originalURL: PropTypes.string,
+//       source: PropTypes.string,
+//       categories: PropTypes.arrayOf(PropTypes.string),
+//     }).isRequired,
+//   ).isRequired,
+//   // updateSingleRecipe: PropTypes.func.isRequired,
+// };

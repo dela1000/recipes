@@ -50,10 +50,6 @@ const Provider = ({ children }) => {
       });
   };
 
-  const signOut = () => {
-    auth.signOut();
-  };
-
   return (
     <Context.Provider
       value={[
@@ -67,7 +63,6 @@ const Provider = ({ children }) => {
           recipe,
           setRecipe,
           signInWithGoogle,
-          signOut,
           currentUser,
           setCurrentUser,
           numberOfItemsOnShoppingList,

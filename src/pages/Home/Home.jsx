@@ -1,60 +1,78 @@
-import { useEffect, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { dbState, currentUserState, loadingOverlayState } from '../../contexts/atoms/atoms';
+import { useEffect } from 'react';
+import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
+import {
+  // dbState,
+  currentUserState,
+  loadingOverlayState,
+  allRecipesState,
+} from '../../contexts/atoms/atoms';
 
-import { getAllRecipes, getRecipeById } from '../../adapters/recipeAdapters';
+// import {
+//   // getAllRecipes,
+//   getRecipeById,
+// } from '../../adapters/recipeAdapters';
 
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
 
+import recipesDataFile from '../../adapters/recipesData';
+
 export default function Home() {
-  const db = useRecoilValue(dbState);
+  // const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
   const setLoading = useSetRecoilState(loadingOverlayState);
+  const [recipeData, setRecipeData] = useRecoilState(allRecipesState);
 
-  const [recipesData, setRecipesData] = useState([]);
+  // const getRecipes = async (showLoading) => {
+  //   if (showLoading) setLoading(true);
+  //   const addIds = [];
+  //   const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
+  //   recipesFromDb.forEach((doc) => {
+  //     const item = doc.data();
+  //     item.id = doc.id;
+  //     addIds.push(item);
+  //   });
+  //   setRecipesData(addIds);
+  //   setLoading(false);
+  // };
 
-  const getRecipes = async (showLoading) => {
+  const getRecipesTest = (showLoading) => {
     if (showLoading) setLoading(true);
-    const allRecipes = [];
-    const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
-
-    recipesFromDb.forEach((doc) => {
-      const item = doc.data();
-      item.id = doc.id;
-      allRecipes.push(item);
+    const addIds = [];
+    recipesDataFile.forEach((recipe, idx) => {
+      recipe.id = idx.toString();
+      addIds.push(recipe);
     });
-    setRecipesData([]);
-    setRecipesData([...allRecipes]);
+    setRecipeData(addIds);
     setLoading(false);
   };
 
-  const updateSingleRecipe = async (recipeId) => {
-    const recipeById = await getRecipeById({
-      db,
-      currentUserId: currentUser.uid,
-      payload: { id: recipeId },
-    });
-    const clonedRecipesData = [...recipesData];
-    const objIndex = clonedRecipesData.findIndex((obj) => obj.id === recipeId);
-    clonedRecipesData[objIndex] = recipeById;
-    setRecipesData([...clonedRecipesData]);
-  };
+  // const updateSingleRecipe = async (recipeId) => {
+  //   const recipeById = await getRecipeById({
+  //     db,
+  //     currentUserId: currentUser.uid,
+  //     payload: { id: recipeId },
+  //   });
+  //   const clonedRecipesData = [...recipeData];
+  //   const objIndex = clonedRecipesData.findIndex((obj) => obj.id === recipeId);
+  //   clonedRecipesData[objIndex] = recipeById;
+  //   console.log('+++ 47: src/pages/Home/Home.jsx - clonedRecipesData: ', clonedRecipesData);
+  //   // setRecipesData([...clonedRecipesData]);
+  // };
 
   useEffect(() => {
-    if (currentUser) {
-      getRecipes();
+    if (currentUser.uid) {
+      getRecipesTest();
     }
   }, [currentUser]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-
   return (
     <div className="fade-in">
-      {recipesData.length > 0 ? (
-        <RecipesListHolder recipesData={recipesData} updateSingleRecipe={updateSingleRecipe} />
+      {recipeData.length > 0 ? (
+        <RecipesListHolder />
       ) : (
         <div className="flex h-screen">
           <div className="m-auto">

@@ -1,12 +1,14 @@
 import { useSetRecoilState } from 'recoil';
 
 import RouterHolder from './RouterHolder';
+import SignIn from './pages/SignIn';
 
-import { currentUserState } from './contexts/atoms/atoms';
-import { IsLoggedIn, signInWithGoogle } from './contexts/auth/authFunctions';
+import { currentUserState, loadingOverlayState } from './contexts/atoms/atoms';
+import { IsLoggedIn } from './contexts/auth/authFunctions';
 
 export default function App() {
   const setCurrentUser = useSetRecoilState(currentUserState);
+  const setLoading = useSetRecoilState(loadingOverlayState);
 
   const [user, loading, error] = IsLoggedIn();
   const storeCurrentUser = (userData) => {
@@ -16,20 +18,10 @@ export default function App() {
     return setCurrentUser([]);
   };
 
-  const handleSignInWithGoogle = async () => {
-    const userFound = await signInWithGoogle();
-    if (userFound) {
-      storeCurrentUser(userFound);
-    }
-  };
-
   if (loading) {
-    return (
-      <div>
-        <p>Initialising User...</p>
-      </div>
-    );
+    setLoading(true);
   }
+  setLoading(false);
   if (error) {
     return (
       <div>
@@ -43,9 +35,5 @@ export default function App() {
   }
   // If signOut is called, or user is not found
   storeCurrentUser();
-  return (
-    <button type="button" onClick={handleSignInWithGoogle}>
-      Log in
-    </button>
-  );
+  return <SignIn />;
 }

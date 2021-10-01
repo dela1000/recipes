@@ -3238,7 +3238,8 @@ const recipesData = [
     active: '',
     totalTime: '',
     categories: [],
-    image: 'https://www.mycolombianrecipes.com/wp-content/uploads/2009/03/Sopa-de-Lentejas-Colombiana.jpg',
+    image:
+      'https://www.mycolombianrecipes.com/wp-content/uploads/2009/03/Sopa-de-Lentejas-Colombiana.jpg',
     ingredients: {
       standard: [
         '1 teaspoon vegetable oil',
@@ -3259,7 +3260,7 @@ const recipesData = [
         '1/2 cup heavy cream',
         '3 tablespoons chopped fresh cilantro',
         '1 tablespoon fresh lime juice',
-        'In a small bowl, mixed the heavy cream with chopped cilantro and lime juice and season with salt and pepper.',]
+        'In a small bowl, mixed the heavy cream with chopped cilantro and lime juice and season with salt and pepper.',
       ],
     },
     instructions: {
@@ -3267,7 +3268,8 @@ const recipesData = [
         'Cook the chorizo in the oil in a large pot over medium heat, stirring occasionally, about 5 minutes. Using a slotted spoon, transfer the chorizo to a plate lined with paper towel.',
         'Add the carrots, onion, garlic, tomato and scallions to the pot, season with salt and pepper. Cook stirring occasionally about 12 minutes. Stir in the cumin and cook 1 more minute.',
         'Add the lentils and water, bring to a boil. Then reduce the heat to medium low, cover and cook until the lentils become tender but not mushy about 45 minutes.',
-        'Add chorizo and potatoes, cook for 15 to 20 minutes until the potatoes are fully cooked and fork tender, thin with water if necessary. Ladle into soup bowls and top with cream if using and serve immediately.','Remove pasta from heat and stir in lemon zest and juice, and parsley. Season to taste with salt and pepper. Transfer to serving bowl or platter; top with grated parmesan cheese and serve.',
+        'Add chorizo and potatoes, cook for 15 to 20 minutes until the potatoes are fully cooked and fork tender, thin with water if necessary. Ladle into soup bowls and top with cream if using and serve immediately.',
+        'Remove pasta from heat and stir in lemon zest and juice, and parsley. Season to taste with salt and pepper. Transfer to serving bowl or platter; top with grated parmesan cheese and serve.',
       ],
     },
   },
