@@ -15,7 +15,7 @@ import {
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
 
-import recipesDataFile from '../../adapters/recipesDataSmall';
+// import recipesDataFile from '../../adapters/recipesDataSmall';
 
 export default function Home() {
   const db = useRecoilValue(dbState);
@@ -36,36 +36,24 @@ export default function Home() {
     setRecipesData(addIds);
     setLoading(false);
   };
-  console.log('+++ 39: src/pages/Home/Home.jsx - getRecipes: ', getRecipes);
+  // console.log('+++ 39: src/pages/Home/Home.jsx - getRecipes: ', getRecipes);
 
-  const getRecipesTest = (showLoading) => {
-    if (showLoading) setLoading(true);
-    const addIds = [];
-    recipesDataFile.forEach((recipe, idx) => {
-      const parsedRecipe = JSON.parse(JSON.stringify(recipe));
-      parsedRecipe.id = idx.toString();
-      addIds.push(parsedRecipe);
-    });
-    setRecipesData(addIds);
-    setLoading(false);
-  };
-
-  // const updateSingleRecipe = async (recipeId) => {
-  //   const recipeById = await getRecipeById({
-  //     db,
-  //     currentUserId: currentUser.uid,
-  //     payload: { id: recipeId },
+  // const getRecipesTest = (showLoading) => {
+  //   if (showLoading) setLoading(true);
+  //   const addIds = [];
+  //   recipesDataFile.forEach((recipe, idx) => {
+  //     const parsedRecipe = JSON.parse(JSON.stringify(recipe));
+  //     parsedRecipe.id = idx.toString();
+  //     addIds.push(parsedRecipe);
   //   });
-  //   const clonedRecipesData = [...recipeData];
-  //   const objIndex = clonedRecipesData.findIndex((obj) => obj.id === recipeId);
-  //   clonedRecipesData[objIndex] = recipeById;
-  //   console.log('+++ 47: src/pages/Home/Home.jsx - clonedRecipesData: ', clonedRecipesData);
-  //   // setRecipesData([...clonedRecipesData]);
+  //   setRecipesData(addIds);
+  //   setLoading(false);
   // };
+  // console.log('+++ 52: src/pages/Home/Home.jsx - getRecipesTest: ', getRecipesTest);
 
   useEffect(() => {
     if (currentUser.uid && recipesData.length === 0) {
-      getRecipesTest();
+      getRecipes();
     }
   }, [currentUser]);
 

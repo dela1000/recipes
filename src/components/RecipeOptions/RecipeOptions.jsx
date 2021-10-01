@@ -1,18 +1,26 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
-import { currentUserState, dbState, recipeState, recipeIdState } from '../../contexts/atoms/atoms';
+import {
+  currentUserState,
+  dbState,
+  recipeState,
+  recipeIdState,
+  allRecipesState,
+} from '../../contexts/atoms/atoms';
 import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function RecipeOptions() {
+  const history = useHistory();
   const [updatingFavorite, setUpdatingFavorite] = useState(false);
   const [updatingShopping, setUpdatingShopping] = useState(false);
-  const history = useHistory();
 
-  const db = useRecoilState(dbState);
+  const db = useRecoilValue(dbState);
+
   const [recipe, setRecipe] = useRecoilState(recipeState);
+  const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const setRecipeId = useSetRecoilState(recipeIdState);
   const currentUser = useRecoilValue(currentUserState);
 
@@ -22,46 +30,49 @@ export default function RecipeOptions() {
     history.push(`/editrecipe`);
   };
 
-  const handleFavoriteSelected = async () => {
-    setUpdatingFavorite(true);
-    const updatedRecipe = await updateRecipe({
-      db,
-      currentUserId: currentUser.uid,
-      recipeId: recipe.id,
-      payload: {
-        favorite: !recipe.favorite,
-      },
-    });
-    setUpdatingFavorite(false);
+  const updateAllRecipesData = (updatedRecipe) => {
+    const recipeIndex = allRecipes.findIndex((savedRecipe) => savedRecipe.id === recipe.id);
+    const newRecipesArray = [...allRecipes];
+    newRecipesArray[recipeIndex] = updatedRecipe;
     setRecipe(updatedRecipe);
     setRecipeId(updatedRecipe.id);
+    setAllRecipes([...newRecipesArray]);
   };
 
-  const handleAddToShoppingList = async () => {
-    setUpdatingShopping(true);
-    const dataToUpdate = {
-      onShoppingList: !recipe.onShoppingList,
-    };
-
-    if (recipe.onShoppingList) {
-      recipe.ingredients.forEach((ingredientsGroup) => {
-        ingredientsGroup.ingredients.forEach((ingredient) => {
-          ingredient.purchased = false;
-        });
-      });
+  const handleUpdateRecipe = async (updateType) => {
+    const parsedRecipe = JSON.parse(JSON.stringify(recipe));
+    let dataToUpdate = {};
+    if (updateType === 'favorite') {
+      setUpdatingFavorite(true);
+      dataToUpdate = {
+        favorite: !parsedRecipe.favorite,
+      };
     }
+    if (updateType === 'shopping') {
+      setUpdatingShopping(true);
+      dataToUpdate = {
+        onShoppingList: !parsedRecipe.onShoppingList,
+      };
 
-    dataToUpdate.ingredients = recipe.ingredients;
+      if (parsedRecipe.onShoppingList) {
+        parsedRecipe.ingredients.forEach((ingredientsGroup) => {
+          ingredientsGroup.ingredients.forEach((ingredient) => {
+            ingredient.purchased = false;
+          });
+        });
+      }
 
+      dataToUpdate.ingredients = parsedRecipe.ingredients;
+    }
     const updatedRecipe = await updateRecipe({
       db,
       currentUserId: currentUser.uid,
-      recipeId: recipe.id,
+      recipeId: parsedRecipe.id,
       payload: dataToUpdate,
-    });
+    }).catch(() => {});
+    setUpdatingFavorite(false);
     setUpdatingShopping(false);
-    setRecipe(updatedRecipe);
-    setRecipeId(updatedRecipe.id);
+    updateAllRecipesData(updatedRecipe);
   };
 
   return (
@@ -70,13 +81,13 @@ export default function RecipeOptions() {
         type="favorite"
         itemToUpdate={recipe.favorite}
         updating={updatingFavorite}
-        handleFunction={handleFavoriteSelected}
+        handleFunction={() => handleUpdateRecipe('favorite')}
       />
       <MiscUpdateRecipeButton
         type="onShoppingList"
         itemToUpdate={recipe.onShoppingList}
         updating={updatingShopping}
-        handleFunction={handleAddToShoppingList}
+        handleFunction={() => handleUpdateRecipe('shopping')}
       />
       <button
         className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 mx-1 h-9"
