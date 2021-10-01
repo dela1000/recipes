@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import {
-  // dbState,
+  dbState,
   currentUserState,
   loadingOverlayState,
   allRecipesState,
 } from '../../contexts/atoms/atoms';
 
-// import {
-//   // getAllRecipes,
-//   getRecipeById,
-// } from '../../adapters/recipeAdapters';
+import {
+  getAllRecipes,
+  // getRecipeById,
+} from '../../adapters/recipeAdapters';
 
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
@@ -18,23 +18,25 @@ import RecipesListHolder from '../../components/RecipesListHolder';
 import recipesDataFile from '../../adapters/recipesDataSmall';
 
 export default function Home() {
-  // const db = useRecoilValue(dbState);
+  const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
   const setLoading = useSetRecoilState(loadingOverlayState);
-  const [recipeData, setRecipeData] = useRecoilState(allRecipesState);
+  const [recipesData, setRecipesData] = useRecoilState(allRecipesState);
 
-  // const getRecipes = async (showLoading) => {
-  //   if (showLoading) setLoading(true);
-  //   const addIds = [];
-  //   const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
-  //   recipesFromDb.forEach((doc) => {
-  //     const item = doc.data();
-  //     item.id = doc.id;
-  //     addIds.push(item);
-  //   });
-  //   setRecipesData(addIds);
-  //   setLoading(false);
-  // };
+  const getRecipes = async (showLoading) => {
+    console.log('+++ 27: src/pages/Home/Home.jsx - MAKING getRecipes CALL');
+    if (showLoading) setLoading(true);
+    const addIds = [];
+    const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
+    recipesFromDb.forEach((doc) => {
+      const item = doc.data();
+      item.id = doc.id;
+      addIds.push(item);
+    });
+    setRecipesData(addIds);
+    setLoading(false);
+  };
+  console.log('+++ 39: src/pages/Home/Home.jsx - getRecipes: ', getRecipes);
 
   const getRecipesTest = (showLoading) => {
     if (showLoading) setLoading(true);
@@ -44,7 +46,7 @@ export default function Home() {
       parsedRecipe.id = idx.toString();
       addIds.push(parsedRecipe);
     });
-    setRecipeData(addIds);
+    setRecipesData(addIds);
     setLoading(false);
   };
 
@@ -62,7 +64,7 @@ export default function Home() {
   // };
 
   useEffect(() => {
-    if (currentUser.uid) {
+    if (currentUser.uid && recipesData.length === 0) {
       getRecipesTest();
     }
   }, [currentUser]);
@@ -72,7 +74,7 @@ export default function Home() {
   }, []);
   return (
     <div className="fade-in">
-      {recipeData.length > 0 ? (
+      {recipesData.length > 0 ? (
         <RecipesListHolder />
       ) : (
         <div className="flex h-screen">

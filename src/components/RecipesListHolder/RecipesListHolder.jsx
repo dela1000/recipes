@@ -103,10 +103,6 @@ export default function RecipesListHolder() {
   };
 
   const groupCategories = () => {
-    console.log(
-      '+++ 106: src/components/RecipesListHolder/RecipesListHolder.jsx - allRecipes: ',
-      allRecipes,
-    );
     let allCategoriesTemp = [];
     forEach(allRecipes, (recipe) => {
       allCategoriesTemp = [...allCategoriesTemp, ...recipe.categories];

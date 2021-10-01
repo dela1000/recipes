@@ -1,117 +1,101 @@
-import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import {
-  dbState,
-  currentUserState,
-  recipeIdState,
+  // useRecoilValue,
+  useSetRecoilState,
+  // useRecoilState,
+} from 'recoil';
+import {
+  // dbState,
+  // currentUserState,
   recipeState,
-  numberOfItemsOnShoppingListState,
+  // numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
-import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
-import { updateRecipe } from '../../adapters/recipeAdapters';
+// import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
+// import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function RecipeListItem({
   recipe,
   // handleCategoryChange,
   // updateSingleRecipe
 }) {
-  const [listRecipe, setListRecipe] = useState({
-    id: null,
-    favorite: null,
-    image: null,
-    originalURL: null,
-    source: null,
-    title: null,
-    onShoppingList: null,
-    categories: [],
-  });
-  const [updatingFavorite, setUpdatingFavorite] = useState(false);
-  const [updatingShopping, setUpdatingShopping] = useState(false);
-
-  const db = useRecoilValue(dbState);
-  const currentUser = useRecoilValue(currentUserState);
-  const setRecipeId = useSetRecoilState(recipeIdState);
+  // const db = useRecoilValue(dbState);
+  // const currentUser = useRecoilValue(currentUserState);
   const setRecipe = useSetRecoilState(recipeState);
-  const [numberOfItemsOnShoppingList, setNumberOfItemsOnShoppingList] = useRecoilState(
-    numberOfItemsOnShoppingListState,
-  );
+  // const [numberOfItemsOnShoppingList, setNumberOfItemsOnShoppingList] = useRecoilState(
+  //   numberOfItemsOnShoppingListState,
+  // );
 
   const history = useHistory();
+
   const navigate = () => {
     history.push('/recipe');
   };
 
   const selectRecipe = () => {
-    setRecipe(listRecipe);
-    setRecipeId(listRecipe.id);
+    setRecipe(recipe);
     navigate();
   };
 
-  const handleFavoriteSelected = async () => {
-    setUpdatingFavorite(true);
-    const updatedRecipe = await updateRecipe({
-      db,
-      currentUserId: currentUser.uid,
-      recipeId: listRecipe.id,
-      payload: {
-        favorite: !listRecipe.favorite,
-      },
-    });
-    setUpdatingFavorite(false);
-    setListRecipe(updatedRecipe);
-    // updateSingleRecipe(listRecipe.id);
-  };
+  // const handleFavoriteSelected = async () => {
+  //   setUpdatingFavorite(true);
+  //   const updatedRecipe = await updateRecipe({
+  //     db,
+  //     currentUserId: currentUser.uid,
+  //     recipeId: listRecipe.id,
+  //     payload: {
+  //       favorite: !listRecipe.favorite,
+  //     },
+  //   });
+  //   setUpdatingFavorite(false);
+  //   // setListRecipe(updatedRecipe);
+  //   // updateSingleRecipe(listRecipe.id);
+  // };
 
-  const handleAddToShoppingList = async () => {
-    setUpdatingShopping(true);
+  // const handleAddToShoppingList = async () => {
+  //   setUpdatingShopping(true);
 
-    const dataToUpdate = {
-      onShoppingList: !listRecipe.onShoppingList,
-    };
+  //   const dataToUpdate = {
+  //     onShoppingList: !listRecipe.onShoppingList,
+  //   };
 
-    let itemsToRemove = 0;
-    listRecipe.ingredients.forEach((ingredientsGroup) => {
-      itemsToRemove += ingredientsGroup.ingredients.length;
-      ingredientsGroup.ingredients.forEach((ingredient) => {
-        ingredient.purchased = false;
-      });
-    });
+  //   let itemsToRemove = 0;
+  //   listRecipe.ingredients.forEach((ingredientsGroup) => {
+  //     itemsToRemove += ingredientsGroup.ingredients.length;
+  //     ingredientsGroup.ingredients.forEach((ingredient) => {
+  //       ingredient.purchased = false;
+  //     });
+  //   });
 
-    dataToUpdate.ingredients = listRecipe.ingredients;
+  //   dataToUpdate.ingredients = listRecipe.ingredients;
 
-    const updatedRecipe = await updateRecipe({
-      db,
-      currentUserId: currentUser.uid,
-      recipeId: listRecipe.id,
-      payload: dataToUpdate,
-    });
+  //   const updatedRecipe = await updateRecipe({
+  //     db,
+  //     currentUserId: currentUser.uid,
+  //     recipeId: listRecipe.id,
+  //     payload: dataToUpdate,
+  //   });
 
-    if (dataToUpdate.onShoppingList) {
-      setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList + itemsToRemove);
-    } else {
-      setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList - itemsToRemove);
-    }
-    setUpdatingShopping(false);
-    setListRecipe(updatedRecipe);
-    // updateSingleRecipe(listRecipe.id);
-  };
-
-  useEffect(() => {
-    setListRecipe(recipe);
-  }, []);
+  //   if (dataToUpdate.onShoppingList) {
+  //     setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList + itemsToRemove);
+  //   } else {
+  //     setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList - itemsToRemove);
+  //   }
+  //   setUpdatingShopping(false);
+  //   // setListRecipe(updatedRecipe);
+  //   // updateSingleRecipe(listRecipe.id);
+  // };
 
   return (
-    <div key={listRecipe.id}>
+    <div key={recipe.id}>
       <hr />
       <div className="flex">
-        <div className="mt-3 mx-1">
+        {/* <div className="mt-3 mx-1">
           <div className="lg:flex flex-col">
             <div className="mb-1">
               <MiscUpdateRecipeButton
                 type="favorite"
-                itemToUpdate={listRecipe.favorite}
+                itemToUpdate={recipe.favorite}
                 updating={updatingFavorite}
                 handleFunction={handleFavoriteSelected}
               />
@@ -119,18 +103,18 @@ export default function RecipeListItem({
             <div>
               <MiscUpdateRecipeButton
                 type="onShoppingList"
-                itemToUpdate={listRecipe.onShoppingList}
+                itemToUpdate={recipe.onShoppingList}
                 updating={updatingShopping}
                 handleFunction={handleAddToShoppingList}
               />
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="flex-initial mt-3 mr-3">
           <button type="button" onClick={selectRecipe} className="w-32 h-32">
-            {listRecipe.image ? (
+            {recipe.image ? (
               <img
-                src={listRecipe.image}
+                src={recipe.image}
                 alt="food"
                 className="object-cover min-h-full min-w-full w-32 h-32"
               />
@@ -144,11 +128,11 @@ export default function RecipeListItem({
             <div>
               <a
                 className="text-xs text-blue-400"
-                href={listRecipe.originalURL}
+                href={recipe.originalURL}
                 target="_blank"
                 rel="noreferrer"
               >
-                {listRecipe.source}
+                {recipe.source}
               </a>
             </div>
           </div>
@@ -159,15 +143,15 @@ export default function RecipeListItem({
                 type="button"
                 onClick={selectRecipe}
               >
-                {listRecipe.title}
+                {recipe.title}
               </button>
             </div>
           </div>
           <div>
             {/* <div className="pt-1">
-              {listRecipe.categories.length > 0 && (
+              {recipe.categories.length > 0 && (
                 <div className="text-xs flex">
-                  {listRecipe.categories.map((category, idx) => (
+                  {recipe.categories.map((category, idx) => (
                     <button
                       type="button"
                       key={category}
@@ -175,7 +159,7 @@ export default function RecipeListItem({
                       onClick={() => handleCategoryChange({ target: { value: category } })}
                     >
                       {category}
-                      {idx + 1 < listRecipe.categories.length ? ',' : null}
+                      {idx + 1 < recipe.categories.length ? ',' : null}
                     </button>
                   ))}
                 </div>

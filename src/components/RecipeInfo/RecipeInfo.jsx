@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import { useRecoilValue } from 'recoil';
+import { recipeState } from '../../contexts/atoms/atoms';
 
-export default function RecipeInfo({ recipe }) {
+export default function RecipeInfo() {
   const history = useHistory();
+  const recipe = useRecoilValue(recipeState);
 
   const goBackHome = () => {
     history.push(`/`);
@@ -46,7 +48,7 @@ export default function RecipeInfo({ recipe }) {
               <div className="flex justify-start mr-5 lg:mr-0">
                 <div>
                   <div className="text-3xl mb-2 capitalize italic">{recipe.title}</div>
-                  {recipe.categories.length > 0 && (
+                  {recipe?.categories?.length > 0 && (
                     <div className="text-xs flex">
                       {recipe.categories.map((category, idx) => (
                         <div key={category} className="capitalize mr-1">
@@ -95,19 +97,3 @@ export default function RecipeInfo({ recipe }) {
     </div>
   );
 }
-
-RecipeInfo.propTypes = {
-  recipe: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    source: PropTypes.string,
-    originalURL: PropTypes.string,
-    yield: PropTypes.string,
-    active: PropTypes.string,
-    totalTime: PropTypes.string,
-    image: PropTypes.string,
-    notes: PropTypes.string,
-    favorite: PropTypes.bool,
-    categories: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-};

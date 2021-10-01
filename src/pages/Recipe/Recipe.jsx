@@ -1,51 +1,34 @@
-import { useContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 import isEmpty from 'lodash/isEmpty';
+import { useRecoilValue } from 'recoil';
+import { recipeState } from '../../contexts/atoms/atoms';
 import RecipeInfo from '../../components/RecipeInfo';
 import RecipeOptions from '../../components/RecipeOptions';
-import RecipeIngredients from '../../components/RecipeIngredients';
-import RecipeInstructions from '../../components/RecipeInstructions';
-import { Context } from '../../contexts/context';
+// import RecipeIngredients from '../../components/RecipeIngredients';
+// import RecipeInstructions from '../../components/RecipeInstructions';
 
-import { getRecipeById } from '../../adapters/recipeAdapters';
-
-export default function Home() {
-  const [{ db, currentUser, recipeId }] = useContext(Context);
-  const [recipe, setRecipe] = useState();
-  const history = useHistory();
-
-  const getRecipe = async () => {
-    const recipeById = await getRecipeById({
-      db,
-      currentUserId: currentUser.uid,
-      payload: { id: recipeId },
-    });
-    setRecipe(recipeById);
-  };
+export default function Recipe() {
+  const recipe = useRecoilValue(recipeState);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (isEmpty(recipeId)) {
-      history.push('/');
-    }
-    getRecipe();
   }, []);
 
   return (
     <div className="fade-in">
       {!isEmpty(recipe) && (
         <div>
-          <RecipeInfo recipe={recipe} />
-          <RecipeOptions recipe={recipe} />
+          <RecipeInfo />
+          <RecipeOptions />
           <hr className="mt-3" />
-          <div className="lg:flex flex-row mx-4">
+          {/* <div className="lg:flex flex-row mx-4">
             <div className="lg:w-3/12 pr-20">
               <RecipeIngredients recipe={recipe} />
             </div>
             <div className="lg:w-9/12">
               {recipe.instructions && <RecipeInstructions recipe={recipe} />}
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </div>

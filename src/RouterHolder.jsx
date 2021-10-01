@@ -7,7 +7,7 @@ import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingOverlay from './components/LoadingOverlay';
 import Home from './pages/Home';
-// import Recipe from './pages/Recipe';
+import Recipe from './pages/Recipe';
 // import AddRecipe from './pages/AddRecipe';
 // import ShoppingList from './pages/ShoppingList';
 // import EditRecipe from './pages/EditRecipe';
@@ -43,10 +43,10 @@ export default function RouterHolder() {
               <Route exact path="/">
                 <Home windowType={windowType} />
               </Route>
-              {/* <Route exact path="/recipe">
+              <Route exact path="/recipe">
                 <Recipe windowType={windowType} />
               </Route>
-              <Route exact path="/addrecipe">
+              {/* <Route exact path="/addrecipe">
                 <AddRecipe windowType={windowType} />
               </Route>
               <Route exact path="/editrecipe">

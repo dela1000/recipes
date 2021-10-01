@@ -1,17 +1,20 @@
-import { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
+import { currentUserState, dbState, recipeState, recipeIdState } from '../../contexts/atoms/atoms';
 import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
-import { Context } from '../../contexts/context';
-
-export default function RecipeOptions({ recipe }) {
+export default function RecipeOptions() {
   const [updatingFavorite, setUpdatingFavorite] = useState(false);
   const [updatingShopping, setUpdatingShopping] = useState(false);
   const history = useHistory();
-  const [{ db, currentUser, setRecipe, setRecipeId }] = useContext(Context);
+
+  const db = useRecoilState(dbState);
+  const [recipe, setRecipe] = useRecoilState(recipeState);
+  const setRecipeId = useSetRecoilState(recipeIdState);
+  const currentUser = useRecoilValue(currentUserState);
 
   const editRecipe = (recipeToUpdate) => {
     setRecipe(recipeToUpdate);
@@ -87,17 +90,3 @@ export default function RecipeOptions({ recipe }) {
     </div>
   );
 }
-
-RecipeOptions.propTypes = {
-  recipe: PropTypes.shape({
-    image: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    favorite: PropTypes.bool,
-    originalURL: PropTypes.string,
-    source: PropTypes.string,
-    onShoppingList: PropTypes.bool,
-    ingredients: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    categories: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-};
