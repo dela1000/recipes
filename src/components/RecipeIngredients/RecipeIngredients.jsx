@@ -1,8 +1,10 @@
 /* eslint no-eval: 0 */
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { recipeState } from '../../contexts/atoms/atoms';
 
-export default function RecipeIngredients({ recipe }) {
+export default function RecipeIngredients() {
+  const recipe = useRecoilValue(recipeState);
   const [selectedScale, setSelectedScale] = useState(1);
   const [listRecipe, setListRecipe] = useState({
     ingredients: [],
@@ -76,9 +78,3 @@ export default function RecipeIngredients({ recipe }) {
     </div>
   );
 }
-
-RecipeIngredients.propTypes = {
-  recipe: PropTypes.shape({
-    ingredients: PropTypes.arrayOf(PropTypes.shape({})),
-  }).isRequired,
-};

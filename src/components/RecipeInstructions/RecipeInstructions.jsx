@@ -1,6 +1,8 @@
-import PropTypes from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { recipeState } from '../../contexts/atoms/atoms';
 
-export default function RecipeInstructions({ recipe }) {
+export default function RecipeInstructions() {
+  const recipe = useRecoilValue(recipeState);
   return (
     <div className="my-5 mb-20 pl-3 lg:pl-0">
       <div className="my-5 pl-3 lg:pl-0">
@@ -10,9 +12,10 @@ export default function RecipeInstructions({ recipe }) {
             {item.instructions.length > 0 && (
               <div className="text-1xl font-bold capitalize">{item.groupName}</div>
             )}
-            {item.instructions.map((instruction) => (
-              <div className="mb-2" key={instruction}>
-                <span>{instruction}</span>
+            {item.instructions.map((instruction, idx) => (
+              <div className="flex mb-2" key={instruction}>
+                <div className="font-bold mr-2">{idx + 1} </div>
+                <div>{instruction}</div>
               </div>
             ))}
           </div>
@@ -21,9 +24,3 @@ export default function RecipeInstructions({ recipe }) {
     </div>
   );
 }
-
-RecipeInstructions.propTypes = {
-  recipe: PropTypes.shape({
-    instructions: PropTypes.arrayOf(PropTypes.shape({})),
-  }).isRequired,
-};

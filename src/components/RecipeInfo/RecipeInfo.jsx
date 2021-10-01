@@ -7,6 +7,7 @@ import { recipeState } from '../../contexts/atoms/atoms';
 export default function RecipeInfo() {
   const history = useHistory();
   const recipe = useRecoilValue(recipeState);
+  console.log('+++ 10: src/components/RecipeInfo/RecipeInfo.jsx - recipe: ', recipe);
 
   const goBackHome = () => {
     history.push(`/`);
