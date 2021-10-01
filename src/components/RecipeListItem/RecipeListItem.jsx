@@ -1,12 +1,22 @@
-import { useContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
+import {
+  dbState,
+  currentUserState,
+  recipeIdState,
+  recipeState,
+  numberOfItemsOnShoppingListState,
+} from '../../contexts/atoms/atoms';
 import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
-import { Context } from '../../contexts/context';
-
-export default function RecipeListItem({ recipe, handleCategoryChange, updateSingleRecipe }) {
+export default function RecipeListItem({
+  recipe,
+  // handleCategoryChange,
+  // updateSingleRecipe
+}) {
   const [listRecipe, setListRecipe] = useState({
     id: null,
     favorite: null,
@@ -19,16 +29,15 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
   });
   const [updatingFavorite, setUpdatingFavorite] = useState(false);
   const [updatingShopping, setUpdatingShopping] = useState(false);
-  const [
-    {
-      db,
-      currentUser,
-      setRecipeId,
-      setRecipe,
-      numberOfItemsOnShoppingList,
-      setNumberOfItemsOnShoppingList,
-    },
-  ] = useContext(Context);
+
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
+  const setRecipeId = useSetRecoilState(recipeIdState);
+  const setRecipe = useSetRecoilState(recipeState);
+  const [numberOfItemsOnShoppingList, setNumberOfItemsOnShoppingList] = useRecoilState(
+    numberOfItemsOnShoppingListState,
+  );
+
   const history = useHistory();
   const navigate = () => {
     history.push('/recipe');
@@ -52,7 +61,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
     });
     setUpdatingFavorite(false);
     setListRecipe(updatedRecipe);
-    updateSingleRecipe(listRecipe.id);
+    // updateSingleRecipe(listRecipe.id);
   };
 
   const handleAddToShoppingList = async () => {
@@ -86,7 +95,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
     }
     setUpdatingShopping(false);
     setListRecipe(updatedRecipe);
-    updateSingleRecipe(listRecipe.id);
+    // updateSingleRecipe(listRecipe.id);
   };
 
   useEffect(() => {
@@ -155,7 +164,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
             </div>
           </div>
           <div>
-            <div className="pt-1">
+            {/* <div className="pt-1">
               {listRecipe.categories.length > 0 && (
                 <div className="text-xs flex">
                   {listRecipe.categories.map((category, idx) => (
@@ -171,7 +180,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange, updateSin
                   ))}
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -191,6 +200,6 @@ RecipeListItem.propTypes = {
     ingredients: PropTypes.arrayOf(PropTypes.shape({})),
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
-  handleCategoryChange: PropTypes.func.isRequired,
-  updateSingleRecipe: PropTypes.func.isRequired,
+  // handleCategoryChange: PropTypes.func.isRequired,
+  // updateSingleRecipe: PropTypes.func.isRequired,
 };

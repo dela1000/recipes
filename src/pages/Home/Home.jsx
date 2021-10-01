@@ -15,7 +15,7 @@ import {
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
 
-import recipesDataFile from '../../adapters/recipesData';
+import recipesDataFile from '../../adapters/recipesDataSmall';
 
 export default function Home() {
   // const db = useRecoilValue(dbState);
@@ -40,8 +40,9 @@ export default function Home() {
     if (showLoading) setLoading(true);
     const addIds = [];
     recipesDataFile.forEach((recipe, idx) => {
-      recipe.id = idx.toString();
-      addIds.push(recipe);
+      const parsedRecipe = JSON.parse(JSON.stringify(recipe));
+      parsedRecipe.id = idx.toString();
+      addIds.push(parsedRecipe);
     });
     setRecipeData(addIds);
     setLoading(false);
