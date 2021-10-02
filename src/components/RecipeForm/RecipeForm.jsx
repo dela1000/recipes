@@ -10,6 +10,7 @@ import {
   recipeIdState,
   recipeState,
   loadingOverlayState,
+  allRecipesState,
 } from '../../contexts/atoms/atoms';
 import recipeToEdit from './utilities/recipeToEdit';
 
@@ -20,6 +21,7 @@ export default function RecipeForm({ type }) {
   const currentUser = useRecoilValue(currentUserState);
   const setRecipeId = useSetRecoilState(recipeIdState);
   const [recipe, setRecipe] = useRecoilState(recipeState);
+  const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const setLoading = useSetRecoilState(loadingOverlayState);
 
   const history = useHistory();
@@ -55,6 +57,9 @@ export default function RecipeForm({ type }) {
         currentUserId: currentUser.uid,
         payload: dataToSubmit,
       });
+      const parsedAllRecipes = JSON.parse(JSON.stringify(allRecipes));
+      parsedAllRecipes.push(docRef);
+      setAllRecipes(parsedAllRecipes);
     }
 
     if (type === 'edit') {

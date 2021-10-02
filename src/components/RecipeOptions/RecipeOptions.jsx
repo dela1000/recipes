@@ -33,18 +33,6 @@ export default function RecipeOptions() {
     history.push(`/editrecipe`);
   };
 
-  const deleteRecipe = async (recipeToDelete) => {
-    await updateRecipe({
-      db,
-      currentUserId: currentUser.uid,
-      recipeId: recipeToDelete.id,
-      payload: {
-        deleted: true,
-      },
-    });
-    history.push(`/`);
-  };
-
   const determineOnShoppingList = (recipesToSee) => {
     const itemsOnShoppingList = addItemsToShoppingListTotal(recipesToSee);
     setNumberOfItemsOnShoppingList(itemsOnShoppingList);
@@ -93,6 +81,19 @@ export default function RecipeOptions() {
     setUpdatingFavorite(false);
     setUpdatingShopping(false);
     updateAllRecipesData(updatedRecipe);
+  };
+
+  const deleteRecipe = async (recipeToDelete) => {
+    const updatedRecipe = await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: recipeToDelete.id,
+      payload: {
+        deleted: true,
+      },
+    });
+    updateAllRecipesData(updatedRecipe);
+    history.push(`/`);
   };
 
   return (

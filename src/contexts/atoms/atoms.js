@@ -16,6 +16,11 @@ export const navbarState = atom({
   default: false,
 });
 
+export const themeNameState = atom({
+  key: 'themeNameState',
+  default: 'light',
+});
+
 export const loadingOverlayState = atom({
   key: 'loadingOverlayState',
   default: false,
@@ -29,11 +34,6 @@ export const updatingFavoriteState = atom({
 export const updatingShoppingState = atom({
   key: 'updatingShoppingState',
   default: false,
-});
-
-export const themeNameState = atom({
-  key: 'themeNameState',
-  default: 'light',
 });
 
 export const allRecipesState = atom({

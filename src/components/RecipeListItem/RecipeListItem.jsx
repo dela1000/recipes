@@ -90,9 +90,8 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
     updateAllRecipes(updatedRecipe);
     setUpdatingShopping(false);
   };
-
   return (
-    <div key={recipe.id}>
+    <div key={recipe.id} className={recipe.deleted ? 'hidden' : 'block'}>
       <hr />
       <div className="flex">
         <div className="mt-3 mx-1">
@@ -179,6 +178,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
 
 RecipeListItem.propTypes = {
   recipe: PropTypes.shape({
+    deleted: PropTypes.bool,
     image: PropTypes.string,
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
