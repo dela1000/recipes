@@ -1,13 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  dbState,
+  currentUserState,
+  loadingOverlayState,
+  onShoppingListState,
+} from '../../contexts/atoms/atoms';
 import ShoppingListHolder from '../../components/ShoppingListHolder';
 
 import { getRecipesByQuery } from '../../adapters/recipeAdapters';
 
-import { Context } from '../../contexts/context';
-
 export default function ShoppingList() {
-  const [{ db, currentUser, setLoading }] = useContext(Context);
-  const [recipesOnShoppingList, setRecipesOnShoppingList] = useState([]);
+  const [recipesOnShoppingList, setRecipesOnShoppingList] = useRecoilState(onShoppingListState);
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
+  const setLoading = useSetRecoilState(loadingOverlayState);
 
   const getShoppingListRecipes = async (showLoader = false) => {
     if (showLoader) {
@@ -34,10 +41,7 @@ export default function ShoppingList() {
   return (
     <div className="fade-in">
       {recipesOnShoppingList.length > 0 ? (
-        <ShoppingListHolder
-          recipesOnShoppingList={recipesOnShoppingList}
-          getShoppingListRecipes={getShoppingListRecipes}
-        />
+        <ShoppingListHolder getShoppingListRecipes={getShoppingListRecipes} />
       ) : (
         <div className="mx-3 mb-5">
           <div className="text-3xl pt-1 mr-12 uppercase pt-9">

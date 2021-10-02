@@ -1,16 +1,33 @@
-import { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from '@material-ui/icons/Close';
+import { useHistory } from 'react-router-dom';
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
+import {
+  dbState,
+  currentUserState,
+  loadingOverlayState,
+  recipeIdState,
+  recipeState,
+  onShoppingListState,
+  numberOfItemsOnShoppingListState,
+  allRecipesState,
+} from '../../contexts/atoms/atoms';
 import ShoppingListByRecipe from '../ShoppingListByRecipe';
 import { updateRecipe, getRecipeById } from '../../adapters/recipeAdapters';
+import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
 
-import { Context } from '../../contexts/context';
-
-export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingListRecipes }) {
+export default function ShoppingListHolder({ getShoppingListRecipes }) {
+  const [recipesOnShoppingList, setRecipesOnShoppingList] = useRecoilState(onShoppingListState);
+  const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const history = useHistory();
   const [recipesNames, setRecipesNames] = useState([]);
-  const [{ db, currentUser, setRecipeId, setRecipe, setLoading }] = useContext(Context);
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
+  const setLoading = useSetRecoilState(loadingOverlayState);
+  const setRecipeId = useSetRecoilState(recipeIdState);
+  const setRecipe = useSetRecoilState(recipeState);
+  const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
 
   const defineRecipeNames = () => {
     const recipesNamesTemp = [];
@@ -20,27 +37,49 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
     setRecipesNames([...recipesNamesTemp]);
   };
 
+  const updateNumberOfItemsOnShoppingList = (dataToUpdate) => {
+    if (dataToUpdate.length > 0) {
+      const inShoppingList = [];
+      dataToUpdate.forEach((doc) => {
+        const item = JSON.parse(JSON.stringify(doc));
+        inShoppingList.push(item);
+      });
+      const itemsOnShoppingList = addItemsToShoppingListTotal(inShoppingList);
+      return setNumberOfItemsOnShoppingList(itemsOnShoppingList);
+    }
+    return setNumberOfItemsOnShoppingList(0);
+  };
+
   const removeFromShoppingList = async (data) => {
     setLoading(true);
-    const recipeFound = recipesOnShoppingList.find((element) => element.id === data.id);
-
-    recipeFound.ingredients.forEach((ingredientsGroup) => {
+    const recipeFoundIndex = recipesOnShoppingList.findIndex((element) => element.id === data.id);
+    const parsedRecipeFound = JSON.parse(JSON.stringify(recipesOnShoppingList[recipeFoundIndex]));
+    parsedRecipeFound.ingredients.forEach((ingredientsGroup) => {
       ingredientsGroup.ingredients.forEach((ingredient) => {
         ingredient.purchased = false;
       });
     });
 
-    await updateRecipe({
+    const updatedRecipe = await updateRecipe({
       db,
       currentUserId: currentUser.uid,
       recipeId: data.id,
       payload: {
-        ingredients: recipeFound.ingredients,
+        ingredients: parsedRecipeFound.ingredients,
         onShoppingList: false,
       },
     });
+    // Remove from recipesOnShoppingList
+    const parsedRecipesList = JSON.parse(JSON.stringify(recipesOnShoppingList));
+    parsedRecipesList.splice(recipeFoundIndex, 1);
+    await setRecipesOnShoppingList(parsedRecipesList);
+    updateNumberOfItemsOnShoppingList(parsedRecipesList);
+    // update in allRecipes
+    const recipeFoundInAllRecipesIndex = allRecipes.findIndex((element) => element.id === data.id);
+    const parsedAllRecipes = JSON.parse(JSON.stringify(allRecipes));
+    parsedAllRecipes[recipeFoundInAllRecipesIndex] = updatedRecipe;
+    setAllRecipes(parsedAllRecipes);
     setLoading(false);
-    getShoppingListRecipes();
   };
 
   const goToRecipe = async (data) => {
@@ -112,10 +151,5 @@ export default function ShoppingListHolder({ recipesOnShoppingList, getShoppingL
 }
 
 ShoppingListHolder.propTypes = {
-  recipesOnShoppingList: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.string,
-    }),
-  ).isRequired,
   getShoppingListRecipes: PropTypes.func.isRequired,
 };

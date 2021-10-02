@@ -21,6 +21,16 @@ export const loadingOverlayState = atom({
   default: false,
 });
 
+export const updatingFavoriteState = atom({
+  key: 'updatingFavoriteState',
+  default: false,
+});
+
+export const updatingShoppingState = atom({
+  key: 'updatingShoppingState',
+  default: false,
+});
+
 export const themeNameState = atom({
   key: 'themeNameState',
   default: 'light',
@@ -41,12 +51,17 @@ export const recipeState = atom({
   default: {},
 });
 
-export const numberOfItemsOnShoppingListState = atom({
-  key: 'numberOfItemsOnShoppingListState',
-  default: 0,
-});
-
 export const allCategoriesState = atom({
   key: 'allCategoriesState',
   default: [],
+});
+
+export const onShoppingListState = atom({
+  key: 'onShoppingListState',
+  default: 0,
+});
+
+export const numberOfItemsOnShoppingListState = atom({
+  key: 'numberOfItemsOnShoppingListState',
+  default: 0,
 });

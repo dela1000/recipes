@@ -1,13 +1,13 @@
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { dbState, currentUserState } from '../../contexts/atoms/atoms';
 import ShoppingListRecipeIngredientGroup from '../ShoppingListRecipeIngredientGroup';
 
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
-import { Context } from '../../contexts/context';
-
 export default function ShoppingListByRecipe({ recipeData, getShoppingListRecipes }) {
-  const [{ db, currentUser }] = useContext(Context);
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
 
   const updateShoppingListRecipe = async () => {
     await updateRecipe({

@@ -1,21 +1,31 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Typography, Paper, Box, Grid, TextField } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
-
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
+import {
+  dbState,
+  currentUserState,
+  recipeIdState,
+  recipeState,
+  loadingOverlayState,
+} from '../../contexts/atoms/atoms';
 import recipeToEdit from './utilities/recipeToEdit';
 
 import { addRecipe, updateRecipe } from '../../adapters/recipeAdapters';
 
-import { Context } from '../../contexts/context';
-
 export default function RecipeForm({ type }) {
-  const [{ db, currentUser, setRecipeId, setRecipe, recipe, setLoading }] = useContext(Context);
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
+  const setRecipeId = useSetRecoilState(recipeIdState);
+  const [recipe, setRecipe] = useRecoilState(recipeState);
+  const setLoading = useSetRecoilState(loadingOverlayState);
 
   const history = useHistory();
   let dataToEdit = {};
   if (type === 'edit') {
+    console.log('+++ 28: src/components/RecipeForm/RecipeForm.jsx - recipe.id: ', recipe.id);
     if (!recipe.id) {
       history.push(`/`);
     } else {

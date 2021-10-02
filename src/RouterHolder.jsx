@@ -8,9 +8,9 @@ import ScrollToTop from './components/ScrollToTop';
 import LoadingOverlay from './components/LoadingOverlay';
 import Home from './pages/Home';
 import Recipe from './pages/Recipe';
-// import AddRecipe from './pages/AddRecipe';
-// import ShoppingList from './pages/ShoppingList';
-// import EditRecipe from './pages/EditRecipe';
+import AddRecipe from './pages/AddRecipe';
+import EditRecipe from './pages/EditRecipe';
+import ShoppingList from './pages/ShoppingList';
 // Contexts
 import { navbarState } from './contexts/atoms/atoms';
 import useWindowDimensions from './contexts/useWindowDimensions';
@@ -46,7 +46,7 @@ export default function RouterHolder() {
               <Route exact path="/recipe">
                 <Recipe windowType={windowType} />
               </Route>
-              {/* <Route exact path="/addrecipe">
+              <Route exact path="/addrecipe">
                 <AddRecipe windowType={windowType} />
               </Route>
               <Route exact path="/editrecipe">
@@ -54,7 +54,7 @@ export default function RouterHolder() {
               </Route>
               <Route exact path="/shoppinglist">
                 <ShoppingList windowType={windowType} />
-              </Route> */}
+              </Route>
               <Route path="*">
                 <Redirect to="/" />
               </Route>

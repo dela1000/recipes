@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import {
@@ -7,27 +6,35 @@ import {
   recipeState,
   recipeIdState,
   allRecipesState,
+  updatingFavoriteState,
+  updatingShoppingState,
+  numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
 import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
-
+import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function RecipeOptions() {
   const history = useHistory();
-  const [updatingFavorite, setUpdatingFavorite] = useState(false);
-  const [updatingShopping, setUpdatingShopping] = useState(false);
+  const [updatingFavorite, setUpdatingFavorite] = useRecoilState(updatingFavoriteState);
+  const [updatingShopping, setUpdatingShopping] = useRecoilState(updatingShoppingState);
 
   const db = useRecoilValue(dbState);
-
+  const currentUser = useRecoilValue(currentUserState);
+  const setRecipeId = useSetRecoilState(recipeIdState);
+  const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
   const [recipe, setRecipe] = useRecoilState(recipeState);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
-  const setRecipeId = useSetRecoilState(recipeIdState);
-  const currentUser = useRecoilValue(currentUserState);
 
   const editRecipe = (recipeToUpdate) => {
     setRecipe(recipeToUpdate);
     setRecipeId(recipeToUpdate.id);
     history.push(`/editrecipe`);
+  };
+
+  const determineOnShoppingList = (recipesToSee) => {
+    const itemsOnShoppingList = addItemsToShoppingListTotal(recipesToSee);
+    setNumberOfItemsOnShoppingList(itemsOnShoppingList);
   };
 
   const updateAllRecipesData = (updatedRecipe) => {
@@ -37,6 +44,7 @@ export default function RecipeOptions() {
     setRecipe(updatedRecipe);
     setRecipeId(updatedRecipe.id);
     setAllRecipes([...newRecipesArray]);
+    determineOnShoppingList(newRecipesArray);
   };
 
   const handleUpdateRecipe = async (updateType) => {
@@ -61,7 +69,6 @@ export default function RecipeOptions() {
           });
         });
       }
-
       dataToUpdate.ingredients = parsedRecipe.ingredients;
     }
     const updatedRecipe = await updateRecipe({

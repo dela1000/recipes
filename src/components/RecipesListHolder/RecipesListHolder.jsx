@@ -15,20 +15,19 @@ import random from 'lodash/random';
 import {
   recipeIdState,
   recipeState,
-  numberOfItemsOnShoppingListState,
   allRecipesState,
   allCategoriesState,
 } from '../../contexts/atoms/atoms';
 import RecipeListItem from '../RecipeListItem';
 
 export default function RecipesListHolder() {
+  const history = useHistory();
+
   const setRecipeId = useSetRecoilState(recipeIdState);
   const setRecipe = useSetRecoilState(recipeState);
-  const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
   const [allCategories, setAllCategories] = useRecoilState(allCategoriesState);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
 
-  const history = useHistory();
   const [categorySelected, setCategorySelected] = useState('none');
   const [sort, setSort] = useState('asc');
   const [filterText, setFilterText] = useState('');
@@ -109,18 +108,6 @@ export default function RecipesListHolder() {
     setSort('asc');
   };
 
-  const determineOnShoppingList = (recipesToSee) => {
-    let itemsOnShoppingList = 0;
-    recipesToSee.forEach((recipe) => {
-      if (recipe.onShoppingList) {
-        recipe.ingredients.forEach((ingredientGroup) => {
-          itemsOnShoppingList += ingredientGroup.ingredients.length;
-        });
-      }
-    });
-    setNumberOfItemsOnShoppingList(itemsOnShoppingList);
-  };
-
   useEffect(() => {
     updateList();
   }, [categorySelected, filterText, sort, favoriteSelected]);
@@ -128,7 +115,6 @@ export default function RecipesListHolder() {
   useEffect(() => {
     groupCategories();
     sortAllRecipes(allRecipes);
-    determineOnShoppingList(allRecipes);
   }, []);
 
   return (
