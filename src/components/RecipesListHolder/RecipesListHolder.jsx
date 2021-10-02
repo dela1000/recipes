@@ -128,8 +128,8 @@ export default function RecipesListHolder() {
   return (
     <div>
       <div>
-        <div className="lg:flex justify-between mx-3 mb-5">
-          <div className="text-5xl pt-1 mr-12 uppercase pt-9">my recipes</div>
+        <div className="lg:flex justify-between pt-5 mb-5">
+          <div className="text-6xl mr-12 uppercase pt-9 lg:pt-0 pb-4">my recipes</div>
           <div>
             <div className="lg:flex">
               <div className="mx-3">
@@ -146,7 +146,7 @@ export default function RecipesListHolder() {
                   />
                 </Paper>
               </div>
-              <div className="ml-4 mt-3 mb-4 lg:ml-0 lg:mt-0 lg:mb-0">
+              <div className="pr-3 lg:pr-1 ml-4 mt-3 mb-4 lg:ml-0 lg:mt-0 lg:mb-0">
                 <Paper className="p-0.5 background-color" style={{ boxShadow: 'none' }}>
                   <FormControl className="w-32 min-w-full py-20">
                     <InputLabel>Categories</InputLabel>
@@ -201,7 +201,7 @@ export default function RecipesListHolder() {
                       handleRandomSelected();
                     }}
                   >
-                    Random
+                    random
                   </button>
                   <button
                     className="uppercase px-4 text-xs bg-red-500 text-blue-100 hover:bg-red-400 duration-300 mx-1 h-9"
