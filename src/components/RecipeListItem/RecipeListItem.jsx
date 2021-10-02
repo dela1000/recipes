@@ -7,24 +7,21 @@ import {
   dbState,
   currentUserState,
   allRecipesState,
-  // numberOfItemsOnShoppingListState,
+  numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
 import IconButton from '../IconButton';
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
-export default function RecipeListItem({
-  recipe,
-  // handleCategoryChange,
-  // updateSingleRecipe
-}) {
+export default function RecipeListItem({ recipe, handleCategoryChange }) {
   const setRecipe = useSetRecoilState(recipeState);
   const [updatingFavorite, setUpdatingFavorite] = useState(false);
+  const [updatingShopping, setUpdatingShopping] = useState(false);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
-  // const [numberOfItemsOnShoppingList, setNumberOfItemsOnShoppingList] = useRecoilState(
-  //   numberOfItemsOnShoppingListState,
-  // );
+  const [numberOfItemsOnShoppingList, setNumberOfItemsOnShoppingList] = useRecoilState(
+    numberOfItemsOnShoppingListState,
+  );
 
   const history = useHistory();
 
@@ -37,6 +34,15 @@ export default function RecipeListItem({
     navigate();
   };
 
+  const updateAllRecipes = (updatedRecipe) => {
+    const recipeFoundInAllRecipesIndex = allRecipes.findIndex(
+      (element) => element.id === recipe.id,
+    );
+    const parsedAllRecipes = JSON.parse(JSON.stringify(allRecipes));
+    parsedAllRecipes[recipeFoundInAllRecipesIndex] = updatedRecipe;
+    setAllRecipes(parsedAllRecipes);
+  };
+
   const handleFavoriteSelected = async () => {
     setUpdatingFavorite(true);
     const updatedRecipe = await updateRecipe({
@@ -47,47 +53,43 @@ export default function RecipeListItem({
         favorite: !recipe.favorite,
       },
     });
-    const recipeFoundInAllRecipesIndex = allRecipes.findIndex(
-      (element) => element.id === recipe.id,
-    );
-    const parsedAllRecipes = JSON.parse(JSON.stringify(allRecipes));
-    parsedAllRecipes[recipeFoundInAllRecipesIndex] = updatedRecipe;
-    setAllRecipes(parsedAllRecipes);
+    updateAllRecipes(updatedRecipe);
     setUpdatingFavorite(false);
   };
 
-  // const handleAddToShoppingList = async () => {
-  //   setUpdatingShopping(true);
+  const handleAddToShoppingList = async () => {
+    setUpdatingShopping(true);
 
-  //   const dataToUpdate = {
-  //     onShoppingList: !listRecipe.onShoppingList,
-  //   };
+    const dataToUpdate = {
+      onShoppingList: !recipe.onShoppingList,
+    };
 
-  //   let itemsToRemove = 0;
-  //   listRecipe.ingredients.forEach((ingredientsGroup) => {
-  //     itemsToRemove += ingredientsGroup.ingredients.length;
-  //     ingredientsGroup.ingredients.forEach((ingredient) => {
-  //       ingredient.purchased = false;
-  //     });
-  //   });
+    let itemsToRemove = 0;
+    const parsedRecipe = JSON.parse(JSON.stringify(recipe));
+    parsedRecipe.ingredients.forEach((ingredientsGroup) => {
+      itemsToRemove += ingredientsGroup.ingredients.length;
+      ingredientsGroup.ingredients.forEach((ingredient) => {
+        ingredient.purchased = false;
+      });
+    });
 
-  //   dataToUpdate.ingredients = listRecipe.ingredients;
+    dataToUpdate.ingredients = parsedRecipe.ingredients;
 
-  //   const updatedRecipe = await updateRecipe({
-  //     db,
-  //     currentUserId: currentUser.uid,
-  //     recipeId: listRecipe.id,
-  //     payload: dataToUpdate,
-  //   });
+    const updatedRecipe = await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: parsedRecipe.id,
+      payload: dataToUpdate,
+    });
 
-  //   if (dataToUpdate.onShoppingList) {
-  //     setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList + itemsToRemove);
-  //   } else {
-  //     setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList - itemsToRemove);
-  //   }
-  //   setUpdatingShopping(false);
-  //   // updateSingleRecipe(listRecipe.id);
-  // };
+    if (dataToUpdate.onShoppingList) {
+      setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList + itemsToRemove);
+    } else {
+      setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList - itemsToRemove);
+    }
+    updateAllRecipes(updatedRecipe);
+    setUpdatingShopping(false);
+  };
 
   return (
     <div key={recipe.id}>
@@ -104,27 +106,15 @@ export default function RecipeListItem({
               />
             </div>
           </div>
-        </div>
-        {/* <div className="mt-3 mx-1">
-          <div className="lg:flex flex-col">
-            <div className="mb-1">
-              <IconButton
-                type="favorite"
-                itemToUpdate={recipe.favorite}
-                updating={updatingFavorite}
-                handleFunction={handleFavoriteSelected}
-              />
-            </div>
-            <div>
-              <IconButton
-                type="onShoppingList"
-                itemToUpdate={recipe.onShoppingList}
-                updating={updatingShopping}
-                handleFunction={handleAddToShoppingList}
-              />
-            </div>
+          <div>
+            <IconButton
+              type="onShoppingList"
+              itemToUpdate={recipe.onShoppingList}
+              updating={updatingShopping}
+              handleFunction={handleAddToShoppingList}
+            />
           </div>
-        </div> */}
+        </div>
         <div className="flex-initial mt-3 mr-3">
           <button type="button" onClick={selectRecipe} className="w-32 h-32">
             {recipe.image ? (
@@ -163,7 +153,7 @@ export default function RecipeListItem({
             </div>
           </div>
           <div>
-            {/* <div className="pt-1">
+            <div className="pt-1">
               {recipe.categories.length > 0 && (
                 <div className="text-xs flex">
                   {recipe.categories.map((category, idx) => (
@@ -179,7 +169,7 @@ export default function RecipeListItem({
                   ))}
                 </div>
               )}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -199,6 +189,5 @@ RecipeListItem.propTypes = {
     ingredients: PropTypes.arrayOf(PropTypes.shape({})),
     categories: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
-  // handleCategoryChange: PropTypes.func.isRequired,
-  // updateSingleRecipe: PropTypes.func.isRequired,
+  handleCategoryChange: PropTypes.func.isRequired,
 };

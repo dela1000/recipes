@@ -214,25 +214,9 @@ export default function RecipesListHolder() {
         <RecipeListItem
           key={recipe.id}
           recipe={recipe}
-          // handleCategoryChange={handleCategoryChange}
-          // updateSingleRecipe={updateSingleRecipe}
+          handleCategoryChange={handleCategoryChange}
         />
       ))}
     </div>
   );
 }
-
-// RecipesListHolder.propTypes = {
-//   allRecipes: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       image: PropTypes.string,
-//       id: PropTypes.string.isRequired,
-//       title: PropTypes.string.isRequired,
-//       favorite: PropTypes.bool,
-//       originalURL: PropTypes.string,
-//       source: PropTypes.string,
-//       categories: PropTypes.arrayOf(PropTypes.string),
-//     }).isRequired,
-//   ).isRequired,
-//   // updateSingleRecipe: PropTypes.func.isRequired,
-// };
