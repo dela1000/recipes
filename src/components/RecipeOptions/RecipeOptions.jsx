@@ -109,7 +109,7 @@ export default function RecipeOptions() {
   };
 
   return (
-    <div className="flex pt-3">
+    <div className="flex flex-wrap pt-0.5 lg:pt-4 mx-5 lg:mx-0">
       <AlertModal handleFunction={deleteRecipe} />
       <IconButton
         type="favorite"
