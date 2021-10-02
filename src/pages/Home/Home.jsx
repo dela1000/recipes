@@ -7,10 +7,7 @@ import {
   allRecipesState,
 } from '../../contexts/atoms/atoms';
 
-import {
-  getAllRecipes,
-  // getRecipeById,
-} from '../../adapters/recipeAdapters';
+import { getAllRecipes } from '../../adapters/recipeAdapters';
 
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';

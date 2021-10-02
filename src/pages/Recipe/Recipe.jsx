@@ -1,18 +1,26 @@
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import { useRecoilValue } from 'recoil';
-import { recipeState } from '../../contexts/atoms/atoms';
+import { recipeState, allRecipesState } from '../../contexts/atoms/atoms';
 import RecipeInfo from '../../components/RecipeInfo';
 import RecipeOptions from '../../components/RecipeOptions';
 import RecipeIngredients from '../../components/RecipeIngredients';
 import RecipeInstructions from '../../components/RecipeInstructions';
 
 export default function Recipe() {
+  const history = useHistory();
   const recipe = useRecoilValue(recipeState);
-
+  const allRecipe = useRecoilValue(allRecipesState);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  useEffect(() => {
+    if (allRecipe.length === 0) {
+      history.push('/');
+    }
+  }, [recipe]);
 
   return (
     <div className="fade-in">

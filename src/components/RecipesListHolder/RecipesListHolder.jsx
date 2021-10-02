@@ -22,10 +22,6 @@ import {
 import RecipeListItem from '../RecipeListItem';
 
 export default function RecipesListHolder() {
-  // {
-  // recipesData,
-  // updateSingleRecipe
-  // },
   const setRecipeId = useSetRecoilState(recipeIdState);
   const setRecipe = useSetRecoilState(recipeState);
   const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
@@ -33,11 +29,6 @@ export default function RecipesListHolder() {
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
 
   const history = useHistory();
-  // const [recipes, setRecipes] = useState([]);
-  // console.log(
-  //   '+++ 35: src/components/RecipesListHolder/RecipesListHolder.jsx - recipes: ',
-  //   recipes,
-  // );
   const [categorySelected, setCategorySelected] = useState('none');
   const [sort, setSort] = useState('asc');
   const [filterText, setFilterText] = useState('');
@@ -136,7 +127,7 @@ export default function RecipesListHolder() {
 
   useEffect(() => {
     groupCategories();
-    // sortAllRecipes(allRecipes);
+    sortAllRecipes(allRecipes);
     determineOnShoppingList(allRecipes);
   }, []);
 
