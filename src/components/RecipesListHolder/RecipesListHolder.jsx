@@ -27,6 +27,7 @@ export default function RecipesListHolder() {
   const setRecipe = useSetRecoilState(recipeState);
   const [allCategories, setAllCategories] = useRecoilState(allCategoriesState);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
+  const [listRecipes, setListRecipes] = useState([]);
 
   const [categorySelected, setCategorySelected] = useState('none');
   const [sort, setSort] = useState('asc');
@@ -63,7 +64,7 @@ export default function RecipesListHolder() {
       (recipe) => recipe.title.toLowerCase().search(filterText.toLowerCase()) !== -1,
     );
 
-    return setAllRecipes(orderBy(recipesToFilter, [(data) => data.title.toLowerCase()], sort));
+    return setListRecipes(orderBy(recipesToFilter, [(data) => data.title.toLowerCase()], sort));
   };
 
   const handleCategoryChange = (event) => {
@@ -113,9 +114,16 @@ export default function RecipesListHolder() {
   }, [categorySelected, filterText, sort, favoriteSelected]);
 
   useEffect(() => {
-    groupCategories();
     sortAllRecipes(allRecipes);
   }, []);
+
+  useEffect(() => {
+    groupCategories();
+    setListRecipes(allRecipes);
+    if (filterText || categorySelected !== 'none' || favoriteSelected) {
+      updateList();
+    }
+  }, [allRecipes]);
 
   return (
     <div>
@@ -210,7 +218,7 @@ export default function RecipesListHolder() {
           </div>
         </div>
       </div>
-      {allRecipes.map((recipe) => (
+      {listRecipes.map((recipe) => (
         <RecipeListItem
           key={recipe.id}
           recipe={recipe}
