@@ -31,7 +31,6 @@ export default function Home() {
   };
 
   const getRecipes = async (showLoading) => {
-    console.log('+++ 27: src/pages/Home/Home.jsx - MAKING getRecipes CALL');
     if (showLoading) setLoading(true);
     const addIds = [];
     const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });

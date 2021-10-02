@@ -11,6 +11,7 @@ import {
   numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
 import IconButton from '../IconButton';
+import TextButton from '../TextButton';
 import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
@@ -30,6 +31,13 @@ export default function RecipeOptions() {
     setRecipe(recipeToUpdate);
     setRecipeId(recipeToUpdate.id);
     history.push(`/editrecipe`);
+  };
+
+  const deleteRecipe = (recipeToDelete) => {
+    console.log(
+      '+++ 37: src/components/RecipeOptions/RecipeOptions.jsx - recipeToDelete: ',
+      recipeToDelete,
+    );
   };
 
   const determineOnShoppingList = (recipesToSee) => {
@@ -83,7 +91,7 @@ export default function RecipeOptions() {
   };
 
   return (
-    <div className="pt-3">
+    <div className="flex pt-3">
       <IconButton
         type="favorite"
         itemToUpdate={recipe.favorite}
@@ -96,15 +104,8 @@ export default function RecipeOptions() {
         updating={updatingShopping}
         handleFunction={() => handleUpdateRecipe('shopping')}
       />
-      <button
-        className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 mx-1 h-9"
-        type="button"
-        onClick={() => {
-          editRecipe(recipe);
-        }}
-      >
-        Edit Recipe
-      </button>
+      <TextButton text="edit recipe" handleFunction={() => editRecipe(recipe)} />
+      <TextButton text="delete recipe" handleFunction={() => deleteRecipe(recipe)} />
     </div>
   );
 }

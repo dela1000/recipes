@@ -25,7 +25,6 @@ export default function RecipeForm({ type }) {
   const history = useHistory();
   let dataToEdit = {};
   if (type === 'edit') {
-    console.log('+++ 28: src/components/RecipeForm/RecipeForm.jsx - recipe.id: ', recipe.id);
     if (!recipe.id) {
       history.push(`/`);
     } else {
