@@ -33,11 +33,16 @@ export default function RecipeOptions() {
     history.push(`/editrecipe`);
   };
 
-  const deleteRecipe = (recipeToDelete) => {
-    console.log(
-      '+++ 37: src/components/RecipeOptions/RecipeOptions.jsx - recipeToDelete: ',
-      recipeToDelete,
-    );
+  const deleteRecipe = async (recipeToDelete) => {
+    await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: recipeToDelete.id,
+      payload: {
+        deleted: true,
+      },
+    });
+    history.push(`/`);
   };
 
   const determineOnShoppingList = (recipesToSee) => {
@@ -84,7 +89,7 @@ export default function RecipeOptions() {
       currentUserId: currentUser.uid,
       recipeId: parsedRecipe.id,
       payload: dataToUpdate,
-    }).catch(() => {});
+    });
     setUpdatingFavorite(false);
     setUpdatingShopping(false);
     updateAllRecipesData(updatedRecipe);

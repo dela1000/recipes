@@ -182,6 +182,7 @@ export default function RecipeForm({ type }) {
   const onSubmit = (recipeFormData) => {
     const dataToSubmit = JSON.parse(JSON.stringify(recipeFormData));
     dataToSubmit.favorite = false;
+    dataToSubmit.deleted = false;
 
     dataToSubmit.ingredients = defineIngredients(recipeFormData.ingredients.trim());
     dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());

@@ -27,7 +27,12 @@ export async function updateRecipe(data) {
 }
 
 export async function getAllRecipes(data) {
-  const recipes = await getDocs(collection(data.db, `users/${data.currentUserId}/recipes`));
+  const recipes = await getDocs(
+    query(
+      collection(data.db, `users/${data.currentUserId}/recipes/`),
+      where('deleted', '==', false),
+    ),
+  );
   return recipes;
 }
 
