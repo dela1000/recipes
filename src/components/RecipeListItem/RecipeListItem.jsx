@@ -1,27 +1,27 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil';
 import {
-  // useRecoilValue,
-  useSetRecoilState,
-  // useRecoilState,
-} from 'recoil';
-import {
-  // dbState,
-  // currentUserState,
   recipeState,
+  dbState,
+  currentUserState,
+  allRecipesState,
   // numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
-// import IconButton from '../IconButton';
-// import { updateRecipe } from '../../adapters/recipeAdapters';
+import IconButton from '../IconButton';
+import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function RecipeListItem({
   recipe,
   // handleCategoryChange,
   // updateSingleRecipe
 }) {
-  // const db = useRecoilValue(dbState);
-  // const currentUser = useRecoilValue(currentUserState);
   const setRecipe = useSetRecoilState(recipeState);
+  const [updatingFavorite, setUpdatingFavorite] = useState(false);
+  const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
   // const [numberOfItemsOnShoppingList, setNumberOfItemsOnShoppingList] = useRecoilState(
   //   numberOfItemsOnShoppingListState,
   // );
@@ -37,20 +37,24 @@ export default function RecipeListItem({
     navigate();
   };
 
-  // const handleFavoriteSelected = async () => {
-  //   setUpdatingFavorite(true);
-  //   const updatedRecipe = await updateRecipe({
-  //     db,
-  //     currentUserId: currentUser.uid,
-  //     recipeId: listRecipe.id,
-  //     payload: {
-  //       favorite: !listRecipe.favorite,
-  //     },
-  //   });
-  //   setUpdatingFavorite(false);
-  //   // setListRecipe(updatedRecipe);
-  //   // updateSingleRecipe(listRecipe.id);
-  // };
+  const handleFavoriteSelected = async () => {
+    setUpdatingFavorite(true);
+    const updatedRecipe = await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: recipe.id,
+      payload: {
+        favorite: !recipe.favorite,
+      },
+    });
+    const recipeFoundInAllRecipesIndex = allRecipes.findIndex(
+      (element) => element.id === recipe.id,
+    );
+    const parsedAllRecipes = JSON.parse(JSON.stringify(allRecipes));
+    parsedAllRecipes[recipeFoundInAllRecipesIndex] = updatedRecipe;
+    setAllRecipes(parsedAllRecipes);
+    setUpdatingFavorite(false);
+  };
 
   // const handleAddToShoppingList = async () => {
   //   setUpdatingShopping(true);
@@ -82,7 +86,6 @@ export default function RecipeListItem({
   //     setNumberOfItemsOnShoppingList(numberOfItemsOnShoppingList - itemsToRemove);
   //   }
   //   setUpdatingShopping(false);
-  //   // setListRecipe(updatedRecipe);
   //   // updateSingleRecipe(listRecipe.id);
   // };
 
@@ -90,6 +93,18 @@ export default function RecipeListItem({
     <div key={recipe.id}>
       <hr />
       <div className="flex">
+        <div className="mt-3 mx-1">
+          <div className="lg:flex flex-col">
+            <div className="mb-1">
+              <IconButton
+                type="favorite"
+                itemToUpdate={recipe.favorite}
+                updating={updatingFavorite}
+                handleFunction={handleFavoriteSelected}
+              />
+            </div>
+          </div>
+        </div>
         {/* <div className="mt-3 mx-1">
           <div className="lg:flex flex-col">
             <div className="mb-1">
