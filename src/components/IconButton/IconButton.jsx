@@ -3,7 +3,7 @@ import AutorenewIcon from '@material-ui/icons/Autorenew';
 import StarIcon from '@material-ui/icons/Star';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-export default function MiscUpdateRecipeButton({ type, itemToUpdate, updating, handleFunction }) {
+export default function IconButton({ type, itemToUpdate, updating, handleFunction }) {
   return (
     <button
       className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-14 mx-1 h-9"
@@ -32,13 +32,13 @@ export default function MiscUpdateRecipeButton({ type, itemToUpdate, updating, h
   );
 }
 
-MiscUpdateRecipeButton.propTypes = {
+IconButton.propTypes = {
   type: PropTypes.string.isRequired,
   itemToUpdate: PropTypes.bool,
   updating: PropTypes.bool.isRequired,
   handleFunction: PropTypes.func.isRequired,
 };
 
-MiscUpdateRecipeButton.defaultProps = {
+IconButton.defaultProps = {
   itemToUpdate: false,
 };

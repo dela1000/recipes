@@ -10,7 +10,7 @@ import {
   updatingShoppingState,
   numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
-import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
+import IconButton from '../IconButton';
 import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
@@ -84,13 +84,13 @@ export default function RecipeOptions() {
 
   return (
     <div className="pt-3">
-      <MiscUpdateRecipeButton
+      <IconButton
         type="favorite"
         itemToUpdate={recipe.favorite}
         updating={updatingFavorite}
         handleFunction={() => handleUpdateRecipe('favorite')}
       />
-      <MiscUpdateRecipeButton
+      <IconButton
         type="onShoppingList"
         itemToUpdate={recipe.onShoppingList}
         updating={updatingShopping}

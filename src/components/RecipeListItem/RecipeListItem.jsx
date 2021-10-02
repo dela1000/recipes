@@ -11,7 +11,7 @@ import {
   recipeState,
   // numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
-// import MiscUpdateRecipeButton from '../MiscUpdateRecipeButton';
+// import IconButton from '../IconButton';
 // import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function RecipeListItem({
@@ -93,7 +93,7 @@ export default function RecipeListItem({
         {/* <div className="mt-3 mx-1">
           <div className="lg:flex flex-col">
             <div className="mb-1">
-              <MiscUpdateRecipeButton
+              <IconButton
                 type="favorite"
                 itemToUpdate={recipe.favorite}
                 updating={updatingFavorite}
@@ -101,7 +101,7 @@ export default function RecipeListItem({
               />
             </div>
             <div>
-              <MiscUpdateRecipeButton
+              <IconButton
                 type="onShoppingList"
                 itemToUpdate={recipe.onShoppingList}
                 updating={updatingShopping}
