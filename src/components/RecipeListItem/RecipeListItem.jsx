@@ -141,7 +141,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
             </div>
           </div>
           <div className="flex">
-            <div className="flex-initial">
+            <div className="flex-initial mr-5">
               <button
                 className="capitalize text-xl italic text-left"
                 type="button"

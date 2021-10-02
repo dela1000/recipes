@@ -100,12 +100,13 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
   }, [recipesOnShoppingList]);
 
   return (
-    <div>
-      <div className="mx-3 mb-5">
+    <div className="mx-3">
+      <div className="mb-5">
         <div className="text-5xl pt-1 mr-12 uppercase pt-9">Shopping List</div>
       </div>
       <div className="lg:flex flex-row">
         <div className="lg:w-3/12 pr-10">
+          <div className="text-2xl mb-2 capitalize italic">Recipes in Shopping List</div>
           {recipesNames.length > 0 && (
             <div className="flex-grow">
               {recipesNames.map((rec, idx) => (
