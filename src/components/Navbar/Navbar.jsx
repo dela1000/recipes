@@ -27,7 +27,7 @@ export default function Navbar() {
   const history = useHistory();
 
   const [themeName, setThemeName] = useRecoilState(themeNameState);
-  const [navbar, setNavbar] = useRecoilState(navbarState);
+  const [showNavbar, setNavbar] = useRecoilState(navbarState);
   const numberOfItemsOnShoppingList = useRecoilValue(numberOfItemsOnShoppingListState);
 
   const toggleTheme = () => {
@@ -43,7 +43,9 @@ export default function Navbar() {
     }
   }, [width]);
 
-  const toggleNavList = () => setNavbar(!navbarState);
+  const toggleNavList = () => {
+    setNavbar(!showNavbar);
+  };
   const closeNavList = () => setNavbar(false);
 
   const navigate = (navigateTo) => {
@@ -58,9 +60,9 @@ export default function Navbar() {
   return (
     <nav className="center">
       <div
-        style={{ display: navbar ? 'flex' : null }}
+        style={{ display: showNavbar ? 'flex' : null }}
         className={
-          navbar
+          showNavbar
             ? `${themeName}_nav__list__background_color nav__list h-screen`
             : `${themeName}_nav__list__background_color nav__list`
         }
@@ -109,7 +111,7 @@ export default function Navbar() {
         className="btn btn-icon nav__hamburger"
         aria-label="toggle navigation"
       >
-        {navbar ? <CloseIcon /> : <MenuIcon />}
+        {showNavbar ? <CloseIcon /> : <MenuIcon />}
       </button>
     </nav>
   );

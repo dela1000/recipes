@@ -65,3 +65,8 @@ export const numberOfItemsOnShoppingListState = atom({
   key: 'numberOfItemsOnShoppingListState',
   default: 0,
 });
+
+export const alertModalState = atom({
+  key: 'alertModalState',
+  default: false,
+});

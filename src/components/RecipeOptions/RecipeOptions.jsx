@@ -1,3 +1,4 @@
+import {useEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import {
@@ -6,6 +7,8 @@ import {
   recipeState,
   recipeIdState,
   allRecipesState,
+  alertModalState,
+  loadingOverlayState,
   updatingFavoriteState,
   updatingShoppingState,
   numberOfItemsOnShoppingListState,
@@ -13,6 +16,7 @@ import {
 import IconButton from '../IconButton';
 import TextButton from '../TextButton';
 import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
+import AlertModal from '../AlertModal';
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function RecipeOptions() {
@@ -26,6 +30,8 @@ export default function RecipeOptions() {
   const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
   const [recipe, setRecipe] = useRecoilState(recipeState);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
+  const setAlertModal = useSetRecoilState(alertModalState);
+  const setLoading = useSetRecoilState(loadingOverlayState);
 
   const editRecipe = (recipeToUpdate) => {
     setRecipe(recipeToUpdate);
@@ -83,21 +89,33 @@ export default function RecipeOptions() {
     updateAllRecipesData(updatedRecipe);
   };
 
-  const deleteRecipe = async (recipeToDelete) => {
+  const deleteRecipe = async () => {
+    setLoading(true);
     const updatedRecipe = await updateRecipe({
       db,
       currentUserId: currentUser.uid,
-      recipeId: recipeToDelete.id,
+      recipeId: recipe.id,
       payload: {
         deleted: true,
       },
     });
     updateAllRecipesData(updatedRecipe);
+    setLoading(false);
+    setAlertModal(false);
     history.push(`/`);
   };
 
+  const handleDeleteRecipe = () => {
+    setAlertModal(true);
+  };
+
+  useEffect(() => {
+    setAlertModal(false);
+  }[])
+
   return (
     <div className="flex pt-3">
+      <AlertModal handleFunction={deleteRecipe} />
       <IconButton
         type="favorite"
         itemToUpdate={recipe.favorite}
@@ -111,7 +129,7 @@ export default function RecipeOptions() {
         handleFunction={() => handleUpdateRecipe('shopping')}
       />
       <TextButton text="edit recipe" handleFunction={() => editRecipe(recipe)} />
-      <TextButton text="delete recipe" handleFunction={() => deleteRecipe(recipe)} />
+      <TextButton text="delete recipe" handleFunction={() => handleDeleteRecipe()} />
     </div>
   );
 }
