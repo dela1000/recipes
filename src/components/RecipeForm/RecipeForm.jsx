@@ -185,7 +185,7 @@ export default function RecipeForm({ type }) {
     submitData(dataToSubmit);
   };
 
-  const testSubmit = () => {
+  const addRecipesBatch = () => {
     const promisesGoHere = [];
     recipesData.forEach((recipeToAdd) => {
       const dataToSubmit = JSON.parse(JSON.stringify(recipeToAdd));
@@ -244,6 +244,7 @@ export default function RecipeForm({ type }) {
       });
 
       dataToSubmit.instructions = instructionsHolder;
+      dataToSubmit.deleted = false;
 
       const docRef = addRecipe({
         db,
@@ -268,7 +269,7 @@ export default function RecipeForm({ type }) {
 
   return (
     <div>
-      <button type="button" onClick={() => testSubmit()}>
+      <button type="button" onClick={() => addRecipesBatch()}>
         TEST SUBMIT
       </button>
 
