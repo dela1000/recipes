@@ -1,4 +1,3 @@
-import {useEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import {
@@ -108,10 +107,6 @@ export default function RecipeOptions() {
   const handleDeleteRecipe = () => {
     setAlertModal(true);
   };
-
-  useEffect(() => {
-    setAlertModal(false);
-  }[])
 
   return (
     <div className="flex pt-3">
