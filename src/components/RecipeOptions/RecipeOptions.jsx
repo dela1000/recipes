@@ -110,7 +110,11 @@ export default function RecipeOptions() {
 
   return (
     <div className="flex flex-wrap pt-0.5 lg:pt-4 mx-5 lg:mx-0">
-      <AlertModal handleFunction={deleteRecipe} />
+      <AlertModal
+        actionText="delete recipe"
+        bodyText="Are you sure you want to delete this recipe?"
+        handleFunction={deleteRecipe}
+      />
       <IconButton
         type="favorite"
         itemToUpdate={recipe.favorite}

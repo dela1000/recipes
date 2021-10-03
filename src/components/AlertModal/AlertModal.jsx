@@ -13,7 +13,7 @@ const style = {
   bgcolor: 'background.paper',
 };
 
-export default function AlertModal({ handleFunction }) {
+export default function AlertModal({ handleFunction, actionText, bodyText }) {
   const [alertModalOn, setAlertModal] = useRecoilState(alertModalState);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -55,10 +55,10 @@ export default function AlertModal({ handleFunction }) {
                   <Box className="absolute p-10" sx={style}>
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={12}>
-                        <div className="text-2xl monserrat">DELETE RECIPE</div>
+                        <div className="text-2xl monserrat uppercase">{actionText}</div>
                       </Grid>
                       <Grid item xs={12} sm={12}>
-                        <Typography>Are you sure you want to delete this recipe?</Typography>
+                        <Typography>{bodyText}</Typography>
                       </Grid>
                       <Grid item xs={12} sm={12}>
                         <Box justify="flex-end" textAlign="right">
@@ -67,7 +67,7 @@ export default function AlertModal({ handleFunction }) {
                             onClick={handleOnClick}
                             className="uppercase px-4 py-2 text-xs bg-gray-600 text-blue-100 hover:bg-gray-600 duration-300 w-32 mx-1 h-14"
                           >
-                            Delete Recipe
+                            {actionText}
                           </button>
                         </Box>
                       </Grid>
@@ -84,5 +84,7 @@ export default function AlertModal({ handleFunction }) {
 }
 
 AlertModal.propTypes = {
+  actionText: PropTypes.string.isRequired,
+  bodyText: PropTypes.string.isRequired,
   handleFunction: PropTypes.func.isRequired,
 };
