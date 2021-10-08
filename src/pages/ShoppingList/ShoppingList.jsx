@@ -41,7 +41,6 @@ export default function ShoppingList() {
       db,
       currentUserId: currentUser.uid,
     });
-    console.log('+++ 44: src/pages/ShoppingList/ShoppingList.jsx - data: ', data);
     if (data) {
       setExtraShoppingItems(data);
     }
@@ -57,7 +56,7 @@ export default function ShoppingList() {
   return (
     <div className="fade-in">
       <AddToShoppingListInput />
-      {extraShoppingItems?.manualShoppingListItems?.manualShoppingListItems?.length > 0 ||
+      {extraShoppingItems?.manualShoppingListItems?.length > 0 ||
       recipesOnShoppingList.length > 0 ? (
         <ShoppingListHolder getShoppingListRecipes={getShoppingListRecipes} />
       ) : (

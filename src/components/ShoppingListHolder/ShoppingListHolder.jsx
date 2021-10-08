@@ -35,7 +35,7 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
     const recipesNamesTemp = [];
     if (extraShoppingItems?.manualShoppingListItems?.length > 0) {
       recipesNamesTemp.push({
-        recipeTitle: 'Manual Recipe',
+        recipeTitle: 'Manual Items',
         id: extraShoppingItems.id,
         type: 'manual',
       });
@@ -106,7 +106,7 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
 
   useEffect(() => {
     defineRecipeNames();
-  }, [recipesOnShoppingList]);
+  }, [recipesOnShoppingList, extraShoppingItems]);
 
   return (
     <div className="mx-3">

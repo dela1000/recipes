@@ -43,8 +43,8 @@ export default function AddToShoppingListInput() {
         item: filterText,
         id: newObject.manualShoppingListItems.length + 1,
       });
-      setExtraShoppingItems(newObject);
       handleAddToShoppingList(newObject);
+      setExtraShoppingItems(newObject);
       setFilterText('');
     }
   };
