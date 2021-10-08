@@ -32,15 +32,9 @@ export default function Home() {
 
   const getRecipes = async (showLoading) => {
     if (showLoading) setLoading(true);
-    const addIds = [];
     const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
-    recipesFromDb.forEach((doc) => {
-      const item = doc.data();
-      item.id = doc.id;
-      addIds.push(item);
-    });
-    setRecipesData(addIds);
-    determineOnShoppingList(addIds);
+    setRecipesData(recipesFromDb);
+    determineOnShoppingList(recipesFromDb);
     setLoading(false);
   };
 

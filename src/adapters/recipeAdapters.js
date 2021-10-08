@@ -9,7 +9,7 @@ import {
   where,
 } from 'firebase/firestore';
 
-export async function getRecipeByIdInternal(data) {
+export async function getDataByIdInternal(data) {
   const docSnap = await getDoc(data.docRef);
 
   const recipe = docSnap.data();
@@ -23,7 +23,7 @@ export async function updateRecipe(data) {
 
   await updateDoc(docRef, data.payload);
 
-  return getRecipeByIdInternal({ docRef, recipeId: data.recipeId });
+  return getDataByIdInternal({ docRef, recipeId: data.recipeId });
 }
 
 export async function getAllRecipes(data) {
@@ -33,7 +33,13 @@ export async function getAllRecipes(data) {
       where('deleted', '==', false),
     ),
   );
-  return recipes;
+  const itemsWithIds = [];
+  recipes.forEach((recipe) => {
+    const item = recipe.data();
+    item.id = recipe.id;
+    itemsWithIds.push(item);
+  });
+  return itemsWithIds;
 }
 
 export async function addRecipe(data) {
@@ -44,7 +50,7 @@ export async function addRecipe(data) {
 
   const docRef = doc(data.db, `users/${data.currentUserId}/recipes/${newRecipe.id}`);
 
-  return getRecipeByIdInternal({ docRef, recipeId: newRecipe.id });
+  return getDataByIdInternal({ docRef, recipeId: newRecipe.id });
 }
 
 export async function getRecipesByQuery(data) {
@@ -71,4 +77,39 @@ export async function getRecipeById(data) {
   recipe.id = data.payload.id;
 
   return docSnap.exists() ? recipe : false;
+}
+
+export async function getAllShoppingListItems(data) {
+  const shoppingListItems = await getDocs(
+    collection(data.db, `users/${data.currentUserId}/shoppingList/`),
+  );
+  const itemsWithIds = [];
+  shoppingListItems.forEach((recipe) => {
+    const item = recipe.data();
+    item.id = recipe.id;
+    itemsWithIds.push(item);
+  });
+  return itemsWithIds[0];
+}
+
+export async function addShoppingListInitialItems(data) {
+  const newShoppingList = await addDoc(
+    collection(data.db, `users/${data.currentUserId}/shoppingList`),
+    data.payload,
+  );
+
+  const docRef = doc(data.db, `users/${data.currentUserId}/shoppingList/${newShoppingList.id}`);
+
+  return getDataByIdInternal({ docRef, recipeId: newShoppingList.id });
+}
+
+export async function updateShoppingList(data) {
+  const docRef = doc(
+    data.db,
+    `users/${data.currentUserId}/shoppingList/${data.extraShoppingItemsId}`,
+  );
+
+  await updateDoc(docRef, data.payload);
+
+  return getDataByIdInternal({ docRef, recipeId: data.extraShoppingItemsId });
 }

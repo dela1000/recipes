@@ -5,16 +5,19 @@ import {
   currentUserState,
   loadingOverlayState,
   onShoppingListState,
+  allShoppingItemsState,
 } from '../../contexts/atoms/atoms';
 import ShoppingListHolder from '../../components/ShoppingListHolder';
+import AddToShoppingListInput from '../../components/AddToShoppingListInput';
 
-import { getRecipesByQuery } from '../../adapters/recipeAdapters';
+import { getRecipesByQuery, getAllShoppingListItems } from '../../adapters/recipeAdapters';
 
 export default function ShoppingList() {
   const [recipesOnShoppingList, setRecipesOnShoppingList] = useRecoilState(onShoppingListState);
   const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
   const setLoading = useSetRecoilState(loadingOverlayState);
+  const [extraShoppingItems, setExtraShoppingItems] = useRecoilState(allShoppingItemsState);
 
   const getShoppingListRecipes = async (showLoader = false) => {
     if (showLoader) {
@@ -33,14 +36,29 @@ export default function ShoppingList() {
     setRecipesOnShoppingList(recipesFromDb);
   };
 
+  const getShoppingListItems = async () => {
+    const data = await getAllShoppingListItems({
+      db,
+      currentUserId: currentUser.uid,
+    });
+    console.log('+++ 44: src/pages/ShoppingList/ShoppingList.jsx - data: ', data);
+    if (data) {
+      setExtraShoppingItems(data);
+    }
+  };
+
   useEffect(() => {
     if (currentUser) {
       getShoppingListRecipes(true);
+      getShoppingListItems();
     }
   }, [currentUser]);
+
   return (
     <div className="fade-in">
-      {recipesOnShoppingList.length > 0 ? (
+      <AddToShoppingListInput />
+      {extraShoppingItems?.manualShoppingListItems?.manualShoppingListItems?.length > 0 ||
+      recipesOnShoppingList.length > 0 ? (
         <ShoppingListHolder getShoppingListRecipes={getShoppingListRecipes} />
       ) : (
         <div className="mx-3 mb-5">
