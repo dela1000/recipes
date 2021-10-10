@@ -62,19 +62,20 @@ export default function AddToShoppingListInput() {
         newRecipesOnShoppingList.push(docRef);
         parsedAllRecipes.push(docRef);
       } else {
-        const newManualList = JSON.parse(JSON.stringify(manualListFound));
-        newItem.index = newManualList[0].ingredients[0].ingredients.length;
-        newManualList[0].ingredients[0].ingredients.push(newItem);
+        const parsedManualList = JSON.parse(JSON.stringify(manualListFound));
+        parsedManualList[0].onShoppingList = true;
+        newItem.index = parsedManualList[0].ingredients[0].ingredients.length;
+        parsedManualList[0].ingredients[0].ingredients.push(newItem);
         docRef = await updateRecipe({
           db,
           currentUserId: currentUser.uid,
-          recipeId: newManualList[0].id,
-          payload: newManualList[0],
+          recipeId: parsedManualList[0].id,
+          payload: parsedManualList[0],
         });
         const foundIndex = newRecipesOnShoppingList.findIndex((x) => x.id === docRef.id);
-        [newRecipesOnShoppingList[foundIndex]] = [newManualList[0]];
+        [newRecipesOnShoppingList[foundIndex]] = [parsedManualList[0]];
         const foundAllIndex = parsedAllRecipes.findIndex((x) => x.id === docRef.id);
-        [parsedAllRecipes[foundAllIndex]] = [newManualList[0]];
+        [parsedAllRecipes[foundAllIndex]] = [parsedManualList[0]];
       }
       setRecipesOnShoppingList(newRecipesOnShoppingList);
       setAllRecipes(parsedAllRecipes);

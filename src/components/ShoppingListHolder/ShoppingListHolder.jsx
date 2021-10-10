@@ -31,8 +31,14 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
 
   const defineRecipeNames = () => {
     const recipesNamesTemp = [];
-    recipesOnShoppingList.forEach((recipe) => {
-      recipesNamesTemp.push({ recipeTitle: recipe.title, id: recipe.id, type: 'recipe' });
+    const sortedArr = recipesOnShoppingList.reduce((acc, element) => {
+      if (element.manualList) {
+        return [element, ...acc];
+      }
+      return [...acc, element];
+    }, []);
+    sortedArr.forEach((recipe) => {
+      recipesNamesTemp.push({ recipeTitle: recipe.title, id: recipe.id });
     });
     setRecipesNames([...recipesNamesTemp]);
   };
