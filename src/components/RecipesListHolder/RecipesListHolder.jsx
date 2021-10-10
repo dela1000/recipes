@@ -218,13 +218,16 @@ export default function RecipesListHolder() {
           </div>
         </div>
       </div>
-      {listRecipes.map((recipe) => (
-        <RecipeListItem
-          key={recipe.id}
-          recipe={recipe}
-          handleCategoryChange={handleCategoryChange}
-        />
-      ))}
+      {listRecipes.map(
+        (recipe) =>
+          !recipe.manualList && (
+            <RecipeListItem
+              key={recipe.id}
+              recipe={recipe}
+              handleCategoryChange={handleCategoryChange}
+            />
+          ),
+      )}
     </div>
   );
 }

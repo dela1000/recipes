@@ -1,20 +1,25 @@
 import { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 
 import {
   dbState,
   currentUserState,
   allRecipesState,
   onShoppingListState,
+  loadingOverlayState,
+  numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
 import { addRecipe, updateRecipe } from '../../adapters/recipeAdapters';
+import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
 
 export default function AddToShoppingListInput() {
   const [filterText, setFilterText] = useState('');
+  const setLoading = useSetRecoilState(loadingOverlayState);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const [recipesOnShoppingList, setRecipesOnShoppingList] = useRecoilState(onShoppingListState);
+  const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
   const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
   const handleItemInput = (event) => {
@@ -23,6 +28,7 @@ export default function AddToShoppingListInput() {
 
   const handleKeyDown = async (e) => {
     if (e.key === 'Enter') {
+      setLoading(true);
       let docRef;
       const manualListFound = allRecipes.filter((recipe) => recipe.manualList === true);
       const newItem = {
@@ -57,7 +63,7 @@ export default function AddToShoppingListInput() {
         parsedAllRecipes.push(docRef);
       } else {
         const newManualList = JSON.parse(JSON.stringify(manualListFound));
-        newItem.index = newManualList[0].ingredients[0].ingredients[0].length - 1;
+        newItem.index = newManualList[0].ingredients[0].ingredients.length;
         newManualList[0].ingredients[0].ingredients.push(newItem);
         docRef = await updateRecipe({
           db,
@@ -72,7 +78,10 @@ export default function AddToShoppingListInput() {
       }
       setRecipesOnShoppingList(newRecipesOnShoppingList);
       setAllRecipes(parsedAllRecipes);
+      const itemsOnShoppingList = addItemsToShoppingListTotal(parsedAllRecipes);
+      setNumberOfItemsOnShoppingList(itemsOnShoppingList);
       setFilterText('');
+      setLoading(false);
     }
   };
 
