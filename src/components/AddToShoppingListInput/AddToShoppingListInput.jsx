@@ -46,6 +46,7 @@ export default function AddToShoppingListInput() {
           onShoppingList: true,
           deleted: false,
           manualList: true,
+          categories: [],
         };
         docRef = await addRecipe({
           db,
