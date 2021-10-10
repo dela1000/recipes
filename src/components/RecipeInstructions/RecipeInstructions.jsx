@@ -4,7 +4,7 @@ import { recipeState } from '../../contexts/atoms/atoms';
 export default function RecipeInstructions() {
   const recipe = useRecoilValue(recipeState);
   return (
-    <div className="my-5 mb-20 pl-3 lg:pl-0">
+    <div className="my-5 mb-20 lg:pl-3 lg:pl-0">
       <div className="my-5 pl-3 lg:pl-0">
         <div className="mt-5 mb-2 text-2xl">INSTRUCTIONS</div>
         {recipe.instructions.map((item) => (
