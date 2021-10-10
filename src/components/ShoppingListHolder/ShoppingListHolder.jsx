@@ -12,7 +12,6 @@ import {
   onShoppingListState,
   numberOfItemsOnShoppingListState,
   allRecipesState,
-  allShoppingItemsState,
 } from '../../contexts/atoms/atoms';
 import ShoppingListByRecipe from '../ShoppingListByRecipe';
 import { updateRecipe, getRecipeById } from '../../adapters/recipeAdapters';
@@ -29,17 +28,9 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
   const setRecipeId = useSetRecoilState(recipeIdState);
   const setRecipe = useSetRecoilState(recipeState);
   const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
-  const extraShoppingItems = useRecoilValue(allShoppingItemsState);
 
   const defineRecipeNames = () => {
     const recipesNamesTemp = [];
-    if (extraShoppingItems?.manualShoppingListItems?.length > 0) {
-      recipesNamesTemp.push({
-        recipeTitle: 'Manual Items',
-        id: extraShoppingItems.id,
-        type: 'manual',
-      });
-    }
     recipesOnShoppingList.forEach((recipe) => {
       recipesNamesTemp.push({ recipeTitle: recipe.title, id: recipe.id, type: 'recipe' });
     });
@@ -106,7 +97,7 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
 
   useEffect(() => {
     defineRecipeNames();
-  }, [recipesOnShoppingList, extraShoppingItems]);
+  }, [recipesOnShoppingList]);
 
   return (
     <div className="mx-3">

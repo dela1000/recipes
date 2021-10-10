@@ -1,53 +1,11 @@
 import { useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState, useRecoilState, useResetRecoilState } from 'recoil';
-import {
-  dbState,
-  currentUserState,
-  loadingOverlayState,
-  allRecipesState,
-  recipeState,
-  recipeIdState,
-  numberOfItemsOnShoppingListState,
-} from '../../contexts/atoms/atoms';
-import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
-
-import { getAllRecipes } from '../../adapters/recipeAdapters';
-
+import { useRecoilValue } from 'recoil';
 import AddRecipeButton from '../../components/AddRecipeButton';
 import RecipesListHolder from '../../components/RecipesListHolder';
+import { allRecipesState } from '../../contexts/atoms/atoms';
 
 export default function Home() {
-  const db = useRecoilValue(dbState);
-  const currentUser = useRecoilValue(currentUserState);
-  const setLoading = useSetRecoilState(loadingOverlayState);
-  const [recipesData, setRecipesData] = useRecoilState(allRecipesState);
-  const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
-  const resetRecipeState = useResetRecoilState(recipeState);
-  const resetRecipeIdState = useResetRecoilState(recipeIdState);
-
-  const determineOnShoppingList = (recipesToSee) => {
-    const itemsOnShoppingList = addItemsToShoppingListTotal(recipesToSee);
-    setNumberOfItemsOnShoppingList(itemsOnShoppingList);
-  };
-
-  const getRecipes = async (showLoading) => {
-    if (showLoading) setLoading(true);
-    const recipesFromDb = await getAllRecipes({ db, currentUserId: currentUser.uid });
-    setRecipesData(recipesFromDb);
-    determineOnShoppingList(recipesFromDb);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    if (currentUser.uid && recipesData.length === 0) {
-      getRecipes(true);
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    resetRecipeState();
-    resetRecipeIdState();
-  }, []);
+  const recipesData = useRecoilValue(allRecipesState);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

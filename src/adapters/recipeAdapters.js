@@ -91,25 +91,3 @@ export async function getAllShoppingListItems(data) {
   });
   return itemsWithIds[0];
 }
-
-export async function addShoppingListInitialItems(data) {
-  const newShoppingList = await addDoc(
-    collection(data.db, `users/${data.currentUserId}/shoppingList`),
-    data.payload,
-  );
-
-  const docRef = doc(data.db, `users/${data.currentUserId}/shoppingList/${newShoppingList.id}`);
-
-  return getDataByIdInternal({ docRef, recipeId: newShoppingList.id });
-}
-
-export async function updateShoppingList(data) {
-  const docRef = doc(
-    data.db,
-    `users/${data.currentUserId}/shoppingList/${data.extraShoppingItemsId}`,
-  );
-
-  await updateDoc(docRef, data.payload);
-
-  return getDataByIdInternal({ docRef, recipeId: data.extraShoppingItemsId });
-}

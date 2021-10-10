@@ -1,50 +1,29 @@
 import { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
-import { useRecoilValue, useRecoilState } from 'recoil';
-import { allShoppingItemsState, dbState, currentUserState } from '../../contexts/atoms/atoms';
-import { updateShoppingList, addShoppingListInitialItems } from '../../adapters/recipeAdapters';
+import { useRecoilValue } from 'recoil';
+
+import { allRecipesState } from '../../contexts/atoms/atoms';
 
 export default function AddToShoppingListInput() {
   const [filterText, setFilterText] = useState('');
-  const db = useRecoilValue(dbState);
-  const currentUser = useRecoilValue(currentUserState);
-  const [extraShoppingItems, setExtraShoppingItems] = useRecoilState(allShoppingItemsState);
+  const recipesData = useRecoilValue(allRecipesState);
+  // const db = useRecoilValue(dbState);
+  // const currentUser = useRecoilValue(currentUserState);
   const handleItemInput = (event) => {
     setFilterText(event.target.value);
   };
 
-  const handleAddToShoppingList = async (itemsToAdd) => {
-    if (extraShoppingItems.id) {
-      await updateShoppingList({
-        db,
-        currentUserId: currentUser.uid,
-        extraShoppingItemsId: extraShoppingItems.id,
-        payload: itemsToAdd,
-      });
-    } else {
-      const addedShoppingList = await addShoppingListInitialItems({
-        db,
-        currentUserId: currentUser.uid,
-        payload: itemsToAdd,
-      });
-      setExtraShoppingItems(addedShoppingList);
-    }
-  };
-
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      const newObject = JSON.parse(JSON.stringify(extraShoppingItems));
-      if (!newObject.manualShoppingListItems) {
-        newObject.manualShoppingListItems = [];
-      }
-      newObject.manualShoppingListItems.push({
-        purchased: false,
-        item: filterText,
-        id: newObject.manualShoppingListItems.length + 1,
-      });
-      handleAddToShoppingList(newObject);
-      setExtraShoppingItems(newObject);
+      console.log(
+        '+++ 17: src/components/AddToShoppingListInput/AddToShoppingListInput.jsx - filterText: ',
+        filterText,
+      );
+      console.log(
+        '+++ 23: src/components/AddToShoppingListInput/AddToShoppingListInput.jsx - recipesData: ',
+        recipesData,
+      );
       setFilterText('');
     }
   };

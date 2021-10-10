@@ -70,8 +70,3 @@ export const alertModalState = atom({
   key: 'alertModalState',
   default: false,
 });
-
-export const allShoppingItemsState = atom({
-  key: 'allShoppingItemsState',
-  default: {},
-});
