@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { recipeState } from '../../contexts/atoms/atoms';
+import toDecimal from './utilities/utilityFunctions';
 
 export default function RecipeIngredients() {
   const recipe = useRecoilValue(recipeState);
@@ -20,14 +21,13 @@ export default function RecipeIngredients() {
   ];
 
   const scaleRecipe = (scaleValue) => {
-    const ev = eval;
     setSelectedScale(scaleValue);
     const tempRecipe = JSON.parse(JSON.stringify(recipe));
     tempRecipe.ingredients.forEach((ingredientGroup) => {
       if (ingredientGroup.ingredients.length > 0) {
         ingredientGroup.ingredients.forEach((ingredient) => {
           if (ingredient.quantity) {
-            const asNumber = ev(ingredient.quantity);
+            const asNumber = toDecimal(ingredient.quantity);
             if (!Number.isNaN(asNumber)) {
               let newQuantity = scaleValue * asNumber;
               if (newQuantity % 1 !== 0) {
