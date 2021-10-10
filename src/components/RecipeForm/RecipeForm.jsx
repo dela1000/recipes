@@ -173,7 +173,7 @@ export default function RecipeForm({ type }) {
     return finalInstructionsObject;
   };
 
-  const defineCategores = (categories) => {
+  const defineCategories = (categories) => {
     const categoriesFinal = [];
     const categoriesHolder = categories.trim().split(',');
 
@@ -186,14 +186,24 @@ export default function RecipeForm({ type }) {
 
   const onSubmit = (recipeFormData) => {
     const dataToSubmit = JSON.parse(JSON.stringify(recipeFormData));
-    dataToSubmit.favorite = false;
     dataToSubmit.deleted = false;
+    if (type === 'edit' && recipe.id) {
+      if (recipe.favorite === true) {
+        dataToSubmit.favorite = true;
+      }
+      if (recipe.onShoppingList === true) {
+        dataToSubmit.onShoppingList = true;
+      }
+    } else {
+      dataToSubmit.favorite = false;
+      dataToSubmit.onShoppingList = false;
+    }
 
     dataToSubmit.ingredients = defineIngredients(recipeFormData.ingredients.trim());
     dataToSubmit.instructions = defineInstructions(recipeFormData.instructions.trim());
 
     if (recipeFormData.categories.length > 0) {
-      dataToSubmit.categories = defineCategores(recipeFormData.categories.trim());
+      dataToSubmit.categories = defineCategories(recipeFormData.categories.trim());
     } else {
       dataToSubmit.categories = [];
     }
