@@ -73,11 +73,22 @@ export default function AddToShoppingListInput() {
           payload: parsedManualList[0],
         });
         const foundIndex = newRecipesOnShoppingList.findIndex((x) => x.id === docRef.id);
-        [newRecipesOnShoppingList[foundIndex]] = [parsedManualList[0]];
+        if (foundIndex === -1) {
+          newRecipesOnShoppingList.push(docRef);
+        } else {
+          [newRecipesOnShoppingList[foundIndex]] = [parsedManualList[0]];
+        }
         const foundAllIndex = parsedAllRecipes.findIndex((x) => x.id === docRef.id);
         [parsedAllRecipes[foundAllIndex]] = [parsedManualList[0]];
       }
-      setRecipesOnShoppingList(newRecipesOnShoppingList);
+      const sortedNewShoppingList = newRecipesOnShoppingList.reduce((acc, element) => {
+        if (element.manualList) {
+          return [element, ...acc];
+        }
+        return [...acc, element];
+      }, []);
+
+      setRecipesOnShoppingList(sortedNewShoppingList);
       setAllRecipes(parsedAllRecipes);
       const itemsOnShoppingList = addItemsToShoppingListTotal(parsedAllRecipes);
       setNumberOfItemsOnShoppingList(itemsOnShoppingList);
