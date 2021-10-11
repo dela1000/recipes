@@ -60,11 +60,15 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
     setLoading(true);
     const recipeFoundIndex = recipesOnShoppingList.findIndex((element) => element.id === data.id);
     const parsedRecipeFound = JSON.parse(JSON.stringify(recipesOnShoppingList[recipeFoundIndex]));
-    parsedRecipeFound.ingredients.forEach((ingredientsGroup) => {
-      ingredientsGroup.ingredients.forEach((ingredient) => {
-        ingredient.purchased = false;
+    if (parsedRecipeFound.manualList) {
+      parsedRecipeFound.ingredients[0].ingredients = [];
+    } else {
+      parsedRecipeFound.ingredients.forEach((ingredientsGroup) => {
+        ingredientsGroup.ingredients.forEach((ingredient) => {
+          ingredient.purchased = false;
+        });
       });
-    });
+    }
 
     const updatedRecipe = await updateRecipe({
       db,

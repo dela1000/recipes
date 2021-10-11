@@ -31,7 +31,7 @@ export default function ShoppingList() {
       },
     });
     setLoading(false);
-    setRecipesOnShoppingList(recipesFromDb);
+    setRecipesOnShoppingList(JSON.parse(JSON.stringify(recipesFromDb)));
   };
 
   useEffect(() => {
