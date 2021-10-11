@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRecoilValue } from 'recoil';
 import { dbState, currentUserState } from '../../contexts/atoms/atoms';
@@ -6,6 +7,7 @@ import ShoppingListRecipeIngredientGroup from '../ShoppingListRecipeIngredientGr
 import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function ShoppingListByRecipe({ recipeData, getShoppingListRecipes }) {
+  const [currentRecipe, setCurrentRecipe] = useState({});
   const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
 
@@ -13,17 +15,22 @@ export default function ShoppingListByRecipe({ recipeData, getShoppingListRecipe
     await updateRecipe({
       db,
       currentUserId: currentUser.uid,
-      recipeId: recipeData.id,
-      payload: recipeData,
+      recipeId: currentRecipe.id,
+      payload: currentRecipe,
     });
     getShoppingListRecipes();
   };
 
+  useEffect(() => {
+    const parsedRecipe = JSON.parse(JSON.stringify(recipeData));
+    setCurrentRecipe(parsedRecipe);
+  }, [recipeData]);
+
   return (
     <div>
-      <div className="text-xl mb-2 capitalize italic">{recipeData.title}</div>
+      <div className="text-xl mb-2 capitalize italic">{currentRecipe.title}</div>
       <div className="mb-5 pl-3 lg:pl-0">
-        {recipeData.ingredients.map((ingredientsGroup) => (
+        {currentRecipe?.ingredients?.map((ingredientsGroup) => (
           <ShoppingListRecipeIngredientGroup
             key={ingredientsGroup.index}
             updateShoppingListRecipe={updateShoppingListRecipe}
