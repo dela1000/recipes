@@ -29,7 +29,7 @@ export default function ShoppingListByRecipe({ recipeData, getShoppingListRecipe
   return (
     <div>
       <div className="text-xl mb-2 capitalize italic">{currentRecipe.title}</div>
-      <div className="mb-5 pl-3 lg:pl-0">
+      <div className="mb-5 -ml-2.5">
         {currentRecipe?.ingredients?.map((ingredientsGroup) => (
           <ShoppingListRecipeIngredientGroup
             key={ingredientsGroup.index}
