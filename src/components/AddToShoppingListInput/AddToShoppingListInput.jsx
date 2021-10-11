@@ -8,7 +8,6 @@ import {
   currentUserState,
   allRecipesState,
   onShoppingListState,
-  loadingOverlayState,
   numberOfItemsOnShoppingListState,
 } from '../../contexts/atoms/atoms';
 import { addRecipe, updateRecipe } from '../../adapters/recipeAdapters';
@@ -16,7 +15,7 @@ import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTo
 
 export default function AddToShoppingListInput() {
   const [filterText, setFilterText] = useState('');
-  const setLoading = useSetRecoilState(loadingOverlayState);
+  const [disabledInput, setDisabledInput] = useState(false);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const [recipesOnShoppingList, setRecipesOnShoppingList] = useRecoilState(onShoppingListState);
   const setNumberOfItemsOnShoppingList = useSetRecoilState(numberOfItemsOnShoppingListState);
@@ -28,7 +27,7 @@ export default function AddToShoppingListInput() {
 
   const handleKeyDown = async (e) => {
     if (e.key === 'Enter') {
-      setLoading(true);
+      setDisabledInput(true);
       let docRef;
       const manualListFound = allRecipes.filter((recipe) => recipe.manualList === true);
       const newItem = {
@@ -93,7 +92,7 @@ export default function AddToShoppingListInput() {
       const itemsOnShoppingList = addItemsToShoppingListTotal(parsedAllRecipes);
       setNumberOfItemsOnShoppingList(itemsOnShoppingList);
       setFilterText('');
-      setLoading(false);
+      setDisabledInput(false);
     }
   };
 
@@ -102,6 +101,7 @@ export default function AddToShoppingListInput() {
       <Paper className="p-0.5 background-color" style={{ boxShadow: 'none' }}>
         <Input
           className="mx-0.5 pt-4 w-60"
+          disabled={disabledInput}
           id="addItem"
           name="Add Item"
           placeholder="Add Item to List"
