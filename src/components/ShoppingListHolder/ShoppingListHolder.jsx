@@ -14,10 +14,12 @@ import {
   allRecipesState,
 } from '../../contexts/atoms/atoms';
 import ShoppingListByRecipe from '../ShoppingListByRecipe';
+import ShoppingListByGroup from '../ShoppingListByGroup';
 import { updateRecipe, getRecipeById } from '../../adapters/recipeAdapters';
 import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
 
 export default function ShoppingListHolder({ getShoppingListRecipes }) {
+  const [viewByRecipe, setViewByRecipe] = useState(false);
   const [recipesOnShoppingList, setRecipesOnShoppingList] = useRecoilState(onShoppingListState);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const history = useHistory();
@@ -105,6 +107,10 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
     history.push(`/recipe`);
   };
 
+  const handleChangeView = () => {
+    setViewByRecipe(!viewByRecipe);
+  };
+
   useEffect(() => {
     defineRecipeNames();
   }, [recipesOnShoppingList]);
@@ -116,6 +122,9 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
       </div>
       <div className="lg:flex flex-row">
         <div className="lg:w-3/12 pr-10">
+          <button type="button" onClick={handleChangeView}>
+            {viewByRecipe ? 'View by Recipe' : 'View By Group'}
+          </button>
           <div className="text-2xl mb-2 capitalize italic">Recipes in Shopping List</div>
           {recipesNames.length > 0 && (
             <div className="flex-grow">
@@ -147,14 +156,23 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
         </div>
         <div className="lg:w-9/12 mt-8 lg:mt-0 px-3 lg:px-0">
           <div className="bg-gray-300 h-px lg:w-0 w-full mb-8 lg:mb-2" />
-          {recipesOnShoppingList.map((recipe) => (
-            <ShoppingListByRecipe
-              key={recipe.id}
-              recipeId={recipe.id}
-              recipeData={recipe}
-              getShoppingListRecipes={getShoppingListRecipes}
-            />
-          ))}
+          {viewByRecipe && (
+            <div>
+              {recipesOnShoppingList.map((recipe) => (
+                <ShoppingListByRecipe
+                  key={recipe.id}
+                  recipeId={recipe.id}
+                  recipeData={recipe}
+                  getShoppingListRecipes={getShoppingListRecipes}
+                />
+              ))}
+            </div>
+          )}
+          {!viewByRecipe && (
+            <div>
+              <ShoppingListByGroup recipesOnShoppingList={recipesOnShoppingList} />
+            </div>
+          )}
         </div>
       </div>
     </div>

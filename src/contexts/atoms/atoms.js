@@ -23,7 +23,7 @@ export const themeNameState = atom({
 
 export const loadingOverlayState = atom({
   key: 'loadingOverlayState',
-  default: false,
+  default: true,
 });
 
 export const updatingFavoriteState = atom({
