@@ -122,9 +122,13 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
       </div>
       <div className="lg:flex flex-row">
         <div className="lg:w-3/12 pr-10">
-          <button type="button" onClick={handleChangeView}>
-            {viewByRecipe ? 'View by Recipe' : 'View By Group'}
-          </button>
+          <div className="my-3">
+            <button type="button" onClick={handleChangeView}>
+              <div className="italic font-bold">
+                {viewByRecipe ? 'View By Group' : 'View by Recipe'}
+              </div>
+            </button>
+          </div>
           <div className="text-2xl mb-2 capitalize italic">Recipes in Shopping List</div>
           {recipesNames.length > 0 && (
             <div className="flex-grow">
@@ -170,7 +174,10 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
           )}
           {!viewByRecipe && (
             <div>
-              <ShoppingListByGroup recipesOnShoppingList={recipesOnShoppingList} />
+              <ShoppingListByGroup
+                recipesOnShoppingList={recipesOnShoppingList}
+                getShoppingListRecipes={getShoppingListRecipes}
+              />
             </div>
           )}
         </div>

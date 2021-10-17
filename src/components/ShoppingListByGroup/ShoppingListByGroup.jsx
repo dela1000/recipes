@@ -1,28 +1,33 @@
 import { useEffect, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import orderBy from 'lodash/orderBy';
-
 import PropTypes from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { allRecipesState, dbState, currentUserState } from '../../contexts/atoms/atoms';
+import ShoppingListItem from '../ShoppingListItem';
 import foodsCollection from '../../helpers/foodsCollection';
 import shopppingGroups from '../../helpers/shoppingGroups';
+import { updateRecipe } from '../../adapters/recipeAdapters';
 
-export default function ShoppingListByGroup({ recipesOnShoppingList }) {
+export default function ShoppingListByGroup({ recipesOnShoppingList, getShoppingListRecipes }) {
   const [ingredientGroups, setIngredientGroups] = useState([]);
-  const allIngredients = {};
-
-  recipesOnShoppingList.forEach((recipe) => {
-    recipe.ingredients.forEach((ingredientsGroup) => {
-      ingredientsGroup.ingredients.forEach((ingredient) => {
-        allIngredients[ingredient.string] = ingredient;
-        console.log(
-          '+++ 17: src/components/ShoppingListByGroup/ShoppingListByGroup.jsx - ingredient: ',
-          ingredient,
-        );
-      });
-    });
-  });
+  const db = useRecoilValue(dbState);
+  const currentUser = useRecoilValue(currentUserState);
+  const allRecipes = useRecoilValue(allRecipesState);
 
   const sortIngredients = () => {
+    const allIngredients = {};
+
+    recipesOnShoppingList.forEach((recipe) => {
+      recipe.ingredients.forEach((ingredientsGroup, index) => {
+        ingredientsGroup.ingredients.forEach((ingredient) => {
+          const newIngredient = JSON.parse(JSON.stringify(ingredient));
+          newIngredient.recipeObj = recipe;
+          newIngredient.ingredientsGroupIndex = index;
+          allIngredients[newIngredient.string] = newIngredient;
+        });
+      });
+    });
     const shopppingGroupsCopy = JSON.parse(JSON.stringify(shopppingGroups));
     Object.keys(foodsCollection).forEach((food) => {
       const groupId = foodsCollection[food].shoppingGroupId;
@@ -49,17 +54,35 @@ export default function ShoppingListByGroup({ recipesOnShoppingList }) {
       }
     });
 
-    const finalArray = orderBy(ingredientsArray, ['id'], ['asc']);
-    finalArray.forEach((item) => {
+    const sortedArray = orderBy(ingredientsArray, ['id'], ['asc']);
+    sortedArray.forEach((item) => {
       item.ingredients = Object.values(item.ingredients);
     });
-
+    const finalArray = JSON.parse(JSON.stringify(sortedArray));
     setIngredientGroups(finalArray);
+  };
+
+  const updateShoppingListRecipe = async (ingredient) => {
+    const recipeId = ingredient.recipeObj.id;
+    const recipeToEdit = allRecipes.find((x) => x.id === recipeId);
+    const parsedRecipeToEdit = JSON.parse(JSON.stringify(recipeToEdit));
+
+    parsedRecipeToEdit.ingredients[ingredient.ingredientsGroupIndex].ingredients[
+      ingredient.index - 1
+    ].purchased = true;
+
+    await updateRecipe({
+      db,
+      currentUserId: currentUser.uid,
+      recipeId: parsedRecipeToEdit.id,
+      payload: parsedRecipeToEdit,
+    });
+    getShoppingListRecipes();
   };
 
   useEffect(() => {
     sortIngredients();
-  }, []);
+  }, [recipesOnShoppingList]);
 
   return (
     <div>
@@ -68,10 +91,11 @@ export default function ShoppingListByGroup({ recipesOnShoppingList }) {
           <div className="capitalize font-bold">{group.name}</div>
           <div>
             {group.ingredients.map((ingredient) => (
-              <div key={ingredient.string}>
-                <span className="font-bold">{ingredient.quantity} </span>
-                <span>{ingredient.string}</span>
-              </div>
+              <ShoppingListItem
+                key={ingredient.index}
+                ingredient={ingredient}
+                updateShoppingListRecipe={updateShoppingListRecipe}
+              />
             ))}
           </div>
         </div>
@@ -82,4 +106,5 @@ export default function ShoppingListByGroup({ recipesOnShoppingList }) {
 
 ShoppingListByGroup.propTypes = {
   recipesOnShoppingList: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  getShoppingListRecipes: PropTypes.func.isRequired,
 };

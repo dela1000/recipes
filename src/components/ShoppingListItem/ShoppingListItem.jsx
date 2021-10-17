@@ -9,7 +9,7 @@ export default function ShoppingListItem({ ingredient, updateShoppingListRecipe 
   const handleCheckBoxClick = () => {
     setChecked(!checked);
     ingredient.purchased = !checked;
-    updateShoppingListRecipe();
+    updateShoppingListRecipe(ingredient);
   };
 
   const concatString = () => {
