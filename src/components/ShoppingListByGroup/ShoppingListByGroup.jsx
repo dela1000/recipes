@@ -37,11 +37,11 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
       });
     });
     const shopppingGroupsCopy = JSON.parse(JSON.stringify(shopppingGroups));
-    Object.keys(foodsCollection).forEach((food) => {
-      const groupId = foodsCollection[food].shoppingGroupId;
+    foodsCollection.forEach((food) => {
+      const groupId = food.shoppingGroupId;
       Object.keys(allIngredients).forEach((ingredient) => {
         const ingredientString = allIngredients[ingredient].string.toLowerCase();
-        const found = ingredient.toLowerCase().match(food.toLocaleLowerCase());
+        const found = ingredient.toLowerCase().match(food.name.toLocaleLowerCase());
         if (found) {
           if (!shopppingGroupsCopy[groupId].ingredients[ingredientString]) {
             shopppingGroupsCopy[groupId].ingredients[ingredientString] = allIngredients[ingredient];
