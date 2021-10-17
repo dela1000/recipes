@@ -15,6 +15,26 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
   const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
 
+  const checkShowGroup = (groudId) => {
+    const groupToUpdate = ingredientGroups.find((x) => x.id === groudId);
+    let showGroup = false;
+    groupToUpdate.ingredients.forEach((ing) => {
+      if (!ing.purchased) {
+        showGroup = true;
+      }
+    });
+    groupToUpdate.showGroup = showGroup;
+    const foundIndex = ingredientGroups.findIndex((x) => x.id === groupToUpdate.id);
+    ingredientGroups[foundIndex] = groupToUpdate;
+    setIngredientGroups([...ingredientGroups]);
+  };
+
+  const updateShowGroup = (groudId) => {
+    const foundIndex = ingredientGroups.findIndex((x) => x.id === groudId);
+    ingredientGroups[foundIndex].showGroup = !ingredientGroups[foundIndex].showGroup;
+    setIngredientGroups([...ingredientGroups]);
+  };
+
   const sortIngredients = () => {
     setLoading(true);
     const allIngredients = {};
@@ -52,6 +72,7 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
 
     Object.keys(shopppingGroupsCopy).forEach((group) => {
       if (!isEmpty(shopppingGroupsCopy[group].ingredients)) {
+        shopppingGroupsCopy[group].showGroup = true;
         ingredientsArray.push(shopppingGroupsCopy[group]);
       }
     });
@@ -65,7 +86,7 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
     setLoading(false);
   };
 
-  const updateShoppingListRecipe = async (ingredient) => {
+  const updateShoppingListRecipe = async (ingredient, groupId) => {
     const recipeId = ingredient.recipeObj.id;
     const recipeToEdit = recipesOnShoppingList.find((x) => x.id === recipeId);
     const parsedRecipeToEdit = JSON.parse(JSON.stringify(recipeToEdit));
@@ -86,7 +107,8 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
       recipeId: parsedRecipeToEdit.id,
       payload: parsedRecipeToEdit,
     });
-    getShoppingListRecipes();
+    await getShoppingListRecipes();
+    checkShowGroup(groupId);
   };
 
   useEffect(() => {
@@ -97,10 +119,13 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
     <div>
       {ingredientGroups.map((group) => (
         <div key={group.id}>
-          <div className="text-xl mt-3 capitalize italic">{group.name}</div>
-          <div>
+          <button type="button" onClick={() => updateShowGroup(group.id)}>
+            <div className="text-xl mt-3 capitalize italic">{group.name}</div>
+          </button>
+          <div className={!group.showGroup ? 'hidden' : 'block'}>
             {group.ingredients.map((ingredient) => (
               <ShoppingListItem
+                groupId={group.id}
                 key={ingredient.tempIndex}
                 ingredient={ingredient}
                 updateShoppingListRecipe={updateShoppingListRecipe}
