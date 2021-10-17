@@ -18,6 +18,8 @@ const foodsCollection = [
   { name: 'gorgonzola', shoppingGroupId: 13 },
   { name: 'manchego', shoppingGroupId: 13 },
   { name: 'sauce', shoppingGroupId: 11 },
+  { name: 'coconut amino', shoppingGroupId: 11 },
+  { name: 'soy sauce', shoppingGroupId: 11 },
   { name: 'chile', shoppingGroupId: 37 },
   { name: 'dry chile', shoppingGroupId: 36 },
   { name: 'dried oregano', shoppingGroupId: 36 },
@@ -29,6 +31,7 @@ const foodsCollection = [
   { name: 'noodles', shoppingGroupId: 31 },
   { name: 'shrimp', shoppingGroupId: 33 },
   { name: 'pasta', shoppingGroupId: 31 },
+  { name: 'fettuccine', shoppingGroupId: 31 },
   { name: 'spaghetti', shoppingGroupId: 31 },
   { name: 'Cointreau Liqueur', shoppingGroupId: 39 },
   { name: 'lime juice', shoppingGroupId: 25 },
@@ -63,6 +66,7 @@ const foodsCollection = [
   { name: 'mushroom', shoppingGroupId: 37 },
   { name: 'tomatoes', shoppingGroupId: 37 },
   { name: 'lime', shoppingGroupId: 15 },
+  { name: 'orange', shoppingGroupId: 15 },
   { name: 'tomato', shoppingGroupId: 37 },
   { name: 'avocado', shoppingGroupId: 37 },
   { name: 'cucumber', shoppingGroupId: 37 },
@@ -116,6 +120,9 @@ const foodsCollection = [
   { name: 'paper towel', shoppingGroupId: 30 },
   { name: 'plate', shoppingGroupId: 30 },
   { name: 'paper plate', shoppingGroupId: 30 },
+  { name: 'broth', shoppingGroupId: 34 },
+  { name: 'beef broth', shoppingGroupId: 34 },
+  { name: 'vegetable broth', shoppingGroupId: 34 },
 ];
 
 export default foodsCollection;

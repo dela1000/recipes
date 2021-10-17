@@ -3,12 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 import orderBy from 'lodash/orderBy';
 import PropTypes from 'prop-types';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import {
-  allRecipesState,
-  dbState,
-  currentUserState,
-  loadingOverlayState,
-} from '../../contexts/atoms/atoms';
+import { dbState, currentUserState, loadingOverlayState } from '../../contexts/atoms/atoms';
 import ShoppingListItem from '../ShoppingListItem';
 import foodsCollection from '../../helpers/foodsCollection';
 import shopppingGroups from '../../helpers/shoppingGroups';
@@ -19,7 +14,6 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
   const setLoading = useSetRecoilState(loadingOverlayState);
   const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
-  const allRecipes = useRecoilValue(allRecipesState);
 
   const sortIngredients = () => {
     setLoading(true);
@@ -73,12 +67,18 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
 
   const updateShoppingListRecipe = async (ingredient) => {
     const recipeId = ingredient.recipeObj.id;
-    const recipeToEdit = allRecipes.find((x) => x.id === recipeId);
+    const recipeToEdit = recipesOnShoppingList.find((x) => x.id === recipeId);
     const parsedRecipeToEdit = JSON.parse(JSON.stringify(recipeToEdit));
 
-    parsedRecipeToEdit.ingredients[ingredient.ingredientsGroupIndex].ingredients[
-      ingredient.index - 1
-    ].purchased = true;
+    parsedRecipeToEdit.ingredients[ingredient.ingredientsGroupIndex].ingredients.forEach(
+      (recipeIng, idx) => {
+        if (ingredient.string === recipeIng.string) {
+          parsedRecipeToEdit.ingredients[ingredient.ingredientsGroupIndex].ingredients[
+            idx
+          ].purchased = ingredient.purchased;
+        }
+      },
+    );
 
     await updateRecipe({
       db,
