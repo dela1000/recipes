@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import orderBy from 'lodash/orderBy';
 import PropTypes from 'prop-types';
-import { useRecoilValue } from 'recoil';
-import { allRecipesState, dbState, currentUserState } from '../../contexts/atoms/atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  allRecipesState,
+  dbState,
+  currentUserState,
+  loadingOverlayState,
+} from '../../contexts/atoms/atoms';
 import ShoppingListItem from '../ShoppingListItem';
 import foodsCollection from '../../helpers/foodsCollection';
 import shopppingGroups from '../../helpers/shoppingGroups';
@@ -11,11 +16,13 @@ import { updateRecipe } from '../../adapters/recipeAdapters';
 
 export default function ShoppingListByGroup({ recipesOnShoppingList, getShoppingListRecipes }) {
   const [ingredientGroups, setIngredientGroups] = useState([]);
+  const setLoading = useSetRecoilState(loadingOverlayState);
   const db = useRecoilValue(dbState);
   const currentUser = useRecoilValue(currentUserState);
   const allRecipes = useRecoilValue(allRecipesState);
 
   const sortIngredients = () => {
+    setLoading(true);
     const allIngredients = {};
 
     recipesOnShoppingList.forEach((recipe) => {
@@ -24,6 +31,7 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
           const newIngredient = JSON.parse(JSON.stringify(ingredient));
           newIngredient.recipeObj = recipe;
           newIngredient.ingredientsGroupIndex = index;
+          newIngredient.tempIndex = `${recipe.id}-${index}-${ingredient.index}`;
           allIngredients[newIngredient.string] = newIngredient;
         });
       });
@@ -60,6 +68,7 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
     });
     const finalArray = JSON.parse(JSON.stringify(sortedArray));
     setIngredientGroups(finalArray);
+    setLoading(false);
   };
 
   const updateShoppingListRecipe = async (ingredient) => {
@@ -88,11 +97,11 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
     <div>
       {ingredientGroups.map((group) => (
         <div key={group.id}>
-          <div className="text-xl mb-2 capitalize italic">{group.name}</div>
+          <div className="text-xl mt-3 capitalize italic">{group.name}</div>
           <div>
             {group.ingredients.map((ingredient) => (
               <ShoppingListItem
-                key={ingredient.index}
+                key={ingredient.tempIndex}
                 ingredient={ingredient}
                 updateShoppingListRecipe={updateShoppingListRecipe}
               />

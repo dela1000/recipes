@@ -34,7 +34,7 @@ export default function ShoppingListItem({ ingredient, updateShoppingListRecipe 
           checked={checked}
           onChange={handleCheckBoxClick}
         />
-        <div className="mt-2">
+        <div className="mt-2 capitalize ">
           <span className={`${checked ? 'line-through text-gray-400' : ''}`}>
             {ingredientString}
           </span>
