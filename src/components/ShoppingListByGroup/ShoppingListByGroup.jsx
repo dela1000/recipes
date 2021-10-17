@@ -14,6 +14,10 @@ export default function ShoppingListByGroup({ recipesOnShoppingList }) {
     recipe.ingredients.forEach((ingredientsGroup) => {
       ingredientsGroup.ingredients.forEach((ingredient) => {
         allIngredients[ingredient.string] = ingredient;
+        console.log(
+          '+++ 17: src/components/ShoppingListByGroup/ShoppingListByGroup.jsx - ingredient: ',
+          ingredient,
+        );
       });
     });
   });
@@ -24,12 +28,12 @@ export default function ShoppingListByGroup({ recipesOnShoppingList }) {
       const groupId = foodsCollection[food].shoppingGroupId;
       Object.keys(allIngredients).forEach((ingredient) => {
         const ingredientString = allIngredients[ingredient].string.toLowerCase();
-        const found = ingredient.match(food);
+        const found = ingredient.toLowerCase().match(food.toLocaleLowerCase());
         if (found) {
           if (!shopppingGroupsCopy[groupId].ingredients[ingredientString]) {
             shopppingGroupsCopy[groupId].ingredients[ingredientString] = allIngredients[ingredient];
-            delete shopppingGroupsCopy[0].ingredients[ingredientString];
             delete allIngredients[ingredient];
+            delete shopppingGroupsCopy[0].ingredients[ingredientString];
           }
         } else {
           shopppingGroupsCopy[0].ingredients[ingredientString] = allIngredients[ingredient];
@@ -64,7 +68,10 @@ export default function ShoppingListByGroup({ recipesOnShoppingList }) {
           <div className="capitalize font-bold">{group.name}</div>
           <div>
             {group.ingredients.map((ingredient) => (
-              <div key={ingredient.string}>{ingredient.string}</div>
+              <div key={ingredient.string}>
+                <span className="font-bold">{ingredient.quantity} </span>
+                <span>{ingredient.string}</span>
+              </div>
             ))}
           </div>
         </div>
