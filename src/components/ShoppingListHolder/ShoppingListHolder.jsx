@@ -19,7 +19,7 @@ import { updateRecipe, getRecipeById } from '../../adapters/recipeAdapters';
 import addItemsToShoppingListTotal from '../../contexts/addItemsToShoppingListTotal';
 
 export default function ShoppingListHolder({ getShoppingListRecipes }) {
-  const [viewByRecipe, setViewByRecipe] = useState(false);
+  const [viewByRecipe, setViewByRecipe] = useState(true);
   const [recipesOnShoppingList, setRecipesOnShoppingList] = useRecoilState(onShoppingListState);
   const [allRecipes, setAllRecipes] = useRecoilState(allRecipesState);
   const history = useHistory();
@@ -117,9 +117,6 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
 
   return (
     <div className="mx-3">
-      <div className="mb-5">
-        <div className="text-5xl pt-1 mr-12 uppercase pt-9">Shopping List</div>
-      </div>
       <div className="lg:flex flex-row">
         <div className="lg:w-3/12 pr-10">
           <div className="my-3">

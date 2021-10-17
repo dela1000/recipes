@@ -42,6 +42,9 @@ export default function ShoppingList() {
 
   return (
     <div className="fade-in">
+      <div className="mb-5">
+        <div className="text-5xl pt-1 mr-12 uppercase pt-9">Shopping List</div>
+      </div>
       <AddToShoppingListInput />
       {recipesOnShoppingList.length > 0 ? (
         <ShoppingListHolder getShoppingListRecipes={getShoppingListRecipes} />
