@@ -35,6 +35,7 @@ const foodsCollection = [
   { name: 'fettuccine', shoppingGroupId: 31 },
   { name: 'spaghetti', shoppingGroupId: 31 },
   { name: 'salmon', shoppingGroupId: 33 },
+  { name: 'trout', shoppingGroupId: 33 },
   { name: 'mahi', shoppingGroupId: 33 },
   { name: 'Cointreau Liqueur', shoppingGroupId: 39 },
   { name: 'lime juice', shoppingGroupId: 25 },
