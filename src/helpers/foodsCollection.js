@@ -1,6 +1,6 @@
 const foodsCollection = {
   'peanut butter': { name: 'peanut butter', shoppingGroupId: 24 },
-  oil: { name: 'oil', shoppingGroupId: 28 },
+  oil: { name: 'oil', shoppingGroupId: 29 },
   vinegar: { name: 'vigenar', shoppingGroupId: 28 },
   'balsamic vinegar': { name: 'balsamic vinegar', shoppingGroupId: 28 },
   basil: { name: 'basil', shoppingGroupId: 22 },

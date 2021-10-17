@@ -88,7 +88,7 @@ export default function ShoppingListByGroup({ recipesOnShoppingList, getShopping
     <div>
       {ingredientGroups.map((group) => (
         <div key={group.id}>
-          <div className="capitalize font-bold">{group.name}</div>
+          <div className="text-xl mb-2 capitalize italic">{group.name}</div>
           <div>
             {group.ingredients.map((ingredient) => (
               <ShoppingListItem
