@@ -113,7 +113,7 @@ export default function ShoppingListHolder({ getShoppingListRecipes }) {
 
   useEffect(() => {
     defineRecipeNames();
-  }, [recipesOnShoppingList, viewByRecipe]);
+  }, [recipesOnShoppingList]);
 
   return (
     <div className="mx-3">
