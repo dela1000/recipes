@@ -88,6 +88,7 @@ const foodsCollection = [
   { name: 'chive', shoppingGroupId: 37 },
   { name: 'parsley', shoppingGroupId: 37 },
   { name: 'asparagus', shoppingGroupId: 37 },
+  { name: 'shallot', shoppingGroupId: 37 },
   { name: 'zucchini', shoppingGroupId: 37 },
   { name: 'peas', shoppingGroupId: 37 },
   { name: 'kale', shoppingGroupId: 37 },
@@ -141,6 +142,10 @@ const foodsCollection = [
   { name: 'salsa', shoppingGroupId: 11 },
   { name: 'taco seasoning', shoppingGroupId: 23 },
   { name: 'taco shell', shoppingGroupId: 23 },
+  { name: 'olives', shoppingGroupId: 11 },
+  { name: 'cashew', shoppingGroupId: 28 },
+  { name: 'flour', shoppingGroupId: 1 },
+  { name: 'corn starch', shoppingGroupId: 1 },
 ];
 
 export default foodsCollection;
