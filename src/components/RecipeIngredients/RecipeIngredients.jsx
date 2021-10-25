@@ -44,7 +44,7 @@ export default function RecipeIngredients() {
 
   useEffect(() => {
     setListRecipe(recipe);
-  }, []);
+  }, [recipe]);
 
   return (
     <div className="my-5 pl-3 lg:pl-0">

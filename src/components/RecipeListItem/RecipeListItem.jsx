@@ -29,8 +29,8 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
     history.push('/recipe');
   };
 
-  const selectRecipe = () => {
-    setRecipe(recipe);
+  const selectRecipe = async () => {
+    await setRecipe(recipe);
     navigate();
   };
 
