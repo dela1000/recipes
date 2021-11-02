@@ -1,5 +1,6 @@
 const foodsCollection = [
   { name: 'peanut butter', shoppingGroupId: 24 },
+  { name: 'toilet paper', shoppingGroupId: 30 },
   { name: 'oil', shoppingGroupId: 29 },
   { name: 'olive oil', shoppingGroupId: 29 },
   { name: 'vinegar', shoppingGroupId: 28 },
@@ -76,11 +77,14 @@ const foodsCollection = [
   { name: 'jicama', shoppingGroupId: 37 },
   { name: 'broccoli', shoppingGroupId: 37 },
   { name: 'celery', shoppingGroupId: 37 },
+  { name: 'radish', shoppingGroupId: 37 },
   { name: 'mushroom', shoppingGroupId: 37 },
   { name: 'tomatoes', shoppingGroupId: 37 },
   { name: 'lime', shoppingGroupId: 15 },
   { name: 'orange', shoppingGroupId: 15 },
   { name: 'tomato', shoppingGroupId: 37 },
+  { name: 'corn', shoppingGroupId: 37 },
+  { name: 'arugula', shoppingGroupId: 37 },
   { name: 'avocado', shoppingGroupId: 37 },
   { name: 'cucumber', shoppingGroupId: 37 },
   { name: 'lettuce', shoppingGroupId: 37 },
@@ -131,8 +135,8 @@ const foodsCollection = [
   { name: 'coffee', shoppingGroupId: 10 },
   { name: 'napkin', shoppingGroupId: 30 },
   { name: 'towel', shoppingGroupId: 30 },
-  { name: 'paper towel', shoppingGroupId: 30 },
   { name: 'plate', shoppingGroupId: 30 },
+  { name: 'paper towel', shoppingGroupId: 30 },
   { name: 'paper plate', shoppingGroupId: 30 },
   { name: 'broth', shoppingGroupId: 34 },
   { name: 'beef broth', shoppingGroupId: 34 },
@@ -146,6 +150,7 @@ const foodsCollection = [
   { name: 'cashew', shoppingGroupId: 28 },
   { name: 'flour', shoppingGroupId: 1 },
   { name: 'corn starch', shoppingGroupId: 1 },
+  { name: 'dish soap', shoppingGroupId: 9 },
 ];
 
 export default foodsCollection;
