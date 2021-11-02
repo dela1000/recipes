@@ -152,6 +152,7 @@ export default function RecipeListItem({ recipe, handleCategoryChange }) {
             </div>
           </div>
           <div>
+            <div className="text-xs italic text-limit">{recipe.description}</div>
             <div className="pt-1">
               {recipe.categories.length > 0 && (
                 <div className="text-xs flex">
@@ -183,6 +184,7 @@ RecipeListItem.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     favorite: PropTypes.bool,
+    description: PropTypes.string,
     originalURL: PropTypes.string,
     source: PropTypes.string,
     onShoppingList: PropTypes.bool,
