@@ -620,11 +620,6 @@ const recipesData = [
     ],
     originalURL: 'http://www.deliciousmeetshealthy.com/spicy-sausage-and-shrimp-skillet-paleo/',
     yield: '',
-    notes: {
-      nutrition: {
-        perServing: '3500 calories total',
-      },
-    },
     image:
       'https://www.deliciousmeetshealthy.com/wp-content/uploads/2015/03/sausage-and-shrimp-skillet-11.jpg.webp',
     id: '3n6uDNzPQGoikondcQR6',
