@@ -151,6 +151,11 @@ const foodsCollection = [
   { name: 'flour', shoppingGroupId: 1 },
   { name: 'corn starch', shoppingGroupId: 1 },
   { name: 'dish soap', shoppingGroupId: 9 },
+  { name: 'feta', shoppingGroupId: 8 },
+  { name: 'dill', shoppingGroupId: 22 },
+  { name: 'mint', shoppingGroupId: 22 },
+  { name: 'meat', shoppingGroupId: 27 },
+  { name: 'chips', shoppingGroupId: 12 },
 ];
 
 export default foodsCollection;
