@@ -1,4 +1,6 @@
 const foodsCollection = [
+  { name: 'green bean', shoppingGroupId: 37 },
+  { name: 'aluminum foil', shoppingGroupId: 35 },
   { name: 'peanut butter', shoppingGroupId: 24 },
   { name: 'toilet paper', shoppingGroupId: 30 },
   { name: 'oil', shoppingGroupId: 29 },
@@ -43,6 +45,7 @@ const foodsCollection = [
   { name: 'lemon', shoppingGroupId: 37 },
   { name: 'lemon juice', shoppingGroupId: 25 },
   { name: 'ginger', shoppingGroupId: 37 },
+  { name: 'beet', shoppingGroupId: 37 },
   { name: 'water', shoppingGroupId: 4 },
   { name: 'tofu', shoppingGroupId: 23 },
   { name: 'soyrizo', shoppingGroupId: 23 },
@@ -156,6 +159,7 @@ const foodsCollection = [
   { name: 'mint', shoppingGroupId: 22 },
   { name: 'meat', shoppingGroupId: 27 },
   { name: 'chips', shoppingGroupId: 12 },
+  { name: 'ice cream', shoppingGroupId: 12 },
 ];
 
 export default foodsCollection;
